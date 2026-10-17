@@ -4,7 +4,7 @@ React + TypeScript + Vite prerendered website, Django API/admin and PostgreSQL.
 
 ## Deploy the website and admin together on Cloudflare
 
-Use **Workers & Pages → Create → Import a repository → Workers**, with repository root `/`, Worker name `avrix-digital-website`, build command `npm run build:cloudflare` and deploy command `npm run deploy:cloudflare`. This uses Workers Static Assets and a Django Container, rather than a static Pages deployment. See [the complete setup](docs/CLOUDFLARE.md) for the required database, secrets, Turnstile and email settings, and connecting your domain later.
+Use **Workers & Pages → Create → Import a repository → Workers**, with repository root `/`, Worker name `avrix-digital-website`, build command `npm run build` and deploy command `npm run deploy:cloudflare`. The build installs frontend dependencies automatically; `npm run build:cloudflare` is an equivalent alias. This uses Workers Static Assets and a Django Container, rather than a static Pages deployment. See [the complete setup](docs/CLOUDFLARE.md) for the required database, secrets, Turnstile and email settings, and connecting your domain later.
 
 The admin is at `/manage-7f3k/`; the private, token-protected initial superadmin registration route is `/admin-setup/`. Local `.env` files, database contents and credentials are excluded from Git and the Docker image.
 

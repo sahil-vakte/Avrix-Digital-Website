@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "npm --prefix frontend run dev --",
-    "build": "npm --prefix frontend run build",
+    "build": "npm run build:cloudflare",
     "build:cloudflare": "node cloudflare/build.mjs",
     "deploy:cloudflare": "wrangler deploy",
     "check:cloudflare": "node --test cloudflare/*.test.mjs"

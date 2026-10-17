@@ -15,7 +15,7 @@ The backend uses one `basic` container (1 GiB memory) with two Gunicorn workers 
 
 1. In Cloudflare **Workers & Pages**, create a **Worker** by importing this GitHub repository. Use the branch containing this setup until the repository has a reviewed production branch.
 2. Set the project/Worker name to **`avrix-digital-website`**, matching `wrangler.jsonc`. Root directory: repository root, not `frontend` or `backend`.
-3. Build command: **`npm run build:cloudflare`**. Deploy command: **`npm run deploy:cloudflare`**. Use Node 22 or later in Workers Builds (`NODE_VERSION=22`). Wrangler is pinned in the root lockfile. Workers Builds builds and uploads the container image; no Docker installation is needed on your PC for that path.
+3. Build command: **`npm run build`** (or `npm run build:cloudflare`; both run the same build). Deploy command: **`npm run deploy:cloudflare`**. Use Node 22 or later in Workers Builds (`NODE_VERSION=22`). Wrangler is pinned in the root lockfile. Workers Builds builds and uploads the container image; no Docker installation is needed on your PC for that path.
 4. Find your account's Workers subdomain. The initial origin is `https://avrix-digital-website.YOUR-SUBDOMAIN.workers.dev`.
 5. Add the build variables and runtime settings below before deploying. Run a new deployment after changing them. Keep temporary preview deployments `noindex`.
 
@@ -29,7 +29,7 @@ The backend uses one `basic` container (1 GiB memory) with two Gunicorn workers 
 | `VITE_SITE_ENV` | `preview` initially; `production` when ready to be indexed |
 | `VITE_GA4_ID`, `VITE_GTM_ID` | Optional analytics identifiers |
 
-`build:cloudflare` installs frontend dependencies, validates content and builds every static page. It forces same-origin API/admin URLs and uses `PUBLIC_ORIGIN` for canonical URLs, social images and the sitemap. Do not set a separate `VITE_API_URL` for this deployment.
+Both root build commands install frontend dependencies (including build tools such as `tsx`, even when `NODE_ENV=production`), validate content and build every static page. They force same-origin API/admin URLs and use `PUBLIC_ORIGIN` for canonical URLs, social images and the sitemap. Do not set a separate `VITE_API_URL` for this deployment.
 
 ### Runtime variables and secrets (Worker Settings → Variables and Secrets)
 
