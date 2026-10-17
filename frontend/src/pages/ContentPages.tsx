@@ -102,6 +102,7 @@ export default function ContentPages({ route }: { route: RouteRecord }) {
         {hero}
         <section className="section light">
           <div className="container">
+            <h2 className="sr-only">{ui.services}</h2>
             <ServicesFilter />
           </div>
         </section>
@@ -170,7 +171,7 @@ export default function ContentPages({ route }: { route: RouteRecord }) {
             <Suspense>
               <EnquiryForm />
             </Suspense>
-            <aside>
+            <aside role="region" aria-label={p!.side_card!.title}>
               <h2>{p!.side_card!.title}</h2>
               <p>{p!.side_card!.text}</p>
               <Button href="booking_url_or:/contact-us/">{site.booking_label}</Button>
@@ -210,7 +211,8 @@ export default function ContentPages({ route }: { route: RouteRecord }) {
         {hero}
         <section className="section light">
           <div className="container">
-            <nav className="filter-chips">
+            <h2 className="sr-only">{ui.blog}</h2>
+            <nav className="filter-chips" aria-label={ui.blog}>
               <a href="/blog/" aria-current={!route.category ? 'page' : undefined}>
                 {ui.all}
               </a>

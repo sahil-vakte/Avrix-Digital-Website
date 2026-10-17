@@ -88,4 +88,6 @@ CI checks source, frontend tests/build/SEO, backend tests, the Docker image buil
 
 Wrangler's non-production version upload is not a complete Containers preview deployment. Use a separate staging Worker/database for a full-stack staging environment. A successful local static build or Wrangler dry run does not verify your Cloudflare account, database connectivity, SMTP delivery or live Turnstile credentials; perform the checks above after configuring the account.
 
+The mobile audit runs performance, accessibility, best practices and SEO together. Its LCP budget is 2.5 seconds, the [Core Web Vitals good threshold](https://web.dev/articles/lcp), alongside the existing performance-score and 0.05 layout-shift budgets. The former 2-second internal LCP target was stricter than this standard. The page bootstrap paints prerendered content before loading React; the reading experience remains available while the interactive layer starts.
+
 References: [Static frontend with a container backend](https://developers.cloudflare.com/containers/examples/container-backend/), [Git builds and container deployment](https://developers.cloudflare.com/containers/guides/deploy/), [Passing runtime secrets](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/).

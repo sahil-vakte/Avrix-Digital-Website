@@ -566,7 +566,7 @@ header.scrolled {
   padding-left: 0;
 }
 .step-number {
-  color: var(--text-on-light);
+  color: var(--ink-950);
   background: var(--volt-400);
   border: 0;
   border-radius: 12px;
@@ -829,6 +829,10 @@ select {
   border-color: #b7aaa6;
   border-radius: 7px;
   font-size: 15px;
+}
+.newsletter input[type='email'] {
+  background: var(--ink-800);
+  color: white;
 }
 input:hover,
 textarea:hover,

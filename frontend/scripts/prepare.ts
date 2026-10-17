@@ -19,7 +19,7 @@ fs.cpSync('../content/assets/brand', 'public/brand', { recursive: true });
 await prepareBrandAssets(data.site);
 fs.mkdirSync('public/fonts', { recursive: true });
 for (const [pkg, name, match] of [
-  ['@fontsource-variable/bricolage-grotesque', 'display', 'latin-standard-normal.woff2'],
+  ['@fontsource-variable/bricolage-grotesque', 'display', 'latin-wght-normal.woff2'],
   ['@fontsource-variable/geist', 'body', 'latin-wght-normal.woff2'],
   ['@fontsource-variable/geist-mono', 'mono', 'latin-wght-normal.woff2'],
   ['@fontsource/instrument-serif', 'serif', 'latin-400-italic.woff2'],

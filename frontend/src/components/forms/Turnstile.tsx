@@ -49,5 +49,5 @@ export default function Turnstile({
       if (id) window.turnstile?.remove(id);
     };
   }, [onToken, resetKey]);
-  return <div ref={ref} aria-label={ui.turnstile} />;
+  return <div ref={ref} role="group" aria-label={ui.turnstile} />;
 }

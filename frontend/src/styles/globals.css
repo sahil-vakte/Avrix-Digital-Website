@@ -1147,9 +1147,6 @@ fieldset {
 .marquee:hover .marquee-track {
   animation-play-state: paused;
 }
-.js-ready main {
-  animation: route-in 0.25s ease-out;
-}
 .js-ready .mobile-sheet[open] {
   animation: sheet-in 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }

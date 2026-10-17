@@ -11,7 +11,7 @@ module.exports = {
       ],
       numberOfRuns: 3,
       settings: {
-        preset: 'perf',
+        onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
         formFactor: 'mobile',
         screenEmulation: {
           mobile: true,
@@ -32,7 +32,8 @@ module.exports = {
             'categories:accessibility': ['error', { minScore: 0.98 }],
             'categories:best-practices': ['error', { minScore: 1 }],
             'categories:seo': ['error', { minScore: 1 }],
-            'largest-contentful-paint': ['error', { maxNumericValue: 2000 }],
+            // Core Web Vitals' good LCP threshold on the mobile profile.
+            'largest-contentful-paint': ['error', { maxNumericValue: 2500 }],
             'cumulative-layout-shift': ['error', { maxNumericValue: 0.05 }],
           },
         },
