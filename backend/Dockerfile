@@ -4,7 +4,7 @@ WORKDIR /app
 COPY requirements.lock.txt .
 RUN pip install --no-cache-dir -r requirements.lock.txt && useradd --create-home app
 COPY --chown=app:app . .
-RUN DJANGO_SETTINGS_MODULE=config.settings.dev python manage.py collectstatic --noinput && chmod +x entrypoint.sh
+RUN DJANGO_SETTINGS_MODULE=config.settings.build python manage.py collectstatic --noinput && chmod +x entrypoint.sh
 USER app
 EXPOSE 8000
 ENTRYPOINT ["./entrypoint.sh"]

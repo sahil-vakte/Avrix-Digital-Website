@@ -84,7 +84,7 @@ Add `avrixdigital.co.uk` as a **Custom Domain** on the same Worker. Set `PUBLIC_
 
 ## CI and limits of local verification
 
-CI checks source, frontend tests/build/SEO, backend tests and the Docker image build. Legacy Pages and VPS deploy workflows are opt-in via `ENABLE_LEGACY_PAGES_DEPLOY` and `ENABLE_LEGACY_VPS_DEPLOY`; leave them unset for this setup. Production monitoring is opt-in via `ENABLE_PRODUCTION_MONITORING`.
+CI checks source, frontend tests/build/SEO, backend tests, the Docker image build and production container startup against PostgreSQL, including admin login and static assets. Legacy Pages and VPS deploy workflows are opt-in via `ENABLE_LEGACY_PAGES_DEPLOY` and `ENABLE_LEGACY_VPS_DEPLOY`; leave them unset for this setup. Production monitoring is opt-in via `ENABLE_PRODUCTION_MONITORING`.
 
 Wrangler's non-production version upload is not a complete Containers preview deployment. Use a separate staging Worker/database for a full-stack staging environment. A successful local static build or Wrangler dry run does not verify your Cloudflare account, database connectivity, SMTP delivery or live Turnstile credentials; perform the checks above after configuring the account.
 
