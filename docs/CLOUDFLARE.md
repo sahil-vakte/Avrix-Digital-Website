@@ -2,6 +2,8 @@
 
 The root `wrangler.jsonc` deploys one Worker named `avrix-digital-website`. Static Assets serve the prerendered React pages. `/api/*`, `/manage-7f3k/*`, `/admin-setup/*` and `/static/*` go to the Django Container. All browser requests use the same origin; there is no separate API subdomain to configure.
 
+The backend uses one `basic` container (1 GiB memory) with two Gunicorn workers and sleeps after ten idle minutes. This leaves room for Django admin and data exports. Runtime usage is billable under your Cloudflare plan.
+
 ## Requirements
 
 - Cloudflare Workers paid account with Containers enabled. This is not a free static Pages deployment; review the account's Containers pricing before enabling it.

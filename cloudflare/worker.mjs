@@ -29,7 +29,7 @@ export class Backend extends DurableObject {
     if (!container.running) {
       container.start({
         image: container.images.base,
-        instance: 'lite',
+        instance: 'basic',
         enableInternet: true,
         env: containerEnvironment(this.env),
       });
