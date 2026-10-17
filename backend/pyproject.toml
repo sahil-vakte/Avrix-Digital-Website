@@ -1,0 +1,11 @@
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings.test"
+python_files = ["test_*.py"]
+testpaths = ["enquiries/tests"]
+addopts = "--cov=enquiries --cov-report=term-missing --cov-report=xml --cov-fail-under=90"
+[tool.coverage.run]
+omit = ["*/migrations/*", "*/tests/*"]
+[tool.ruff]
+line-length = 160
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]

@@ -1,0 +1,29 @@
+{
+  "_notes": "Only items with verified:true render. To verify, a human must add evidence_note (what evidence exists and where it is stored). These claims came from the old site and are unverified. See docs/09_CLAIMS_REGISTER.md.",
+  "items": [
+    {
+      "id": "roas-improvement",
+      "value": "300%+",
+      "label": "Average ROAS improvement across performance marketing clients",
+      "source_note": "",
+      "verified": false,
+      "evidence_note": ""
+    },
+    {
+      "id": "would-recommend",
+      "value": "80%",
+      "label": "of clients would recommend AVRIX Digital to another UK business",
+      "source_note": "State survey method, e.g. 'x of y clients surveyed, Month YYYY'",
+      "verified": false,
+      "evidence_note": ""
+    },
+    {
+      "id": "m365-migrations",
+      "value": "0",
+      "label": "Microsoft 365 migrations with data loss",
+      "source_note": "",
+      "verified": false,
+      "evidence_note": ""
+    }
+  ]
+}

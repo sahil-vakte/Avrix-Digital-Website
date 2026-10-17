@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Build script (satori/resvg) replaces {{EYEBROW}} and {{TITLE}}; wraps title to max 3 lines. Fonts: Bricolage Grotesque 700, Geist Mono 500 -->
+  <defs>
+    <filter id="b" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="70"/></filter>
+    <pattern id="d" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#fff" fill-opacity=".08"/></pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#07080C"/>
+  <g filter="url(#b)"><ellipse cx="980" cy="140" rx="300" ry="200" fill="#fd3f00" fill-opacity=".5"/><ellipse cx="1100" cy="520" rx="240" ry="160" fill="#ff936f" fill-opacity=".3"/></g>
+  <rect width="1200" height="630" fill="url(#d)"/>
+  <rect x="72" y="72" width="64" height="6" rx="3" fill="#fd3f00"/>
+  <text x="72" y="130" font-family="Geist Mono, monospace" font-size="22" letter-spacing="3" fill="#9AA0B4">{{EYEBROW}}</text>
+  <text x="72" y="260" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="68" fill="#FFFFFF">{{TITLE}}</text>
+  <image x="72" y="530" width="194" height="44" href="{{LOGO}}" preserveAspectRatio="xMinYMid meet"/>
+  <text x="1128" y="566" text-anchor="end" font-family="Geist Mono, monospace" font-size="22" fill="#fd3f00">Make it count.</text>
+</svg>

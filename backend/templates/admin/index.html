@@ -1,0 +1,14 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+{% block extrahead %}{{ block.super }}<script src="{% static 'enquiries/admin.js' %}" defer></script>{% endblock %}
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static 'enquiries/admin.css' %}">{% endblock %}
+{% block content %}
+<nav class="flex gap-4 mb-4"><a href="{% url 'admin:enquiries_enquiry_changelist' %}">Manage enquiries</a>{% if perms.auth.view_user %}<a href="{% url 'admin:auth_user_changelist' %}">Manage users</a>{% endif %}</nav>
+{% if includes_test_enquiries %}<p class="mb-4">Development mode: test enquiries are included below. Spam remains hidden.</p>{% endif %}
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">{% for label,value in metrics %}<div class="border rounded-lg p-6"><p>{{ label }}</p><strong class="text-4xl">{{ value }}</strong></div>{% endfor %}</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"><section><h2>Pipeline</h2>{% for label,value in pipeline %}<p>{{ label }} <strong>{{ value }}</strong></p>{% endfor %}</section><section><h2>Top services · 30 days</h2>{% for label,value in top_services %}<p>{{ label }}: {{ value }}</p>{% endfor %}</section><section><h2>Top sources · 30 days</h2>{% for label,value in top_sources %}<p>{{ label }}: {{ value }}</p>{% endfor %}</section></div>
+<h2>Needs follow-up</h2>{% for enquiry in followups %}<p><a data-enquiry-panel="{% url 'admin:enquiries_enquiry_panel' enquiry.pk %}" href="{% url 'admin:enquiries_enquiry_change' enquiry.pk %}">{{ enquiry.full_name }}</a> — {{ enquiry.next_action_at }}</p>{% empty %}<p>No overdue follow-ups.</p>{% endfor %}
+<h2>Latest enquiries</h2><table class="w-full"><thead><tr><th>Name</th><th>Company</th><th>Status</th><th>Received</th></tr></thead><tbody>{% for enquiry in latest %}<tr><td><a data-enquiry-panel="{% url 'admin:enquiries_enquiry_panel' enquiry.pk %}" href="{% url 'admin:enquiries_enquiry_change' enquiry.pk %}">{{ enquiry.full_name }}</a></td><td>{{ enquiry.company }}</td><td data-enquiry-status>{{ enquiry.status }}</td><td>{{ enquiry.created_at }}</td></tr>{% endfor %}</tbody></table>
+{% include "admin/app_list.html" with app_list=app_list show_changelinks=True %}
+{% include "admin/enquiries/enquiry/drawer.html" %}
+{% endblock %}

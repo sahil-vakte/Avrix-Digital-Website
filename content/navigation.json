@@ -1,0 +1,127 @@
+{
+  "header": [
+    {
+      "label": "Services",
+      "href": "/services/",
+      "mega": true
+    },
+    {
+      "label": "Solutions",
+      "href": "/solutions/"
+    },
+    {
+      "label": "About",
+      "href": "/about/"
+    },
+    {
+      "label": "Insights",
+      "href": "/blog/"
+    },
+    {
+      "label": "FAQs",
+      "href": "/faqs/"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact-us/"
+    }
+  ],
+  "header_cta": {
+    "label": "Book a call",
+    "href": "booking_url_or:/contact-us/"
+  },
+  "mega_menu": [
+    {
+      "pillar": "grow",
+      "label": "Grow",
+      "blurb": "More qualified leads and sales from your marketing spend.",
+      "items": [
+        "performance-marketing",
+        "ga4-consulting"
+      ]
+    },
+    {
+      "pillar": "build",
+      "label": "Build & automate",
+      "blurb": "Websites, apps and automations that do real work.",
+      "items": [
+        "web-development",
+        "web-application-development",
+        "ai-automation"
+      ]
+    },
+    {
+      "pillar": "run",
+      "label": "Run & secure",
+      "blurb": "Cloud tools set up properly, secured and supported.",
+      "items": [
+        "microsoft-365-copilot",
+        "google-workspace",
+        "aws-consulting"
+      ]
+    },
+    {
+      "pillar": "hire",
+      "label": "Hire",
+      "blurb": "Tech and digital people who stay and deliver.",
+      "items": [
+        "talent-acquisition"
+      ]
+    }
+  ],
+  "mega_feature": {
+    "title": "Not sure where to start?",
+    "text": "Tell us what's slowing you down. We'll point you to the right fix, even if it isn't us.",
+    "cta": {
+      "label": "Book a free 30-minute call",
+      "href": "booking_url_or:/contact-us/"
+    }
+  },
+  "footer": {
+    "company": [
+      {
+        "label": "About",
+        "href": "/about/"
+      },
+      {
+        "label": "Services",
+        "href": "/services/"
+      },
+      {
+        "label": "Solutions",
+        "href": "/solutions/"
+      },
+      {
+        "label": "Insights",
+        "href": "/blog/"
+      },
+      {
+        "label": "FAQs",
+        "href": "/faqs/"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact-us/"
+      }
+    ],
+    "legal": [
+      {
+        "label": "Privacy policy",
+        "href": "/privacy-policy/"
+      },
+      {
+        "label": "Cookie policy",
+        "href": "/cookie-policy/"
+      },
+      {
+        "label": "Terms of business",
+        "href": "/terms/"
+      },
+      {
+        "label": "Cookie preferences",
+        "action": "open-cookie-preferences"
+      }
+    ]
+  },
+  "_notes": "Mega menu items reference service slugs; title/summary/icon come from each service file. 'booking_url_or:/contact-us/' means: use site.json booking_url if set, otherwise /contact-us/."
+}

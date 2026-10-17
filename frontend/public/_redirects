@@ -1,0 +1,41 @@
+# Cloudflare Pages / Netlify redirect rules. Old WordPress URLs → new site.
+# Keep this file in sync with docs/05_SEO_SPEC.md §Redirects.
+
+# Non-canonical / legacy pages
+# NOTE: /?page_id=31 → /faqs/ can't be done here (_redirects ignores query strings).
+#       Create a Cloudflare Redirect Rule: URI Path equals "/" AND query contains "page_id=31" → https://avrixdigital.co.uk/faqs/ (301).
+/sample-page/                                  /             301
+/our-services/                                 /services/    301
+/services/smart-schedule-control/              /services/    301
+
+# Theme "teams" CPT
+/teams/                                        /about/       301
+/teams/*                                       /about/       301
+
+# Theme demo blog posts (deleted). Send to blog index
+/how-businesses-can-leverage-data-for-smarter-decisions/   /blog/   301
+/it-industry-key-strategies-for-business-growth/            /blog/   301
+/get-the-most-out-og-the-creativity/                        /blog/   301
+/seo-which-digital-advertis-ing-strategy-is-right-for-you/  /blog/   301
+/influencer-marketing-trends-2023-what-you-need-know/       /blog/   301
+/social-media-marketing-strategies-for-small-business/      /blog/   301
+
+# WordPress taxonomies / archives
+/category/*                                    /blog/        301
+/tag/*                                         /blog/        301
+/author/*                                      /about/       301
+/product-category/*                            /             301
+/product-tag/*                                 /             301
+/shop/*                                        /             301
+
+# WordPress system URLs
+/wp-admin/*                                    /             301
+/wp-login.php                                  /             301
+/feed/                                         /rss.xml      301
+/blog/feed/                                    /rss.xml      301
+
+# Old sitemaps → new sitemap
+/sitemap_index.xml                             /sitemap.xml  301
+/page-sitemap.xml                              /sitemap.xml  301
+/post-sitemap.xml                              /sitemap.xml  301
+/services-sitemap.xml                          /sitemap.xml  301

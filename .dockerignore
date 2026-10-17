@@ -1,0 +1,15 @@
+**
+!backend/
+!backend/**
+backend/.env*
+backend/.venv/
+backend/**/*.sqlite3
+backend/**/__pycache__/
+backend/.pytest_cache/
+backend/pytest-cache-files-*/
+backend/.ruff_cache/
+backend/.coverage
+backend/coverage.xml
+backend/htmlcov/
+backend/staticfiles/
+backend/verification/

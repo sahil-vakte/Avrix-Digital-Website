@@ -1,0 +1,60 @@
+services:
+  db:
+    image: postgres:16.8-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: avrix
+      POSTGRES_USER: avrix
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in deploy/.env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U avrix -d avrix"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  api:
+    image: ${API_IMAGE:-avrix-api:local}
+    build:
+      context: ../backend
+    restart: unless-stopped
+    env_file: ../backend/.env
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.prod
+      DATABASE_URL: postgres://avrix:${POSTGRES_PASSWORD}@db:5432/avrix
+    depends_on:
+      db:
+        condition: service_healthy
+    expose: ["8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; r=urllib.request.Request('http://127.0.0.1:8000/api/health/',headers={'Host':'api.avrixdigital.co.uk','X-Forwarded-Proto':'https'}); urllib.request.urlopen(r,timeout=5)"]
+      interval: 10s
+      timeout: 6s
+      retries: 10
+      start_period: 30s
+  mail-worker:
+    image: ${API_IMAGE:-avrix-api:local}
+    restart: unless-stopped
+    env_file: ../backend/.env
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.prod
+      DATABASE_URL: postgres://avrix:${POSTGRES_PASSWORD}@db:5432/avrix
+    depends_on:
+      api:
+        condition: service_healthy
+    command: ["sh", "-c", "while true; do python manage.py send_pending_emails; sleep 60; done"]
+  caddy:
+    image: caddy:2.9.1-alpine
+    restart: unless-stopped
+    ports: ["80:80", "443:443", "443:443/udp"]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      api:
+        condition: service_healthy
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:

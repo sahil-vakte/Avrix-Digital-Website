@@ -1,0 +1,84 @@
+{
+  "_notes": "General FAQs. Service-specific FAQs live in each service file and are merged into /faqs/ automatically. show_on_home controls the homepage FAQ block (max 6).",
+  "groups": [
+    {
+      "key": "general",
+      "label": "General",
+      "items": [
+        {
+          "q": "What services does AVRIX Digital offer?",
+          "a": "Performance marketing (Google Ads, Meta and LinkedIn), GA4 and analytics consulting, web development, bespoke web applications, AI and workflow automation, Microsoft 365 and Copilot, Google Workspace, AWS consulting, and specialist tech and digital recruitment, all from one team.",
+          "show_on_home": true
+        },
+        {
+          "q": "Who do you work with?",
+          "a": "Mainly UK small and medium-sized businesses with roughly 5 to 300 employees, across sectors such as e-commerce, SaaS, FinTech, professional services and healthcare. We give smaller businesses access to the kind of joined-up expertise usually only large companies can afford.",
+          "show_on_home": true
+        },
+        {
+          "q": "Do you work with businesses across the UK?",
+          "a": "Yes. We work with clients across the whole of the UK. Most of our work is delivered remotely, with on-site visits arranged when a project needs them.",
+          "show_on_home": false
+        },
+        {
+          "q": "What makes AVRIX Digital different from other agencies?",
+          "a": "Three things. First, one partner: your marketing, analytics, cloud tools and hiring are joined up instead of split across suppliers who never talk. Second, accountability: we agree the numbers that matter to you up front and report on them in plain English. Third, fairness: you own every account and asset we set up, and we charge flat, transparent fees rather than a percentage of your spend.",
+          "show_on_home": true
+        }
+      ]
+    },
+    {
+      "key": "working-with-us",
+      "label": "Working with us",
+      "items": [
+        {
+          "q": "How do I get started?",
+          "a": "Book a free 30-minute call or send an enquiry. We'll listen to your goals, ask the right questions and come back with a clear recommendation, including whether we're the right fit. No jargon, no pressure.",
+          "show_on_home": true
+        },
+        {
+          "q": "How do you measure success?",
+          "a": "We agree the metrics that matter to your business before we start, such as leads, cost per acquisition, return on ad spend, revenue, hours saved, cloud costs or time-to-hire. Every client gets a monthly plain-English report covering what happened, what it means and what we're doing next.",
+          "show_on_home": true
+        },
+        {
+          "q": "Will I have a single point of contact?",
+          "a": "Yes. You get a named lead who coordinates everything, even when specialists from different areas are working on your account.",
+          "show_on_home": false
+        },
+        {
+          "q": "Who owns the accounts, data and code?",
+          "a": "You do. Ad accounts, analytics properties, domains, cloud tenants, code repositories and data are created in your name. We work with delegated access, so if you ever move on, you keep everything.",
+          "show_on_home": false
+        },
+        {
+          "q": "How quickly will you reply to my enquiry?",
+          "a": "Within one working day, from a real person.",
+          "show_on_home": false
+        }
+      ]
+    },
+    {
+      "key": "pricing",
+      "label": "Pricing & contracts",
+      "items": [
+        {
+          "q": "How do you charge?",
+          "a": "Project work (websites, migrations, GA4 setups, automations) is quoted at a fixed price before we start. Ongoing services (campaign management, managed cloud, support) are a flat monthly fee based on scope. Recruitment is success-based. We never charge a percentage of your ad spend.",
+          "show_on_home": true
+        },
+        {
+          "q": "Do you tie clients into long contracts?",
+          "a": "No long lock-ins. Ongoing services run on a rolling monthly basis after any initial setup period agreed in your proposal. We'd rather keep clients by delivering results.",
+          "show_on_home": false,
+          "_owner_check": "TODO(owner): confirm notice period and minimum term to match your terms of business."
+        },
+        {
+          "q": "Is there a minimum budget?",
+          "a": "There's no strict minimum. We'll always tell you honestly whether your budget is enough to hit your goals, and suggest the smartest place to start if it isn't.",
+          "show_on_home": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "avrix-website-monorepo",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix frontend run dev --",
+    "build": "npm --prefix frontend run build",
+    "build:cloudflare": "node cloudflare/build.mjs",
+    "deploy:cloudflare": "wrangler deploy",
+    "check:cloudflare": "node --test cloudflare/*.test.mjs"
+  },
+  "devDependencies": { "wrangler": "4.151.1" }
+}
