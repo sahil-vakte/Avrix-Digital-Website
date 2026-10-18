@@ -8,7 +8,7 @@ Group=avrix
 WorkingDirectory=/opt/avrix-website/current/backend
 EnvironmentFile=/opt/avrix-website/shared/backend.env
 Environment=DJANGO_SETTINGS_MODULE=config.settings.vps
-ExecStart=/opt/avrix-website/venv/bin/gunicorn config.wsgi:application --bind 127.0.0.1:8011 --workers 1 --threads 2 --timeout 45 --max-requests 500 --max-requests-jitter 50 --access-logfile - --error-logfile -
+ExecStart=/opt/avrix-website/current/.venv/bin/gunicorn config.wsgi:application --bind 127.0.0.1:8011 --workers 1 --threads 2 --timeout 45 --max-requests 500 --max-requests-jitter 50 --access-logfile - --error-logfile -
 Restart=on-failure
 RestartSec=5
 Slice=avrix.slice

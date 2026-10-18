@@ -19,6 +19,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: {node-version: '22', cache: npm}
       - run: npm ci && npm run check:cloudflare
+      - run: python3 -m unittest discover -s deploy/vps -p 'test_*.py'
       - run: docker build --tag avrix-cloudflare-check .
       - name: Start production Django image with PostgreSQL
         run: >-
@@ -67,9 +68,12 @@ jobs:
       - run: npm run build && npm run seo:check
         env:
           VITE_SITE_ENV: production
-          VITE_API_URL: https://api.avrixdigital.co.uk
+          VITE_SITE_URL: https://avrixdigital.co.uk
+          VITE_API_SAME_ORIGIN: 'true'
+          VITE_ADMIN_URL: /manage-7f3k/
+          VITE_PUBLIC_FORMS_ENABLED: ${{ vars.PUBLIC_FORMS_ENABLED || 'false' }}
           VITE_TURNSTILE_SITE_KEY: ${{ vars.VITE_TURNSTILE_SITE_KEY }}
-      - run: npx linkinator dist --recurse --skip '^(?!http://localhost)'
+      - run: npx linkinator dist --recurse --skip '^(?!http://localhost)|^http://localhost(:[0-9]+)?/(manage-7f3k|admin-setup|api)(/|$)'
       - uses: actions/upload-artifact@v4
         with: {name: frontend-dist, path: frontend/dist}
   accessibility-performance:
@@ -110,3 +114,45 @@ jobs:
           DJANGO_SECRET_KEY: ci-only-non-deployment-secret-abcdefghijklmnopqrstuvwxyz-0123456789
           IP_HASH_SALT: ci-only-separate-salt
           TURNSTILE_SECRET_KEY: ci-check-only-no-api-call
+  deploy-vps:
+    name: Deploy Avrix server
+    needs: [cloudflare, content, frontend, accessibility-performance, backend]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.ENABLE_VPS_DEPLOY == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    concurrency:
+      group: avrix-vps-production
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - name: Confirm this is still the latest main commit
+        id: latest
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {data} = await github.rest.git.getRef({...context.repo, ref: 'heads/main'});
+            return data.object.sha === context.sha;
+      - uses: actions/download-artifact@v4
+        if: steps.latest.outputs.result == 'true'
+        with: {name: frontend-dist, path: frontend/dist}
+      - name: Package the tested website and tracked backend sources
+        if: steps.latest.outputs.result == 'true'
+        run: python3 deploy/vps/package_release.py "$GITHUB_SHA" release.tar.gz
+        env:
+          PUBLIC_FORMS_ENABLED: ${{ vars.PUBLIC_FORMS_ENABLED || 'false' }}
+      - name: Deploy only Avrix using the restricted SSH key
+        if: steps.latest.outputs.result == 'true'
+        env:
+          VPS_HOST: ${{ secrets.AVRIX_VPS_HOST }}
+          VPS_USER: ${{ secrets.AVRIX_VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.AVRIX_VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.AVRIX_VPS_KNOWN_HOSTS }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          install -d -m 700 "$HOME/.ssh"
+          printf '%s\n' "$VPS_SSH_KEY" > "$HOME/.ssh/avrix_deploy"
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/avrix_deploy" "$HOME/.ssh/known_hosts"
+          trap 'rm -f "$HOME/.ssh/avrix_deploy"' EXIT
+          ssh -i "$HOME/.ssh/avrix_deploy" -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=20 "$VPS_USER@$VPS_HOST" "deploy $GITHUB_SHA" < release.tar.gz
