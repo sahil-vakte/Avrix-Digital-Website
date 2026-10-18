@@ -9,7 +9,7 @@ Group=avrix
 WorkingDirectory=/opt/avrix-website/current/backend
 EnvironmentFile=/opt/avrix-website/shared/backend.env
 Environment=DJANGO_SETTINGS_MODULE=config.settings.vps
-ExecStart=/opt/avrix-website/venv/bin/python manage.py send_pending_emails
+ExecStart=/opt/avrix-website/current/.venv/bin/python manage.py send_pending_emails
 Slice=avrix.slice
 Nice=15
 UMask=0027
