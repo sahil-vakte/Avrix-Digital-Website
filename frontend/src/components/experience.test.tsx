@@ -103,7 +103,7 @@ it('navigates the services dropdown with the keyboard and closes on an outside c
   expect(button.getAttribute('aria-expanded')).toBe('false');
 });
 
-it('keeps a hover-opened menu open on the first click and exposes the solutions menu', () => {
+it('keeps a hover-opened menu open on the first click and exposes the products menu', () => {
   render(
     <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Header />
@@ -115,7 +115,7 @@ it('keeps a hover-opened menu open on the first click and exposes the solutions 
   expect(servicesButton.getAttribute('aria-expanded')).toBe('true');
   fireEvent.click(servicesButton);
   expect(servicesButton.getAttribute('aria-expanded')).toBe('false');
-  fireEvent.click(screen.getByRole('button', { name: /Solutions/ }));
+  fireEvent.click(screen.getByRole('button', { name: /Products/ }));
   expect(screen.getByRole('link', { name: /Voice Call Agent/ }).getAttribute('href')).toBe(
     '/solutions/voice-call-agent/',
   );
