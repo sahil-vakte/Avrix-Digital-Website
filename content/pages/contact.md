@@ -143,7 +143,7 @@ form:
       minLength: 20
       placeholder: >-
         Tell us about your project, the problem you need to solve, or the
-        solution you would like to explore.
+        product you would like to explore.
     - name: preferred_contact
       label: Preferred contact method
       type: radio
