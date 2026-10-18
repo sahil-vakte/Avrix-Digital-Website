@@ -1,6 +1,6 @@
 # Avrix on the existing WIMS server
 
-Target: `abhiwims@92.205.160.39`, website `https://avrixdigital.co.uk`.
+Website: `https://avrixdigital.co.uk`. SSH connection details are kept outside this public repository.
 Cloudflare hosting and Containers are not used. Turnstile is only the form's
 spam protection and can run on a website hosted on this server.
 
@@ -37,26 +37,18 @@ site and any firewall exception for port 8081 after the domain is verified.
 - Add a new Nginx site for Avrix. Run `nginx -t` before a graceful reload. Do not
   restart Nginx or restart/update all Supervisor programs.
 
-## Deployment record — 18 October 2026
+## Deployment verification
 
-- Installed release: `/opt/avrix-website/releases/20261018-preview`, linked by `current`.
-- Preview: `http://92.205.160.39:8081/`. UFW permits only this additional preview port;
-  existing firewall rules were preserved. All 36 generated pages and 14 homepage
-  assets returned HTTP 200 from an external check. Missing pages return 404.
-- Public admin, setup and API routes return 503. Private API health, admin login
-  and fingerprinted admin CSS return 200. Disabled enquiry submissions return 503.
-- PostgreSQL 16/main is dedicated to Avrix on loopback port 5433; the API uses
-  loopback port 8011. Both run inside `avrix.slice`. Observed combined memory was
-  about 102 MB after startup, with the 640 MB memory limit and 40% CPU quota applied.
-- `avrix-api.service`, `avrix-backup.timer` and `avrix-retention.timer` are enabled.
-  The mail retry timer remains disabled. The first backup was restored successfully
-  into a separate temporary database (16 application tables), then that temporary
-  database was removed. Off-server backup storage remains to be configured.
-- WIMS Supervisor PID `253539` and its enabled Nginx site's hash stayed unchanged;
-  WIMS continued returning HTTPS 200 after deployment. Nginx was reloaded gracefully.
-  No installed packages were upgraded and no WIMS processes were restarted.
-- Domain DNS, HTTPS, production Turnstile credentials, working SMTP credentials
-  and initial admin registration remain intentionally deferred by the owner.
+The initial preview is deployed. Its address is shared directly with the owner.
+All 36 generated pages and 14 homepage assets passed external HTTP checks;
+missing pages return 404. Public admin/API access is blocked, while private
+health, login and admin asset checks pass. Backup restoration was verified in a
+separate temporary database. WIMS process identity and site configuration were
+preserved, and its HTTPS health check passed after deployment.
+
+DNS, HTTPS, production Turnstile, SMTP and initial admin registration remain
+deferred at the owner's request. Off-server backup storage is also outstanding.
+Server-specific deployment records are retained privately.
 
 ## Release layout and configuration
 
@@ -96,7 +88,7 @@ admin static assets. The admin URL is `/manage-7f3k/`; initial registration is
 ## DNS and HTTPS
 
 First enable the HTTP bootstrap site, retaining the existing WIMS site.
-In Hostinger DNS, point the apex A record (`@`) to `92.205.160.39` and `www`
+In Hostinger DNS, point the apex A record (`@`) to the server?s public IPv4 address and `www`
 to `avrixdigital.co.uk` using a CNAME. Remove only conflicting old website A/AAAA
 records. Preserve MX and email TXT records; mailbox migration is a separate task.
 

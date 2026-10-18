@@ -4,12 +4,12 @@ React + TypeScript + Vite prerendered website, Django API/admin and PostgreSQL.
 
 ## Deploy on the existing server
 
-The active deployment uses the existing VPS at `92.205.160.39`, alongside WIMS,
+The active deployment uses the existing VPS alongside WIMS,
 with separate Avrix processes, database, directories and Nginx configuration.
 See [the shared server guide](docs/SHARED-VPS.md) for build commands, preview
 mode, backups, resource limits and the later DNS/HTTPS cutover.
 
-Temporary preview: **http://92.205.160.39:8081/**. Forms are disabled until email
+The temporary preview address is shared directly with the owner. Forms are disabled until email
 and Turnstile are configured. Admin access stays private until HTTPS is ready.
 Build from `frontend/` for this deployment; the root build command below belongs
 to the optional Cloudflare setup.
