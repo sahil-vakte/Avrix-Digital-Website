@@ -1,0 +1,18 @@
+[Unit]
+Description=Back up only the AVRIX PostgreSQL database
+After=postgresql.service
+
+[Service]
+Type=oneshot
+User=postgres
+Group=postgres
+ExecStart=/bin/bash /opt/avrix-website/current/deploy/vps/backup.sh
+Slice=avrix.slice
+Nice=19
+IOSchedulingClass=idle
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/avrix-website/shared/backups

@@ -85,6 +85,7 @@ EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default="AVRIX Digital <info@avrixdigital.co.uk>")
 ENQUIRY_NOTIFY_TO = env.list("ENQUIRY_NOTIFY_TO", default=["info@avrixdigital.co.uk"])
 TURNSTILE_SECRET_KEY = env("TURNSTILE_SECRET_KEY", default="")
+PUBLIC_FORMS_ENABLED = env.bool("PUBLIC_FORMS_ENABLED", default=True)
 IP_HASH_SALT = env("IP_HASH_SALT", default=SECRET_KEY)
 ENQUIRY_RETENTION_MONTHS = env.int("ENQUIRY_RETENTION_MONTHS", default=24)
 ADMIN_URL = env("ADMIN_URL", default="manage-7f3k/").strip("/") + "/"

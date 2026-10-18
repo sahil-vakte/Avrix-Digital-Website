@@ -77,6 +77,13 @@ export default function EnquiryForm({
       setReset((v) => v + 1);
     }
   });
+  if (import.meta.env.VITE_PUBLIC_FORMS_ENABLED === 'false')
+    return (
+      <div id="enquiry" className="enquiry-form" role="status">
+        <h2>{copy.title}</h2>
+        <p>Online enquiries will be available soon.</p>
+      </div>
+    );
   if (success)
     return (
       <div className="form-success" role="status">

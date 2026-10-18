@@ -2,7 +2,19 @@
 
 React + TypeScript + Vite prerendered website, Django API/admin and PostgreSQL.
 
-## Deploy the website and admin together on Cloudflare
+## Deploy on the existing server
+
+The active deployment uses the existing VPS at `92.205.160.39`, alongside WIMS,
+with separate Avrix processes, database, directories and Nginx configuration.
+See [the shared server guide](docs/SHARED-VPS.md) for build commands, preview
+mode, backups, resource limits and the later DNS/HTTPS cutover.
+
+Temporary preview: **http://92.205.160.39:8081/**. Forms are disabled until email
+and Turnstile are configured. Admin access stays private until HTTPS is ready.
+Build from `frontend/` for this deployment; the root build command below belongs
+to the optional Cloudflare setup.
+
+## Optional Cloudflare deployment
 
 Use **Workers & Pages → Create → Import a repository → Workers**, with repository root `/`, Worker name `avrix-digital-website`, build command `npm run build` and deploy command `npm run deploy:cloudflare`. The build installs frontend dependencies automatically; `npm run build:cloudflare` is an equivalent alias. This uses Workers Static Assets and a Django Container, rather than a static Pages deployment. See [the complete setup](docs/CLOUDFLARE.md) for the required database, secrets, Turnstile and email settings, and connecting your domain later.
 
@@ -36,7 +48,7 @@ python manage.py runserver                       # 10
 
 Frontend: http://localhost:5173. API: http://localhost:8000/api/health/. Admin: http://localhost:8000/manage-7f3k/. In PowerShell, use `.venv\Scripts\Activate.ps1` and `Copy-Item` instead of `source` and `cp`; run the three management commands separately.
 
-The supplied development Turnstile key always passes. The backend skips verification only in DEBUG/test. A blank or test Turnstile secret is rejected by production settings. Never expose the development server publicly.
+The supplied development Turnstile key always passes. The backend skips verification only in DEBUG/test. A blank or test Turnstile secret is rejected by production settings when public forms are enabled. The temporary server preview explicitly disables forms. Never expose the development server publicly.
 
 ## Commands and verification
 
@@ -76,6 +88,7 @@ Frontend variables:
 | --- | --- |
 | `VITE_SITE_URL` | Intended public host; canonical content is authoritative in `content/site.json` |
 | `VITE_SITE_ENV` | `development`, `preview`, `production`; only production is indexable |
+| `VITE_PUBLIC_FORMS_ENABLED` | Set `false` to show availability notices instead of enquiry/newsletter forms during deployment preparation |
 | `VITE_API_URL` | API origin, without trailing slash; required for production builds |
 | `VITE_TURNSTILE_SITE_KEY` | Cloudflare Turnstile public key |
 | `VITE_GA4_ID` / `VITE_GTM_ID` | Optional analytics IDs; GTM takes precedence if both are supplied |

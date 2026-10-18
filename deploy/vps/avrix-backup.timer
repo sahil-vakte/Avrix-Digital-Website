@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily AVRIX database backup
+
+[Timer]
+OnCalendar=*-*-* 02:30:00 Europe/London
+RandomizedDelaySec=15min
+Persistent=true
+
+[Install]
+WantedBy=timers.target

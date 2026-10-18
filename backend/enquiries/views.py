@@ -15,6 +15,8 @@ class EnquiryCreate(APIView):
     throttle_scope = "enquiries"
 
     def post(self, request):
+        if not settings.PUBLIC_FORMS_ENABLED:
+            return Response({"message": "Online enquiries will be available soon."}, status=503)
         serializer = EnquirySerializer(data=request.data, context={"request": request})
         serializer.is_valid(raise_exception=True)
         with transaction.atomic():
@@ -33,6 +35,8 @@ class NewsletterCreate(APIView):
     throttle_scope = "newsletter"
 
     def post(self, request):
+        if not settings.PUBLIC_FORMS_ENABLED:
+            return Response({"message": "Newsletter sign-ups will be available soon."}, status=503)
         serializer = NewsletterSerializer(data=request.data, context={"request": request})
         serializer.is_valid(raise_exception=True)
         data = serializer.validated_data

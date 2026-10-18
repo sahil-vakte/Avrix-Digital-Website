@@ -8,6 +8,16 @@ from enquiries.models import Enquiry, EmailJob, Subscriber
 pytestmark = pytest.mark.django_db
 
 
+@pytest.mark.parametrize("endpoint", ["enquiries", "newsletter"])
+def test_disabled_public_forms_reject_without_saving_or_email(api, settings, endpoint):
+    settings.PUBLIC_FORMS_ENABLED = False
+    response = api.post(f"/api/{endpoint}/", {}, format="json")
+    assert response.status_code == 503
+    assert Enquiry.objects.count() == 0
+    assert Subscriber.objects.count() == 0
+    assert EmailJob.objects.count() == 0
+
+
 @pytest.mark.parametrize("solution", ["voice-call-agent", "wims", "hr-desk"])
 def test_solution_enquiry(api, payload, solution):
     payload["services"] = [solution]

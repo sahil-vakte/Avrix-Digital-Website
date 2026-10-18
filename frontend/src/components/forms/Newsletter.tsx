@@ -10,6 +10,13 @@ export default function Newsletter() {
   const [active, setActive] = useState(false);
   const start = useRef(Date.now());
   const onToken = useCallback((v: string) => setToken(v), []);
+  if (import.meta.env.VITE_PUBLIC_FORMS_ENABLED === 'false')
+    return (
+      <div className="newsletter">
+        <h3>{copy.title}</h3>
+        <p>Newsletter sign-ups will be available soon.</p>
+      </div>
+    );
   return (
     <form
       className="newsletter"
