@@ -9,8 +9,10 @@ with separate Avrix processes, database, directories and Nginx configuration.
 See [the shared server guide](docs/SHARED-VPS.md) for build commands, preview
 mode, backups, resource limits and the later DNS/HTTPS cutover.
 
-The temporary preview address is shared directly with the owner. Forms are disabled until email
-and Turnstile are configured. Admin access stays private until HTTPS is ready.
+The website is live at **https://avrixdigital.co.uk/**, with HTTPS admin login at
+`/manage-7f3k/` and one-use initial registration at `/admin-setup/`. Forms remain
+disabled until email and Turnstile are configured. The temporary HTTP preview
+has been withdrawn after the domain cutover.
 Build from `frontend/` for this deployment; the root build command below belongs
 to the optional Cloudflare setup.
 

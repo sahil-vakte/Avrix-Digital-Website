@@ -39,15 +39,23 @@ site and any firewall exception for port 8081 after the domain is verified.
 
 ## Deployment verification
 
-The initial preview is deployed. Its address is shared directly with the owner.
-All 36 generated pages and 14 homepage assets passed external HTTP checks;
-missing pages return 404. Public admin/API access is blocked, while private
-health, login and admin asset checks pass. Backup restoration was verified in a
-separate temporary database. WIMS process identity and site configuration were
-preserved, and its HTTPS health check passed after deployment.
+The website is deployed at `https://avrixdigital.co.uk/`. All 36 generated pages
+passed HTTPS checks, missing pages return 404, and HTTP/www redirect to the
+canonical HTTPS domain. HTTPS health, admin login, initial registration and
+fingerprinted admin CSS checks pass. The production build permits indexing.
+Forms remain disabled and submissions return 503. Backup restoration was
+verified in a separate temporary database. WIMS process identity and site
+configuration were preserved, and its HTTPS health check passed after deployment.
 
-DNS, HTTPS, production Turnstile, SMTP and initial admin registration remain
-deferred at the owner's request. Off-server backup storage is also outstanding.
+A separate certificate covers the apex and www, with scheduled renewal and an
+Avrix-specific checked Nginx reload hook. The temporary HTTP preview site and its
+additional firewall exception have been removed. Initial registration requires
+the one-use production token, delivered privately into the owner's ignored local
+`backend/.env` as `VPS_SUPERADMIN_BOOTSTRAP_TOKEN`. Do not commit that value or
+place it in a URL. Old DNS cache entries may persist during the cutover.
+
+Production Turnstile, SMTP and initial admin registration remain outstanding.
+Off-server backup storage is also outstanding.
 Server-specific deployment records are retained privately.
 
 ## Release layout and configuration
