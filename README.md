@@ -9,6 +9,11 @@ with separate Avrix processes, database, directories and Nginx configuration.
 See [the shared server guide](docs/SHARED-VPS.md) for build commands, preview
 mode, backups, resource limits and the later DNS/HTTPS cutover.
 
+For ongoing edits, use [the AI and GitHub change workflow](docs/CHANGE-WORKFLOW.md).
+Pull requests run CI; successful `main` builds deploy Avrix through a dedicated
+restricted SSH account. Deployment credentials are encrypted in GitHub's
+production environment and are not needed by your AI coding tool.
+
 The website is live at **https://avrixdigital.co.uk/**, with HTTPS admin login at
 `/manage-7f3k/` and one-use initial registration at `/admin-setup/`. Forms remain
 disabled until email and Turnstile are configured. The temporary HTTP preview

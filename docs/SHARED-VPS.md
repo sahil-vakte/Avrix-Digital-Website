@@ -58,6 +58,24 @@ Production Turnstile, SMTP and initial admin registration remain outstanding.
 Off-server backup storage is also outstanding.
 Server-specific deployment records are retained privately.
 
+## Continuous deployment
+
+See [the change workflow](CHANGE-WORKFLOW.md). CI waits for all required jobs and
+deploys only a successful push to `main`. The root-owned deployment entry point
+is installed at `/usr/local/sbin/avrix-deploy`, with a forced-command SSH gateway
+at `/usr/local/bin/avrix-ci-gateway`. Root-owned files are installed separately
+from application releases, so routine app deployments cannot replace them.
+
+The `avrix-ci` account accepts only `deploy <full-commit-sha>` with a bounded
+archive on stdin. Its sudo rule permits only this validated entry point. The
+release contains tracked backend/deployment sources and the tested frontend
+artifact, never production environment files or local database contents.
+
+Each release now has a `.venv`; the API, email retry and retention commands use
+the active release's environment. Bootstrap releases can link `.venv` to the
+original environment until the first automated release. A pre-migration backup,
+health checks and application rollback are part of the deployment handler.
+
 ## Release layout and configuration
 
 Use `/opt/avrix-website/releases/<release>/` with `backend/` and `frontend/dist/`,
