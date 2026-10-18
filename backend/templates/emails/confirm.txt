@@ -1,0 +1,5 @@
+Confirm your AVRIX Digital newsletter subscription within 48 hours:
+{{ confirm_url }}
+
+If you did not request this, ignore this email.
+Unsubscribe: {{ unsubscribe_url }}

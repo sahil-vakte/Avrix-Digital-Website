@@ -1,0 +1,36 @@
+{
+  "brand_name": "AVRIX Digital",
+  "legal_name": null,
+  "company_number": null,
+  "registered_office": null,
+  "vat_number": null,
+  "tagline": "Make it count.",
+  "site_url": "https://avrixdigital.co.uk",
+  "email": "info@avrixdigital.co.uk",
+  "phone": null,
+  "booking_url": null,
+  "booking_label": "Book a free 30-minute call",
+  "response_promise": "We reply to every enquiry within one working day.",
+  "service_area": "Across the UK",
+  "opening_hours": "Monday to Friday, 9am to 5:30pm",
+  "socials": {
+    "linkedin": null,
+    "instagram": null,
+    "facebook": null,
+    "x": null,
+    "youtube": null
+  },
+  "default_og_image": "/og/default.png",
+  "favicon": "/media/brand/avrix-favicon.webp",
+  "logo": {
+    "light_on_dark": "/media/brand/avrix-logo-white.webp",
+    "dark_on_light": "/media/brand/avrix-logo-search.png",
+    "search": "/media/brand/avrix-logo-search.png",
+    "alt": "AVRIX Digital"
+  },
+  "analytics": {
+    "ga4_id": null,
+    "gtm_id": null
+  },
+  "_notes": "TODO(owner): fill legal_name, company_number, registered_office (shown in footer if a limited company), phone, booking_url (Calendly / Microsoft Bookings / Google appointment page) and social profile URLs. Null values are hidden on the site."
+}

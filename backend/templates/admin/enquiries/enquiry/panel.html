@@ -1,0 +1,22 @@
+<article data-panel-enquiry="{{ enquiry.pk }}" data-panel-status="{{ enquiry.get_status_display }}">
+  <div class="enquiry-panel-heading"><h3>{{ enquiry.full_name }}</h3><span>{% if enquiry.is_test %}Test enquiry{% else %}Live enquiry{% endif %}</span></div>
+  <dl class="enquiry-detail-grid">
+    <div><dt>Email</dt><dd><a href="mailto:{{ enquiry.email }}">{{ enquiry.email }}</a></dd></div>
+    <div><dt>Phone</dt><dd>{{ enquiry.phone|default:"Not supplied" }}</dd></div>
+    <div><dt>Company</dt><dd>{{ enquiry.company|default:"Not supplied" }}</dd></div>
+    <div><dt>Website</dt><dd>{{ enquiry.website|default:"Not supplied" }}</dd></div>
+    <div><dt>Services and solutions</dt><dd>{{ enquiry.services|join:", " }}</dd></div>
+    <div><dt>Budget</dt><dd>{{ enquiry.get_budget_display }}</dd></div>
+    <div><dt>Timeline</dt><dd>{{ enquiry.get_timeline_display|default:"Not supplied" }}</dd></div>
+    <div><dt>Preferred contact</dt><dd>{{ enquiry.get_preferred_contact_display }}</dd></div>
+    <div><dt>Received</dt><dd>{{ enquiry.created_at|date:"j M Y, H:i" }}</dd></div>
+    <div><dt>Owner</dt><dd>{{ enquiry.owner|default:"Unassigned" }}</dd></div>
+    <div><dt>Source page</dt><dd>{{ enquiry.source_page|default:"Not supplied" }}</dd></div>
+    <div><dt>Priority</dt><dd>{{ enquiry.get_priority_display }}</dd></div>
+  </dl>
+  <section class="enquiry-message"><h3>Project details</h3><div>{{ enquiry.message|linebreaksbr }}</div></section>
+  {% if enquiry.internal_notes %}<section class="enquiry-message"><h3>Internal notes</h3><div>{{ enquiry.internal_notes|linebreaksbr }}</div></section>{% endif %}
+  {% if can_change %}<form method="post" action="{{ panel_url }}" data-enquiry-status-form>{% csrf_token %}<h3>Update status</h3>{{ form.as_p }}<button type="submit">Save status</button>{% if saved %}<p role="status">Status saved.</p>{% endif %}</form>{% else %}<p>Status: {{ enquiry.get_status_display }}</p>{% endif %}
+  <section class="enquiry-activity"><h3>Recent activity</h3>{% for activity in activities %}<p><strong>{{ activity.get_kind_display }}</strong> · {{ activity.created_at|date:"j M Y, H:i" }}<br>{{ activity.detail }}</p>{% empty %}<p>No activity yet.</p>{% endfor %}</section>
+  <a class="enquiry-full-record" href="{{ change_url }}">Open full enquiry record ↗</a>
+</article>

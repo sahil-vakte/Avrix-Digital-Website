@@ -1,0 +1,8 @@
+[Unit]
+Description=AVRIX resource limits on the shared WIMS server
+
+[Slice]
+CPUQuota=40%
+MemoryHigh=512M
+MemoryMax=640M
+TasksMax=128

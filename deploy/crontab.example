@@ -1,0 +1,3 @@
+# Install on server. Set working directory to the actual checkout path.
+17 3 * * * cd /opt/avrix-website && docker compose --env-file deploy/.env -f deploy/docker-compose.prod.yml exec -T api python manage.py purge_old_enquiries
+30 2 * * * cd /opt/avrix-website && /usr/bin/bash deploy/backup.sh

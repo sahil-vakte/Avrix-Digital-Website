@@ -1,0 +1,14 @@
+{% extends "admin/change_form.html" %}
+{% block after_field_sets %}
+{{ block.super }}
+<div class="flex gap-4 p-4">
+<button type="button" data-copy-enquiry class="border rounded px-4 py-2">Copy details</button>
+<button type="submit" name="_mark_spam" value="1" class="border rounded px-4 py-2">Mark as spam</button>
+<span role="status" id="copy-status"></span>
+</div>
+<pre id="enquiry-copy" hidden>Name: {{ original.full_name }}
+Email: {{ original.email }}
+Company: {{ original.company }}
+Services: {{ original.services|join:", " }}
+Message: {{ original.message }}</pre>
+{% endblock %}

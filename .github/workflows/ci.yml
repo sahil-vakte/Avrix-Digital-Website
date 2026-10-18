@@ -1,0 +1,158 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  cloudflare:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16.8-alpine
+        env: {POSTGRES_PASSWORD: test, POSTGRES_DB: avrix, POSTGRES_USER: avrix}
+        ports: ['5432:5432']
+        options: --health-cmd "pg_isready -U avrix" --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22', cache: npm}
+      - run: npm ci && npm run check:cloudflare
+      - run: python3 -m unittest discover -s deploy/vps -p 'test_*.py'
+      - run: docker build --tag avrix-cloudflare-check .
+      - name: Start production Django image with PostgreSQL
+        run: >-
+          docker run --detach --name avrix-smoke --network host
+          --env DJANGO_SETTINGS_MODULE=config.settings.cloudflare
+          --env PUBLIC_ORIGIN=https://smoke.example.test
+          --env DATABASE_URL=postgres://avrix:test@127.0.0.1:5432/avrix
+          --env DJANGO_SECRET_KEY=ci-only-non-deployment-secret-abcdefghijklmnopqrstuvwxyz-0123456789
+          --env IP_HASH_SALT=ci-only-separate-salt
+          --env TURNSTILE_SECRET_KEY=ci-check-only-no-api-call
+          avrix-cloudflare-check
+      - name: Check database readiness, admin login and static assets through the trusted proxy
+        run: |
+          ready=0
+          for attempt in $(seq 1 40); do
+            if curl --fail --silent --header 'X-Forwarded-Proto: https' --header 'X-Forwarded-Host: smoke.example.test' http://localhost:8000/api/health/; then
+              ready=1
+              break
+            fi
+            sleep 2
+          done
+          if [ "$ready" != 1 ]; then docker logs avrix-smoke; exit 1; fi
+          curl --fail --silent --output /dev/null --header 'X-Forwarded-Proto: https' --header 'X-Forwarded-Host: smoke.example.test' http://localhost:8000/manage-7f3k/login/
+          curl --fail --silent --output /dev/null --header 'X-Forwarded-Proto: https' --header 'X-Forwarded-Host: smoke.example.test' http://localhost:8000/static/admin/css/base.css
+      - if: failure()
+        run: docker logs avrix-smoke || true
+  content:
+    runs-on: ubuntu-latest
+    defaults: {run: {working-directory: frontend}}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '20', cache: npm, cache-dependency-path: frontend/package-lock.json}
+      - run: npm ci
+      - run: npm run content:validate
+  frontend:
+    runs-on: ubuntu-latest
+    defaults: {run: {working-directory: frontend}}
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-node@v4
+        with: {node-version: '20', cache: npm, cache-dependency-path: frontend/package-lock.json}
+      - run: npm ci
+      - run: npm run lint && npm run typecheck && npm test
+      - run: npm run build && npm run seo:check
+        env:
+          VITE_SITE_ENV: production
+          VITE_SITE_URL: https://avrixdigital.co.uk
+          VITE_API_SAME_ORIGIN: 'true'
+          VITE_ADMIN_URL: /manage-7f3k/
+          VITE_PUBLIC_FORMS_ENABLED: ${{ vars.PUBLIC_FORMS_ENABLED || 'false' }}
+          VITE_TURNSTILE_SITE_KEY: ${{ vars.VITE_TURNSTILE_SITE_KEY }}
+      - run: npx linkinator dist --recurse --skip '^(?!http://localhost)|^http://localhost(:[0-9]+)?/(manage-7f3k|admin-setup|api)(/|$)'
+      - uses: actions/upload-artifact@v4
+        with: {name: frontend-dist, path: frontend/dist}
+  accessibility-performance:
+    needs: frontend
+    runs-on: ubuntu-latest
+    defaults: {run: {working-directory: frontend}}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '20', cache: npm, cache-dependency-path: frontend/package-lock.json}
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with: {name: frontend-dist, path: frontend/dist}
+      - run: npx lhci autorun
+      - run: |
+          python3 -m http.server 4173 --directory dist &
+          npx axe http://localhost:4173/ http://localhost:4173/services/ga4-consulting/ http://localhost:4173/contact-us/ --exit --chrome-options='--no-sandbox'
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16.8-alpine
+        env: {POSTGRES_PASSWORD: test, POSTGRES_DB: avrix, POSTGRES_USER: avrix}
+        ports: ['5432:5432']
+        options: --health-cmd "pg_isready -U avrix" --health-interval 10s --health-timeout 5s --health-retries 5
+    defaults: {run: {working-directory: backend}}
+    env:
+      DATABASE_URL: postgres://avrix:test@localhost:5432/avrix
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12', cache: pip}
+      - run: pip install -r requirements.lock.txt
+      - run: ruff check . && python manage.py makemigrations --check --dry-run && pytest
+      - run: python manage.py check --deploy --fail-level WARNING
+        env:
+          DJANGO_SETTINGS_MODULE: config.settings.prod
+          DJANGO_SECRET_KEY: ci-only-non-deployment-secret-abcdefghijklmnopqrstuvwxyz-0123456789
+          IP_HASH_SALT: ci-only-separate-salt
+          TURNSTILE_SECRET_KEY: ci-check-only-no-api-call
+  deploy-vps:
+    name: Deploy Avrix server
+    needs: [cloudflare, content, frontend, accessibility-performance, backend]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && vars.ENABLE_VPS_DEPLOY == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    concurrency:
+      group: avrix-vps-production
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - name: Confirm this is still the latest main commit
+        id: latest
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {data} = await github.rest.git.getRef({...context.repo, ref: 'heads/main'});
+            return data.object.sha === context.sha;
+      - uses: actions/download-artifact@v4
+        if: steps.latest.outputs.result == 'true'
+        with: {name: frontend-dist, path: frontend/dist}
+      - name: Package the tested website and tracked backend sources
+        if: steps.latest.outputs.result == 'true'
+        run: python3 deploy/vps/package_release.py "$GITHUB_SHA" release.tar.gz
+        env:
+          PUBLIC_FORMS_ENABLED: ${{ vars.PUBLIC_FORMS_ENABLED || 'false' }}
+      - name: Deploy only Avrix using the restricted SSH key
+        if: steps.latest.outputs.result == 'true'
+        env:
+          VPS_HOST: ${{ secrets.AVRIX_VPS_HOST }}
+          VPS_USER: ${{ secrets.AVRIX_VPS_USER }}
+          VPS_SSH_KEY: ${{ secrets.AVRIX_VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.AVRIX_VPS_KNOWN_HOSTS }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          install -d -m 700 "$HOME/.ssh"
+          printf '%s\n' "$VPS_SSH_KEY" > "$HOME/.ssh/avrix_deploy"
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/avrix_deploy" "$HOME/.ssh/known_hosts"
+          trap 'rm -f "$HOME/.ssh/avrix_deploy"' EXIT
+          ssh -i "$HOME/.ssh/avrix_deploy" -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=20 "$VPS_USER@$VPS_HOST" "deploy $GITHUB_SHA" < release.tar.gz

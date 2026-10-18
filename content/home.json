@@ -1,0 +1,217 @@
+{
+  "seo_title": "Digital Marketing, Cloud & Tech Recruitment | AVRIX Digital",
+  "seo_description": "AVRIX Digital helps UK businesses grow with performance marketing and GA4, run on properly set-up Microsoft 365, Google Workspace and AWS, and hire tech talent.",
+  "sections": [
+    {
+      "type": "hero",
+      "eyebrow": "[ AVRIX DIGITAL — UK ]",
+      "h1": "Turn clicks into *customers*, tech into *advantage*.",
+      "lead": "One partner for marketing that pays for itself, cloud tools set up properly, and the tech talent to keep you moving. Plain English, measurable results, no five-supplier juggling act.",
+      "primary_cta": {
+        "label": "Book a free 30-minute call",
+        "href": "booking_url_or:/contact-us/"
+      },
+      "secondary_cta": {
+        "label": "Explore services",
+        "href": "/services/"
+      },
+      "signal_chips": [
+        "Cost per lead ↓",
+        "Hours saved ↑",
+        "Hires that stay ✓"
+      ],
+      "pillar_tabs": [
+        {
+          "label": "Grow",
+          "text": "Google Ads, Meta, LinkedIn and GA4 that prove what's working.",
+          "href": "/services/performance-marketing/"
+        },
+        {
+          "label": "Build & run",
+          "text": "Websites, apps, automation, Microsoft 365, Google Workspace and AWS.",
+          "href": "/services/"
+        },
+        {
+          "label": "Hire",
+          "text": "Cloud, DevOps, data, security and marketing specialists.",
+          "href": "/services/talent-acquisition/"
+        }
+      ]
+    },
+    {
+      "type": "marquee",
+      "label": "Platforms we work in every day",
+      "items": [
+        "Google Ads",
+        "Meta Ads",
+        "LinkedIn Ads",
+        "GA4",
+        "Google Tag Manager",
+        "Looker Studio",
+        "Microsoft 365",
+        "Copilot",
+        "Intune",
+        "Defender",
+        "Google Workspace",
+        "AWS",
+        "Make.com",
+        "Power Automate",
+        "Zapier",
+        "n8n",
+        "Shopify",
+        "WooCommerce",
+        "Next.js",
+        "React",
+        "Django"
+      ]
+    },
+    {
+      "type": "solutions",
+      "eyebrow": "BUSINESS SOFTWARE",
+      "title": "Less juggling. More *joined-up work.*",
+      "intro": "Voice conversations, warehouse operations and everyday HR. Explore software shaped around the way your business works.",
+      "link": {
+        "label": "Explore all solutions",
+        "href": "/solutions/"
+      }
+    },
+    {
+      "type": "split_statement",
+      "eyebrow": "[ 02 — WHY ONE PARTNER ]",
+      "statement": "Most businesses juggle an ad agency, an IT supplier, a web developer and a recruiter, and none of them talk to each other.",
+      "body": "AVRIX Digital brings performance marketing, cloud technology, AI automation, web development and tech recruitment into one accountable team. Your ads connect to your analytics. Your analytics connect to your CRM. Your systems are set up so your people can do their best work. And when you need to grow the team, we find the right people.",
+      "link": {
+        "label": "More about us",
+        "href": "/about/"
+      }
+    },
+    {
+      "type": "service_grid",
+      "eyebrow": "[ 03 — SERVICES ]",
+      "title": "Pick a problem. We'll *own* the outcome.",
+      "intro": "Nine services, one team, one point of contact.",
+      "show": "all"
+    },
+    {
+      "type": "values",
+      "eyebrow": "[ 04 — HOW WE'RE DIFFERENT ]",
+      "title": "Built different, *on purpose*.",
+      "items": [
+        {
+          "icon": "target",
+          "title": "Outcomes over activity",
+          "text": "We report on leads, revenue, cost savings and hires, not hours billed or reports produced."
+        },
+        {
+          "icon": "chat",
+          "title": "Plain English, always",
+          "text": "Monthly reports you can read in five minutes. Every recommendation comes with the why and the expected result."
+        },
+        {
+          "icon": "key",
+          "title": "You own everything",
+          "text": "Ad accounts, analytics, domains, code and data are set up in your name. If you leave, you keep it all."
+        },
+        {
+          "icon": "scale",
+          "title": "Fair, flat fees",
+          "text": "Flat management fees, never a percentage of your ad spend, and fixed-price quotes before project work starts."
+        }
+      ]
+    },
+    {
+      "type": "process",
+      "eyebrow": "[ 05 — HOW WE WORK ]",
+      "title": "A simple process that *delivers*.",
+      "steps": [
+        {
+          "n": "01",
+          "icon": "discover",
+          "title": "Discover",
+          "text": "We learn your business, goals, numbers and market, and ask the awkward questions early."
+        },
+        {
+          "n": "02",
+          "icon": "plan",
+          "title": "Plan",
+          "text": "A clear plan with priorities, costs, timelines and the results we expect, agreed before we start."
+        },
+        {
+          "n": "03",
+          "icon": "build",
+          "title": "Build & launch",
+          "text": "Campaign, migration, website, automation or hire, delivered with clear communication throughout."
+        },
+        {
+          "n": "04",
+          "icon": "optimise",
+          "title": "Measure & improve",
+          "text": "We track what matters, report in plain English and keep improving the return."
+        }
+      ]
+    },
+    {
+      "type": "proof",
+      "eyebrow": "[ 06 — PROOF ]",
+      "title": "Results you can *check*.",
+      "stats_source": "stats.json",
+      "testimonials_source": "testimonials.json",
+      "fallback": "promises",
+      "promises_title": "Our promises to every client",
+      "promises": [
+        {
+          "title": "A reply within one working day",
+          "text": "Every enquiry gets a real response from a real person."
+        },
+        {
+          "title": "Your accounts, your data",
+          "text": "Everything we build or set up is owned by you from day one."
+        },
+        {
+          "title": "Fixed-price quotes",
+          "text": "Project work is quoted in full before it starts. No surprise invoices."
+        },
+        {
+          "title": "Monthly plain-English reporting",
+          "text": "What happened, what it means, and what we're doing next."
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "eyebrow": "[ 07 — FAQ ]",
+      "title": "Answers to common *questions*.",
+      "source": "faqs.json",
+      "filter": "show_on_home",
+      "link": {
+        "label": "See all FAQs",
+        "href": "/faqs/"
+      }
+    },
+    {
+      "type": "blog_teaser",
+      "eyebrow": "[ 08 — INSIGHTS ]",
+      "title": "Practical advice for businesses that want to *grow*.",
+      "intro": "Guides, checklists and no-nonsense advice on marketing, analytics, cloud, automation and hiring.",
+      "count": 3,
+      "link": {
+        "label": "View all insights",
+        "href": "/blog/"
+      }
+    },
+    {
+      "type": "cta_band",
+      "title": "Ready to make it *count*?",
+      "text": "Book a free 30-minute call. We'll listen, ask the right questions and come back with a clear recommendation. No jargon, no pressure.",
+      "primary_cta": {
+        "label": "Book a free 30-minute call",
+        "href": "booking_url_or:/contact-us/"
+      },
+      "secondary_cta": {
+        "label": "Send an enquiry",
+        "href": "/contact-us/"
+      }
+    }
+  ],
+  "_notes": "Text wrapped in *asterisks* renders in Instrument Serif Italic (emphasis word). Section order can be changed by reordering this array."
+}

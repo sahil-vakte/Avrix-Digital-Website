@@ -1,0 +1,4 @@
+New enquiry
+{% for label,value in details %}{{ label }}: {{ value }}
+{% endfor %}
+Open in admin: {{ admin_url }}

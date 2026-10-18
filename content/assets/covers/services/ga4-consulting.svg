@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="GA4 Consulting">
+<defs><filter id="b" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="90"/></filter>
+<pattern id="d" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.2" fill="#fff" fill-opacity=".08"/></pattern></defs>
+<rect width="1600" height="900" fill="#07080C"/>
+<g filter="url(#b)"><ellipse cx="1250" cy="260" rx="380" ry="260" fill="#fd3f00" fill-opacity=".55"/><ellipse cx="1400" cy="720" rx="300" ry="200" fill="#ff936f" fill-opacity=".35"/></g>
+<rect width="1600" height="900" fill="url(#d)"/>
+<g transform="translate(1090 250) scale(16)" color="#FFFFFF" opacity=".92"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="3.5" height="8" rx="1.2"/><rect x="10.25" y="7" width="3.5" height="13" rx="1.2"/><rect x="16.5" y="3" width="3.5" height="17" rx="1.2"/></svg></g>
+<rect x="120" y="120" width="80" height="8" rx="4" fill="#fd3f00"/>
+<text x="120" y="190" font-family="Geist Mono, ui-monospace, monospace" font-size="28" letter-spacing="4" fill="#9AA0B4">[ GROW ]</text>
+<text x="120" y="330" font-family="Bricolage Grotesque, Inter, Arial, sans-serif" font-weight="700" font-size="92" letter-spacing="-2" fill="#FFFFFF"><tspan x="120" dy="0">GA4 Consulting</tspan></text>
+<text x="120" y="790" font-family="Bricolage Grotesque, Arial, sans-serif" font-weight="700" font-size="32" letter-spacing="3" fill="#FFFFFF">AVRIX DIGITAL</text>
+</svg>

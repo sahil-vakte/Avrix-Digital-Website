@@ -1,0 +1,39 @@
+:root {
+  /* Neutrals */
+  --ink-950: #1b1614;
+  --ink-900: #231d1b;
+  --ink-800: #2c2422;
+  --ink-700: #413835;
+  --ink-500: #7a6964;
+  --ink-300: #c3b9b5;
+  --paper-50: #f7f6f0;
+  --paper-100: #f2e5e1;
+  --paper-200: #e7d1c9;
+  --text-on-light: #29221f;
+  --muted-on-light: #685a55;
+
+  /* Accent */
+  --brand: #fd3f00;
+  --brand-hover: #ff6b3d;
+  --brand-on-light: #b52d00;
+  --volt-400: var(--brand);
+  --volt-500: var(--brand-hover);
+  --iris-500: var(--brand-on-light);
+  --iris-300: #dbbaaf;
+  --aqua-400: #d7b2a6;
+
+  /* Semantic */
+  --success: #2bd67b;
+  --warning: #ffb020;
+  --danger: #ff5a5f;
+
+  /* Effects */
+  --grad-signal: linear-gradient(120deg, var(--iris-500) 0%, var(--aqua-400) 100%);
+  --glow-volt: 0 8px 24px -12px rgba(253, 63, 0, 0.3);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+}

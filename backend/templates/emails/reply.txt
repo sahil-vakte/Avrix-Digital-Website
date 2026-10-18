@@ -1,0 +1,11 @@
+Hello {{ enquiry.full_name }},
+
+Thanks for getting in touch. We have received your enquiry and will reply within one working day.
+
+Book a free 30-minute call: {{ booking_url }}
+
+Your message:
+{{ enquiry.message }}
+
+AVRIX Digital
+info@avrixdigital.co.uk

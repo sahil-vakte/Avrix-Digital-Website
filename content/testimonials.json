@@ -1,0 +1,60 @@
+{
+  "_notes": "Carried over from the old site for review. ALL are verified:false and will NOT render. Only set verified:true when the quote is from a real client who has given written consent, and add evidence_note. If they are not genuine, delete them. Don't reword them. See docs/09_CLAIMS_REGISTER.md (DMCC Act 2024 / CAP Code).",
+  "items": [
+    {
+      "id": "sarah-k",
+      "name": "Sarah K.",
+      "role": "Operations Director",
+      "company": null,
+      "location": "London",
+      "service": ["microsoft-365-copilot", "performance-marketing"],
+      "quote": "Avrix Digital transformed how our business runs online. They handled our Microsoft 365 migration, rebuilt our Google Ads from scratch, and the results were immediate. Finally, one agency that actually gets the whole picture.",
+      "verified": false,
+      "evidence_note": ""
+    },
+    {
+      "id": "james-t",
+      "name": "James T.",
+      "role": "E-Commerce Manager",
+      "company": null,
+      "location": "Manchester",
+      "service": ["performance-marketing", "ga4-consulting"],
+      "quote": "Our Google Ads ROAS went from 1.8x to 4.6x in 90 days. The GA4 setup Avrix built means we finally understand our data. Genuinely transformative.",
+      "verified": false,
+      "evidence_note": ""
+    },
+    {
+      "id": "priya-m",
+      "name": "Priya M.",
+      "role": "CTO, SaaS startup",
+      "company": null,
+      "location": "Birmingham",
+      "service": ["talent-acquisition"],
+      "quote": "We needed a cloud engineer fast. Avrix found us three perfect candidates in a week. All three were exceptional, and we hired two of them.",
+      "verified": false,
+      "evidence_note": ""
+    },
+    {
+      "id": "david-r",
+      "name": "David R.",
+      "role": "Managing Director, Professional Services",
+      "company": null,
+      "location": "Leeds",
+      "service": ["microsoft-365-copilot"],
+      "quote": "The Microsoft 365 migration was seamless, done in 48 hours with zero disruption. Copilot is now saving my team hours every week. Worth every penny.",
+      "verified": false,
+      "evidence_note": ""
+    },
+    {
+      "id": "emma-s",
+      "name": "Emma S.",
+      "role": "Head of Marketing, FinTech",
+      "company": null,
+      "location": "London",
+      "service": ["performance-marketing"],
+      "quote": "Avrix rebuilt our entire paid media strategy. They're not just an agency. They're a proper business partner who understands our goals.",
+      "verified": false,
+      "evidence_note": ""
+    }
+  ]
+}
