@@ -15,8 +15,8 @@ jobs:
         ports: ['5432:5432']
         options: --health-cmd "pg_isready -U avrix" --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with: {node-version: '22', cache: npm}
       - run: npm ci && npm run check:cloudflare
       - run: python3 -m unittest discover -s deploy/vps -p 'test_*.py'
@@ -50,8 +50,8 @@ jobs:
     runs-on: ubuntu-latest
     defaults: {run: {working-directory: frontend}}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with: {node-version: '20', cache: npm, cache-dependency-path: frontend/package-lock.json}
       - run: npm ci
       - run: npm run content:validate
@@ -59,9 +59,9 @@ jobs:
     runs-on: ubuntu-latest
     defaults: {run: {working-directory: frontend}}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with: {fetch-depth: 0}
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with: {node-version: '20', cache: npm, cache-dependency-path: frontend/package-lock.json}
       - run: npm ci
       - run: npm run lint && npm run typecheck && npm test
@@ -74,18 +74,18 @@ jobs:
           VITE_PUBLIC_FORMS_ENABLED: ${{ vars.PUBLIC_FORMS_ENABLED || 'false' }}
           VITE_TURNSTILE_SITE_KEY: ${{ vars.VITE_TURNSTILE_SITE_KEY }}
       - run: npx linkinator dist --recurse --skip '^(?!http://localhost)|^http://localhost(:[0-9]+)?/(manage-7f3k|admin-setup|api)(/|$)'
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with: {name: frontend-dist, path: frontend/dist}
   accessibility-performance:
     needs: frontend
     runs-on: ubuntu-latest
     defaults: {run: {working-directory: frontend}}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with: {node-version: '20', cache: npm, cache-dependency-path: frontend/package-lock.json}
       - run: npm ci
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with: {name: frontend-dist, path: frontend/dist}
       - run: npx lhci autorun
       - run: |
@@ -103,8 +103,8 @@ jobs:
     env:
       DATABASE_URL: postgres://avrix:test@localhost:5432/avrix
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with: {python-version: '3.12', cache: pip}
       - run: pip install -r requirements.lock.txt
       - run: ruff check . && python manage.py makemigrations --check --dry-run && pytest
@@ -124,15 +124,15 @@ jobs:
       group: avrix-vps-production
       cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Confirm this is still the latest main commit
         id: latest
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const {data} = await github.rest.git.getRef({...context.repo, ref: 'heads/main'});
             return data.object.sha === context.sha;
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         if: steps.latest.outputs.result == 'true'
         with: {name: frontend-dist, path: frontend/dist}
       - name: Package the tested website and tracked backend sources
