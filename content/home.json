@@ -1,40 +1,60 @@
 {
-  "seo_title": "Digital Marketing, Cloud & Tech Recruitment | AVRIX Digital",
-  "seo_description": "AVRIX Digital helps UK businesses grow with performance marketing and GA4, run on properly set-up Microsoft 365, Google Workspace and AWS, and hire tech talent.",
+  "seo_title": "Digital Marketing, Cloud & Cyber Security | AVRIX Digital",
+  "seo_description": "AVRIX Digital helps UK businesses grow with performance marketing, run on well-built cloud and software, stay secure with cyber security and hire tech talent.",
   "sections": [
     {
       "type": "hero",
-      "eyebrow": "[ AVRIX DIGITAL — UK ]",
-      "h1": "Turn clicks into *customers*, tech into *advantage*.",
-      "lead": "One partner for marketing that pays for itself, cloud tools set up properly, and the tech talent to keep you moving. Plain English, measurable results, no five-supplier juggling act.",
+      "eyebrow": "Marketing · Technology · Cyber security",
+      "h1": "Grow, run and protect your business with *one accountable partner*",
+      "lead": "AVRIX Digital brings performance marketing, cloud and software, cyber security and tech recruitment into one UK team. Plain English, measurable results and no five-supplier juggling act.",
       "primary_cta": {
-        "label": "Book a free 30-minute call",
+        "label": "Book a free consultation",
         "href": "booking_url_or:/contact-us/"
       },
       "secondary_cta": {
         "label": "Explore services",
         "href": "/services/"
       },
-      "signal_chips": [
-        "Cost per lead ↓",
-        "Hours saved ↑",
-        "Hires that stay ✓"
-      ],
-      "pillar_tabs": [
+      "hero_cards": [
         {
-          "label": "Grow",
-          "text": "Google Ads, Meta, LinkedIn and GA4 that prove what's working.",
-          "href": "/services/performance-marketing/"
+          "eyebrow": "Performance marketing",
+          "title": "Campaign tracking",
+          "items": [
+            "GA4 connected",
+            "Conversions verified",
+            "Weekly optimisation"
+          ],
+          "icon": "trending-up"
         },
         {
-          "label": "Build & run",
-          "text": "Websites, apps, automation, Microsoft 365, Google Workspace and AWS.",
-          "href": "/services/"
+          "eyebrow": "Compliance",
+          "title": "Standards we work to",
+          "items": [
+            "Cyber Essentials",
+            "ISO 27001",
+            "UK GDPR"
+          ],
+          "icon": "badge-check"
         },
         {
-          "label": "Hire",
-          "text": "Cloud, DevOps, data, security and marketing specialists.",
-          "href": "/services/talent-acquisition/"
+          "eyebrow": "Cyber security",
+          "title": "Security baseline",
+          "items": [
+            "MFA enforced",
+            "Devices managed",
+            "Backups tested"
+          ],
+          "icon": "shield-check"
+        },
+        {
+          "eyebrow": "Cloud & automation",
+          "title": "Connected systems",
+          "items": [
+            "Microsoft 365",
+            "Google Workspace",
+            "AWS"
+          ],
+          "icon": "cloud-cog"
         }
       ]
     },
@@ -47,27 +67,194 @@
         "LinkedIn Ads",
         "GA4",
         "Google Tag Manager",
-        "Looker Studio",
         "Microsoft 365",
-        "Copilot",
+        "Microsoft Defender",
+        "Microsoft Sentinel",
         "Intune",
-        "Defender",
+        "Entra ID",
         "Google Workspace",
         "AWS",
-        "Make.com",
-        "Power Automate",
-        "Zapier",
-        "n8n",
+        "Azure",
         "Shopify",
         "WooCommerce",
-        "Next.js",
+        "Make.com",
+        "Power Automate",
+        "n8n",
         "React",
         "Django"
       ]
     },
     {
+      "type": "service_carousel",
+      "eyebrow": "What we do",
+      "title": "Our *services*",
+      "intro": "Marketing, technology, cyber security and recruitment, delivered by one team with one point of contact.",
+      "link": {
+        "label": "See all services",
+        "href": "/services/"
+      }
+    },
+    {
+      "type": "industries_showcase",
+      "eyebrow": "Industries",
+      "title": "Supporting every *industry*, every day",
+      "intro": "Sector-aware marketing, technology and security for the businesses we work with.",
+      "link": {
+        "label": "Explore all industries",
+        "href": "/industries/"
+      }
+    },
+    {
+      "type": "services_matrix",
+      "eyebrow": "Full-spectrum support",
+      "title": "Everything your business needs to *grow and stay secure*",
+      "intro": "Pick one service or combine them. Everything joins up, because it is all delivered by the same team.",
+      "groups": [
+        {
+          "label": "Grow",
+          "text": "More qualified leads and sales.",
+          "icon": "trending-up",
+          "items": [
+            "performance-marketing",
+            "ga4-consulting"
+          ]
+        },
+        {
+          "label": "Build & automate",
+          "text": "Websites, apps and automations.",
+          "icon": "code",
+          "items": [
+            "web-development",
+            "web-application-development",
+            "ai-automation"
+          ]
+        },
+        {
+          "label": "Run & support",
+          "text": "Cloud tools set up properly.",
+          "icon": "cloud-cog",
+          "items": [
+            "microsoft-365-copilot",
+            "google-workspace",
+            "aws-consulting"
+          ]
+        },
+        {
+          "label": "Offensive security",
+          "text": "Find the gaps first.",
+          "icon": "bug",
+          "items": [
+            "penetration-testing",
+            "cloud-security-assessment",
+            "api-security-testing",
+            "red-teaming"
+          ]
+        },
+        {
+          "label": "Security operations",
+          "text": "Threats spotted early.",
+          "icon": "radar",
+          "items": [
+            "managed-soc",
+            "siem-monitoring",
+            "managed-detection-response",
+            "threat-intelligence"
+          ]
+        },
+        {
+          "label": "Compliance",
+          "text": "Prove your security.",
+          "icon": "file-badge",
+          "items": [
+            "cyber-essentials",
+            "iso-27001",
+            "soc-2-readiness",
+            "pci-dss",
+            "uk-gdpr-compliance"
+          ]
+        },
+        {
+          "label": "Incident response",
+          "text": "Help when it counts.",
+          "icon": "siren",
+          "items": [
+            "incident-response",
+            "digital-forensics"
+          ]
+        },
+        {
+          "label": "Hire",
+          "text": "People who stay.",
+          "icon": "users",
+          "items": [
+            "talent-acquisition"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frameworks",
+      "eyebrow": "Standards",
+      "title": "Built around *recognised standards*",
+      "intro": "We help you meet the frameworks your customers, insurers and regulators ask for.",
+      "items": [
+        {
+          "title": "Cyber Essentials",
+          "text": "NCSC-backed baseline"
+        },
+        {
+          "title": "ISO/IEC 27001",
+          "text": "Information security"
+        },
+        {
+          "title": "UK GDPR",
+          "text": "Data protection"
+        },
+        {
+          "title": "SOC 2",
+          "text": "Trust Services Criteria"
+        },
+        {
+          "title": "PCI DSS v4.0",
+          "text": "Card payments"
+        },
+        {
+          "title": "OWASP",
+          "text": "Application testing"
+        },
+        {
+          "title": "NCSC CAF",
+          "text": "Cyber resilience"
+        }
+      ]
+    },
+    {
+      "type": "values",
+      "eyebrow": "The AVRIX advantage",
+      "title": "Why businesses choose *AVRIX Digital*",
+      "items": [
+        {
+          "title": "Outcomes over activity",
+          "text": "We report on leads, revenue, cost savings and hires, not hours billed or reports produced."
+        },
+        {
+          "title": "Plain English, always",
+          "text": "Monthly reports you can read in five minutes. Every recommendation comes with the why and the expected result."
+        },
+        {
+          "title": "You own everything",
+          "text": "Ad accounts, analytics, domains, code and data are set up in your name. If you leave, you keep it all."
+        },
+        {
+          "title": "Fair, flat fees",
+          "text": "Flat management fees, never a percentage of your ad spend, and fixed-price quotes before project work starts."
+        }
+      ],
+      "intro": "Practical, honest and accountable, whichever service you start with."
+    },
+    {
       "type": "solutions",
-      "eyebrow": "BUSINESS SOFTWARE",
+      "eyebrow": "Business software",
       "title": "Less juggling. More *joined-up work.*",
       "intro": "Voice conversations, warehouse operations and everyday HR. Explore software shaped around the way your business works.",
       "link": {
@@ -76,83 +263,41 @@
       }
     },
     {
-      "type": "split_statement",
-      "eyebrow": "[ 02 — WHY ONE PARTNER ]",
-      "statement": "Most businesses juggle an ad agency, an IT supplier, a web developer and a recruiter, and none of them talk to each other.",
-      "body": "AVRIX Digital brings performance marketing, cloud technology, AI automation, web development and tech recruitment into one accountable team. Your ads connect to your analytics. Your analytics connect to your CRM. Your systems are set up so your people can do their best work. And when you need to grow the team, we find the right people.",
-      "link": {
-        "label": "More about us",
-        "href": "/about/"
-      }
-    },
-    {
-      "type": "service_grid",
-      "eyebrow": "[ 03 — SERVICES ]",
-      "title": "Pick a problem. We'll *own* the outcome.",
-      "intro": "Nine services, one team, one point of contact.",
-      "show": "all"
-    },
-    {
-      "type": "values",
-      "eyebrow": "[ 04 — HOW WE'RE DIFFERENT ]",
-      "title": "Built different, *on purpose*.",
-      "items": [
-        {
-          "icon": "target",
-          "title": "Outcomes over activity",
-          "text": "We report on leads, revenue, cost savings and hires, not hours billed or reports produced."
-        },
-        {
-          "icon": "chat",
-          "title": "Plain English, always",
-          "text": "Monthly reports you can read in five minutes. Every recommendation comes with the why and the expected result."
-        },
-        {
-          "icon": "key",
-          "title": "You own everything",
-          "text": "Ad accounts, analytics, domains, code and data are set up in your name. If you leave, you keep it all."
-        },
-        {
-          "icon": "scale",
-          "title": "Fair, flat fees",
-          "text": "Flat management fees, never a percentage of your ad spend, and fixed-price quotes before project work starts."
-        }
-      ]
-    },
-    {
       "type": "process",
-      "eyebrow": "[ 05 — HOW WE WORK ]",
-      "title": "A simple process that *delivers*.",
+      "eyebrow": "Our engagement model",
+      "title": "A clear *5-stage* roadmap",
       "steps": [
         {
           "n": "01",
-          "icon": "discover",
           "title": "Discover",
-          "text": "We learn your business, goals, numbers and market, and ask the awkward questions early."
+          "text": "We learn your business, goals, systems and risks, and ask the awkward questions early."
         },
         {
           "n": "02",
-          "icon": "plan",
-          "title": "Plan",
-          "text": "A clear plan with priorities, costs, timelines and the results we expect, agreed before we start."
+          "title": "Assess",
+          "text": "We review what you have today: campaigns, tracking, systems or security, and find the gaps."
         },
         {
           "n": "03",
-          "icon": "build",
-          "title": "Build & launch",
-          "text": "Campaign, migration, website, automation or hire, delivered with clear communication throughout."
+          "title": "Plan",
+          "text": "A clear plan with priorities, costs, timelines and expected results, agreed before we start."
         },
         {
           "n": "04",
-          "icon": "optimise",
-          "title": "Measure & improve",
-          "text": "We track what matters, report in plain English and keep improving the return."
+          "title": "Deliver",
+          "text": "Campaigns, builds, migrations, fixes or hires, delivered with clear communication throughout."
+        },
+        {
+          "n": "05",
+          "title": "Improve",
+          "text": "We measure what matters, report in plain English and keep improving."
         }
-      ]
+      ],
+      "intro": "The same simple process, whether you need more leads, a new system or a security programme."
     },
     {
       "type": "proof",
-      "eyebrow": "[ 06 — PROOF ]",
+      "eyebrow": "Our promises",
       "title": "Results you can *check*.",
       "stats_source": "stats.json",
       "testimonials_source": "testimonials.json",
@@ -179,8 +324,8 @@
     },
     {
       "type": "faq",
-      "eyebrow": "[ 07 — FAQ ]",
-      "title": "Answers to common *questions*.",
+      "eyebrow": "FAQ",
+      "title": "Everything you need to *know*",
       "source": "faqs.json",
       "filter": "show_on_home",
       "link": {
@@ -190,7 +335,7 @@
     },
     {
       "type": "blog_teaser",
-      "eyebrow": "[ 08 — INSIGHTS ]",
+      "eyebrow": "Insights",
       "title": "Practical advice for businesses that want to *grow*.",
       "intro": "Guides, checklists and no-nonsense advice on marketing, analytics, cloud, automation and hiring.",
       "count": 3,
@@ -201,17 +346,18 @@
     },
     {
       "type": "cta_band",
-      "title": "Ready to make it *count*?",
-      "text": "Book a free 30-minute call. We'll listen, ask the right questions and come back with a clear recommendation. No jargon, no pressure.",
+      "title": "Ready to grow and stay *secure*?",
+      "text": "Book a free consultation. We'll listen, ask the right questions and come back with a clear recommendation. No jargon, no pressure.",
       "primary_cta": {
-        "label": "Book a free 30-minute call",
+        "label": "Book a free consultation",
         "href": "booking_url_or:/contact-us/"
       },
       "secondary_cta": {
         "label": "Send an enquiry",
         "href": "/contact-us/"
-      }
+      },
+      "eyebrow": "Get started today"
     }
   ],
-  "_notes": "Text wrapped in *asterisks* renders in Instrument Serif Italic (emphasis word). Section order can be changed by reordering this array."
+  "_notes": "Text wrapped in *asterisks* renders in the brand gradient. Section order can be changed by reordering this array. hero_cards are illustrative capability cards: never put unverified numbers in them."
 }

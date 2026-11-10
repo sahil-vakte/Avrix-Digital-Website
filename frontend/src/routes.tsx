@@ -13,6 +13,7 @@ const Home = lazy(() => import('./pages/Home'));
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 const ContentPages = lazy(() => import('./pages/ContentPages'));
 const Solutions = lazy(() => import('./pages/Solutions'));
+const Sectors = lazy(() => import('./pages/Sectors'));
 import { captureAttribution } from './lib/utm';
 import { initConsent } from './lib/analytics';
 const Enhance = lazy(() => import('./components/motion/Enhance'));
@@ -67,6 +68,8 @@ function RoutePage({ route }: { route: RouteRecord }) {
           <ServiceDetail slug={route.slug!} />
         ) : route.kind === 'solution' || route.kind === 'solutions' ? (
           <Solutions route={route} />
+        ) : ['cyber', 'industries', 'industry', 'case-studies', 'case-study'].includes(route.kind) ? (
+          <Sectors route={route} />
         ) : (
           <ContentPages route={route} />
         )}

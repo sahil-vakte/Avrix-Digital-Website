@@ -1,0 +1,31 @@
+---
+# Copy this file to {slug}.md to add a case study. It only appears on the site when
+# BOTH published and approved_by_client are true. Results only display when verified
+# is true and evidence_note explains where the figure came from.
+slug: example-case-study
+title: "How an independent UK retailer cut cost per sale"
+seo_title: "Case Study: UK Retailer Google Ads | AVRIX Digital"
+seo_description: "Between 120 and 160 characters describing the project, the client type and the outcome in plain English, ideally mentioning the main service."
+client: "Independent UK retailer"          # or the client's name, if they agree
+industry: retail-ecommerce               # a slug from content/industries/
+services: [performance-marketing, ga4-consulting]
+summary: "One or two sentences (220 characters max) for cards and listings."
+cover: { src: /media/covers/case-studies/example.webp, alt: "Describe the image" }  # optional
+results:
+  - { value: "-32%", label: "Cost per sale", verified: false, evidence_note: "" }
+published: false
+approved_by_client: false
+updated: 2026-11-10
+---
+
+## The challenge
+
+What problem did the client have?
+
+## What we did
+
+The approach, in plain English.
+
+## The results
+
+What changed, with figures only where the client has approved them.

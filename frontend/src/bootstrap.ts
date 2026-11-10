@@ -4,6 +4,7 @@ import './styles/prose.css';
 import './styles/experience.css';
 import './styles/solutions.css';
 import './styles/theme.css';
+import './styles/lumi.css';
 
 // Paint the complete static page before downloading and hydrating React.
 if (!import.meta.env.SSR && typeof window !== 'undefined') {

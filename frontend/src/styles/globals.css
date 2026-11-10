@@ -1,25 +1,7 @@
 @font-face {
-  font-family: Bricolage;
-  src: url('/fonts/display.woff2') format('woff2');
-  font-weight: 400 800;
-  font-display: swap;
-}
-@font-face {
-  font-family: Geist;
+  font-family: Mulish;
   src: url('/fonts/body.woff2') format('woff2');
-  font-weight: 100 900;
-  font-display: swap;
-}
-@font-face {
-  font-family: GeistMono;
-  src: url('/fonts/mono.woff2') format('woff2');
-  font-weight: 100 900;
-  font-display: swap;
-}
-@font-face {
-  font-family: Instrument;
-  src: url('/fonts/serif.woff2') format('woff2');
-  font-style: italic;
+  font-weight: 200 1000;
   font-display: swap;
 }
 @tailwind base;
@@ -35,7 +17,7 @@ body {
   margin: 0;
   background: var(--ink-950);
   color: white;
-  font-family: Geist, sans-serif;
+  font-family: Mulish, sans-serif;
   font-size: 17px;
   line-height: 1.65;
 }
@@ -92,7 +74,7 @@ select:focus-visible {
 h1,
 h2,
 h3 {
-  font-family: Bricolage, sans-serif;
+  font-family: Mulish, sans-serif;
   font-weight: 600;
   margin: 0 0 24px;
 }
@@ -113,7 +95,7 @@ h3 {
   letter-spacing: -0.015em;
 }
 em {
-  font-family: Instrument, serif;
+  font-family: Mulish, serif;
   font-weight: 400;
   color: var(--brand);
 }
@@ -162,7 +144,7 @@ p {
   z-index: -1;
 }
 .eyebrow {
-  font-family: GeistMono, monospace;
+  font-family: Mulish, monospace;
   font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -292,7 +274,7 @@ header.header-hidden {
   gap: 24px;
 }
 .wordmark {
-  font-family: Bricolage, sans-serif;
+  font-family: Mulish, sans-serif;
   font-weight: 700;
   font-size: 20px;
   letter-spacing: 0.08em;
@@ -390,7 +372,7 @@ header.header-hidden {
 .mobile-sheet nav > a,
 .mobile-sheet nav > details > summary {
   display: block;
-  font-family: Bricolage;
+  font-family: Mulish;
   font-size: 36px;
   line-height: 1.5;
   min-height: 54px;
@@ -462,7 +444,7 @@ header.header-hidden {
   border: 1px solid var(--ink-500);
   border-radius: 12px;
   padding: 12px 18px;
-  font: 12px GeistMono;
+  font: 12px Mulish;
   box-shadow: 0 20px 60px #0004;
   backdrop-filter: blur(12px);
 }
@@ -518,7 +500,7 @@ header.header-hidden {
   align-items: center;
 }
 .marquee span {
-  font-family: Bricolage;
+  font-family: Mulish;
   font-size: 23px;
   white-space: nowrap;
   margin-right: 48px;
@@ -641,7 +623,7 @@ header.header-hidden {
   padding-right: 20px;
 }
 .step-number {
-  font-family: GeistMono;
+  font-family: Mulish;
   font-size: 18px;
   border: 1px solid var(--ink-500);
   background: var(--ink-950);
@@ -679,7 +661,7 @@ summary::-webkit-details-marker {
 }
 .faq-list summary {
   font-size: clamp(18px, 1.5vw, 22px);
-  font-family: Bricolage;
+  font-family: Mulish;
   font-weight: 600;
   padding: 28px 0;
   display: flex;
@@ -731,7 +713,7 @@ summary::-webkit-details-marker {
   max-width: 700px;
 }
 .footer-wordmark {
-  font: 600 clamp(3.5rem, 10vw, 9rem) / 1 Bricolage;
+  font: 600 clamp(3.5rem, 10vw, 9rem) / 1 Mulish;
   letter-spacing: -0.055em;
   color: var(--paper-50);
   padding: 70px 0;
@@ -835,7 +817,7 @@ summary::-webkit-details-marker {
   gap: 12px;
 }
 .breadcrumbs {
-  font: 12px GeistMono;
+  font: 12px Mulish;
   margin-bottom: 40px;
   color: var(--ink-300);
 }
@@ -898,11 +880,11 @@ summary::-webkit-details-marker {
   margin-top: 70px;
 }
 .price-display {
-  font: 600 clamp(3rem, 6vw, 6rem) GeistMono;
+  font: 600 clamp(3rem, 6vw, 6rem) Mulish;
   color: var(--ink-950) !important;
 }
 .price-display small {
-  font: 400 16px Geist;
+  font: 400 16px Mulish;
 }
 .contact-grid {
   display: grid;
@@ -1072,7 +1054,7 @@ fieldset {
   display: none;
 }
 .stat {
-  font: 600 clamp(3rem, 7vw, 6rem) GeistMono;
+  font: 600 clamp(3rem, 7vw, 6rem) Mulish;
   color: var(--volt-400);
 }
 .testimonials {
@@ -1085,7 +1067,7 @@ fieldset {
   border-radius: 20px;
 }
 .testimonials p {
-  font: 400 24px Bricolage;
+  font: 400 24px Mulish;
   color: white;
 }
 .testimonials cite {

@@ -8,6 +8,7 @@ SERVICES = [
     "google-workspace",
     "aws-consulting",
     "talent-acquisition",
+    "cyber-security",
     "voice-call-agent",
     "wims",
     "hr-desk",

@@ -42,9 +42,16 @@ export default function EnquiryExperience({ children }: { children: ReactNode })
     }
     opener.current = trigger;
     const candidate = pathname.match(/^\/(?:services|solutions)\/([^/]+)\/?$/)?.[1];
-    const service = [...services, ...solutions].some((item) => item.slug === candidate)
-      ? candidate
-      : undefined;
+    const match = [...services, ...solutions].find((item) => item.slug === candidate);
+    // Cyber security pages share one enquiry option rather than one per service.
+    const service =
+      match && 'pillar' in match && match.pillar === 'secure'
+        ? 'cyber-security'
+        : match
+          ? candidate
+          : pathname.startsWith('/cyber-security/')
+            ? 'cyber-security'
+            : undefined;
     setRequest({ service, call });
   }
   function intercept(event: MouseEvent<HTMLDivElement>) {
