@@ -155,7 +155,7 @@
 }
 .nav-panel-heading > span {
   font:
-    500 18px Bricolage,
+    500 18px Mulish,
     sans-serif;
 }
 .desktop-nav .nav-panel-heading > a {
@@ -245,7 +245,7 @@
 .nav-solution-grid strong {
   display: flex;
   justify-content: space-between;
-  font: 500 21px Bricolage;
+  font: 500 21px Mulish;
 }
 .nav-solution-grid small {
   display: block;
@@ -478,7 +478,7 @@
 }
 .software-preview figcaption {
   font:
-    10px/1.6 GeistMono,
+    10px/1.6 Mulish,
     monospace;
   color: var(--ink-300);
   margin-top: 12px;

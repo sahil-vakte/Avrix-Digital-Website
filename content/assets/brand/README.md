@@ -5,3 +5,5 @@ Owner-supplied brand assets:
 `content/site.json` selects these assets. The preparation script creates square PNG favicons, a multi-size ICO, an Apple touch icon and a web manifest for both development and production. It also creates a dark-backed PNG of the supplied wordmark for organisation search metadata and light surfaces. Social preview images embed the original wordmark.
 
 Keep the source WebP files unchanged. Generated variants live in `frontend/public/` and are copied into the static build.
+
+- `avrix-logo-dark.webp`: dark-ink version of the wordmark (same artwork as `avrix-logo-white.webp`, with the white lettering recoloured to `#111827`) for the white header. Replace it with an official dark logo if one is supplied.

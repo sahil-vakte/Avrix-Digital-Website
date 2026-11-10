@@ -3,23 +3,31 @@
     {
       "label": "Services",
       "href": "/services/",
-      "mega": true
+      "menu": "services"
+    },
+    {
+      "label": "Cyber Security",
+      "href": "/cyber-security/",
+      "menu": "cyber"
     },
     {
       "label": "Products",
-      "href": "/solutions/"
+      "href": "/solutions/",
+      "menu": "solutions"
+    },
+    {
+      "label": "Industries",
+      "href": "/industries/",
+      "menu": "industries"
+    },
+    {
+      "label": "Resources",
+      "href": "/blog/",
+      "menu": "resources"
     },
     {
       "label": "About",
       "href": "/about/"
-    },
-    {
-      "label": "Insights",
-      "href": "/blog/"
-    },
-    {
-      "label": "FAQs",
-      "href": "/faqs/"
     },
     {
       "label": "Contact",
@@ -27,7 +35,7 @@
     }
   ],
   "header_cta": {
-    "label": "Book a call",
+    "label": "Book a free consultation",
     "href": "booking_url_or:/contact-us/"
   },
   "mega_menu": [
@@ -52,8 +60,8 @@
     },
     {
       "pillar": "run",
-      "label": "Run & secure",
-      "blurb": "Cloud tools set up properly, secured and supported.",
+      "label": "Run & support",
+      "blurb": "Cloud tools set up properly and supported.",
       "items": [
         "microsoft-365-copilot",
         "google-workspace",
@@ -80,12 +88,12 @@
   "footer": {
     "company": [
       {
-        "label": "About",
-        "href": "/about/"
+        "label": "Home",
+        "href": "/"
       },
       {
-        "label": "Services",
-        "href": "/services/"
+        "label": "About",
+        "href": "/about/"
       },
       {
         "label": "Products",
@@ -121,7 +129,73 @@
         "label": "Cookie preferences",
         "action": "open-cookie-preferences"
       }
-    ]
+    ],
+    "tagline": "One partner for growth, technology and cyber security."
   },
-  "_notes": "Mega menu items reference service slugs; title/summary/icon come from each service file. 'booking_url_or:/contact-us/' means: use site.json booking_url if set, otherwise /contact-us/."
+  "_notes": "Header items with 'menu' open a dropdown: services (mega_menu groups), cyber (cyber_menu groups), solutions (products), industries (content/industries) and resources. Case studies only show in Resources once at least one is published. 'booking_url_or:/contact-us/' means: use site.json booking_url if set, otherwise /contact-us/.",
+  "cyber_menu": [
+    {
+      "pillar": "offensive",
+      "label": "Offensive security",
+      "blurb": "Find the gaps before attackers do.",
+      "items": [
+        "penetration-testing",
+        "cloud-security-assessment",
+        "api-security-testing",
+        "red-teaming"
+      ]
+    },
+    {
+      "pillar": "operations",
+      "label": "Security operations",
+      "blurb": "Threats spotted and stopped early.",
+      "items": [
+        "managed-soc",
+        "siem-monitoring",
+        "managed-detection-response",
+        "threat-intelligence"
+      ]
+    },
+    {
+      "pillar": "compliance",
+      "label": "Compliance & governance",
+      "blurb": "Prove your security to customers and regulators.",
+      "items": [
+        "cyber-essentials",
+        "iso-27001",
+        "soc-2-readiness",
+        "pci-dss",
+        "uk-gdpr-compliance"
+      ]
+    },
+    {
+      "pillar": "response",
+      "label": "Incident response",
+      "blurb": "Expert help when every hour counts.",
+      "items": [
+        "incident-response",
+        "digital-forensics"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "label": "Insights",
+      "href": "/blog/",
+      "text": "Guides and plain-English advice.",
+      "icon": "book-open"
+    },
+    {
+      "label": "Case studies",
+      "href": "/case-studies/",
+      "text": "Real projects, shared with permission.",
+      "icon": "award"
+    },
+    {
+      "label": "FAQs",
+      "href": "/faqs/",
+      "text": "Answers to common questions.",
+      "icon": "lightbulb"
+    }
+  ]
 }

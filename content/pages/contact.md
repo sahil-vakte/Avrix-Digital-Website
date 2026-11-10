@@ -6,7 +6,7 @@ seo_description: >-
   Tell us what you need help with: marketing, analytics, websites, automation,
   Microsoft 365, Google Workspace, AWS or hiring. We reply within one working
   day.
-eyebrow: '[ CONTACT ]'
+eyebrow: "Contact us"
 lead: >-
   Tell us a little about your business and what you'd like to achieve. We'll
   reply within one working day with honest advice, even if we're not the right
@@ -96,6 +96,8 @@ form:
           label: AWS
         - value: talent-acquisition
           label: Hiring
+        - value: cyber-security
+          label: Cyber Security
         - value: voice-call-agent
           label: Voice Call Agent
         - value: wims

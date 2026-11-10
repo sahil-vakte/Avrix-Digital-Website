@@ -41,7 +41,7 @@
   background: var(--paper-100);
 }
 .prose code {
-  font-family: GeistMono;
+  font-family: Mulish;
   font-size: 0.85em;
   background: var(--paper-100);
   padding: 3px 5px;

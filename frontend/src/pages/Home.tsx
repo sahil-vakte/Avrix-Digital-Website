@@ -1,16 +1,14 @@
 import { home, content } from '../content';
-import { Heading, Button } from '../components/ui';
+import { Button } from '../components/ui';
+import { Hero, Marquee, ValueGrid, Proof, FAQ, BlogTeaser, CtaBand } from '../components/sections';
 import {
-  Hero,
-  Marquee,
-  ValueGrid,
-  Process,
-  Proof,
-  FAQ,
-  BlogTeaser,
-  CtaBand,
-  ServicesFilter,
-} from '../components/sections';
+  Frameworks,
+  IndustriesShowcase,
+  Roadmap,
+  SectionHead,
+  ServiceCarousel,
+  ServicesMatrix,
+} from '../components/sections/Showcase';
 import type { Item } from '../content/schemas';
 import SolutionCards from '../components/sections/SolutionCards';
 export default function Home() {
@@ -23,22 +21,20 @@ export default function Home() {
         return (
           <section
             key={i}
-            className={`section ${['values', 'proof'].includes(s.type) ? 'dark' : 'light'} section-${s.type}`}
-            id={s.type === 'service_grid' ? 'services' : undefined}
+            className={`section light section-${s.type}`}
+            id={s.type === 'service_carousel' ? 'services' : undefined}
           >
             <div className="container">
               {s.type !== 'proof' && (
-                <Heading eyebrow={s.eyebrow} title={s.title || s.statement} intro={s.intro} />
+                <SectionHead eyebrow={s.eyebrow} title={s.title || s.statement} intro={s.intro} />
               )}
+              {s.type === 'service_carousel' && <ServiceCarousel />}
+              {s.type === 'industries_showcase' && <IndustriesShowcase />}
+              {s.type === 'services_matrix' && <ServicesMatrix groups={s.groups!} />}
+              {s.type === 'frameworks' && <Frameworks items={s.items as Item[]} />}
               {['pillars', 'values'].includes(s.type) && <ValueGrid items={s.items as Item[]} />}
-              {s.type === 'split_statement' && (
-                <div className="split-copy">
-                  <p className="lead">{s.body}</p>
-                </div>
-              )}
-              {s.type === 'service_grid' && <ServicesFilter rich={false} />}
               {s.type === 'solutions' && <SolutionCards />}
-              {s.type === 'process' && <Process steps={s.steps!} />}
+              {(s.type === 'process' || s.type === 'roadmap') && <Roadmap steps={s.steps!} />}
               {s.type === 'proof' && <Proof section={s} />}
               {s.type === 'faq' && (
                 <FAQ
@@ -51,7 +47,7 @@ export default function Home() {
               {s.type === 'blog_teaser' && <BlogTeaser />}
               {s.link && (
                 <div className="section-link">
-                  <Button href={s.link.href!} variant="link">
+                  <Button href={s.link.href!} variant="secondary" size="sm">
                     {s.link.label}
                   </Button>
                 </div>

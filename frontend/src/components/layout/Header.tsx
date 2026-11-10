@@ -1,9 +1,22 @@
-﻿import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { content, nav, site, services, solutions, serviceHref, ui } from '../../content';
+import {
+  content,
+  industries,
+  industryHref,
+  nav,
+  site,
+  services,
+  solutions,
+  serviceHref,
+  ui,
+} from '../../content';
+import { ChevronDown } from 'lucide-react';
 import { Button, Icon } from '../ui';
 
-type Menu = 'services' | 'solutions';
+type Menu = 'services' | 'cyber' | 'solutions' | 'industries' | 'resources';
+const groupsFor = (kind: Menu) =>
+  kind === 'services' ? nav.mega_menu : kind === 'cyber' ? nav.cyber_menu : [];
 export default function Header() {
   const [open, setOpen] = useState<Menu | null>(null);
   const [mobile, setMobile] = useState(false);
@@ -49,8 +62,61 @@ export default function Header() {
       mobileTrigger.current?.focus();
     };
   }, [mobile]);
-  function menuType(href?: string, mega?: boolean): Menu | null {
-    return mega ? 'services' : href === '/solutions/' ? 'solutions' : null;
+  function menuType(link: (typeof nav.header)[number]): Menu | null {
+    return link.menu || (link.mega ? 'services' : null);
+  }
+  function panelBody(kind: Menu) {
+    if (kind === 'services' || kind === 'cyber')
+      return (
+        <div className={`nav-service-groups nav-groups-${groupsFor(kind).length}`}>
+          {groupsFor(kind).map((group) => (
+            <div key={group.pillar}>
+              <p className="eyebrow">{group.label}</p>
+              <p className="nav-group-blurb">{group.blurb}</p>
+              {group.items.map((slug) => {
+                const service = services.find((s) => s.slug === slug)!;
+                return (
+                  <a className="nav-service-link" href={serviceHref(slug)} key={slug}>
+                    <Icon name={service.icon} />
+                    <span>{service.title}</span>
+                    <span aria-hidden="true">›</span>
+                  </a>
+                );
+              })}
+            </div>
+          ))}
+        </div>
+      );
+    const cards =
+      kind === 'solutions'
+        ? solutions.map((s) => ({
+            href: `/solutions/${s.slug}/`,
+            icon: s.icon,
+            title: s.title,
+            text: s.summary,
+          }))
+        : kind === 'industries'
+          ? industries.map((s) => ({
+              href: industryHref(s.slug),
+              icon: s.icon,
+              title: s.title,
+              text: s.summary,
+            }))
+          : nav.resources.map((r) => ({ href: r.href, icon: r.icon, title: r.label, text: r.text }));
+    return (
+      <div className={`nav-solution-grid nav-grid-${kind}`}>
+        {cards.map((card) => (
+          <a href={card.href} key={card.href}>
+            <Icon name={card.icon} />
+            <strong>
+              {card.title}
+              <span aria-hidden="true">›</span>
+            </strong>
+            <small>{card.text}</small>
+          </a>
+        ))}
+      </div>
+    );
   }
   return (
     <header
@@ -87,7 +153,7 @@ export default function Header() {
       <div className="container header-inner">
         <a className="wordmark" href="/" aria-label={site.brand_name}>
           {content.hasLogo ? (
-            <img src={site.logo.light_on_dark} alt={site.logo.alt} width="372" height="85" />
+            <img src={site.logo.dark_on_light} alt={site.logo.alt} width="372" height="85" />
           ) : (
             <>
               {site.brand_name.toUpperCase()}
@@ -97,7 +163,7 @@ export default function Header() {
         </a>
         <nav className="desktop-nav" aria-label="Main">
           {nav.header.map((link) => {
-            const kind = menuType(link.href, link.mega);
+            const kind = menuType(link);
             if (!kind)
               return (
                 <a
@@ -139,7 +205,7 @@ export default function Header() {
                 >
                   {link.label}
                   <span className="nav-chevron" aria-hidden="true">
-                    ⌄
+                    <ChevronDown size={14} strokeWidth={2.25} />
                   </span>
                 </button>
                 <div
@@ -148,45 +214,13 @@ export default function Header() {
                   hidden={open !== kind}
                 >
                   <div className="nav-panel-heading">
-                    <span>{kind === 'services' ? ui.services : ui.solutions}</span>
+                    <span>{link.label}</span>
                     <a href={link.href}>
-                      {ui.all} {kind === 'services' ? ui.services : ui.solutions}
+                      {kind === 'resources' ? ui.allInsights : `${ui.all} ${link.label}`}
                       <span aria-hidden="true">↗</span>
                     </a>
                   </div>
-                  {kind === 'services' ? (
-                    <div className="nav-service-groups">
-                      {nav.mega_menu.map((group) => (
-                        <div key={group.pillar}>
-                          <p className="eyebrow">{group.label}</p>
-                          <p className="nav-group-blurb">{group.blurb}</p>
-                          {group.items.map((slug) => {
-                            const service = services.find((s) => s.slug === slug)!;
-                            return (
-                              <a className="nav-service-link" href={serviceHref(slug)} key={slug}>
-                                <Icon name={service.icon} />
-                                <span>{service.title}</span>
-                                <span aria-hidden="true">↗</span>
-                              </a>
-                            );
-                          })}
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="nav-solution-grid">
-                      {solutions.map((solution) => (
-                        <a href={`/solutions/${solution.slug}/`} key={solution.slug}>
-                          <Icon name={solution.icon} />
-                          <strong>
-                            {solution.title}
-                            <span aria-hidden="true">↗</span>
-                          </strong>
-                          <small>{solution.summary}</small>
-                        </a>
-                      ))}
-                    </div>
-                  )}
+                  {panelBody(kind)}
                   <div className="nav-panel-footer">
                     <p>{nav.mega_feature.text}</p>
                     <Button href={nav.mega_feature.cta.href!} size="sm">
@@ -229,15 +263,15 @@ export default function Header() {
         </button>
         <nav aria-label={ui.menu}>
           {nav.header.map((link) => {
-            const kind = menuType(link.href, link.mega);
+            const kind = menuType(link);
             return kind ? (
               <details key={link.label}>
                 <summary>{link.label}</summary>
                 <a href={link.href}>
                   {ui.all} {link.label}
                 </a>
-                {kind === 'services'
-                  ? nav.mega_menu.map((group) => (
+                {kind === 'services' || kind === 'cyber'
+                  ? groupsFor(kind).map((group) => (
                       <details key={group.pillar}>
                         <summary>{group.label}</summary>
                         {group.items.map((slug) => (
@@ -247,9 +281,14 @@ export default function Header() {
                         ))}
                       </details>
                     ))
-                  : solutions.map((solution) => (
-                      <a href={`/solutions/${solution.slug}/`} key={solution.slug}>
-                        {solution.title}
+                  : (kind === 'solutions'
+                      ? solutions.map((s) => ({ href: `/solutions/${s.slug}/`, label: s.title }))
+                      : kind === 'industries'
+                        ? industries.map((s) => ({ href: industryHref(s.slug), label: s.title }))
+                        : nav.resources.map((r) => ({ href: r.href, label: r.label }))
+                    ).map((item) => (
+                      <a href={item.href} key={item.href}>
+                        {item.label}
                       </a>
                     ))}
               </details>

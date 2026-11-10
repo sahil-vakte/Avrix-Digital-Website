@@ -8,6 +8,11 @@ export type RouteRecord = {
     | 'service'
     | 'solutions'
     | 'solution'
+    | 'cyber'
+    | 'industries'
+    | 'industry'
+    | 'case-studies'
+    | 'case-study'
     | 'faqs'
     | 'contact'
     | 'blog'
@@ -33,12 +38,17 @@ export function buildRoutes(c: Content): RouteRecord[] {
     about: 'about',
     services: 'services',
     solutions: 'solutions',
+    'cyber-security': 'cyber',
+    industries: 'industries',
+    'case-studies': 'case-studies',
     faqs: 'faqs',
     'contact-us': 'contact',
     blog: 'blog',
     '404': '404',
   };
-  c.pages.forEach((p) =>
+  c.pages
+    .filter((p) => p.slug !== 'case-studies' || c.caseStudies.length)
+    .forEach((p) =>
     result.push({
       path: p.slug === '404' ? '/404/' : `/${p.slug}/`,
       kind: kinds[p.slug],
@@ -49,6 +59,12 @@ export function buildRoutes(c: Content): RouteRecord[] {
   c.services.forEach((s) => result.push({ path: `/services/${s.slug}/`, kind: 'service', ...s }));
   c.solutions.forEach((s) =>
     result.push({ path: `/solutions/${s.slug}/`, kind: 'solution', ...s }),
+  );
+  c.industries.forEach((s) =>
+    result.push({ path: `/industries/${s.slug}/`, kind: 'industry', ...s }),
+  );
+  c.caseStudies.forEach((s) =>
+    result.push({ path: `/case-studies/${s.slug}/`, kind: 'case-study', ...s, h1: s.title }),
   );
   c.posts.forEach((p) =>
     result.push({ path: `/blog/${p.slug}/`, kind: 'post', ...p, h1: p.title }),

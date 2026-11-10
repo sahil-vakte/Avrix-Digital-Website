@@ -3,64 +3,63 @@ import { useState } from 'react';
 import { content, services, posts, serviceHref, postHref, homeSection, ui } from '../../content';
 import type { Section, Item, Faq, Service, Post } from '../../content/schemas';
 import { Badge, Button, Card, Em, Heading, Icon } from '../ui';
-import ConnectedVisual from './ConnectedVisual';
+import { BadgeRow, HeroStage, Pill } from './Showcase';
 export function Hero({
   section,
   children,
   home = false,
+  aside,
+  badges,
+  icon,
 }: {
   section: Section;
   children?: React.ReactNode;
   home?: boolean;
+  aside?: React.ReactNode;
+  badges?: { title: string; text: string }[];
+  icon?: string;
 }) {
   const title = section.h1 || section.title || '';
+  const actions = (
+    <div className="actions">
+      {section.primary_cta && (
+        <Button href={section.primary_cta.href!}>{section.primary_cta.label}</Button>
+      )}
+      {section.secondary_cta && (
+        <Button href={section.secondary_cta.href!} variant="secondary">
+          {section.secondary_cta.label}
+        </Button>
+      )}
+    </div>
+  );
+  if (home)
+    return (
+      <section className="hero hero-home">
+        <div className="container hero-content">
+          <div className="hero-copy">
+            {section.eyebrow && <Pill>{section.eyebrow}</Pill>}
+            <SplitText text={title} />
+            {section.lead && <p className="lead">{section.lead}</p>}
+            {actions}
+          </div>
+          <HeroStage section={section} />
+        </div>
+      </section>
+    );
   return (
-    <section className={`hero dark ${home ? 'hero-home' : ''}`}>
-      <div className="hero-mesh" aria-hidden="true" />
+    <section className={`hero hero-inner ${aside ? 'has-aside' : ''}`}>
       <div className="container hero-content">
         <div className="hero-layout">
           <div className="hero-copy">
             {children}
-            {section.eyebrow && <p className="eyebrow">{section.eyebrow}</p>}
+            {section.eyebrow && <Pill icon={icon}>{section.eyebrow}</Pill>}
             <SplitText text={title} />
             {section.lead && <p className="lead">{section.lead}</p>}
-            <div className="actions">
-              {section.primary_cta && (
-                <Button href={section.primary_cta.href!}>{section.primary_cta.label}</Button>
-              )}
-              {section.secondary_cta && (
-                <Button href={section.secondary_cta.href!} variant="secondary">
-                  {section.secondary_cta.label}
-                </Button>
-              )}
-            </div>
+            {actions}
+            <BadgeRow items={badges} />
           </div>
-          {home && <ConnectedVisual />}
+          {aside}
         </div>
-        {section.signal_chips && (
-          <div className="signals" aria-hidden="true">
-            {section.signal_chips.map((c, i) => (
-              <span key={c} style={{ animationDelay: `${i * -2}s` }}>
-                <i />
-                {c}
-              </span>
-            ))}
-          </div>
-        )}
-        {section.pillar_tabs && (
-          <div className="pillar-tabs">
-            {section.pillar_tabs.map((p, i) => (
-              <a key={p.label} href={p.href}>
-                <span className="eyebrow">0{i + 1}</span>
-                <h2>
-                  {p.label}
-                  <span aria-hidden="true">↗</span>
-                </h2>
-                <p>{p.text}</p>
-              </a>
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );
@@ -78,7 +77,7 @@ export function ServiceGrid({
         <Card key={s.slug} className={`service-card service-${s.pillar}`}>
           <div className="card-top">
             <Icon name={s.icon} />
-            <span className="eyebrow">0{s.order}</span>
+            <span className="eyebrow">{String(s.order).padStart(2, '0')}</span>
           </div>
           <h3>
             <a href={serviceHref(s.slug)}>{s.title}</a>
@@ -200,7 +199,7 @@ export function CtaBand() {
   return (
     <section className="cta-band dark">
       <div className="container">
-        <Heading title={s.title} intro={s.text} />
+        <Heading eyebrow={s.eyebrow} title={s.title} intro={s.text} />
         <div className="actions">
           <Button href={s.primary_cta!.href!}>{s.primary_cta!.label}</Button>
           <Button variant="secondary" href={s.secondary_cta!.href!}>

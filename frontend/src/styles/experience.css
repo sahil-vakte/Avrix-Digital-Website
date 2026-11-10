@@ -219,7 +219,7 @@ header.scrolled {
   align-items: center;
   gap: 8px;
   font:
-    9px GeistMono,
+    9px Mulish,
     monospace;
   color: #e4cbc2;
   padding: 0 28px;
@@ -247,7 +247,7 @@ header.scrolled {
 .orbit-label {
   position: absolute;
   font:
-    11px GeistMono,
+    11px Mulish,
     monospace;
   color: #f0e3df;
   padding: 8px 12px;
@@ -290,7 +290,7 @@ header.scrolled {
   border: 0;
   box-shadow: none;
   backdrop-filter: none;
-  font: 10px GeistMono;
+  font: 10px Mulish;
   color: #cbc2bf;
   animation: none !important;
 }
@@ -439,7 +439,7 @@ header.scrolled {
 .result-count {
   margin: 0;
   white-space: nowrap;
-  font: 10px GeistMono;
+  font: 10px Mulish;
 }
 .grid.cards {
   gap: 18px;
@@ -658,7 +658,7 @@ header.scrolled {
   line-height: 1.85;
 }
 .blog-cards time {
-  font: 10px GeistMono;
+  font: 10px Mulish;
 }
 .cta-band {
   background: var(--ink-950);
@@ -674,7 +674,7 @@ header.scrolled {
   position: absolute;
   right: 4%;
   top: 15%;
-  font: 300 clamp(150px, 24vw, 340px) / 1 Geist;
+  font: 300 clamp(150px, 24vw, 340px) / 1 Mulish;
   opacity: 0.12;
   background: none;
   z-index: -1;

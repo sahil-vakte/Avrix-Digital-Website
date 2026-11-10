@@ -74,7 +74,9 @@ export const serviceSchema = z.object({
   slug: text.regex(/^[a-z0-9-]+$/),
   title: text,
   h1: text,
-  pillar: z.enum(['grow', 'build', 'run', 'hire']),
+  pillar: z.enum(['grow', 'build', 'run', 'hire', 'secure']),
+  label: text.optional(),
+  badges: z.array(z.object({ title: text, text: text })).max(3).optional(),
   order: z.number().int(),
   icon: text,
   summary: text.max(140),
@@ -83,7 +85,10 @@ export const serviceSchema = z.object({
   included: z.array(item),
   outcomes: z.array(item),
   tools: z.array(text),
-  process: z.array(item).length(4),
+  process: z.array(item).min(4).max(6),
+  scope: z.array(item).optional(),
+  models: z.array(item).optional(),
+  deliverables: z.array(item).optional(),
   pricing: z
     .object({ price_from: z.number().nonnegative().nullable(), unit: text, note: text })
     .optional(),
@@ -110,6 +115,42 @@ export const solutionSchema = z.object({
   industries: z.array(item),
   setup_note: text,
   faqs: z.array(faq),
+  updated: date,
+});
+export const industrySchema = z.object({
+  ...meta,
+  slug: text.regex(/^[a-z0-9-]+$/),
+  title: text,
+  h1: text,
+  eyebrow: text,
+  summary: text.max(180),
+  lead: text,
+  icon: text,
+  order: z.number().int(),
+  badges: z.array(z.object({ title: text, text: text })).max(3),
+  challenges: z.array(item).min(3),
+  pillars: z.array(item).min(3),
+  lifecycle: z.array(item).min(4).max(6),
+  standards: z.array(text),
+  related: z.array(text).min(2).max(6),
+  faqs: z.array(faq),
+  updated: date,
+});
+const result = z
+  .object({ value: text, label: text, verified: z.boolean(), evidence_note: z.string() })
+  .refine((v) => !v.verified || v.evidence_note.trim().length > 0, 'Verified results need evidence');
+export const caseStudySchema = z.object({
+  ...meta,
+  slug: text.regex(/^[a-z0-9-]+$/),
+  title: text,
+  client: text,
+  industry: text,
+  services: z.array(text).min(1),
+  summary: text.max(220),
+  cover: image.optional(),
+  results: z.array(result),
+  published: z.boolean(),
+  approved_by_client: z.boolean(),
   updated: date,
 });
 export const blogSchema = z.object({
@@ -146,6 +187,11 @@ export const sectionSchema = z.object({
     'faq',
     'blog_teaser',
     'cta_band',
+    'service_carousel',
+    'industries_showcase',
+    'services_matrix',
+    'frameworks',
+    'roadmap',
   ]),
   eyebrow: text.optional(),
   h1: text.optional(),
@@ -166,6 +212,12 @@ export const sectionSchema = z.object({
   secondary_cta: link.optional(),
   link: link.optional(),
   count: z.number().optional(),
+  hero_cards: z
+    .array(z.object({ eyebrow: text, title: text, items: z.array(text), icon: text.optional() }))
+    .optional(),
+  groups: z
+    .array(z.object({ label: text, text: text, icon: text, items: z.array(text) }))
+    .optional(),
 });
 export const homeSchema = z.object({ ...meta, sections: z.array(sectionSchema) });
 export const siteSchema = z.object({
@@ -207,12 +259,20 @@ export const testimonialSchema = z
     (v) => !v.verified || v.evidence_note.trim().length > 0,
     'Verified reviews need evidence',
   );
+const menuGroup = z.object({ pillar: text, label: text, blurb: text, items: z.array(text) });
 export const navSchema = z.object({
-  header: z.array(link.extend({ mega: z.boolean().optional() })),
+  header: z.array(
+    link.extend({
+      mega: z.boolean().optional(),
+      menu: z.enum(['services', 'cyber', 'solutions', 'industries', 'resources']).optional(),
+    }),
+  ),
   header_cta: link,
-  mega_menu: z.array(z.object({ pillar: text, label: text, blurb: text, items: z.array(text) })),
+  mega_menu: z.array(menuGroup),
+  cyber_menu: z.array(menuGroup),
+  resources: z.array(z.object({ label: text, href: text, text: text, icon: text })),
   mega_feature: z.object({ title: text, text: text, cta: link }),
-  footer: z.object({ company: z.array(link), legal: z.array(link) }),
+  footer: z.object({ company: z.array(link), legal: z.array(link), tagline: text.optional() }),
 });
 export type Section = z.infer<typeof sectionSchema>;
 export type Item = z.infer<typeof item>;
@@ -235,12 +295,22 @@ export type Solution = z.infer<typeof solutionSchema> & {
   html: string;
   toc: { id: string; text: string }[];
 };
+export type Industry = z.infer<typeof industrySchema> & {
+  html: string;
+  toc: { id: string; text: string }[];
+};
+export type CaseStudy = z.infer<typeof caseStudySchema> & {
+  html: string;
+  toc: { id: string; text: string }[];
+};
 export type Content = {
   site: Site;
   home: z.infer<typeof homeSchema>;
   nav: z.infer<typeof navSchema>;
   services: Service[];
   solutions: Solution[];
+  industries: Industry[];
+  caseStudies: CaseStudy[];
   posts: Post[];
   pages: Page[];
   legal: Page[];

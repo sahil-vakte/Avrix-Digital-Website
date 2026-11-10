@@ -3,7 +3,7 @@ slug: about
 h1: "Your growth partner, *built different* on purpose"
 seo_title: "About AVRIX Digital | Marketing, Cloud & Tech Talent"
 seo_description: "AVRIX Digital is a UK digital partner combining performance marketing, cloud technology, AI automation, web development and tech recruitment in one team."
-eyebrow: "[ ABOUT AVRIX ]"
+eyebrow: "About AVRIX"
 lead: "We're a UK-based digital partner for businesses tired of juggling five suppliers and getting average results from all of them."
 team_image: null          # TODO(owner): { src, alt } real founder/team photo. Section hides when null
 team: []                  # TODO(owner): [{ name, role, photo, linkedin, bio }]. Hidden when empty. No placeholder people.

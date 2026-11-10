@@ -4,22 +4,26 @@ const serviceBodies = rawBodies as Record<
   { html: string; toc: { id: string; text: string }[] }
 >;
 import { services, site, ui, posts, nav } from '../content';
+import { Hero, FAQ, Tags, BlogTeaser } from '../components/sections';
 import {
-  Hero,
-  ValueGrid,
-  Process,
-  FAQ,
-  ServiceGrid,
-  Tags,
-  BlogTeaser,
-} from '../components/sections';
-import { Breadcrumbs, Heading, Prose } from '../components/ui';
+  IconCards,
+  QuoteCard,
+  Roadmap,
+  SectionHead,
+  ServiceCarousel,
+} from '../components/sections/Showcase';
+import { Breadcrumbs, Prose } from '../components/ui';
 export default function ServiceDetail({ slug }: { slug: string }) {
   const s = services.find((s) => s.slug === slug)!;
+  const cyber = s.pillar === 'secure';
+  const group = [...nav.mega_menu, ...nav.cyber_menu].find(
+    (g) => g.pillar === s.pillar || g.items.includes(s.slug),
+  );
   const sections = [
     'overview',
-    'included',
+    'outcomes',
     'process',
+    'included',
     ...(s.pricing?.price_from != null ? ['pricing'] : []),
     'faqs',
   ];
@@ -30,19 +34,24 @@ export default function ServiceDetail({ slug }: { slug: string }) {
           type: 'hero',
           h1: s.h1,
           lead: s.intro,
-          eyebrow: nav.mega_menu.find((g) => g.pillar === s.pillar)?.label,
-          primary_cta: { label: site.booking_label, href: 'booking_url_or:/contact-us/' },
-          secondary_cta: { label: ui.enquire, href: '#enquiry' },
+          eyebrow: s.label || group?.label,
+          primary_cta: { label: ui.quoteCta, href: '#enquiry' },
+          secondary_cta: { label: site.booking_label, href: 'booking_url_or:/contact-us/' },
         }}
+        icon={s.icon}
+        badges={s.badges}
+        aside={<QuoteCard title={s.title} />}
       >
         <Breadcrumbs
           items={[
-            { label: ui.services, href: '/services/' },
+            cyber
+              ? { label: ui.cyberSecurity, href: '/cyber-security/' }
+              : { label: ui.services, href: '/services/' },
             { label: s.title, href: `/services/${slug}/` },
           ]}
         />
       </Hero>
-      <nav className="in-page">
+      <nav className="in-page" aria-label={ui.onThisPage}>
         <div className="container">
           {sections.map((k) => (
             <a key={k} href={`#${k}`}>
@@ -53,42 +62,53 @@ export default function ServiceDetail({ slug }: { slug: string }) {
       </nav>
       <section className="section light" id="overview">
         <div className="container overview-grid">
-          <Prose html={serviceBodies[s.slug].html} />
-          {s.hero_image && (
-            <img
-              src={s.hero_image.src}
-              alt={s.hero_image.alt}
-              width="1600"
-              height="900"
-              loading="lazy"
-            />
-          )}
+          <div className="lumi-card overview-card">
+            <Prose html={serviceBodies[s.slug].html} />
+          </div>
+          <div className="lumi-card overview-tools">
+            <p className="pill">{ui.tools}</p>
+            <Tags items={s.tools} />
+          </div>
         </div>
       </section>
-      <section className="section dark" id="included">
+      <section className="section light" id="outcomes">
         <div className="container">
-          <Heading title={ui.included} />
-          <ValueGrid items={s.included} />
+          <SectionHead eyebrow={ui.whyItMatters} title={ui.outcomesTitle} />
+          <IconCards items={s.outcomes} />
         </div>
       </section>
-      <section className="section light">
+      <section className="section light tint" id="process">
         <div className="container">
-          <Heading title={ui.outcomes} />
-          <ValueGrid items={s.outcomes} />
-          <Heading title={ui.tools} />
-          <Tags items={s.tools} />
+          <SectionHead eyebrow={ui.methodology} title={ui.processTitle} />
+          <Roadmap steps={s.process} />
         </div>
       </section>
-      <section className="section dark" id="process">
+      {s.models && (
+        <section className="section light">
+          <div className="container">
+            <SectionHead eyebrow={ui.scope} title={ui.models} />
+            <IconCards items={s.models} />
+          </div>
+        </section>
+      )}
+      <section className="section light" id="included">
         <div className="container">
-          <Heading title={ui.process} />
-          <Process steps={s.process} />
+          <SectionHead eyebrow={ui.serviceAreas} title={ui.includedTitle} />
+          <IconCards items={s.included} />
         </div>
       </section>
+      {s.deliverables && (
+        <section className="section light tint">
+          <div className="container">
+            <SectionHead eyebrow={ui.reporting} title={ui.deliverables} />
+            <IconCards items={s.deliverables} />
+          </div>
+        </section>
+      )}
       {s.pricing?.price_from != null && (
         <section className="section light" id="pricing">
           <div className="container pricing">
-            <Heading title={ui.pricing} />
+            <SectionHead title={ui.pricing} />
             <p className="price-display">
               {ui.from} £{s.pricing.price_from.toLocaleString('en-GB')}{' '}
               <small>{s.pricing.unit}</small>
@@ -98,15 +118,15 @@ export default function ServiceDetail({ slug }: { slug: string }) {
         </section>
       )}
       <section className="section light" id="faqs">
-        <div className="container">
-          <Heading title={ui.faqs} />
+        <div className="container narrow">
+          <SectionHead eyebrow={ui.faqs} title={ui.faqTitle} />
           <FAQ items={s.faqs} />
         </div>
       </section>
-      <section className="section dark">
+      <section className="section light">
         <div className="container">
-          <Heading title={ui.related} />
-          <ServiceGrid items={services.filter((v) => s.related.includes(v.slug))} />
+          <SectionHead eyebrow={ui.related} title={ui.relatedTitle} />
+          <ServiceCarousel items={services.filter((v) => s.related.includes(v.slug))} />
         </div>
       </section>
       {posts.some((p) => p.related_service === slug) && (

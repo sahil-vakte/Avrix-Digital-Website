@@ -11,6 +11,8 @@ import {
   pageSchema,
   serviceSchema,
   solutionSchema,
+  industrySchema,
+  caseStudySchema,
   blogSchema,
   statSchema,
   testimonialSchema,
@@ -76,6 +78,11 @@ export function loadContent(): Content {
     legal: collection('legal', pageSchema),
     services: collection('services', serviceSchema).sort((a, b) => a.order - b.order),
     solutions: collection('solutions', solutionSchema).sort((a, b) => a.order - b.order),
+    industries: collection('industries', industrySchema).sort((a, b) => a.order - b.order),
+    // Case studies only appear once they are published and approved by the client.
+    caseStudies: collection('case-studies', caseStudySchema)
+      .filter((c) => c.published && c.approved_by_client)
+      .sort((a, b) => b.updated.localeCompare(a.updated)),
     posts: collection('blog', blogSchema)
       .filter((p) => !p.draft)
       .sort((a, b) => b.published.localeCompare(a.published)),
@@ -97,6 +104,9 @@ export function loadContent(): Content {
       path.join(root, 'assets', site.logo.light_on_dark.replace(/^\/media\//, '')),
     ),
   };
+  // Hide the case studies link until at least one case study is published.
+  if (!data.caseStudies.length)
+    data.nav.resources = data.nav.resources.filter((r) => r.href !== '/case-studies/');
   const slugs = new Set(data.services.map((s) => s.slug));
   for (const s of data.services) {
     for (const r of s.related) if (!slugs.has(r)) throw new Error(`Unknown related service ${r}`);
@@ -105,8 +115,25 @@ export function loadContent(): Content {
   }
   for (const p of data.posts)
     if (!slugs.has(p.related_service)) throw new Error(`Unknown service ${p.related_service}`);
-  for (const group of data.nav.mega_menu)
+  for (const group of [...data.nav.mega_menu, ...data.nav.cyber_menu])
     for (const s of group.items) if (!slugs.has(s)) throw new Error(`Unknown menu service ${s}`);
+  const industrySlugs = new Set(data.industries.map((i) => i.slug));
+  for (const i of data.industries) {
+    if (!fs.existsSync(path.join(root, `assets/icons/${i.icon}.svg`)))
+      throw new Error(`Missing industry icon ${i.icon}`);
+    for (const r of [...i.related, ...i.pillars.flatMap((p) => p.services || [])])
+      if (!slugs.has(r)) throw new Error(`Unknown service ${r} in industry ${i.slug}`);
+  }
+  for (const c of data.caseStudies) {
+    if (!industrySlugs.has(c.industry)) throw new Error(`Unknown industry ${c.industry}`);
+    for (const r of c.services) if (!slugs.has(r)) throw new Error(`Unknown service ${r}`);
+  }
+  for (const item of [
+    ...data.services.flatMap((s) => [...s.included, ...(s.scope || []), ...(s.deliverables || [])]),
+    ...data.industries.flatMap((i) => [...i.challenges, ...i.pillars]),
+  ])
+    if (item.icon && !fs.existsSync(path.join(root, `assets/icons/${item.icon}.svg`)))
+      throw new Error(`Missing icon ${item.icon}`);
   for (const solution of data.solutions) {
     if (!fs.existsSync(path.join(root, `assets/icons/${solution.icon}.svg`)))
       throw new Error(`Missing solution icon ${solution.icon}`);
@@ -120,6 +147,8 @@ export function loadContent(): Content {
     ...data.legal,
     ...data.services,
     ...data.solutions,
+    ...data.industries,
+    ...data.caseStudies,
     ...data.posts,
   ];
   const titles = new Set<string>();
@@ -135,7 +164,11 @@ export function loadContent(): Content {
   }
   const routes = new Set([
     '/',
-    ...data.pages.map((p) => `/${p.slug}/`),
+    ...data.pages
+      .filter((p) => p.slug !== 'case-studies' || data.caseStudies.length)
+      .map((p) => `/${p.slug}/`),
+    ...data.industries.map((p) => `/industries/${p.slug}/`),
+    ...data.caseStudies.map((p) => `/case-studies/${p.slug}/`),
     ...data.legal.map((p) => `/${p.slug}/`),
     ...data.services.map((p) => `/services/${p.slug}/`),
     ...data.solutions.map((p) => `/solutions/${p.slug}/`),

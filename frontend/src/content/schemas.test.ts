@@ -23,7 +23,12 @@ it('sanitises markdown and prevents secondary H1s', () => {
 });
 it('loads all content and removes unverified proof', () => {
   const c = loadContent();
-  expect(c.services).toHaveLength(9);
+  expect(c.services).toHaveLength(24);
+  expect(c.services.filter((s) => s.pillar === 'secure')).toHaveLength(15);
+  expect(c.industries).toHaveLength(7);
+  // Case studies stay hidden until they are published and approved by the client.
+  expect(c.caseStudies).toHaveLength(0);
+  expect(c.nav.resources.some((r) => r.href === '/case-studies/')).toBe(false);
   expect(c.posts).toHaveLength(3);
   expect(c.solutions.map((s) => s.slug)).toEqual(['voice-call-agent', 'wims', 'hr-desk']);
   expect(c.stats).toHaveLength(0);

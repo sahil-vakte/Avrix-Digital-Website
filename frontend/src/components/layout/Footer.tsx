@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
-import { content, site, services, serviceHref, nav, ui } from '../../content';
+import { content, industries, industryHref, site, services, serviceHref, nav, ui } from '../../content';
+import { Linkedin, Mail, Phone, Globe } from 'lucide-react';
 import { track } from '../../lib/analytics';
 import { apiOrigin } from '../../lib/api';
 const Newsletter = lazy(() => import('../forms/Newsletter'));
@@ -9,9 +10,8 @@ export default function Footer() {
   return (
     <footer>
       <div className="container">
-        <p className="footer-wordmark">{site.tagline}</p>
         <div className="footer-grid">
-          <div>
+          <div className="footer-brand">
             <a className="wordmark" href="/">
               {content.hasLogo ? (
                 <img
@@ -25,39 +25,74 @@ export default function Footer() {
                 site.brand_name.toUpperCase()
               )}
             </a>
+            <p>{nav.footer.tagline || site.tagline}</p>
             <p>{site.service_area}</p>
-            <a href={`mailto:${site.email}`} onClick={() => track('email_click')}>
-              {site.email}
-            </a>
-            {site.phone && (
-              <a href={`tel:${site.phone}`} onClick={() => track('phone_click')}>
-                {site.phone}
+            <div className="footer-contact">
+              <a href={`mailto:${site.email}`} onClick={() => track('email_click')}>
+                <Mail size={14} aria-hidden="true" />
+                {site.email}
               </a>
-            )}
-            <p>{site.opening_hours}</p>
-            {Object.entries(site.socials)
-              .filter(([, v]) => v)
-              .map(([k, v]) => (
-                <a key={k} href={v!}>
-                  {k}
+              {site.phone && (
+                <a href={`tel:${site.phone}`} onClick={() => track('phone_click')}>
+                  <Phone size={14} aria-hidden="true" />
+                  {site.phone}
                 </a>
-              ))}
+              )}
+            </div>
+            <p>{site.opening_hours}</p>
+            <div className="footer-socials">
+              {Object.entries(site.socials)
+                .filter(([, v]) => v)
+                .map(([k, v]) => (
+                  <a key={k} href={v!} aria-label={k}>
+                    {k === 'linkedin' ? <Linkedin size={15} aria-hidden="true" /> : <Globe size={15} aria-hidden="true" />}
+                  </a>
+                ))}
+            </div>
           </div>
           <div>
-            <h3>{ui.services}</h3>
-            {services.map((s) => (
-              <a key={s.slug} href={serviceHref(s.slug)}>
-                {s.title}
-              </a>
-            ))}
-          </div>
-          <div>
-            <h3>{ui.company}</h3>
+            <h3>{ui.explore}</h3>
             {nav.footer.company.map((l) => (
               <a key={l.label} href={l.href}>
                 {l.label}
               </a>
             ))}
+          </div>
+          <div>
+            <h3>{ui.services}</h3>
+            {services
+              .filter((s) => s.pillar !== 'secure')
+              .map((s) => (
+                <a key={s.slug} href={serviceHref(s.slug)}>
+                  {s.title}
+                </a>
+              ))}
+          </div>
+          <div>
+            <h3>{ui.cyberSecurity}</h3>
+            {nav.cyber_menu.map((g) => (
+              <a key={g.pillar} href={serviceHref(g.items[0])}>
+                {g.label}
+              </a>
+            ))}
+            {['cyber-essentials', 'iso-27001', 'penetration-testing'].map((slug) => (
+              <a key={slug} href={serviceHref(slug)}>
+                {services.find((s) => s.slug === slug)!.title}
+              </a>
+            ))}
+            <a href="/cyber-security/">
+              {ui.all} {ui.cyberSecurity.toLowerCase()} ↗
+            </a>
+          </div>
+          <div>
+            <h3>{ui.industries}</h3>
+            {industries.map((i) => (
+              <a key={i.slug} href={industryHref(i.slug)}>
+                {i.title}
+              </a>
+            ))}
+          </div>
+          <div>
             <h3>{ui.legal}</h3>
             {nav.footer.legal.map((l) =>
               l.action ? (
@@ -73,10 +108,10 @@ export default function Footer() {
                 </a>
               ),
             )}
+            <Suspense>
+              <Newsletter />
+            </Suspense>
           </div>
-          <Suspense>
-            <Newsletter />
-          </Suspense>
         </div>
         <div className="footer-bottom">
           <span>
