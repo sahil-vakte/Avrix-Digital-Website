@@ -24,7 +24,7 @@
   "favicon": "/media/brand/avrix-favicon.webp",
   "logo": {
     "light_on_dark": "/media/brand/avrix-logo-white.webp",
-    "dark_on_light": "/media/brand/avrix-logo-search.png",
+    "dark_on_light": "/media/brand/avrix-logo-dark.webp",
     "search": "/media/brand/avrix-logo-search.png",
     "alt": "AVRIX Digital"
   },

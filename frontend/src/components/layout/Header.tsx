@@ -87,7 +87,7 @@ export default function Header() {
       <div className="container header-inner">
         <a className="wordmark" href="/" aria-label={site.brand_name}>
           {content.hasLogo ? (
-            <img src={site.logo.light_on_dark} alt={site.logo.alt} width="372" height="85" />
+            <img src={site.logo.dark_on_light} alt={site.logo.alt} width="372" height="85" />
           ) : (
             <>
               {site.brand_name.toUpperCase()}

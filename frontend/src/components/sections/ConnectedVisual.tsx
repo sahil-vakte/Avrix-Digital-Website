@@ -14,8 +14,8 @@ export default function ConnectedVisual() {
         <svg viewBox="0 0 500 440" fill="none">
           <defs>
             <radialGradient id="orbit-halo">
-              <stop stopColor="#f19e82" stopOpacity=".15" />
-              <stop offset="1" stopColor="#f19e82" stopOpacity="0" />
+              <stop stopColor="#fd3f00" stopOpacity=".09" />
+              <stop offset="1" stopColor="#fd3f00" stopOpacity="0" />
             </radialGradient>
             <linearGradient
               id="orbit-line"
@@ -25,13 +25,13 @@ export default function ConnectedVisual() {
               y2="380"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stopColor="#e6cfc7" />
-              <stop offset=".55" stopColor="#ee8765" />
-              <stop offset="1" stopColor="#6a3e30" />
+              <stop stopColor="#fb0d22" />
+              <stop offset=".55" stopColor="#fd3f00" />
+              <stop offset="1" stopColor="#ffb08a" />
             </linearGradient>
           </defs>
           <circle cx="250" cy="220" r="210" fill="url(#orbit-halo)" />
-          <g stroke="#3a3230" strokeWidth="1">
+          <g stroke="#f1e4e0" strokeWidth="1">
             <path d="M0 220H500M250 0V440" />
             <circle cx="250" cy="220" r="190" strokeDasharray="3 9" />
             <path d="M38 30v18m-9-9h18M462 392v18m-9-9h18" />
@@ -51,12 +51,12 @@ export default function ConnectedVisual() {
             rx="220"
             ry="66"
             transform="rotate(-30 250 220)"
-            stroke="#f19f84"
+            stroke="#fd3f00"
             strokeWidth="1.5"
           />
-          <circle cx="71" cy="325" r="7" fill="#e5cdc5" />
-          <circle cx="430" cy="116" r="5" fill="#e5cdc5" />
-          <circle cx="250" cy="220" r="28" fill="#1b1614" />
+          <circle cx="71" cy="325" r="7" fill="#fb0d22" />
+          <circle cx="430" cy="116" r="5" fill="#fb0d22" />
+          <circle cx="250" cy="220" r="28" fill="#ffffff" stroke="#fbe1da" />
           <image href={site.favicon} x="232" y="202" width="36" height="36" />
         </svg>
         <span className="orbit-label label-grow">{paths[0]?.label}</span>
