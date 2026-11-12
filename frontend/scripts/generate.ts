@@ -111,6 +111,21 @@ for (const folder of ['services', 'blog'])
           .toFormat(format, { quality: 75, effort: 0 })
           .toFile(`dist/media/covers/${folder}/${name}-${width}.${format}`);
   }
+// The VPS (nginx) ignores Cloudflare-style _redirects, so give every retired
+// page in _redirects an instant-redirect page with a canonical link. Search
+// engines treat an immediate meta refresh as a permanent redirect.
+for (const line of fs.readFileSync('public/_redirects', 'utf8').split('\n')) {
+  const [from, to] = line.trim().split(/\s+/);
+  if (!from?.startsWith('/') || !from.endsWith('/') || from.includes('*') || !to) continue;
+  const file = `dist${from}index.html`;
+  if (fs.existsSync(file)) continue;
+  const target = to.startsWith('http') ? to : base + to;
+  fs.mkdirSync(`dist${from}`, { recursive: true });
+  fs.writeFileSync(
+    file,
+    `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><title>Moved</title><link rel="canonical" href="${esc(target)}"><meta http-equiv="refresh" content="0; url=${esc(to)}"><script>location.replace(${JSON.stringify(to)})</script></head><body><p>This page has moved to <a href="${esc(to)}">${esc(target)}</a>.</p></body></html>`,
+  );
+}
 const notFound = 'dist/404/index.html';
 if (fs.existsSync(notFound)) fs.copyFileSync(notFound, 'dist/404.html');
 if (!production) fs.appendFileSync('dist/_headers', '\n/*\n  X-Robots-Tag: noindex, nofollow\n');
