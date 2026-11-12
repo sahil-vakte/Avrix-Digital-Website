@@ -2007,7 +2007,7 @@ fieldset {
 .footer-contact span {
   display: inline-block;
   min-width: 170px;
-  color: #8f99cf;
+  color: #a9b2e0;
 }
 .footer-contact a {
   color: #fff;
@@ -2095,14 +2095,14 @@ fieldset {
   padding-top: 24px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.82rem;
-  color: #8f99cf;
+  color: #a9b2e0;
 }
 .footer-utilities {
   display: flex;
   gap: 18px;
 }
 .footer-utilities a {
-  color: #8f99cf;
+  color: #a9b2e0;
   text-decoration: none;
 }
 
