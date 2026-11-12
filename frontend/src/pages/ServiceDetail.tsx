@@ -1,39 +1,40 @@
 import rawBodies from '../content/generated-services.json';
+import { services, ui, posts, homeSection } from '../content';
+import {
+  PageHero,
+  RequestCard,
+  SectionShell,
+  CardGrid,
+  Process,
+  ServiceGrid,
+  Tags,
+  FaqSection,
+  BlogTeaser,
+  pillarLabel,
+} from '../components/sections';
+import { Breadcrumbs, Prose } from '../components/ui';
+import type { Item } from '../content/schemas';
 const serviceBodies = rawBodies as Record<
   string,
   { html: string; toc: { id: string; text: string }[] }
 >;
-import { services, site, ui, posts, nav } from '../content';
-import {
-  Hero,
-  ValueGrid,
-  Process,
-  FAQ,
-  ServiceGrid,
-  Tags,
-  BlogTeaser,
-} from '../components/sections';
-import { Breadcrumbs, Heading, Prose } from '../components/ui';
 export default function ServiceDetail({ slug }: { slug: string }) {
   const s = services.find((s) => s.slug === slug)!;
-  const sections = [
-    'overview',
-    'included',
-    'process',
-    ...(s.pricing?.price_from != null ? ['pricing'] : []),
-    'faqs',
+  const advantage = (homeSection('advantage').items as Item[]).slice(0, 3);
+  const nav = [
+    ['overview', ui.overview],
+    ['included', ui.serviceAreas],
+    ['process', ui.ourProcess],
+    ['faqs', ui.faqs],
   ];
   return (
     <>
-      <Hero
-        section={{
-          type: 'hero',
-          h1: s.h1,
-          lead: s.intro,
-          eyebrow: nav.mega_menu.find((g) => g.pillar === s.pillar)?.label,
-          primary_cta: { label: site.booking_label, href: 'booking_url_or:/contact-us/' },
-          secondary_cta: { label: ui.enquire, href: '#enquiry' },
-        }}
+      <PageHero
+        eyebrow={pillarLabel(s.pillar)}
+        title={s.h1}
+        lead={s.intro}
+        tags={s.tags}
+        aside={<RequestCard />}
       >
         <Breadcrumbs
           items={[
@@ -41,80 +42,56 @@ export default function ServiceDetail({ slug }: { slug: string }) {
             { label: s.title, href: `/services/${slug}/` },
           ]}
         />
-      </Hero>
-      <nav className="in-page">
+      </PageHero>
+      <nav className="in-page" aria-label={ui.contents}>
         <div className="container">
-          {sections.map((k) => (
-            <a key={k} href={`#${k}`}>
-              {ui[k]}
+          {nav.map(([id, label]) => (
+            <a key={id} href={`#${id}`}>
+              {label}
             </a>
           ))}
         </div>
       </nav>
       <section className="section light" id="overview">
-        <div className="container overview-grid">
+        <div className={`container ${s.explainer ? 'split' : 'narrow'}`}>
           <Prose html={serviceBodies[s.slug].html} />
-          {s.hero_image && (
-            <img
-              src={s.hero_image.src}
-              alt={s.hero_image.alt}
-              width="1600"
-              height="900"
-              loading="lazy"
-            />
+          {s.explainer && (
+            <div className="explainer">
+              <h2 className="h3">{s.explainer.title}</h2>
+              {s.explainer.intro && <p>{s.explainer.intro}</p>}
+              <CardGrid items={s.explainer.cards} columns={2} />
+            </div>
           )}
         </div>
       </section>
-      <section className="section dark" id="included">
-        <div className="container">
-          <Heading title={ui.included} />
-          <ValueGrid items={s.included} />
-        </div>
-      </section>
-      <section className="section light">
-        <div className="container">
-          <Heading title={ui.outcomes} />
-          <ValueGrid items={s.outcomes} />
-          <Heading title={ui.tools} />
-          <Tags items={s.tools} />
-        </div>
-      </section>
-      <section className="section dark" id="process">
-        <div className="container">
-          <Heading title={ui.process} />
-          <Process steps={s.process} />
-        </div>
-      </section>
-      {s.pricing?.price_from != null && (
-        <section className="section light" id="pricing">
-          <div className="container pricing">
-            <Heading title={ui.pricing} />
-            <p className="price-display">
-              {ui.from} £{s.pricing.price_from.toLocaleString('en-GB')}{' '}
-              <small>{s.pricing.unit}</small>
-            </p>
-            <p>{s.pricing.note}</p>
-          </div>
-        </section>
+      <SectionShell tone="tint" eyebrow={ui.keyBenefits} title={`Why it *matters*`}>
+        <CardGrid items={s.outcomes} />
+      </SectionShell>
+      <SectionShell id="process" eyebrow={ui.ourProcess} title={`How we *deliver it*`}>
+        <Process steps={s.process} />
+      </SectionShell>
+      <SectionShell id="included" tone="tint" eyebrow={ui.serviceAreas} title={`What's *included*`}>
+        <CardGrid items={s.included.map((i) => ({ ...i, icon: s.icon }))} />
+      </SectionShell>
+      <SectionShell eyebrow={ui.whyAvrix} title={`The AVRIX *advantage*`}>
+        <CardGrid items={advantage} numbered />
+      </SectionShell>
+      {s.deliverables && (
+        <SectionShell tone="tint" eyebrow={ui.deliverables} title={`Clear, *actionable* outputs`}>
+          <CardGrid items={s.deliverables} />
+        </SectionShell>
       )}
-      <section className="section light" id="faqs">
-        <div className="container">
-          <Heading title={ui.faqs} />
-          <FAQ items={s.faqs} />
-        </div>
-      </section>
-      <section className="section dark">
-        <div className="container">
-          <Heading title={ui.related} />
-          <ServiceGrid items={services.filter((v) => s.related.includes(v.slug))} />
-        </div>
-      </section>
+      <SectionShell eyebrow={ui.frameworks} title={`Aligned to recognised *standards*`}>
+        <Tags items={s.tools} />
+      </SectionShell>
+      <FaqSection items={s.faqs} title={`${s.title}: *your questions answered*`} />
+      <SectionShell tone="tint" eyebrow={ui.related} title={`Related *services*`}>
+        <ServiceGrid items={services.filter((v) => s.related.includes(v.slug))} />
+      </SectionShell>
       {posts.some((p) => p.related_service === slug) && (
-        <section className="section light">
-          <div className="container">
-            <BlogTeaser items={posts.filter((p) => p.related_service === slug)} />
-          </div>
-        </section>
+        <SectionShell eyebrow={ui.blog} title={`Further *reading*`}>
+          <BlogTeaser items={posts.filter((p) => p.related_service === slug)} />
+        </SectionShell>
       )}
     </>
   );

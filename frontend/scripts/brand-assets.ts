@@ -51,7 +51,7 @@ export async function prepareBrandAssets(site: Site) {
     .png()
     .toBuffer();
   const searchLogo = await sharp({
-    create: { width: 512, height: 160, channels: 4, background: '#1b1614' },
+    create: { width: 512, height: 160, channels: 4, background: '#0b1446' },
   })
     .composite([{ input: logo, gravity: 'centre' }])
     .png()
@@ -68,8 +68,8 @@ export async function prepareBrandAssets(site: Site) {
         short_name: site.brand_name,
         start_url: '/',
         display: 'standalone',
-        theme_color: '#1b1614',
-        background_color: '#1b1614',
+        theme_color: '#0b1446',
+        background_color: '#ffffff',
         icons: [192, 512].map((size) => ({
           src: `/favicon-${size}.png`,
           sizes: `${size}x${size}`,

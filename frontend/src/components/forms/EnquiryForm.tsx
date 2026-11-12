@@ -179,7 +179,7 @@ export default function EnquiryForm({
         </p>
       </noscript>
       <button className="button primary" disabled={!hydrated || isSubmitting} type="submit">
-        {isSubmitting ? ui.sending : copy.submit_label} <span aria-hidden="true">↗</span>
+        {isSubmitting ? ui.sending : copy.submit_label} <span aria-hidden="true">→</span>
       </button>
       <div aria-live="polite">
         {failed && (

@@ -11,6 +11,12 @@ SERVICES = [
     "voice-call-agent",
     "wims",
     "hr-desk",
+    "penetration-testing",
+    "managed-soc",
+    "security-compliance",
+    "incident-response",
+    "security-training",
+    "security-products",
     "not-sure",
 ]
 BUDGETS = ["under-1k", "1k-3k", "3k-5k", "5k-10k", "10k-plus", "monthly-retainer", "not-sure"]

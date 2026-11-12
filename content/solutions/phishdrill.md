@@ -12,7 +12,7 @@ lead: >-
   risk is changing over time. It turns security awareness from a yearly tick
   box into a habit.
 icon: awareness-training
-order: 5
+order: 1
 preview:
   src: /media/previews/phishdrill.svg
   alt: >-

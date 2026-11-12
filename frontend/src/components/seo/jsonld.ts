@@ -66,10 +66,7 @@ export function jsonLd(route: RouteRecord) {
       description: s.summary,
       url: base + route.path,
       provider,
-      areaServed: 'GB',
-      ...(s.pricing?.price_from != null
-        ? { offers: { '@type': 'Offer', price: s.pricing.price_from, priceCurrency: 'GBP' } }
-        : {}),
+      areaServed: ['GB', 'IE', 'EU'],
     });
   }
   if (faqs.length)

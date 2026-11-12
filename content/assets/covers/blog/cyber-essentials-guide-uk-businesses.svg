@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Cyber Essentials explained for UK businesses">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b100e8"/><stop offset="1" stop-color="#048aff"/></linearGradient>
+<filter id="b" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="90"/></filter>
+<pattern id="d" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.2" fill="#fff" fill-opacity=".09"/></pattern></defs>
+<rect width="1600" height="900" fill="#0b1446"/>
+<g filter="url(#b)"><ellipse cx="1250" cy="260" rx="380" ry="260" fill="#7b2ff7" fill-opacity=".6"/><ellipse cx="1400" cy="720" rx="300" ry="200" fill="#00c8ff" fill-opacity=".4"/></g>
+<rect width="1600" height="900" fill="url(#d)"/>
+<rect x="1010" y="230" width="440" height="440" rx="96" fill="url(#g)" opacity=".95"/>
+<g transform="translate(1086 306) scale(12)" color="#FFFFFF" stroke-width="1.4"><circle cx="12" cy="9" r="6"/><path d="M9 9l2 2 4-4"/><path d="M8.5 14l-1.5 7 5-3 5 3-1.5-7"/></g>
+</svg>

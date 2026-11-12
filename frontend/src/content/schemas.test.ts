@@ -23,13 +23,10 @@ it('sanitises markdown and prevents secondary H1s', () => {
 });
 it('loads all content and removes unverified proof', () => {
   const c = loadContent();
-  expect(c.services).toHaveLength(16);
+  expect(c.services).toHaveLength(20);
+  expect(c.industries).toHaveLength(7);
   expect(c.posts).toHaveLength(3);
   expect(c.solutions.map((s) => s.slug)).toEqual([
-    'ai-marketing-automation',
-    'voice-call-agent',
-    'wims',
-    'hr-desk',
     'phishdrill',
     'attack-surface-monitor',
     'compliance-hub',

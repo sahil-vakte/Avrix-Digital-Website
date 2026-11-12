@@ -8,11 +8,12 @@ import Footer from './components/layout/Footer';
 import CookieBanner from './components/layout/CookieBanner';
 import EnquiryExperience from './components/forms/EnquiryExperience';
 import Seo from './components/seo/Seo';
-import { CtaBand } from './components/sections';
+import { CtaBand, SocWidget } from './components/sections';
 const Home = lazy(() => import('./pages/Home'));
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 const ContentPages = lazy(() => import('./pages/ContentPages'));
 const Solutions = lazy(() => import('./pages/Solutions'));
+const Industries = lazy(() => import('./pages/Industries'));
 import { captureAttribution } from './lib/utm';
 import { initConsent } from './lib/analytics';
 const Enhance = lazy(() => import('./components/motion/Enhance'));
@@ -41,6 +42,7 @@ function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <SocWidget />
       <CookieBanner />
       {ready && (
         <Suspense>
@@ -67,6 +69,8 @@ function RoutePage({ route }: { route: RouteRecord }) {
           <ServiceDetail slug={route.slug!} />
         ) : route.kind === 'solution' || route.kind === 'solutions' ? (
           <Solutions route={route} />
+        ) : route.kind === 'industry' || route.kind === 'industries' ? (
+          <Industries route={route} />
         ) : (
           <ContentPages route={route} />
         )}

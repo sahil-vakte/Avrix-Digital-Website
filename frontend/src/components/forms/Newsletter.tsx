@@ -68,7 +68,7 @@ export default function Newsletter() {
       <a href="/privacy-policy/">{ui.legal}</a>
       {active && <Turnstile onToken={onToken} />}
       <button type="submit" disabled={!active} className="button secondary">
-        {ui.newsletterSubmit} ↗
+        {ui.newsletterSubmit} →
       </button>
       <p role="status">{state}</p>
       <noscript>

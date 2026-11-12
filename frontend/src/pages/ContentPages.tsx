@@ -1,27 +1,21 @@
 import rawBodies from '../content/generated-pages.json';
 import { lazy, Suspense, useState } from 'react';
-import {
-  content,
-  page,
-  services,
-  posts,
-  site,
-  ui,
-  homeSection,
-  serviceHref,
-  postHref,
-} from '../content';
+import { content, page, services, posts, site, ui, homeSection, nav } from '../content';
 import type { RouteRecord } from '../content/routes';
+import type { Item } from '../content/schemas';
 import {
-  Hero,
-  ServicesFilter,
-  ValueGrid,
-  Process,
+  PageHero,
+  SectionShell,
+  CardGrid,
   ServiceGrid,
+  ServicesDirectory,
   FAQ,
+  FaqSection,
+  FrameworkGrid,
   BlogTeaser,
+  Timeline,
 } from '../components/sections';
-import { Button, Heading, Prose } from '../components/ui';
+import { Breadcrumbs, Button, Em, Icon, Prose } from '../components/ui';
 const pageBodies = rawBodies as Record<
   string,
   { html: string; toc: { id: string; text: string }[] }
@@ -29,55 +23,73 @@ const pageBodies = rawBodies as Record<
 const BlogPost = lazy(() => import('./BlogPost'));
 const Legal = lazy(() => import('./Legal'));
 const EnquiryForm = lazy(() => import('../components/forms/EnquiryForm'));
+
+function Highlights({ items, stats = false }: { items: Item[]; stats?: boolean }) {
+  return (
+    <ul className={stats ? 'hero-stats' : 'trust-strip'}>
+      {items.map((h) => (
+        <li key={h.title}>
+          <strong>{h.title}</strong>
+          <span>{h.text}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function ContentPages({ route }: { route: RouteRecord }) {
   const [search, setSearch] = useState('');
   const p = route.slug
     ? [...content.pages, ...content.legal].find((p) => p.slug === route.slug)
     : undefined;
   const blog = page('blog');
+  const crumbs = p ? [{ label: route.h1.replace(/\*/g, ''), href: route.path }] : [];
   const hero = (
-    <Hero section={{ type: 'hero', h1: route.h1, lead: p?.lead, eyebrow: p?.eyebrow }} />
+    <PageHero eyebrow={p?.eyebrow} title={route.h1} lead={p?.lead} actions={false}>
+      {route.kind !== '404' && crumbs.length > 0 && (
+        <Breadcrumbs items={[{ label: p?.eyebrow || crumbs[0].label, href: route.path }]} />
+      )}
+    </PageHero>
   );
+
   if (route.kind === 'about')
     return (
       <>
-        {hero}
+        <PageHero
+          eyebrow={p!.eyebrow}
+          title={p!.h1}
+          lead={p!.lead}
+          footer={p!.highlights && <Highlights items={p!.highlights} stats />}
+        >
+          <Breadcrumbs items={[{ label: p!.eyebrow!, href: route.path }]} />
+        </PageHero>
         <section className="section light">
-          <div className="container overview-grid">
+          <div className="container split">
             <Prose html={pageBodies[p!.slug].html} />
-            {p!.team_image && (
-              <img
-                src={p!.team_image.src}
-                alt={p!.team_image.alt}
-                width="800"
-                height="1000"
-                loading="lazy"
-              />
+            <CardGrid items={p!.values!} columns={2} numbered />
+          </div>
+        </section>
+        {p!.sections?.map((s, i) => (
+          <SectionShell
+            key={s.title}
+            id={s.id}
+            tone={i % 2 ? 'light' : 'tint'}
+            eyebrow={s.eyebrow}
+            title={s.title}
+            intro={s.intro}
+          >
+            {s.id === 'standards' ? (
+              <FrameworkGrid items={s.items} />
+            ) : (
+              <CardGrid items={s.items} columns={4} />
             )}
-          </div>
-        </section>
-        <section className="section dark">
-          <div className="container">
-            <ValueGrid items={p!.values!} />
-          </div>
-        </section>
-        <section className="section light">
-          <div className="container">
-            <Heading title={ui.services} />
-            <ServiceGrid />
-          </div>
-        </section>
-        <section className="section dark">
-          <div className="container">
-            <Heading title={homeSection('process').title} />
-            <Process steps={homeSection('process').steps!} />
-          </div>
-        </section>
+          </SectionShell>
+        ))}
         {!!p!.team?.length && (
-          <section className="section light">
-            <div className="container grid">
+          <SectionShell title="Our *team*">
+            <div className="grid cards-3">
               {p!.team.map((t) => (
-                <article key={t.name}>
+                <article className="card" key={t.name}>
                   <img
                     src={t.photo.src}
                     alt={t.photo.alt}
@@ -85,70 +97,99 @@ export default function ContentPages({ route }: { route: RouteRecord }) {
                     height="500"
                     loading="lazy"
                   />
-                  <h2>{t.name}</h2>
-                  <p>{t.role}</p>
+                  <h3>{t.name}</h3>
+                  <p className="card-label">{t.role}</p>
                   <p>{t.bio}</p>
                   {t.linkedin && <a href={t.linkedin}>LinkedIn</a>}
                 </article>
               ))}
             </div>
-          </section>
+          </SectionShell>
         )}
+        <SectionShell
+          eyebrow={homeSection('engagement').eyebrow}
+          title={homeSection('engagement').title}
+        >
+          <Timeline steps={homeSection('engagement').items as Item[]} />
+        </SectionShell>
       </>
     );
+
   if (route.kind === 'services')
     return (
       <>
-        {hero}
-        <section className="section light">
+        <PageHero eyebrow={p!.eyebrow} title={p!.h1} lead={p!.lead}>
+          <Breadcrumbs items={[{ label: ui.services, href: '/services/' }]} />
+        </PageHero>
+        <SectionShell
+          eyebrow={homeSection('services_carousel').eyebrow}
+          title={`Our core *capabilities*`}
+          intro={homeSection('services_carousel').intro}
+        >
+          <ServiceGrid
+            items={services.filter((s) =>
+              [
+                'penetration-testing',
+                'cloud-security-assessment',
+                'managed-security',
+                'red-teaming',
+                'cyber-essentials',
+                'incident-response',
+              ].includes(s.slug),
+            )}
+          />
+        </SectionShell>
+        {nav.mega_menu.map((g, i) => (
+          <SectionShell
+            key={g.pillar}
+            id={g.pillar}
+            tone={i % 2 ? 'light' : 'tint'}
+            eyebrow={`${String(i + 1).padStart(2, '0')} / ${g.items.length} ${ui.servicesCount}`}
+            title={g.label}
+            intro={g.blurb}
+          >
+            <ServiceGrid items={g.items.map((slug) => services.find((s) => s.slug === slug)!)} />
+          </SectionShell>
+        ))}
+        <SectionShell id="directory" eyebrow={ui.directory} title={`Find the *right service*`}>
+          <ServicesDirectory />
+        </SectionShell>
+        <section className="section tint">
           <div className="container">
-            <h2 className="sr-only">{ui.services}</h2>
-            <ServicesFilter />
-          </div>
-        </section>
-        <section className="section dark">
-          <div className="container">
-            <Heading title={p!.helper!.title} />
-            <div className="grid scenario-grid">
-              {p!.helper!.scenarios.map((s) => (
-                <article key={s.service}>
-                  <h3>{s.problem}</h3>
-                  <a href={serviceHref(s.service)}>
-                    {services.find((v) => v.slug === s.service)!.title} ↗
-                  </a>
-                  {s.then && (
-                    <p>
-                      <a href={serviceHref(s.then)}>
-                        {services.find((v) => v.slug === s.then)!.title} ↗
-                      </a>
-                    </p>
-                  )}
-                </article>
-              ))}
+            <div className="advisory card">
+              <div>
+                <p className="eyebrow">{ui.openEnquiry}</p>
+                <h2>
+                  <Em text="Not sure where to start? *Talk to a specialist.*" />
+                </h2>
+                <Highlights items={p!.highlights!} />
+              </div>
+              <Button href={nav.header_cta.href!} size="lg">
+                {nav.header_cta.label}
+              </Button>
             </div>
           </div>
         </section>
-        <section className="section light">
-          <div className="container">
-            <FAQ items={content.faqs.groups.flatMap((g) => g.items)} />
-          </div>
-        </section>
+        <FaqSection items={p!.faqs || []} />
       </>
     );
+
   if (route.kind === 'faqs')
     return (
       <>
         {hero}
         <section className="section light">
           <div className="container narrow">
-            <label htmlFor="faq-search">{ui.search}</label>
-            <input
-              id="faq-search"
-              type="search"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder={p!.search_placeholder}
-            />
+            <label className="search-field wide">
+              <span className="sr-only">{ui.search}</span>
+              <input
+                id="faq-search"
+                type="search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder={p!.search_placeholder}
+              />
+            </label>
             {[
               ...content.faqs.groups,
               ...services.map((s) => ({ key: s.slug, label: s.title, items: s.faqs })),
@@ -162,47 +203,59 @@ export default function ContentPages({ route }: { route: RouteRecord }) {
         </section>
       </>
     );
+
   if (route.kind === 'contact')
     return (
       <>
-        {hero}
-        <section className="section light">
+        <PageHero
+          eyebrow={p!.eyebrow}
+          title={p!.h1}
+          lead={p!.lead}
+          actions={false}
+          footer={p!.highlights && <Highlights items={p!.highlights} />}
+        >
+          <Breadcrumbs items={[{ label: p!.eyebrow!, href: route.path }]} />
+        </PageHero>
+        <section className="section light" id="enquiry">
           <div className="container contact-grid">
-            <Suspense>
-              <EnquiryForm />
-            </Suspense>
-            <aside role="region" aria-label={p!.side_card!.title}>
-              <h2>{p!.side_card!.title}</h2>
-              <p>{p!.side_card!.text}</p>
-              <Button href="booking_url_or:/contact-us/">{site.booking_label}</Button>
-              <p>
+            <div className="card form-card">
+              <h2>{p!.form!.title}</h2>
+              <Suspense>
+                <EnquiryForm />
+              </Suspense>
+            </div>
+            <aside className="contact-side" aria-label={ui.emailUs}>
+              <div className="card contact-card">
+                <Icon name="awareness-training" />
+                <h2 className="h3">{ui.emailUs}</h2>
                 <a href={`mailto:${site.email}`}>{site.email}</a>
-              </p>
-              {site.phone && (
-                <p>
-                  <a href={`tel:${site.phone}`}>{site.phone}</a>
-                </p>
-              )}
-              <ol className="next-steps">
-                {p!.next_steps!.map((s) => (
-                  <li key={s.title}>
-                    <h3>{s.title}</h3>
-                    <p>{s.text}</p>
-                  </li>
-                ))}
-              </ol>
-              <p>{site.response_promise}</p>
-              <a href="/privacy-policy/">{ui.legal}</a>
+                {site.phone && <a href={`tel:${site.phone}`}>{site.phone}</a>}
+                <p>{site.response_promise}</p>
+              </div>
+              <div className="card contact-card">
+                <Icon name="checklist" />
+                <h2 className="h3">{ui.hours}</h2>
+                <p>{site.opening_hours}</p>
+                <p>{site.service_area}</p>
+              </div>
+              <div className="card emergency-card">
+                <Icon name="incident-response" />
+                <h2 className="h3">{p!.side_card!.title}</h2>
+                <p>{p!.side_card!.text}</p>
+                <Button href="/services/incident-response/" size="sm">
+                  {ui.emergencyCta}
+                </Button>
+              </div>
             </aside>
           </div>
         </section>
-        <section className="section light">
-          <div className="container">
-            <FAQ items={p!.faqs!} />
-          </div>
-        </section>
+        <SectionShell tone="tint" title={`What happens *next*`}>
+          <CardGrid items={p!.next_steps!} numbered />
+        </SectionShell>
+        <FaqSection items={p!.faqs!} />
       </>
     );
+
   if (route.kind === 'blog') {
     const filtered = posts.filter((p) => !route.category || p.category === route.category);
     const start = ((route.pageNumber || 1) - 1) * 12;
@@ -228,7 +281,7 @@ export default function ContentPages({ route }: { route: RouteRecord }) {
             </nav>
             {!filtered.length && <p>{ui.noPosts}</p>}
             <BlogTeaser items={filtered.slice(start, start + 12)} />
-            <nav className="actions">
+            <nav className="actions pagination">
               {(route.pageNumber || 1) > 1 && (
                 <a
                   href={route.pageNumber === 2 ? '/blog/' : `/blog/page/${route.pageNumber! - 1}/`}
@@ -263,14 +316,14 @@ export default function ContentPages({ route }: { route: RouteRecord }) {
         {hero}
         <section className="section light">
           <div className="container">
-            <div className="actions">
+            <div className="actions centred">
               {p!.links!.map((l) => (
-                <Button key={l.href} href={l.href!}>
+                <Button key={l.href} href={l.href!} variant="secondary">
                   {l.label}
                 </Button>
               ))}
             </div>
-            <ServiceGrid />
+            <ServiceGrid items={services.slice(0, 6)} />
           </div>
         </section>
       </>
@@ -279,24 +332,25 @@ export default function ContentPages({ route }: { route: RouteRecord }) {
     <>
       {hero}
       <section className="section light">
-        <div className="container">
-          <p>
+        <div className="container narrow centred">
+          <p className="lead">
             {route.kind === 'thank-you'
               ? page('contact-us').form!.success_text
               : site.response_promise}
           </p>
-          <Button href="booking_url_or:/contact-us/">{site.booking_label}</Button>
-          {route.kind === 'thank-you' && (
-            <>
-              <ValueGrid items={page('contact-us').next_steps!} />
-              <BlogTeaser />
-            </>
-          )}
-          <p>
-            <a href={postHref(posts[0].slug)}>{posts[0].title}</a>
-          </p>
+          <div className="actions centred">
+            <Button href="/services/">{ui.services}</Button>
+            <Button href="/blog/" variant="secondary">
+              {ui.blog}
+            </Button>
+          </div>
         </div>
       </section>
+      {route.kind === 'thank-you' && (
+        <SectionShell tone="tint" title={`What happens *next*`}>
+          <CardGrid items={page('contact-us').next_steps!} numbered />
+        </SectionShell>
+      )}
     </>
   );
 }

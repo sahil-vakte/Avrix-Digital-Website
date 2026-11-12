@@ -1,141 +1,86 @@
 {
   "header": [
-    {
-      "label": "Services",
-      "href": "/services/",
-      "mega": true
-    },
-    {
-      "label": "Products",
-      "href": "/solutions/"
-    },
-    {
-      "label": "About",
-      "href": "/about/"
-    },
-    {
-      "label": "Insights",
-      "href": "/blog/"
-    },
-    {
-      "label": "FAQs",
-      "href": "/faqs/"
-    },
-    {
-      "label": "Contact",
-      "href": "/contact-us/"
-    }
+    { "label": "Home", "href": "/" },
+    { "label": "About Us", "href": "/about/" },
+    { "label": "Services", "href": "/services/", "menu": "services" },
+    { "label": "Solutions", "href": "/solutions/", "menu": "solutions" },
+    { "label": "Industries", "href": "/industries/", "menu": "industries" },
+    { "label": "Resources", "href": "/blog/", "menu": "resources" },
+    { "label": "Contact Us", "href": "/contact-us/" }
   ],
-  "header_cta": {
-    "label": "Book a call",
-    "href": "booking_url_or:/contact-us/"
-  },
+  "header_cta": { "label": "Book a Free Consultation", "href": "booking_url_or:/contact-us/" },
   "mega_menu": [
     {
-      "pillar": "grow",
-      "label": "Grow",
-      "blurb": "More qualified leads and sales from your marketing spend.",
-      "items": [
-        "performance-marketing",
-        "ga4-consulting"
-      ]
-    },
-    {
-      "pillar": "build",
-      "label": "Build & automate",
-      "blurb": "Websites, apps and automations that do real work.",
-      "items": [
-        "web-development",
-        "web-application-development",
-        "ai-automation"
-      ]
-    },
-    {
-      "pillar": "run",
-      "label": "Run",
-      "blurb": "Cloud tools set up properly, sized right and supported.",
-      "items": [
-        "microsoft-365-copilot",
-        "google-workspace",
-        "aws-consulting"
-      ]
-    },
-    {
-      "pillar": "secure",
-      "label": "Secure",
-      "blurb": "Protect your data, pass audits and recover fast if attacked.",
+      "pillar": "offensive",
+      "label": "Offensive Security",
+      "blurb": "Find and fix weaknesses before attackers do.",
       "items": [
         "penetration-testing",
-        "cyber-essentials",
-        "security-compliance",
-        "managed-security",
-        "incident-response",
-        "vciso",
+        "network-penetration-testing",
+        "cloud-security-assessment",
+        "api-security-testing",
+        "red-teaming",
         "security-awareness-training"
       ]
     },
     {
-      "pillar": "hire",
-      "label": "Hire",
-      "blurb": "Tech and digital people who stay and deliver.",
+      "pillar": "managed",
+      "label": "Managed Defence & SOC",
+      "blurb": "Round-the-clock monitoring, detection and response.",
       "items": [
-        "talent-acquisition"
+        "managed-security",
+        "managed-detection-response",
+        "threat-intelligence",
+        "vulnerability-management"
       ]
+    },
+    {
+      "pillar": "compliance",
+      "label": "Compliance & GRC",
+      "blurb": "Meet UK and EU standards and win the contracts that need them.",
+      "items": ["cyber-essentials", "iso-27001", "soc-2", "gdpr-compliance", "pci-dss", "nis2-dora", "vciso"]
+    },
+    {
+      "pillar": "response",
+      "label": "Incident Response & DFIR",
+      "blurb": "Contain, investigate and recover when something goes wrong.",
+      "items": ["incident-response", "digital-forensics", "incident-readiness"]
     }
   ],
-  "mega_feature": {
-    "title": "Not sure where to start?",
-    "text": "Tell us what's slowing you down. We'll point you to the right fix, even if it isn't us.",
-    "cta": {
-      "label": "Book a free 30-minute call",
-      "href": "booking_url_or:/contact-us/"
-    }
-  },
+  "resources": [
+    { "label": "Insights & Guides", "href": "/blog/", "text": "Plain-English advice on UK and EU cyber security." },
+    { "label": "FAQs", "href": "/faqs/", "text": "Answers on scoping, testing, compliance and response." },
+    { "label": "Contact the Security Team", "href": "/contact-us/", "text": "Talk to us about a project or an urgent issue." }
+  ],
   "footer": {
-    "company": [
-      {
-        "label": "About",
-        "href": "/about/"
-      },
-      {
-        "label": "Services",
-        "href": "/services/"
-      },
-      {
-        "label": "Products",
-        "href": "/solutions/"
-      },
-      {
-        "label": "Insights",
-        "href": "/blog/"
-      },
-      {
-        "label": "FAQs",
-        "href": "/faqs/"
-      },
-      {
-        "label": "Contact",
-        "href": "/contact-us/"
-      }
+    "tagline": "Cyber security, compliance and 24/7 defence for UK and European businesses.",
+    "explore": [
+      { "label": "Home", "href": "/" },
+      { "label": "About Us", "href": "/about/" },
+      { "label": "Services", "href": "/services/" },
+      { "label": "Solutions", "href": "/solutions/" },
+      { "label": "Industries", "href": "/industries/" },
+      { "label": "Insights", "href": "/blog/" },
+      { "label": "FAQs", "href": "/faqs/" },
+      { "label": "Contact Us", "href": "/contact-us/" }
     ],
     "legal": [
-      {
-        "label": "Privacy policy",
-        "href": "/privacy-policy/"
-      },
-      {
-        "label": "Cookie policy",
-        "href": "/cookie-policy/"
-      },
-      {
-        "label": "Terms of business",
-        "href": "/terms/"
-      },
-      {
-        "label": "Cookie preferences",
-        "action": "open-cookie-preferences"
-      }
+      { "label": "Privacy policy", "href": "/privacy-policy/" },
+      { "label": "Cookie policy", "href": "/cookie-policy/" },
+      { "label": "Terms of business", "href": "/terms/" },
+      { "label": "Cookie preferences", "action": "open-cookie-preferences" }
     ]
   },
-  "_notes": "Mega menu items reference service slugs; title/summary/icon come from each service file. 'booking_url_or:/contact-us/' means: use site.json booking_url if set, otherwise /contact-us/."
+  "soc_widget": {
+    "label": "Active 24/7",
+    "title": "Managed SOC & Monitoring",
+    "points": [
+      "Round-the-clock threat monitoring",
+      "Investigation of every alert",
+      "Rapid containment of real threats",
+      "Plain-English monthly reporting"
+    ],
+    "primary": { "label": "Explore Managed SOC", "href": "/services/managed-security/" },
+    "secondary": { "label": "Talk to us", "href": "/contact-us/" }
+  }
 }

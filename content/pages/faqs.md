@@ -1,10 +1,10 @@
 ---
 slug: faqs
-h1: "Frequently asked *questions*"
-seo_title: "FAQs | AVRIX Digital"
-seo_description: "Answers to common questions about working with AVRIX Digital: pricing, contracts, ownership, reporting and each of our marketing, cloud and hiring services."
-eyebrow: "[ FAQS ]"
-lead: "Straight answers about how we work, what things cost and what to expect. Can't find yours? Just ask."
+h1: "Everything you need to know about *our services*"
+seo_title: "Cyber Security FAQs | AVRIX"
+seo_description: "Answers to common questions about AVRIX cyber security services: penetration testing, managed SOC, compliance, incident response, contracts and data handling."
+eyebrow: "FAQs"
+lead: "Clear answers on scoping, testing, compliance and response. Can't find yours? Just ask."
 search_placeholder: "Search questions…"
-updated: 2026-10-17
+updated: 2026-11-12
 ---

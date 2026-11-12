@@ -1,17 +1,11 @@
 import { z } from 'zod';
 export const serviceSlugs = [
-  'performance-marketing',
-  'ga4-consulting',
-  'web-development',
-  'web-application-development',
-  'ai-automation',
-  'microsoft-365-copilot',
-  'google-workspace',
-  'aws-consulting',
-  'talent-acquisition',
-  'voice-call-agent',
-  'wims',
-  'hr-desk',
+  'penetration-testing',
+  'managed-soc',
+  'security-compliance',
+  'incident-response',
+  'security-training',
+  'security-products',
   'not-sure',
 ] as const;
 export const enquirySchema = z.object({

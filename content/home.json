@@ -1,221 +1,118 @@
 {
-  "seo_title": "Digital Marketing, Cloud & Tech Recruitment | AVRIX Digital",
-  "seo_description": "AVRIX Digital helps UK businesses grow with performance marketing and GA4, run on properly set-up Microsoft 365, Google Workspace and AWS, and hire tech talent.",
+  "seo_title": "AVRIX | Cyber Security for UK & European Businesses",
+  "seo_description": "Penetration testing, 24/7 managed SOC, compliance (Cyber Essentials, ISO 27001, GDPR, NIS2, DORA) and incident response for UK and European businesses.",
   "sections": [
     {
       "type": "hero",
-      "eyebrow": "[ AVRIX DIGITAL — UK ]",
-      "h1": "Turn clicks into *customers*, tech into *advantage*.",
-      "lead": "One partner for marketing that pays for itself, cloud tools set up properly, cyber security you can rely on, and the tech talent to keep you moving. Plain English, measurable results, no five-supplier juggling act.",
-      "primary_cta": {
-        "label": "Book a free 30-minute call",
-        "href": "booking_url_or:/contact-us/"
-      },
-      "secondary_cta": {
-        "label": "Explore services",
-        "href": "/services/"
-      },
-      "signal_chips": [
-        "Cost per lead ↓",
-        "Hours saved ↑",
-        "Hires that stay ✓"
+      "eyebrow": "Cyber security for the UK and Europe",
+      "h1": "Defending your business with *unshakeable confidence*",
+      "lead": "AVRIX delivers penetration testing, 24/7 managed security operations, compliance with UK and European standards, and incident response, all from one accountable team.",
+      "primary_cta": { "label": "Book a Free Consultation", "href": "booking_url_or:/contact-us/" },
+      "secondary_cta": { "label": "Explore Our Services", "href": "/services/" },
+      "signal_chips": ["Cloud", "Web", "Mobile", "API", "Email"],
+      "items": [
+        { "title": "Cyber Essentials", "text": "Ready" },
+        { "title": "ISO 27001:2022", "text": "On track" },
+        { "title": "UK & EU GDPR", "text": "Mapped" },
+        { "title": "NIS2 & DORA", "text": "Assessed" }
       ],
-      "pillar_tabs": [
-        {
-          "label": "Grow",
-          "text": "Google Ads, Meta, LinkedIn and GA4 that prove what's working.",
-          "href": "/services/performance-marketing/"
-        },
-        {
-          "label": "Build & run",
-          "text": "Websites, apps, automation, Microsoft 365, Google Workspace, AWS and cyber security.",
-          "href": "/services/"
-        },
-        {
-          "label": "Hire",
-          "text": "Cloud, DevOps, data, security and marketing specialists.",
-          "href": "/services/talent-acquisition/"
-        }
-      ]
+      "label": "Illustrative security posture view"
     },
     {
-      "type": "marquee",
-      "label": "Platforms we work in every day",
+      "type": "ticker",
+      "items": ["24/7 threat monitoring", "Manual penetration testing", "Cyber Essentials & ISO 27001", "UK GDPR & EU GDPR", "NIS2 & DORA readiness", "Rapid incident response", "Plain-English reporting", "One accountable team"]
+    },
+    {
+      "type": "services_carousel",
+      "eyebrow": "What we do",
+      "title": "Our *Services*",
+      "intro": "AVRIX helps organisations find their weaknesses, strengthen their defences and stay compliant as threats and regulations change.",
+      "items": ["penetration-testing", "cloud-security-assessment", "cyber-essentials", "managed-security", "red-teaming", "iso-27001", "api-security-testing", "incident-response"],
+      "link": { "label": "See All Services", "href": "/services/" }
+    },
+    {
+      "type": "industries_tabs",
+      "eyebrow": "Industries",
+      "title": "Securing every industry, *every day*",
+      "intro": "Sector-focused security testing and compliance to protect what matters most to your business.",
+      "link": { "label": "Explore All Industries", "href": "/industries/" }
+    },
+    {
+      "type": "capabilities",
+      "eyebrow": "Full-spectrum defence",
+      "title": "Everything your business needs to stay *resilient*",
+      "intro": "Four disciplines that work together, from finding weaknesses to proving compliance and recovering fast.",
       "items": [
-        "Google Ads",
-        "Meta Ads",
-        "LinkedIn Ads",
-        "GA4",
-        "Google Tag Manager",
-        "Looker Studio",
-        "Microsoft 365",
-        "Copilot",
-        "Intune",
-        "Defender",
-        "Google Workspace",
-        "AWS",
-        "Make.com",
-        "Power Automate",
-        "Zapier",
-        "n8n",
-        "Shopify",
-        "WooCommerce",
-        "Next.js",
-        "React",
-        "Django",
-        "Microsoft Sentinel",
-        "Cyber Essentials",
-        "ISO 27001",
-        "WhatsApp Business"
+        { "title": "Offensive Security", "text": "Find weaknesses before attackers do.", "icon": "penetration-testing", "href": "/services/#offensive", "bullets": ["Web and mobile app testing", "Network and cloud testing", "API security testing", "Red teaming and phishing"] },
+        { "title": "Incident Response & Forensics", "text": "Contain, investigate and recover.", "icon": "incident-response", "href": "/services/#response", "bullets": ["Ransomware response", "Email compromise", "Digital forensics", "Incident readiness"] },
+        { "title": "Compliance & Standards", "text": "Meet UK and EU requirements.", "icon": "compliance", "href": "/services/#compliance", "bullets": ["Cyber Essentials and ISO 27001", "UK GDPR and EU GDPR", "NIS2 and DORA", "PCI DSS and SOC 2"] },
+        { "title": "Managed SOC & SIEM", "text": "24/7 monitoring and response.", "icon": "managed-security", "href": "/services/managed-security/", "bullets": ["Round-the-clock monitoring", "SIEM deployment", "Alert investigation", "Monthly reporting"] },
+        { "title": "Detection & Response", "text": "Stop attacks on every device.", "icon": "radar", "href": "/services/managed-detection-response/", "bullets": ["Endpoint detection (EDR)", "Threat hunting", "Identity protection", "Rapid isolation"] },
+        { "title": "Security Products", "text": "Tools that keep you protected.", "icon": "attack-surface", "href": "/solutions/", "bullets": ["AVRIX PhishDrill", "AVRIX Attack Surface Monitor", "AVRIX Compliance Hub", "Dark web monitoring"] }
       ]
     },
     {
-      "type": "solutions",
-      "eyebrow": "BUSINESS SOFTWARE",
-      "title": "Less juggling. More *joined-up work.*",
-      "intro": "Marketing automation, cyber security tools, voice conversations, warehouse operations and everyday HR. Explore software shaped around the way your business works.",
-      "link": {
-        "label": "Explore all products",
-        "href": "/solutions/"
-      }
-    },
-    {
-      "type": "split_statement",
-      "eyebrow": "[ 02 — WHY ONE PARTNER ]",
-      "statement": "Most businesses juggle an ad agency, an IT supplier, a web developer and a recruiter, and none of them talk to each other.",
-      "body": "AVRIX Digital brings performance marketing, cloud technology, cyber security, AI automation, web development and tech recruitment into one accountable team. Your ads connect to your analytics. Your analytics connect to your CRM. Your systems are set up securely so your people can do their best work. And when you need to grow the team, we find the right people.",
-      "link": {
-        "label": "More about us",
-        "href": "/about/"
-      }
-    },
-    {
-      "type": "service_grid",
-      "eyebrow": "[ 03 — SERVICES ]",
-      "title": "Pick a problem. We'll *own* the outcome.",
-      "intro": "Sixteen services, one team, one point of contact.",
-      "show": "all"
-    },
-    {
-      "type": "values",
-      "eyebrow": "[ 04 — HOW WE'RE DIFFERENT ]",
-      "title": "Built different, *on purpose*.",
+      "type": "frameworks",
+      "eyebrow": "UK and European standards",
+      "title": "Aligned to the frameworks *your customers trust*",
+      "intro": "We help you meet the standards and regulations that UK and European customers, insurers and regulators ask for.",
       "items": [
-        {
-          "icon": "target",
-          "title": "Outcomes over activity",
-          "text": "We report on leads, revenue, cost savings and hires, not hours billed or reports produced."
-        },
-        {
-          "icon": "chat",
-          "title": "Plain English, always",
-          "text": "Monthly reports you can read in five minutes. Every recommendation comes with the why and the expected result."
-        },
-        {
-          "icon": "key",
-          "title": "You own everything",
-          "text": "Ad accounts, analytics, domains, code and data are set up in your name. If you leave, you keep it all."
-        },
-        {
-          "icon": "scale",
-          "title": "Fair, flat fees",
-          "text": "Flat management fees, never a percentage of your ad spend, and fixed-price quotes before project work starts."
-        }
+        { "title": "Cyber Essentials", "text": "UK government-backed baseline", "icon": "cyber-essentials" },
+        { "title": "ISO/IEC 27001:2022", "text": "Information security management", "icon": "compliance" },
+        { "title": "UK GDPR & EU GDPR", "text": "Data protection", "icon": "data-protection" },
+        { "title": "NIS2 & UK NIS", "text": "Essential and important entities", "icon": "shield-network" },
+        { "title": "DORA", "text": "EU financial sector resilience", "icon": "finance" },
+        { "title": "PCI DSS v4.0.1", "text": "Card payment security", "icon": "card" },
+        { "title": "SOC 2", "text": "Assurance for SaaS providers", "icon": "badge" },
+        { "title": "NHS DSPT", "text": "Health and care data security", "icon": "healthcare" }
       ]
     },
     {
-      "type": "process",
-      "eyebrow": "[ 05 — HOW WE WORK ]",
-      "title": "A simple process that *delivers*.",
-      "steps": [
-        {
-          "n": "01",
-          "icon": "discover",
-          "title": "Discover",
-          "text": "We learn your business, goals, numbers and market, and ask the awkward questions early."
-        },
-        {
-          "n": "02",
-          "icon": "plan",
-          "title": "Plan",
-          "text": "A clear plan with priorities, costs, timelines and the results we expect, agreed before we start."
-        },
-        {
-          "n": "03",
-          "icon": "build",
-          "title": "Build & launch",
-          "text": "Campaign, migration, website, automation or hire, delivered with clear communication throughout."
-        },
-        {
-          "n": "04",
-          "icon": "optimise",
-          "title": "Measure & improve",
-          "text": "We track what matters, report in plain English and keep improving the return."
-        }
+      "type": "advantage",
+      "eyebrow": "The AVRIX advantage",
+      "title": "Why businesses choose *AVRIX*",
+      "intro": "Hands-on security expertise with clear, honest reporting that protects revenue and reputation.",
+      "items": [
+        { "n": "01", "title": "Manual, expert testing", "text": "Skilled testers go beyond automated scans to find the business logic and access control flaws that lead to real breaches." },
+        { "n": "02", "title": "Every finding confirmed", "text": "We verify issues before they reach your report, with clear evidence and step-by-step fixes your team can act on." },
+        { "n": "03", "title": "Free retesting", "text": "Once you've fixed the issues from a penetration test, we retest them and update your report at no extra cost." },
+        { "n": "04", "title": "One accountable team", "text": "Testing, monitoring, compliance and response from one team, with one point of contact and plain-English reporting." }
       ]
     },
     {
-      "type": "proof",
-      "eyebrow": "[ 06 — PROOF ]",
-      "title": "Results you can *check*.",
-      "stats_source": "stats.json",
-      "testimonials_source": "testimonials.json",
-      "fallback": "promises",
-      "promises_title": "Our promises to every client",
-      "promises": [
-        {
-          "title": "A reply within one working day",
-          "text": "Every enquiry gets a real response from a real person."
-        },
-        {
-          "title": "Your accounts, your data",
-          "text": "Everything we build or set up is owned by you from day one."
-        },
-        {
-          "title": "Fixed-price quotes",
-          "text": "Project work is quoted in full before it starts. No surprise invoices."
-        },
-        {
-          "title": "Monthly plain-English reporting",
-          "text": "What happened, what it means, and what we're doing next."
-        }
+      "type": "engagement",
+      "eyebrow": "Engagement model",
+      "title": "How we work, *from scoping to sign‑off*",
+      "intro": "A clear, five-stage process for every engagement, so you always know what happens next.",
+      "items": [
+        { "label": "Stage 1: Scoping and authorisation", "title": "Free consultation and written scope", "text": "We understand your goals, agree what's in scope and confirm rules of engagement. Testing never starts without signed authorisation." },
+        { "label": "Stage 2: Assessment", "title": "Hands-on testing and gap analysis", "text": "Our specialists test your systems or review your controls against the standards that matter to you." },
+        { "label": "Stage 3: Reporting and action plan", "title": "Prioritised findings and walkthrough", "text": "A plain-English summary for leadership, technical detail for your team, and a call to agree priorities." },
+        { "label": "Stage 4: Remediation and retesting", "title": "Fixes verified", "text": "We support your team through the fixes, then retest to confirm issues are closed." },
+        { "label": "Stage 5: Assurance", "title": "Evidence for customers and auditors", "text": "Retest letters, compliance evidence and board-ready reporting you can share with confidence." }
       ]
+    },
+    {
+      "type": "testimonials",
+      "eyebrow": "Client feedback",
+      "title": "What our *clients say*"
     },
     {
       "type": "faq",
-      "eyebrow": "[ 07 — FAQ ]",
-      "title": "Answers to common *questions*.",
-      "source": "faqs.json",
-      "filter": "show_on_home",
-      "link": {
-        "label": "See all FAQs",
-        "href": "/faqs/"
-      }
+      "eyebrow": "Frequently asked questions",
+      "title": "Everything you need to know about *our services*",
+      "intro": "Clear answers on scoping, testing, compliance and response."
     },
     {
-      "type": "blog_teaser",
-      "eyebrow": "[ 08 — INSIGHTS ]",
-      "title": "Practical advice for businesses that want to *grow*.",
-      "intro": "Guides, checklists and no-nonsense advice on marketing, analytics, cloud, automation and hiring.",
-      "count": 3,
-      "link": {
-        "label": "View all insights",
-        "href": "/blog/"
-      }
-    },
-    {
-      "type": "cta_band",
-      "title": "Ready to make it *count*?",
-      "text": "Book a free 30-minute call. We'll listen, ask the right questions and come back with a clear recommendation. No jargon, no pressure.",
-      "primary_cta": {
-        "label": "Book a free 30-minute call",
-        "href": "booking_url_or:/contact-us/"
-      },
-      "secondary_cta": {
-        "label": "Send an enquiry",
-        "href": "/contact-us/"
-      }
+      "type": "final_cta",
+      "title": "Ready to build an *unshakeable security posture?*",
+      "text": "Talk to our security team about testing, monitoring or compliance. We'll scope your needs and give you a clear proposal.",
+      "promises": [
+        { "title": "Free initial consultation", "text": "No obligation" },
+        { "title": "Confidentiality agreement on request", "text": "Before any detail is shared" },
+        { "title": "Reply within one working day", "text": "From the security team" }
+      ],
+      "primary_cta": { "label": "Book a Free Consultation", "href": "booking_url_or:/contact-us/" }
     }
-  ],
-  "_notes": "Text wrapped in *asterisks* renders in Instrument Serif Italic (emphasis word). Section order can be changed by reordering this array."
+  ]
 }

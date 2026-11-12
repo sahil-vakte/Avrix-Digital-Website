@@ -39,3 +39,29 @@
 /page-sitemap.xml                              /sitemap.xml  301
 /post-sitemap.xml                              /sitemap.xml  301
 /services-sitemap.xml                          /sitemap.xml  301
+
+# November 2026: site refocused on cyber security. Retired marketing, cloud,
+# recruitment and product pages go to the closest current page.
+/services/performance-marketing/               /services/                        301
+/services/ga4-consulting/                      /services/                        301
+/services/web-development/                     /services/                        301
+/services/web-application-development/         /services/                        301
+/services/ai-automation/                       /services/                        301
+/services/microsoft-365-copilot/               /services/cloud-security-assessment/  301
+/services/google-workspace/                    /services/cloud-security-assessment/  301
+/services/aws-consulting/                      /services/cloud-security-assessment/  301
+/services/talent-acquisition/                  /services/                        301
+/services/security-compliance/                 /services/iso-27001/              301
+/solutions/ai-marketing-automation/            /solutions/                       301
+/solutions/voice-call-agent/                   /solutions/                       301
+/solutions/wims/                               /solutions/                       301
+/solutions/hr-desk/                            /solutions/                       301
+/blog/ga4-health-check-for-uk-smes/            /blog/                            301
+/blog/right-size-microsoft-365-licences/       /blog/                            301
+/blog/admin-tasks-to-automate-first/           /blog/                            301
+/blog/category/performance-marketing/          /blog/                            301
+/blog/category/analytics/                      /blog/                            301
+/blog/category/cloud-workspace/                /blog/                            301
+/blog/category/ai-automation/                  /blog/                            301
+/blog/category/web/                            /blog/                            301
+/blog/category/hiring/                         /blog/                            301

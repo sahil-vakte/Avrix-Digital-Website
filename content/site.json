@@ -4,14 +4,14 @@
   "company_number": null,
   "registered_office": null,
   "vat_number": null,
-  "tagline": "Make it count.",
+  "tagline": "Cyber security for UK and European businesses.",
   "site_url": "https://avrixdigital.co.uk",
   "email": "info@avrixdigital.co.uk",
   "phone": null,
   "booking_url": null,
-  "booking_label": "Book a free 30-minute call",
+  "booking_label": "Book a free consultation",
   "response_promise": "We reply to every enquiry within one working day.",
-  "service_area": "Across the UK",
+  "service_area": "Across the UK and Europe",
   "opening_hours": "Monday to Friday, 9am to 5:30pm",
   "socials": {
     "linkedin": null,
@@ -24,9 +24,10 @@
   "favicon": "/media/brand/avrix-favicon.webp",
   "logo": {
     "light_on_dark": "/media/brand/avrix-logo-white.webp",
-    "dark_on_light": "/media/brand/avrix-logo-search.png",
+    "dark_on_light": "/media/brand/avrix-logo-navy.webp",
+    "mark": "/media/brand/avrix-mark.webp",
     "search": "/media/brand/avrix-logo-search.png",
-    "alt": "AVRIX Digital"
+    "alt": "AVRIX"
   },
   "analytics": {
     "ga4_id": null,

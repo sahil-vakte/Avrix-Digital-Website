@@ -1,109 +1,56 @@
 {
-  "_notes": "General FAQs. Service-specific FAQs live in each service file and are merged into /faqs/ automatically. show_on_home controls the homepage FAQ block (max 6).",
   "groups": [
     {
       "key": "general",
       "label": "General",
       "items": [
-        {
-          "q": "What services does AVRIX Digital offer?",
-          "a": "Performance marketing (Google Ads, Meta and LinkedIn), GA4 and analytics consulting, web development, bespoke web applications, AI and workflow automation, Microsoft 365 and Copilot, Google Workspace, AWS consulting, cyber security (penetration testing, Cyber Essentials, compliance, 24/7 monitoring and incident response), and specialist tech and digital recruitment, all from one team. We also offer business software, including AI Marketing Automation.",
-          "show_on_home": true
-        },
-        {
-          "q": "Who do you work with?",
-          "a": "Mainly UK small and medium-sized businesses with roughly 5 to 300 employees, across sectors such as e-commerce, SaaS, FinTech, professional services and healthcare. We give smaller businesses access to the kind of joined-up expertise usually only large companies can afford.",
-          "show_on_home": true
-        },
-        {
-          "q": "Do you work with businesses across the UK?",
-          "a": "Yes. We work with clients across the whole of the UK. Most of our work is delivered remotely, with on-site visits arranged when a project needs them.",
-          "show_on_home": false
-        },
-        {
-          "q": "What makes AVRIX Digital different from other agencies?",
-          "a": "Three things. First, one partner: your marketing, analytics, cloud tools and hiring are joined up instead of split across suppliers who never talk. Second, accountability: we agree the numbers that matter to you up front and report on them in plain English. Third, fairness: you own every account and asset we set up, and we charge flat, transparent fees rather than a percentage of your spend.",
-          "show_on_home": true
-        }
+        { "q": "What does AVRIX do?", "a": "AVRIX is a cyber security provider for UK and European businesses. We offer penetration testing, 24/7 managed security monitoring, compliance support (Cyber Essentials, ISO 27001, SOC 2, UK GDPR, EU GDPR, PCI DSS, NIS2 and DORA), incident response and security products, all from one team.", "show_on_home": false },
+        { "q": "Who do you work with?", "a": "Small and medium-sized businesses through to larger organisations across the UK and Europe, in sectors including financial services, healthcare, manufacturing, retail, technology, the public sector and education.", "show_on_home": false },
+        { "q": "Who delivers the work?", "a": "Every engagement is delivered by AVRIX with our specialist team. You have one contract, one point of contact and one team accountable for the results.", "show_on_home": false }
+      ]
+    },
+    {
+      "key": "testing",
+      "label": "Security testing",
+      "items": [
+        { "q": "How quickly can you start a security assessment or penetration test?", "a": "We normally hold a free scoping call within a few working days of your enquiry. Once the scope and written authorisation are agreed, testing can usually be scheduled quickly, with urgent work prioritised.", "show_on_home": true },
+        { "q": "Will testing disrupt our live systems?", "a": "Testing is planned to avoid disruption. We agree testing windows, limit traffic and avoid destructive techniques unless you approve them. Sensitive systems can be tested out of hours or in a staging environment.", "show_on_home": true },
+        { "q": "Do you retest after we fix the issues?", "a": "Yes. Penetration tests include a retest of the reported issues once you've fixed them, with an updated report you can share with customers and auditors.", "show_on_home": false },
+        { "q": "Is penetration testing legal?", "a": "Yes, when it's authorised. Testing systems without the owner's permission is an offence under the UK Computer Misuse Act 1990, and similar laws apply across Europe. We never start without a signed scope and written authorisation.", "show_on_home": false }
+      ]
+    },
+    {
+      "key": "compliance",
+      "label": "Compliance",
+      "items": [
+        { "q": "Which standard should we start with?", "a": "For UK businesses, Cyber Essentials is usually the first step and is required for many public sector contracts. ISO 27001 is the most recognised standard across the UK and Europe, and SOC 2 is what US customers usually ask for. We'll recommend the right route based on your customers and regulators.", "show_on_home": true },
+        { "q": "Do NIS2 and DORA apply to UK businesses?", "a": "They're EU laws, so they don't apply in the UK directly. But UK businesses providing in-scope services in the EU may be covered, and many EU customers now write NIS2 or DORA requirements into supplier contracts. The UK has its own NIS Regulations, which are being strengthened.", "show_on_home": true },
+        { "q": "Do you issue certificates?", "a": "No. Certificates and audit reports are issued by independent, accredited bodies, such as IASME-licensed bodies for Cyber Essentials and UKAS-accredited bodies for ISO 27001. We prepare you and support you through the audit.", "show_on_home": false }
+      ]
+    },
+    {
+      "key": "managed",
+      "label": "Managed security",
+      "items": [
+        { "q": "Is 24/7 monitoring only for large companies?", "a": "No. Smaller businesses are frequent targets because they rarely have anyone watching. We size managed detection and SOC services to the number of users and systems you have.", "show_on_home": false },
+        { "q": "Where is our data stored?", "a": "We agree data locations during onboarding. For UK and EU clients, monitoring data can be kept in UK or EU regions to support UK GDPR and EU GDPR requirements.", "show_on_home": true }
+      ]
+    },
+    {
+      "key": "incidents",
+      "label": "Incidents",
+      "items": [
+        { "q": "We think we've been hacked. What should we do?", "a": "Disconnect affected devices from the network but leave them switched on. Don't delete anything, don't pay a ransom and don't contact the attacker. Then contact us straight away and mark your enquiry as urgent. If personal data may be affected, you may need to report it to the ICO or relevant EU authority within 72 hours.", "show_on_home": true },
+        { "q": "Can you help us prepare before an incident?", "a": "Yes. We write incident response plans and ransomware playbooks, test your backups and run tabletop exercises so your team knows what to do.", "show_on_home": false }
       ]
     },
     {
       "key": "working-with-us",
       "label": "Working with us",
       "items": [
-        {
-          "q": "How do I get started?",
-          "a": "Book a free 30-minute call or send an enquiry. We'll listen to your goals, ask the right questions and come back with a clear recommendation, including whether we're the right fit. No jargon, no pressure.",
-          "show_on_home": true
-        },
-        {
-          "q": "How do you measure success?",
-          "a": "We agree the metrics that matter to your business before we start, such as leads, cost per acquisition, return on ad spend, revenue, hours saved, cloud costs or time-to-hire. Every client gets a monthly plain-English report covering what happened, what it means and what we're doing next.",
-          "show_on_home": true
-        },
-        {
-          "q": "Will I have a single point of contact?",
-          "a": "Yes. You get a named lead who coordinates everything, even when specialists from different areas are working on your account.",
-          "show_on_home": false
-        },
-        {
-          "q": "Who owns the accounts, data and code?",
-          "a": "You do. Ad accounts, analytics properties, domains, cloud tenants, code repositories and data are created in your name. We work with delegated access, so if you ever move on, you keep everything.",
-          "show_on_home": false
-        },
-        {
-          "q": "How quickly will you reply to my enquiry?",
-          "a": "Within one working day, from a real person.",
-          "show_on_home": false
-        },
-        {
-          "q": "Who delivers the work?",
-          "a": "Every engagement is delivered by AVRIX with our specialist team. You have one contract, one point of contact and one team accountable for the results, whether the work is marketing, cloud, automation or cyber security.",
-          "show_on_home": false
-        }
-      ]
-    },
-    {
-      "key": "cyber-security",
-      "label": "Cyber security",
-      "items": [
-        {
-          "q": "Can you help a small business with cyber security?",
-          "a": "Yes. Most of our security clients are small and medium-sized businesses. We start with the basics that stop the most common attacks, such as Cyber Essentials, secure Microsoft 365 or Google Workspace settings and staff awareness, then add testing and monitoring where the risk justifies it.",
-          "show_on_home": false
-        },
-        {
-          "q": "We think we've been hacked. What should we do?",
-          "a": "Disconnect affected devices from the network but leave them switched on, don't pay any ransom, and contact us straight away through our incident response page or contact form. If personal data may be affected, you may need to report it to the ICO within 72 hours.",
-          "show_on_home": false
-        },
-        {
-          "q": "Do you need permission to test our systems?",
-          "a": "Yes. We only test systems after the owner has agreed the scope and signed written authorisation. That protects you and keeps the work lawful under the Computer Misuse Act 1990.",
-          "show_on_home": false
-        }
-      ]
-    },
-    {
-      "key": "pricing",
-      "label": "Pricing & contracts",
-      "items": [
-        {
-          "q": "How do you charge?",
-          "a": "Project work (websites, migrations, GA4 setups, automations, security assessments) is quoted at a fixed price before we start. Ongoing services (campaign management, managed cloud, managed security, software subscriptions and support) are a flat monthly fee based on scope. Recruitment is success-based. We never charge a percentage of your ad spend.",
-          "show_on_home": true
-        },
-        {
-          "q": "Do you tie clients into long contracts?",
-          "a": "No long lock-ins. Ongoing services run on a rolling monthly basis after any initial setup period agreed in your proposal. We'd rather keep clients by delivering results.",
-          "show_on_home": false,
-          "_owner_check": "TODO(owner): confirm notice period and minimum term to match your terms of business."
-        },
-        {
-          "q": "Is there a minimum budget?",
-          "a": "There's no strict minimum. We'll always tell you honestly whether your budget is enough to hit your goals, and suggest the smartest place to start if it isn't.",
-          "show_on_home": false
-        }
+        { "q": "How do you charge?", "a": "Testing and compliance projects are quoted at a fixed price after a free scoping call. Managed services are a monthly fee based on the number of users and systems. Incident response can be arranged on demand or through a retainer.", "show_on_home": false },
+        { "q": "Will you sign an NDA?", "a": "Yes. We're happy to sign a mutual confidentiality agreement before you share anything sensitive.", "show_on_home": false },
+        { "q": "How do you handle our data during an engagement?", "a": "We only access what the agreed scope requires, use test accounts wherever possible, store findings securely and delete engagement data when it's no longer needed, in line with our contract and data protection law.", "show_on_home": false }
       ]
     }
   ]

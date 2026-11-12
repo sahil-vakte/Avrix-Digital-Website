@@ -11,6 +11,7 @@ import {
   pageSchema,
   serviceSchema,
   solutionSchema,
+  industrySchema,
   blogSchema,
   statSchema,
   testimonialSchema,
@@ -64,7 +65,14 @@ export function loadContent(): Content {
   const site = siteSchema.parse(read('site.json'));
   if (process.env.VITE_SITE_URL) {
     const origin = new URL(process.env.VITE_SITE_URL);
-    if (origin.protocol !== 'https:' || origin.pathname !== '/' || origin.search || origin.hash || origin.username || origin.password)
+    if (
+      origin.protocol !== 'https:' ||
+      origin.pathname !== '/' ||
+      origin.search ||
+      origin.hash ||
+      origin.username ||
+      origin.password
+    )
       throw new Error('VITE_SITE_URL must be an HTTPS origin');
     site.site_url = origin.origin;
   }
@@ -76,6 +84,7 @@ export function loadContent(): Content {
     legal: collection('legal', pageSchema),
     services: collection('services', serviceSchema).sort((a, b) => a.order - b.order),
     solutions: collection('solutions', solutionSchema).sort((a, b) => a.order - b.order),
+    industries: collection('industries', industrySchema).sort((a, b) => a.order - b.order),
     posts: collection('blog', blogSchema)
       .filter((p) => !p.draft)
       .sort((a, b) => b.published.localeCompare(a.published)),
@@ -107,6 +116,12 @@ export function loadContent(): Content {
     if (!slugs.has(p.related_service)) throw new Error(`Unknown service ${p.related_service}`);
   for (const group of data.nav.mega_menu)
     for (const s of group.items) if (!slugs.has(s)) throw new Error(`Unknown menu service ${s}`);
+  for (const industry of data.industries) {
+    for (const r of industry.services)
+      if (!slugs.has(r)) throw new Error(`Unknown industry service ${r}`);
+    if (!fs.existsSync(path.join(root, `assets/icons/${industry.icon}.svg`)))
+      throw new Error(`Missing industry icon ${industry.icon}`);
+  }
   for (const solution of data.solutions) {
     if (!fs.existsSync(path.join(root, `assets/icons/${solution.icon}.svg`)))
       throw new Error(`Missing solution icon ${solution.icon}`);
@@ -120,6 +135,7 @@ export function loadContent(): Content {
     ...data.legal,
     ...data.services,
     ...data.solutions,
+    ...data.industries,
     ...data.posts,
   ];
   const titles = new Set<string>();
@@ -139,6 +155,7 @@ export function loadContent(): Content {
     ...data.legal.map((p) => `/${p.slug}/`),
     ...data.services.map((p) => `/services/${p.slug}/`),
     ...data.solutions.map((p) => `/solutions/${p.slug}/`),
+    ...data.industries.map((p) => `/industries/${p.slug}/`),
     ...data.posts.map((p) => `/blog/${p.slug}/`),
   ]);
   const walk = (v: unknown, key = '') => {
