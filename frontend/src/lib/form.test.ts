@@ -3,7 +3,7 @@ import { enquirySchema } from './form';
 const valid = {
   full_name: 'Jane Smith',
   email: 'jane@example.co.uk',
-  services: ['ga4-consulting'],
+  services: ['penetration-testing'],
   budget: '1k-3k',
   message: 'Please help us audit our analytics setup.',
   privacy_ack: true,
@@ -13,8 +13,10 @@ const valid = {
 describe('enquiry validation', () => {
   it('accepts a realistic enquiry', () =>
     expect(enquirySchema.safeParse(valid).success).toBe(true));
-  it.each(['voice-call-agent', 'wims', 'hr-desk'])('accepts a %s solution enquiry', (solution) =>
-    expect(enquirySchema.safeParse({ ...valid, services: [solution] }).success).toBe(true),
+  it.each(['managed-soc', 'security-compliance', 'security-products'])(
+    'accepts a %s enquiry',
+    (solution) =>
+      expect(enquirySchema.safeParse({ ...valid, services: [solution] }).success).toBe(true),
   );
   it.each([
     { privacy_ack: false },

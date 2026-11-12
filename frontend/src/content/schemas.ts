@@ -11,6 +11,9 @@ export const item = z.object({
   n: text.optional(),
   services: z.array(text).optional(),
   key: text.optional(),
+  label: text.optional(),
+  href: text.optional(),
+  bullets: z.array(text).optional(),
 });
 export const faq = z.object({ q: text, a: text, show_on_home: z.boolean().optional() });
 const date = z
@@ -68,27 +71,59 @@ export const pageSchema = z.object({
     })
     .optional(),
   review_required: z.boolean().optional(),
+  highlights: z.array(item).optional(),
+  sections: z
+    .array(
+      z.object({
+        id: text.optional(),
+        eyebrow: text.optional(),
+        title: text,
+        intro: text.optional(),
+        items: z.array(item),
+      }),
+    )
+    .optional(),
 });
+export const pillars = ['offensive', 'managed', 'compliance', 'response'] as const;
 export const serviceSchema = z.object({
   ...meta,
   slug: text.regex(/^[a-z0-9-]+$/),
   title: text,
   h1: text,
-  pillar: z.enum(['grow', 'build', 'run', 'secure', 'hire']),
+  pillar: z.enum(pillars),
   order: z.number().int(),
   icon: text,
   summary: text.max(140),
   intro: text,
-  hero_image: image.optional(),
+  tags: z.array(text).max(4).optional(),
+  explainer: z.object({ title: text, intro: text.optional(), cards: z.array(item) }).optional(),
   included: z.array(item),
   outcomes: z.array(item),
   tools: z.array(text),
-  process: z.array(item).length(4),
-  pricing: z
-    .object({ price_from: z.number().nonnegative().nullable(), unit: text, note: text })
-    .optional(),
+  process: z.array(item).min(4).max(6),
+  deliverables: z.array(item).optional(),
   faqs: z.array(faq),
   related: z.array(text).min(2).max(3),
+  updated: date,
+});
+export const industrySchema = z.object({
+  ...meta,
+  slug: text.regex(/^[a-z0-9-]+$/),
+  title: text,
+  h1: text,
+  eyebrow: text,
+  icon: text,
+  order: z.number().int(),
+  summary: text.max(180),
+  lead: text,
+  tagline: text,
+  tags: z.array(text).length(4),
+  points: z.array(item).length(3),
+  pillars: z.array(item).length(6),
+  lifecycle: z.array(item).length(5),
+  frameworks: z.array(text),
+  services: z.array(text).min(2),
+  faqs: z.array(faq),
   updated: date,
 });
 export const solutionSchema = z.object({
@@ -117,14 +152,7 @@ export const blogSchema = z.object({
   slug: text,
   title: text,
   excerpt: text.max(200),
-  category: z.enum([
-    'performance-marketing',
-    'analytics',
-    'cloud-workspace',
-    'ai-automation',
-    'web',
-    'hiring',
-  ]),
+  category: z.enum(['threats', 'compliance', 'guides']),
   author: text,
   published: date,
   updated: date,
@@ -135,17 +163,16 @@ export const blogSchema = z.object({
 export const sectionSchema = z.object({
   type: z.enum([
     'hero',
-    'marquee',
-    'pillars',
-    'split_statement',
-    'service_grid',
-    'solutions',
-    'values',
-    'process',
-    'proof',
+    'ticker',
+    'services_carousel',
+    'industries_tabs',
+    'capabilities',
+    'frameworks',
+    'advantage',
+    'engagement',
+    'testimonials',
     'faq',
-    'blog_teaser',
-    'cta_band',
+    'final_cta',
   ]),
   eyebrow: text.optional(),
   h1: text.optional(),
@@ -186,7 +213,13 @@ export const siteSchema = z.object({
   socials: z.record(z.string().url().nullable()),
   default_og_image: text,
   favicon: text,
-  logo: z.object({ light_on_dark: text, dark_on_light: text, search: text.optional(), alt: text }),
+  logo: z.object({
+    light_on_dark: text,
+    dark_on_light: text,
+    mark: text,
+    search: text.optional(),
+    alt: text,
+  }),
   analytics: z.object({ ga4_id: text.nullable(), gtm_id: text.nullable() }),
 });
 const evidence = { id: text, verified: z.boolean(), evidence_note: z.string() };
@@ -208,11 +241,22 @@ export const testimonialSchema = z
     'Verified reviews need evidence',
   );
 export const navSchema = z.object({
-  header: z.array(link.extend({ mega: z.boolean().optional() })),
+  header: z.array(
+    link.extend({ menu: z.enum(['services', 'solutions', 'industries', 'resources']).optional() }),
+  ),
   header_cta: link,
-  mega_menu: z.array(z.object({ pillar: text, label: text, blurb: text, items: z.array(text) })),
-  mega_feature: z.object({ title: text, text: text, cta: link }),
-  footer: z.object({ company: z.array(link), legal: z.array(link) }),
+  mega_menu: z.array(
+    z.object({ pillar: z.enum(pillars), label: text, blurb: text, items: z.array(text) }),
+  ),
+  resources: z.array(link.extend({ text: text })),
+  footer: z.object({ tagline: text, explore: z.array(link), legal: z.array(link) }),
+  soc_widget: z.object({
+    label: text,
+    title: text,
+    points: z.array(text),
+    primary: link,
+    secondary: link,
+  }),
 });
 export type Section = z.infer<typeof sectionSchema>;
 export type Item = z.infer<typeof item>;
@@ -231,6 +275,10 @@ export type Post = z.infer<typeof blogSchema> & {
   readTime: number;
 };
 export type Site = z.infer<typeof siteSchema>;
+export type Industry = z.infer<typeof industrySchema> & {
+  html: string;
+  toc: { id: string; text: string }[];
+};
 export type Solution = z.infer<typeof solutionSchema> & {
   html: string;
   toc: { id: string; text: string }[];
@@ -241,6 +289,7 @@ export type Content = {
   nav: z.infer<typeof navSchema>;
   services: Service[];
   solutions: Solution[];
+  industries: Industry[];
   posts: Post[];
   pages: Page[];
   legal: Page[];

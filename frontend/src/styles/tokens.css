@@ -1,39 +1,37 @@
 :root {
-  /* Neutrals */
-  --ink-950: #1b1614;
-  --ink-900: #231d1b;
-  --ink-800: #2c2422;
-  --ink-700: #413835;
-  --ink-500: #7a6964;
-  --ink-300: #c3b9b5;
-  --paper-50: #f7f6f0;
-  --paper-100: #f2e5e1;
-  --paper-200: #e7d1c9;
-  --text-on-light: #29221f;
-  --muted-on-light: #685a55;
+  /* Brand (from the AVRIX logo) */
+  --navy-950: #070d33;
+  --navy-900: #0b1446;
+  --navy-700: #1b2a6b;
+  --cyan: #00c8ff;
+  --blue: #048aff;
+  --purple: #7b2ff7;
+  --violet: #b100e8;
+  --grad: linear-gradient(135deg, #b100e8 0%, #048aff 100%);
+  --grad-soft: linear-gradient(135deg, rgba(177, 0, 232, 0.08), rgba(4, 138, 255, 0.08));
 
-  /* Accent */
-  --brand: #fd3f00;
-  --brand-hover: #ff6b3d;
-  --brand-on-light: #b52d00;
-  --volt-400: var(--brand);
-  --volt-500: var(--brand-hover);
-  --iris-500: var(--brand-on-light);
-  --iris-300: #dbbaaf;
-  --aqua-400: #d7b2a6;
+  /* Surfaces and text */
+  --bg: #ffffff;
+  --tint: #f6f5ff;
+  --tint-2: #eef0ff;
+  --line: #e6e8f5;
+  --text: #0b1446;
+  --muted: #59628a;
+  --soft: #5f6890;
 
   /* Semantic */
-  --success: #2bd67b;
-  --warning: #ffb020;
-  --danger: #ff5a5f;
+  --success: #0d7f3f;
+  --success-bg: #e7f8ee;
+  --danger: #c4262e;
+  --danger-bg: #fdecec;
 
-  /* Effects */
-  --grad-signal: linear-gradient(120deg, var(--iris-500) 0%, var(--aqua-400) 100%);
-  --glow-volt: 0 8px 24px -12px rgba(253, 63, 0, 0.3);
+  /* Shape */
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
-  --radius-xl: 32px;
   --radius-pill: 999px;
-  --shadow-card: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 1px 2px rgba(11, 20, 70, 0.06);
+  --shadow-card: 0 10px 30px -12px rgba(11, 20, 70, 0.14);
+  --shadow-lift: 0 22px 50px -18px rgba(91, 43, 216, 0.28);
+  --font: 'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }

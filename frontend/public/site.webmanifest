@@ -3,8 +3,8 @@
   "short_name": "AVRIX Digital",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#1b1614",
-  "background_color": "#1b1614",
+  "theme_color": "#0b1446",
+  "background_color": "#ffffff",
   "icons": [
     {
       "src": "/favicon-192.png",

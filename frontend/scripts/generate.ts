@@ -47,9 +47,7 @@ fs.writeFileSync(
 );
 fs.mkdirSync('dist/og', { recursive: true });
 const font = await decompress(
-  fs.readFileSync(
-    'node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-700-normal.woff2',
-  ),
+  fs.readFileSync('node_modules/@fontsource/mulish/files/mulish-latin-900-normal.woff2'),
 );
 const fontData = font.buffer.slice(
   font.byteOffset,
@@ -75,8 +73,8 @@ for (const r of routes) {
           height: 320,
           fontSize: 64,
           lineHeight: 1.05,
-          fontFamily: 'Bricolage',
-          fontWeight: 700,
+          fontFamily: 'Mulish',
+          fontWeight: 900,
           color: 'white',
           alignItems: 'center',
         },
@@ -86,7 +84,7 @@ for (const r of routes) {
     {
       width: 1056,
       height: 320,
-      fonts: [{ name: 'Bricolage', data: fontData, weight: 700, style: 'normal' }],
+      fonts: [{ name: 'Mulish', data: fontData, weight: 900, style: 'normal' }],
     },
   );
   const merged = template.replace(
@@ -102,7 +100,9 @@ for (const r of routes) {
 }
 fs.copyFileSync('dist/og/home.png', 'dist/og/default.png');
 for (const folder of ['services', 'blog'])
-  for (const file of fs.readdirSync(`../content/assets/covers/${folder}`)) {
+  for (const file of fs
+    .readdirSync(`../content/assets/covers/${folder}`)
+    .filter((f) => f.endsWith('.svg'))) {
     const name = file.replace(/\.svg$/, '');
     for (const width of [640, 1280])
       for (const format of ['webp', 'avif'] as const)

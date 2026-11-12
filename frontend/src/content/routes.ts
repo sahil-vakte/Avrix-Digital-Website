@@ -8,6 +8,8 @@ export type RouteRecord = {
     | 'service'
     | 'solutions'
     | 'solution'
+    | 'industries'
+    | 'industry'
     | 'faqs'
     | 'contact'
     | 'blog'
@@ -33,6 +35,7 @@ export function buildRoutes(c: Content): RouteRecord[] {
     about: 'about',
     services: 'services',
     solutions: 'solutions',
+    industries: 'industries',
     faqs: 'faqs',
     'contact-us': 'contact',
     blog: 'blog',
@@ -49,6 +52,9 @@ export function buildRoutes(c: Content): RouteRecord[] {
   c.services.forEach((s) => result.push({ path: `/services/${s.slug}/`, kind: 'service', ...s }));
   c.solutions.forEach((s) =>
     result.push({ path: `/solutions/${s.slug}/`, kind: 'solution', ...s }),
+  );
+  c.industries.forEach((s) =>
+    result.push({ path: `/industries/${s.slug}/`, kind: 'industry', ...s }),
   );
   c.posts.forEach((p) =>
     result.push({ path: `/blog/${p.slug}/`, kind: 'post', ...p, h1: p.title }),

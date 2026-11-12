@@ -4,6 +4,19 @@ import { useLocation } from 'react-router-dom';
 import { content, page, services, site, solutions, ui } from '../../content';
 const EnquiryForm = lazy(() => import('./EnquiryForm'));
 
+/** Map a service page to the matching "What can we help with?" option on the enquiry form. */
+export function enquiryTopic(slug: string, pillar: string) {
+  if (slug === 'security-awareness-training') return 'security-training';
+  return (
+    {
+      offensive: 'penetration-testing',
+      managed: 'managed-soc',
+      compliance: 'security-compliance',
+      response: 'incident-response',
+    }[pillar] || 'not-sure'
+  );
+}
+
 export default function EnquiryExperience({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const [request, setRequest] = useState<{ service?: string; call: boolean } | null>(null);
@@ -41,10 +54,14 @@ export default function EnquiryExperience({ children }: { children: ReactNode })
       return;
     }
     opener.current = trigger;
-    const candidate = pathname.match(/^\/(?:services|solutions)\/([^/]+)\/?$/)?.[1];
-    const service = [...services, ...solutions].some((item) => item.slug === candidate)
-      ? candidate
-      : undefined;
+    const [, section, candidate] = pathname.match(/^\/(services|solutions)\/([^/]+)\/?$/) || [];
+    const match = services.find((item) => item.slug === candidate);
+    const service =
+      section === 'solutions' && solutions.some((item) => item.slug === candidate)
+        ? 'security-products'
+        : match
+          ? enquiryTopic(match.slug, match.pillar)
+          : undefined;
     setRequest({ service, call });
   }
   function intercept(event: MouseEvent<HTMLDivElement>) {
@@ -91,7 +108,7 @@ export default function EnquiryExperience({ children }: { children: ReactNode })
           <div className="enquiry-dialog-toolbar">
             <span className="enquiry-brand">
               {content.hasLogo ? (
-                <img src={site.logo.light_on_dark} alt={site.logo.alt} width="372" height="85" />
+                <img src={site.logo.dark_on_light} alt={site.logo.alt} width="705" height="150" />
               ) : (
                 site.brand_name
               )}

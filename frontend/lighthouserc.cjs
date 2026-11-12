@@ -5,7 +5,7 @@ module.exports = {
       url: [
         'http://localhost/',
         'http://localhost/services/',
-        'http://localhost/services/ga4-consulting/',
+        'http://localhost/services/penetration-testing/',
         'http://localhost/contact-us/',
         'http://localhost/blog/',
       ],

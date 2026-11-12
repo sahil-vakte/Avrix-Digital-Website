@@ -12,7 +12,7 @@ lead: >-
   what your business exposes online, checks it continuously and alerts you to
   new risks before they're used against you.
 icon: attack-surface
-order: 6
+order: 2
 preview:
   src: /media/previews/attack-surface-monitor.svg
   alt: >-

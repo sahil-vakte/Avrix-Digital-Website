@@ -13,7 +13,7 @@ lead: >-
   what needs attention, so the next audit or customer questionnaire is
   straightforward.
 icon: compliance
-order: 7
+order: 3
 preview:
   src: /media/previews/compliance-hub.svg
   alt: >-

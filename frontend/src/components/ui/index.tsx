@@ -38,7 +38,7 @@ export function Button({
       }}
     >
       {children}
-      <span aria-hidden="true">↗</span>
+      <span aria-hidden="true">→</span>
     </a>
   );
 }

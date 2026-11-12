@@ -1,30 +1,54 @@
 ---
 slug: about
-h1: "Your growth partner, *built different* on purpose"
-seo_title: "About AVRIX Digital | Marketing, Cloud & Tech Talent"
-seo_description: "AVRIX Digital is a UK digital partner combining performance marketing, cloud technology, AI automation, web development and tech recruitment in one team."
-eyebrow: "[ ABOUT AVRIX ]"
-lead: "We're a UK-based digital partner for businesses tired of juggling five suppliers and getting average results from all of them."
-team_image: null          # TODO(owner): { src, alt } real founder/team photo. Section hides when null
-team: []                  # TODO(owner): [{ name, role, photo, linkedin, bio }]. Hidden when empty. No placeholder people.
+h1: "Securing UK and European businesses with *confidence*"
+seo_title: "About AVRIX | Cyber Security for UK & European Businesses"
+seo_description: "AVRIX is a UK cyber security provider offering penetration testing, 24/7 managed SOC, compliance and incident response for UK and European businesses."
+eyebrow: "About AVRIX"
+lead: "AVRIX helps organisations across the UK and Europe find their weaknesses, defend against attacks and prove their security to customers, insurers and regulators, with one accountable team and plain-English advice."
+highlights:
+  - { title: "4", text: "Security disciplines under one roof" }
+  - { title: "20", text: "Specialist services" }
+  - { title: "24/7", text: "Monitoring and incident response" }
+  - { title: "UK & EU", text: "Regulations we help you meet" }
 values:
-  - { title: "Outcomes over activity", text: "We don't measure success by hours billed or reports produced. We measure leads generated, costs reduced, people hired and technology that works." }
-  - { title: "Clarity over jargon", text: "Everything is explained in plain English. You'll always know what we're doing, why, and what it's delivering." }
-  - { title: "Partnership over transaction", text: "We don't want to be another name on your supplier list. We want to be the team you trust to make the right calls for your business." }
-founded: 2025
-updated: 2026-10-17
+  - { title: "Manual, expert testing", text: "Skilled testers go beyond automated scans to find the flaws that matter." }
+  - { title: "Fixes, not just findings", text: "Every issue comes with clear evidence and practical steps to fix it." }
+  - { title: "Compliance that helps you sell", text: "Standards scoped around what your customers and regulators actually ask for." }
+  - { title: "Board-ready reporting", text: "Plain-English summaries that help directors make informed decisions." }
+sections:
+  - id: standards
+    eyebrow: "Standards we work to"
+    title: "Built around recognised *frameworks*"
+    intro: "Our testing, monitoring and compliance work follows recognised UK, European and international standards."
+    items:
+      - { label: "Testing", title: "OWASP", text: "Web, mobile and API testing methodology." }
+      - { label: "Threats", title: "MITRE ATT&CK", text: "Attacker techniques used for testing and detection." }
+      - { label: "Baseline", title: "Cyber Essentials", text: "UK government-backed technical controls." }
+      - { label: "Management", title: "ISO/IEC 27001:2022", text: "Information security management systems." }
+      - { label: "Privacy", title: "UK GDPR & EU GDPR", text: "Data protection and security of processing." }
+      - { label: "Resilience", title: "NIS2 & DORA", text: "European cyber resilience regulation." }
+      - { label: "Payments", title: "PCI DSS v4.0.1", text: "Card data security." }
+      - { label: "Guidance", title: "NCSC & ENISA", text: "UK and EU national cyber security guidance." }
+  - id: coverage
+    eyebrow: "Where we work"
+    title: "Supporting businesses across *the UK and Europe*"
+    intro: "We work remotely and on site, with compliance expertise across UK and EU rules."
+    items:
+      - { label: "United Kingdom", title: "England, Scotland, Wales & Northern Ireland", text: "Cyber Essentials, UK GDPR, NIS Regulations, FCA resilience and NHS DSPT." }
+      - { label: "Ireland", title: "Republic of Ireland", text: "EU GDPR, NIS2 and DORA support for Irish organisations and UK–Irish groups." }
+      - { label: "European Union", title: "EU member states", text: "NIS2, DORA, EU GDPR and the Cyber Resilience Act for EU businesses and suppliers." }
+      - { label: "Remote delivery", title: "Wherever you operate", text: "Remote testing, monitoring and advisory, with on-site work where it's needed." }
+team_image: null
+team: []
+updated: 2026-11-12
 ---
 
-## Our story
+## Who we are
 
-AVRIX Digital was set up in 2025 with a simple observation: growing businesses buy marketing from one supplier, IT from another, websites from a third and recruitment from a fourth, and nobody joins the dots. Ads run without proper tracking. Websites launch without analytics. Cloud tools are half set up. Hiring takes months.
+AVRIX is a UK cyber security provider. We help organisations understand their real risks, strengthen their defences and meet the standards their customers, insurers and regulators expect.
 
-We built one team that owns the whole picture. Performance marketing that's accountable to revenue. Analytics you can trust. Microsoft 365, Google Workspace and AWS set up securely and sized properly. Automations that give your team hours back. And specialist recruiters who understand the roles they're filling.
+Many businesses find cyber security confusing: too many suppliers, too much jargon and reports nobody can act on. We do it differently. Testing, monitoring, compliance and incident response come from one team, with one point of contact and advice in plain English.
 
-## Who we work with
+## Our mission
 
-Mainly UK small and medium-sized businesses with roughly 5 to 300 employees, in e-commerce, SaaS, FinTech, professional services, healthcare and beyond. Our clients want the joined-up expertise large companies take for granted, without enterprise overheads.
-
-## How we work
-
-We start by understanding your business and the numbers that matter. We agree a clear plan and price. We deliver with regular, plain-English updates. Then we measure, report and keep improving. You own every account, asset and line of code we create.
+To give every business, whatever its size, access to the kind of security expertise that used to be reserved for large enterprises, so they can grow with confidence.

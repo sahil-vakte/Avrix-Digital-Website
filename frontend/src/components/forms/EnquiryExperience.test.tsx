@@ -52,13 +52,13 @@ const wrap = (path: string, children = <Button href="#enquiry">Discuss project</
   );
 
 it('opens only on request and preselects the solution from the current page', async () => {
-  wrap('/solutions/wims/');
+  wrap('/solutions/phishdrill/');
   expect(screen.queryByRole('dialog')).toBeNull();
   const trigger = screen.getByRole('link', { name: /Discuss project/ });
   trigger.focus();
   fireEvent.click(trigger);
   expect(await screen.findByRole('form', { name: 'Project enquiry' })).toBeTruthy();
-  expect(screen.getByText('wims')).toBeTruthy();
+  expect(screen.getByText('security-products')).toBeTruthy();
   expect(document.body.style.overflow).toBe('hidden');
   fireEvent.click(screen.getByRole('button', { name: ui.closeEnquiry }));
   await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
@@ -67,10 +67,10 @@ it('opens only on request and preselects the solution from the current page', as
 });
 
 it('uses a call preference from the sticky button and supports native Escape dismissal', async () => {
-  wrap('/solutions/voice-call-agent/');
+  wrap('/services/managed-security/');
   fireEvent.click(screen.getByRole('button', { name: /Schedule a call/ }));
   await screen.findByRole('form', { name: 'Project enquiry' });
-  expect(screen.getByText('voice-call-agent')).toBeTruthy();
+  expect(screen.getByText('managed-soc')).toBeTruthy();
   expect(screen.getByText('video-call')).toBeTruthy();
   fireEvent(screen.getByRole('dialog'), new Event('cancel', { bubbles: true }));
   await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());

@@ -1,163 +1,238 @@
-import { SplitText } from '../motion/SplitText';
-import { useState } from 'react';
-import { content, services, posts, serviceHref, postHref, homeSection, ui } from '../../content';
-import type { Section, Item, Faq, Service, Post } from '../../content/schemas';
-import { Badge, Button, Card, Em, Heading, Icon } from '../ui';
-import ConnectedVisual from './ConnectedVisual';
-export function Hero({
-  section,
+import { useState, type ReactNode } from 'react';
+import {
+  content,
+  services,
+  posts,
+  serviceHref,
+  postHref,
+  homeSection,
+  nav,
+  ui,
+} from '../../content';
+import type { Section, Item, Faq, Service, Post, Industry } from '../../content/schemas';
+import { Button, Em, Heading, Icon } from '../ui';
+
+export const pillarLabel = (pillar: string) =>
+  nav.mega_menu.find((g) => g.pillar === pillar)?.label || '';
+
+/** Light, centred page hero used by every inner page. */
+export function PageHero({
+  eyebrow,
+  title,
+  lead,
   children,
-  home = false,
+  aside,
+  tags,
+  footer,
+  actions = true,
 }: {
-  section: Section;
-  children?: React.ReactNode;
-  home?: boolean;
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  children?: ReactNode;
+  aside?: ReactNode;
+  tags?: string[];
+  footer?: ReactNode;
+  actions?: boolean;
 }) {
-  const title = section.h1 || section.title || '';
   return (
-    <section className={`hero dark ${home ? 'hero-home' : ''}`}>
-      <div className="hero-mesh" aria-hidden="true" />
-      <div className="container hero-content">
-        <div className="hero-layout">
-          <div className="hero-copy">
-            {children}
-            {section.eyebrow && <p className="eyebrow">{section.eyebrow}</p>}
-            <SplitText text={title} />
-            {section.lead && <p className="lead">{section.lead}</p>}
+    <section className={`page-hero ${aside ? 'with-aside' : ''}`}>
+      <div className="hero-glow" aria-hidden="true" />
+      <div className="container page-hero-grid">
+        <div className="page-hero-copy">
+          {children}
+          {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+          <h1>
+            <Em text={title} />
+          </h1>
+          {lead && <p className="lead">{lead}</p>}
+          {actions && (
             <div className="actions">
-              {section.primary_cta && (
-                <Button href={section.primary_cta.href!}>{section.primary_cta.label}</Button>
-              )}
-              {section.secondary_cta && (
-                <Button href={section.secondary_cta.href!} variant="secondary">
-                  {section.secondary_cta.label}
-                </Button>
-              )}
+              <Button href={nav.header_cta.href!}>{nav.header_cta.label}</Button>
+              <Button href="#enquiry" variant="secondary">
+                {ui.openEnquiry}
+              </Button>
             </div>
-          </div>
-          {home && <ConnectedVisual />}
+          )}
+          {tags && <Tags items={tags} />}
+          {footer}
         </div>
-        {section.signal_chips && (
-          <div className="signals" aria-hidden="true">
-            {section.signal_chips.map((c, i) => (
-              <span key={c} style={{ animationDelay: `${i * -2}s` }}>
-                <i />
-                {c}
-              </span>
-            ))}
-          </div>
-        )}
-        {section.pillar_tabs && (
-          <div className="pillar-tabs">
-            {section.pillar_tabs.map((p, i) => (
-              <a key={p.label} href={p.href}>
-                <span className="eyebrow">0{i + 1}</span>
-                <h2>
-                  {p.label}
-                  <span aria-hidden="true">↗</span>
-                </h2>
-                <p>{p.text}</p>
-              </a>
-            ))}
-          </div>
-        )}
+        {aside}
       </div>
     </section>
   );
 }
-export function ServiceGrid({
-  items = services,
-  rich = false,
+
+/** "Request an assessment" card shown beside service and industry heroes. */
+export function RequestCard({ title }: { title?: string }) {
+  return (
+    <aside className="request-card" aria-label={title || ui.requestAssessment}>
+      <p className="eyebrow">{ui.freeConsultation}</p>
+      <h2>{title || ui.requestAssessment}</h2>
+      <p>{ui.requestAssessmentText}</p>
+      <ul className="check-list">
+        <li>{ui.trustScope}</li>
+        <li>{ui.trustNda}</li>
+        <li>{ui.trustReport}</li>
+      </ul>
+      <Button href="#enquiry">{ui.requestAssessment}</Button>
+    </aside>
+  );
+}
+
+export function SectionShell({
+  id,
+  tone = 'light',
+  eyebrow,
+  title,
+  intro,
+  children,
+  className = '',
 }: {
-  items?: Service[];
-  rich?: boolean;
+  id?: string;
+  tone?: 'light' | 'tint' | 'dark';
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+  children: ReactNode;
+  className?: string;
 }) {
   return (
-    <div className="grid cards stagger">
+    <section className={`section ${tone} ${className}`} id={id}>
+      <div className="container">
+        {(title || eyebrow) && <Heading eyebrow={eyebrow} title={title} intro={intro} />}
+        {children}
+      </div>
+    </section>
+  );
+}
+
+export function ServiceCard({ s }: { s: Service }) {
+  return (
+    <article className="card service-card">
+      <Icon name={s.icon} />
+      <h3>
+        <a href={serviceHref(s.slug)}>{s.title}</a>
+      </h3>
+      <p>{s.summary}</p>
+      <a className="more" href={serviceHref(s.slug)} aria-label={`${ui.learnMore}: ${s.title}`}>
+        {ui.learnMore} <span aria-hidden="true">→</span>
+      </a>
+    </article>
+  );
+}
+
+export function ServiceGrid({ items = services }: { items?: Service[] }) {
+  return (
+    <div className="grid cards-3 stagger">
       {items.map((s) => (
-        <Card key={s.slug} className={`service-card service-${s.pillar}`}>
-          <div className="card-top">
-            <Icon name={s.icon} />
-            <span className="eyebrow">0{s.order}</span>
-          </div>
-          <h3>
-            <a href={serviceHref(s.slug)}>{s.title}</a>
-          </h3>
-          <p>{s.summary}</p>
-          {rich && (
-            <ul>
-              {s.outcomes.slice(0, 3).map((o) => (
-                <li key={o.title}>{o.title}</li>
+        <ServiceCard key={s.slug} s={s} />
+      ))}
+    </div>
+  );
+}
+
+/** Generic card grid: icon or number, title, text, optional bullets and link. */
+export function CardGrid({
+  items,
+  columns = 3,
+  numbered = false,
+  className = '',
+}: {
+  items: Item[];
+  columns?: 2 | 3 | 4;
+  numbered?: boolean;
+  className?: string;
+}) {
+  return (
+    <div className={`grid cards-${columns} stagger ${className}`}>
+      {items.map((v, i) => (
+        <article className="card" key={v.title}>
+          {numbered ? (
+            <span className="card-number">{v.n || String(i + 1).padStart(2, '0')}</span>
+          ) : v.icon ? (
+            <Icon name={v.icon} />
+          ) : null}
+          {v.label && <p className="card-label">{v.label}</p>}
+          <h3>{v.href ? <a href={v.href}>{v.title}</a> : <Em text={v.title} />}</h3>
+          <p>{v.text}</p>
+          {v.bullets && (
+            <ul className="check-list">
+              {v.bullets.map((b) => (
+                <li key={b}>{b}</li>
               ))}
             </ul>
           )}
-          {rich && s.pricing?.price_from != null && (
-            <p className="price">
-              {ui.from} £{s.pricing.price_from.toLocaleString('en-GB')}
-            </p>
+          {v.href && (
+            <a className="more" href={v.href} aria-label={`${ui.learnMore}: ${v.title}`}>
+              {ui.learnMore} <span aria-hidden="true">→</span>
+            </a>
           )}
-          <a className="explore" href={serviceHref(s.slug)} aria-label={`${ui.explore} ${s.title}`}>
-            {ui.explore} <span aria-hidden="true">↗</span>
-          </a>
-        </Card>
+        </article>
       ))}
     </div>
   );
 }
-export function ValueGrid({ items }: { items: Item[] }) {
+
+/** Vertical numbered timeline, as used for engagement models and lifecycles. */
+export function Timeline({ steps }: { steps: Item[] }) {
   return (
-    <div className="grid values stagger">
-      {items.map((v, i) => (
-        <Card key={v.title} className={v.services ? 'pathway-card' : 'value-card'}>
-          {v.icon ? <Icon name={v.icon} /> : <span className="eyebrow">0{i + 1}</span>}
-          <h3>
-            <Em text={v.title} />
-          </h3>
-          <p>{v.text}</p>
-          {v.services && (
-            <div className="service-links">
-              {v.services.map((slug) => (
-                <a key={slug} href={serviceHref(slug)}>
-                  {services.find((s) => s.slug === slug)?.title} ↗
-                </a>
-              ))}
-            </div>
-          )}
-        </Card>
-      ))}
-    </div>
-  );
-}
-export function Process({ steps }: { steps: Item[] }) {
-  return (
-    <div className="process">
-      <svg viewBox="0 0 1200 30" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0 15 H1200" pathLength="1" data-draw="" />
-      </svg>
-      <ol className="grid">
-        {steps.map((s, i) => (
-          <li key={s.title} data-reveal>
-            <span className="step-number">{String(i + 1).padStart(2, '0')}</span>
-            {s.icon && <Icon name={s.icon} />}
+    <ol className="timeline">
+      {steps.map((s, i) => (
+        <li key={s.title} data-reveal>
+          <span className="timeline-dot">{i + 1}</span>
+          <div className="card">
+            {s.label && <p className="card-label">{s.label}</p>}
             <h3>{s.title}</h3>
             <p>{s.text}</p>
-          </li>
-        ))}
-      </ol>
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/** Horizontal numbered process steps. */
+export function Process({ steps }: { steps: Item[] }) {
+  return (
+    <ol className={`process steps-${steps.length}`}>
+      {steps.map((s, i) => (
+        <li key={s.title} className="card" data-reveal>
+          <span className="card-number">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+export function FrameworkGrid({ items }: { items: Item[] }) {
+  return (
+    <div className="grid cards-4 framework-grid stagger">
+      {items.map((f) => (
+        <div className="framework" key={f.title}>
+          {f.icon && <Icon name={f.icon} />}
+          {f.label && <p className="card-label">{f.label}</p>}
+          <strong>{f.title}</strong>
+          <span>{f.text}</span>
+        </div>
+      ))}
     </div>
   );
 }
+
 export function FAQ({ items, search = '' }: { items: Faq[]; search?: string }) {
   const matches = items.filter((f) =>
     (f.q + ' ' + f.a).toLowerCase().includes(search.toLowerCase()),
   );
   return (
     <div className="faq-list">
-      {matches.map((f) => (
-        <details key={f.q}>
+      {matches.map((f, i) => (
+        <details key={f.q} open={i === 0 && !search ? true : undefined}>
           <summary>
             {f.q}
-            <span aria-hidden="true">+</span>
+            <span className="faq-icon" aria-hidden="true" />
           </summary>
           <div className="faq-answer">
             <p>{f.a}</p>
@@ -167,16 +242,42 @@ export function FAQ({ items, search = '' }: { items: Faq[]; search?: string }) {
     </div>
   );
 }
-export function BlogTeaser({ items = posts.slice(0, 3) }: { items?: Post[] }) {
+
+export function FaqSection({
+  items,
+  title,
+  intro,
+}: {
+  items: Faq[];
+  title?: string;
+  intro?: string;
+}) {
+  if (!items.length) return null;
   return (
-    <div className="grid blog-cards stagger">
+    <SectionShell
+      id="faqs"
+      eyebrow={ui.faqsTitle}
+      title={title || 'Everything you need to *know*'}
+      intro={intro}
+    >
+      <div className="narrow">
+        <FAQ items={items} />
+      </div>
+    </SectionShell>
+  );
+}
+
+export function BlogTeaser({ items = posts.slice(0, 3) }: { items?: Post[] }) {
+  const categories = content.pages.find((p) => p.slug === 'blog')?.categories || [];
+  return (
+    <div className="grid cards-3 blog-cards stagger">
       {items.map((p) => (
-        <article key={p.slug}>
-          <a href={postHref(p.slug)}>
-            <img src={p.cover.src} alt={p.cover.alt} width="1600" height="900" loading="lazy" />
+        <article className="card blog-card" key={p.slug}>
+          <a href={postHref(p.slug)} tabIndex={-1} aria-hidden="true">
+            <img src={p.cover.src} alt="" width="1600" height="900" loading="lazy" />
           </a>
-          <p className="eyebrow">
-            {p.category.replace(/-/g, ' ')} · {p.readTime} {ui.minutes}
+          <p className="card-label">
+            {categories.find((c) => c.key === p.category)?.label} · {p.readTime} {ui.minutes}
           </p>
           <h3>
             <a href={postHref(p.slug)}>{p.title}</a>
@@ -195,31 +296,51 @@ export function BlogTeaser({ items = posts.slice(0, 3) }: { items?: Post[] }) {
     </div>
   );
 }
+
+/** Closing call to action shown at the foot of every page. */
 export function CtaBand() {
-  const s = homeSection('cta_band');
+  const s = homeSection('final_cta');
   return (
-    <section className="cta-band dark">
+    <section className="cta-band">
       <div className="container">
-        <Heading title={s.title} intro={s.text} />
-        <div className="actions">
-          <Button href={s.primary_cta!.href!}>{s.primary_cta!.label}</Button>
-          <Button variant="secondary" href={s.secondary_cta!.href!}>
-            {s.secondary_cta!.label}
-          </Button>
+        <div className="cta-panel">
+          <h2>
+            <Em text={s.title!} />
+          </h2>
+          <p className="lead">{s.text}</p>
+          {s.promises && (
+            <ul className="cta-promises">
+              {s.promises.map((p) => (
+                <li key={p.title}>
+                  <strong>{p.title}</strong>
+                  <span>{p.text}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+          <div className="actions">
+            <Button href={s.primary_cta!.href!}>{s.primary_cta!.label}</Button>
+            <Button href="#enquiry" variant="secondary">
+              {ui.openEnquiry}
+            </Button>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-export function Marquee({ section }: { section: Section }) {
+
+export function Ticker({ section }: { section: Section }) {
   return (
-    <div className="marquee">
-      <p className="eyebrow">{section.label}</p>
-      <div className="marquee-track">
+    <div className="ticker" aria-label={ui.activeDefence}>
+      <div className="ticker-track">
         {[0, 1].map((n) => (
           <div key={n} aria-hidden={n === 1 ? 'true' : undefined}>
             {(section.items as string[]).map((i) => (
-              <span key={i}>{i}</span>
+              <span key={i}>
+                <i aria-hidden="true" />
+                {i}
+              </span>
             ))}
           </div>
         ))}
@@ -227,75 +348,232 @@ export function Marquee({ section }: { section: Section }) {
     </div>
   );
 }
-export function Proof({ section }: { section: Section }) {
-  const stats = content.stats.filter((s) => s.verified);
-  const testimonials = content.testimonials.filter((t) => t.verified);
-  if (!stats.length && !testimonials.length)
-    return (
-      <>
-        <Heading eyebrow={section.eyebrow} title={section.promises_title} />
-        <ValueGrid items={section.promises!} />
-      </>
-    );
+
+/** Illustrative security dashboard beside the homepage hero. */
+export function HeroDashboard({ section }: { section: Section }) {
   return (
-    <>
-      <Heading eyebrow={section.eyebrow} title={section.title} />
-      <div className="grid">
-        {stats.map((s) => (
-          <div key={s.id}>
-            <strong className="stat" data-count={s.value}>
-              {s.value}
-            </strong>
-            <p>{s.label}</p>
-            {s.source_note && <small>{s.source_note}</small>}
-          </div>
+    <div className="hero-dashboard" aria-label={section.label} role="img">
+      <div className="dash-card dash-telemetry">
+        <p className="card-label">{ui.telemetry}</p>
+        <div className="dash-map" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </div>
+        <div className="dash-row">
+          <span className="pill danger">{ui.threatBlocked}</span>
+          <span>{ui.activeDefence}</span>
+        </div>
+      </div>
+      <div className="dash-core" aria-hidden="true">
+        <div className="dash-shield">
+          <Icon name="managed-security" />
+        </div>
+        {section.signal_chips?.map((c, i) => (
+          <span key={c} className={`dash-node node-${i}`}>
+            {c}
+          </span>
         ))}
       </div>
-      <div className={testimonials.length >= 3 ? 'testimonials snap' : 'testimonials grid'}>
+      <div className="dash-card dash-posture">
+        <p className="card-label">{ui.postureTitle}</p>
+        <div className="dash-score">
+          <span className="score-ring" aria-hidden="true" />
+          <div>
+            <strong>{ui.socMonitoring}</strong>
+            <span className="pill success">{ui.activeDefence}</span>
+          </div>
+        </div>
+      </div>
+      <div className="dash-card dash-compliance">
+        <p className="card-label">{ui.complianceStatus}</p>
+        <ul>
+          {(section.items as Item[] | undefined)?.map((i) => (
+            <li key={i.title}>
+              <span>{i.title}</span>
+              <em>{i.text}</em>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <p className="dash-caption">{section.label}</p>
+    </div>
+  );
+}
+
+export function IndustryTabs({ industries }: { industries: Industry[] }) {
+  const [active, setActive] = useState(0);
+  const i = industries[active];
+  return (
+    <div className="industry-tabs">
+      <div className="tab-row" role="tablist" aria-label={ui.industries}>
+        {industries.map((ind, n) => (
+          <button
+            key={ind.slug}
+            role="tab"
+            id={`tab-${ind.slug}`}
+            aria-selected={n === active}
+            aria-controls={`panel-${ind.slug}`}
+            tabIndex={n === active ? 0 : -1}
+            onClick={() => setActive(n)}
+            onKeyDown={(e) => {
+              if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+              const next =
+                (n + (e.key === 'ArrowRight' ? 1 : -1) + industries.length) % industries.length;
+              setActive(next);
+              document.getElementById(`tab-${industries[next].slug}`)?.focus();
+            }}
+          >
+            <Icon name={ind.icon} />
+            {ind.title}
+          </button>
+        ))}
+      </div>
+      <div
+        className="card tab-panel"
+        role="tabpanel"
+        id={`panel-${i.slug}`}
+        aria-labelledby={`tab-${i.slug}`}
+      >
+        <div className="tab-visual" aria-hidden="true">
+          <div className="tab-visual-icon">
+            <Icon name={i.icon} />
+          </div>
+          {i.tags.map((t) => (
+            <span key={t}>{t}</span>
+          ))}
+        </div>
+        <div>
+          <p className="card-label">{i.eyebrow}</p>
+          <h3>{i.tagline}</h3>
+          <p>{i.summary}</p>
+          <ul className="point-list">
+            {i.points.map((p) => (
+              <li key={p.title}>
+                <strong>{p.title}</strong>
+                <span>{p.text}</span>
+              </li>
+            ))}
+          </ul>
+          <Button href={`/industries/${i.slug}/`}>{ui.learnMore}</Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function Testimonials({ section }: { section: Section }) {
+  const testimonials = content.testimonials.filter((t) => t.verified);
+  if (!testimonials.length) return null;
+  return (
+    <SectionShell eyebrow={section.eyebrow} title={section.title} tone="tint">
+      <div className="grid cards-3">
         {testimonials.map((t) => (
-          <blockquote key={t.id}>
+          <blockquote className="card quote" key={t.id}>
             <p>{t.quote}</p>
             <cite>
-              {t.name} — {t.role}
-              {t.company && `, ${t.company}`}
+              <strong>{t.name}</strong>
+              <span>
+                {t.role}
+                {t.company && `, ${t.company}`}
+              </span>
             </cite>
           </blockquote>
         ))}
       </div>
-    </>
+    </SectionShell>
   );
 }
-export function ServicesFilter({ rich = true }: { rich?: boolean }) {
+
+/** Filterable, searchable directory of every service. */
+export function ServicesDirectory() {
   const [filter, setFilter] = useState('all');
-  const options = content.pages.find((p) => p.slug === 'services')!.filters!;
+  const [query, setQuery] = useState('');
+  const page = content.pages.find((p) => p.slug === 'services')!;
+  const matches = services.filter(
+    (s) =>
+      (filter === 'all' || s.pillar === filter) &&
+      (s.title + ' ' + s.summary).toLowerCase().includes(query.toLowerCase()),
+  );
   return (
     <>
-      <div className="service-explorer-bar">
-        <div className="filter-chips" role="group" aria-label={ui.services}>
-          {options.map((f) => (
+      <div className="directory-bar">
+        <div className="filter-chips" role="group" aria-label={ui.directory}>
+          {page.filters!.map((f) => (
             <button key={f.key} aria-pressed={filter === f.key} onClick={() => setFilter(f.key)}>
               {f.label}
+              <span>
+                {f.key === 'all'
+                  ? services.length
+                  : services.filter((s) => s.pillar === f.key).length}
+              </span>
             </button>
           ))}
         </div>
-        <p className="result-count" role="status" aria-live="polite">
-          {services.filter((s) => filter === 'all' || s.pillar === filter).length}{' '}
-          {ui.serviceResults}
-        </p>
+        <label className="search-field">
+          <span className="sr-only">{page.search_placeholder}</span>
+          <input
+            type="search"
+            value={query}
+            placeholder={page.search_placeholder}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </label>
       </div>
-      <ServiceGrid
-        rich={rich}
-        items={services.filter((s) => filter === 'all' || s.pillar === filter)}
-      />
+      <p className="result-count" role="status" aria-live="polite">
+        {matches.length} {ui.servicesCount}
+      </p>
+      <ServiceGrid items={matches} />
     </>
   );
 }
+
 export function Tags({ items }: { items: string[] }) {
   return (
-    <div className="tags">
+    <ul className="tags">
       {items.map((t) => (
-        <Badge key={t}>{t}</Badge>
+        <li key={t}>{t}</li>
       ))}
+    </ul>
+  );
+}
+
+export function SocWidget() {
+  const w = nav.soc_widget;
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={`soc-widget ${open ? 'open' : ''}`}>
+      <button
+        type="button"
+        className="soc-toggle"
+        aria-expanded={open}
+        aria-controls="soc-widget-panel"
+        onClick={() => setOpen(!open)}
+      >
+        <Icon name="managed-security" />
+        <span>
+          <small>
+            <i aria-hidden="true" />
+            {w.label}
+          </small>
+          {w.title}
+        </span>
+      </button>
+      <div className="soc-panel" id="soc-widget-panel" hidden={!open}>
+        <ul className="check-list">
+          {w.points.map((p) => (
+            <li key={p}>{p}</li>
+          ))}
+        </ul>
+        <div className="actions">
+          <Button href={w.primary.href!} size="sm">
+            {w.primary.label}
+          </Button>
+          <Button href={w.secondary.href!} size="sm" variant="secondary">
+            {w.secondary.label}
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

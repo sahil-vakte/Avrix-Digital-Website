@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { ServicesFilter } from './sections';
+import { ServicesDirectory } from './sections';
 import Header from './layout/Header';
 import { page, services, ui } from '../content';
 
@@ -39,21 +39,21 @@ afterEach(() => {
 });
 
 it('lets visitors explore each service category and return to all services', () => {
-  render(<ServicesFilter rich={false} />);
+  render(<ServicesDirectory />);
   for (const filter of page('services').filters!) {
-    const button = screen.getByRole('button', { name: filter.label });
+    const button = screen.getByRole('button', { name: new RegExp(`^${filter.label}`) });
     fireEvent.click(button);
     expect(button.getAttribute('aria-pressed')).toBe('true');
     const expected = services.filter((s) => filter.key === 'all' || s.pillar === filter.key);
     expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(expected.length);
-    expect(screen.getByRole('status').textContent).toBe(`${expected.length} ${ui.serviceResults}`);
+    expect(screen.getByRole('status').textContent).toBe(`${expected.length} ${ui.servicesCount}`);
     expected.forEach((s) =>
       expect(screen.getByRole('link', { name: s.title }).getAttribute('href')).toBe(
         `/services/${s.slug}/`,
       ),
     );
   }
-  fireEvent.click(screen.getByRole('button', { name: ui.all }));
+  fireEvent.click(screen.getByRole('button', { name: /^All services/ }));
   expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(services.length);
 });
 
@@ -63,10 +63,10 @@ it('opens the mobile navigation, closes it on a link, and unlocks page scrolling
       <Header />
     </MemoryRouter>,
   );
-  fireEvent.click(screen.getByRole('button', { name: /Menu/ }));
+  fireEvent.click(screen.getByRole('button', { name: ui.menu }));
   const dialog = screen.getByRole('dialog');
   expect(document.body.style.overflow).toBe('hidden');
-  const about = within(dialog).getByRole('link', { name: 'About' });
+  const about = within(dialog).getByRole('link', { name: 'About Us' });
   about.addEventListener('click', (event) => event.preventDefault());
   fireEvent.click(about);
   expect(dialog.hasAttribute('open')).toBe(false);
@@ -96,14 +96,14 @@ it('navigates the services dropdown with the keyboard and closes on an outside c
   const button = screen.getByRole('button', { name: /Services/ });
   fireEvent.click(button);
   fireEvent.keyDown(button, { key: 'ArrowDown' });
-  expect(document.activeElement?.textContent).toContain('All Services');
+  expect(document.activeElement?.textContent).toContain('Offensive Security');
   fireEvent.keyDown(document.activeElement!, { key: 'End' });
-  expect(document.activeElement?.textContent).toContain('Book a free');
+  expect(document.activeElement?.textContent).toContain(ui.directory);
   fireEvent.pointerDown(document.body);
   expect(button.getAttribute('aria-expanded')).toBe('false');
 });
 
-it('keeps a hover-opened menu open on the first click and exposes the products menu', () => {
+it('keeps a hover-opened menu open on the first click and exposes the solutions menu', () => {
   render(
     <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Header />
@@ -115,8 +115,8 @@ it('keeps a hover-opened menu open on the first click and exposes the products m
   expect(servicesButton.getAttribute('aria-expanded')).toBe('true');
   fireEvent.click(servicesButton);
   expect(servicesButton.getAttribute('aria-expanded')).toBe('false');
-  fireEvent.click(screen.getByRole('button', { name: /Products/ }));
-  expect(screen.getByRole('link', { name: /Voice Call Agent/ }).getAttribute('href')).toBe(
-    '/solutions/voice-call-agent/',
+  fireEvent.click(screen.getByRole('button', { name: /Solutions/ }));
+  expect(screen.getByRole('link', { name: /AVRIX PhishDrill/ }).getAttribute('href')).toBe(
+    '/solutions/phishdrill/',
   );
 });

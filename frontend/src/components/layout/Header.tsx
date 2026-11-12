@@ -1,12 +1,47 @@
-﻿import { useEffect, useRef, useState } from 'react';
+﻿import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import { content, nav, site, services, solutions, serviceHref, ui } from '../../content';
 import { Button, Icon } from '../ui';
 
-type Menu = 'services' | 'solutions';
+type Menu = 'services' | 'solutions' | 'industries' | 'resources';
+
+export function Brand() {
+  return (
+    <a className="brand" href="/" aria-label={`${site.brand_name} home`}>
+      <img src={site.logo.mark} alt="" width="246" height="192" />
+      <span>{site.logo.alt.toUpperCase()}</span>
+    </a>
+  );
+}
+
+/** Links inside each dropdown, shared by the desktop panels and the mobile sheet. */
+function menuLinks(kind: Menu) {
+  if (kind === 'solutions')
+    return solutions.map((s) => ({
+      href: `/solutions/${s.slug}/`,
+      label: s.title,
+      text: s.summary,
+      icon: s.icon,
+    }));
+  if (kind === 'industries')
+    return [
+      ...content.industries.map((i) => ({
+        href: `/industries/${i.slug}/`,
+        label: i.title,
+        text: i.tagline,
+        icon: i.icon,
+      })),
+      { href: '/industries/', label: ui.allIndustries, text: '', icon: 'compliance' },
+    ];
+  if (kind === 'resources')
+    return nav.resources.map((r) => ({ href: r.href!, label: r.label, text: r.text, icon: '' }));
+  return [];
+}
+
 export default function Header() {
   const [open, setOpen] = useState<Menu | null>(null);
   const [mobile, setMobile] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
   const header = useRef<HTMLElement>(null);
   const sheet = useRef<HTMLDialogElement>(null);
@@ -25,16 +60,20 @@ export default function Header() {
     const outside = (event: PointerEvent) => {
       if (!header.current?.contains(event.target as Node)) setOpen(null);
     };
-    const desktop = matchMedia('(min-width: 1024px)');
+    const desktop = matchMedia('(min-width: 1100px)');
     const resize = () => {
       setOpen(null);
       if (desktop.matches) setMobile(false);
     };
+    const scroll = () => setScrolled(scrollY > 8);
+    scroll();
     document.addEventListener('pointerdown', outside);
     desktop.addEventListener('change', resize);
+    addEventListener('scroll', scroll, { passive: true });
     return () => {
       document.removeEventListener('pointerdown', outside);
       desktop.removeEventListener('change', resize);
+      removeEventListener('scroll', scroll);
       stopTimer();
     };
   }, []);
@@ -49,13 +88,58 @@ export default function Header() {
       mobileTrigger.current?.focus();
     };
   }, [mobile]);
-  function menuType(href?: string, mega?: boolean): Menu | null {
-    return mega ? 'services' : href === '/solutions/' ? 'solutions' : null;
-  }
+
+  const panel = (kind: Menu, href: string, label: string): ReactNode => {
+    if (kind === 'services')
+      return (
+        <div className="nav-panel nav-panel-services" id="menu-services" hidden={open !== kind}>
+          <div className="nav-service-groups">
+            {nav.mega_menu.map((group) => (
+              <div key={group.pillar}>
+                <a className="nav-group-title" href={`/services/#${group.pillar}`}>
+                  {group.label}
+                </a>
+                <p className="nav-group-blurb">{group.blurb}</p>
+                {group.items.map((slug) => {
+                  const service = services.find((s) => s.slug === slug)!;
+                  return (
+                    <a className="nav-link-row" href={serviceHref(slug)} key={slug}>
+                      <Icon name={service.icon} />
+                      <span>{service.title}</span>
+                    </a>
+                  );
+                })}
+              </div>
+            ))}
+          </div>
+          <div className="nav-panel-footer">
+            <span>{nav.footer.tagline}</span>
+            <a href={href}>
+              {ui.directory} <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      );
+    return (
+      <div className={`nav-panel nav-panel-list`} id={`menu-${kind}`} hidden={open !== kind}>
+        <p className="nav-group-title">{label}</p>
+        {menuLinks(kind).map((l) => (
+          <a className="nav-link-card" href={l.href} key={l.href}>
+            {l.icon && <Icon name={l.icon} />}
+            <span>
+              <strong>{l.label}</strong>
+              {l.text && <small>{l.text}</small>}
+            </span>
+          </a>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <header
       ref={header}
-      className="site-header"
+      className={`site-header ${scrolled ? 'scrolled' : ''}`}
       onKeyDown={(event) => {
         if (event.key === 'Escape' && open) {
           event.preventDefault();
@@ -85,25 +169,19 @@ export default function Header() {
       }}
     >
       <div className="container header-inner">
-        <a className="wordmark" href="/" aria-label={site.brand_name}>
-          {content.hasLogo ? (
-            <img src={site.logo.light_on_dark} alt={site.logo.alt} width="372" height="85" />
-          ) : (
-            <>
-              {site.brand_name.toUpperCase()}
-              <span className="brand-dot" />
-            </>
-          )}
-        </a>
+        <Brand />
         <nav className="desktop-nav" aria-label="Main">
           {nav.header.map((link) => {
-            const kind = menuType(link.href, link.mega);
+            const kind = link.menu;
+            const current =
+              link.href === '/' ? pathname === '/' : pathname.startsWith(link.href || '#');
             if (!kind)
               return (
                 <a
                   href={link.href}
                   key={link.label}
                   aria-current={pathname === link.href ? 'page' : undefined}
+                  className={current ? 'active' : undefined}
                 >
                   {link.label}
                 </a>
@@ -128,6 +206,7 @@ export default function Header() {
               >
                 <button
                   type="button"
+                  className={current ? 'active' : undefined}
                   aria-expanded={open === kind}
                   aria-controls={`menu-${kind}`}
                   onClick={(event) => {
@@ -138,62 +217,9 @@ export default function Header() {
                   }}
                 >
                   {link.label}
-                  <span className="nav-chevron" aria-hidden="true">
-                    ⌄
-                  </span>
+                  <span className="nav-chevron" aria-hidden="true" />
                 </button>
-                <div
-                  className={`nav-panel nav-panel-${kind}`}
-                  id={`menu-${kind}`}
-                  hidden={open !== kind}
-                >
-                  <div className="nav-panel-heading">
-                    <span>{kind === 'services' ? ui.services : ui.solutions}</span>
-                    <a href={link.href}>
-                      {ui.all} {kind === 'services' ? ui.services : ui.solutions}
-                      <span aria-hidden="true">↗</span>
-                    </a>
-                  </div>
-                  {kind === 'services' ? (
-                    <div className="nav-service-groups">
-                      {nav.mega_menu.map((group) => (
-                        <div key={group.pillar}>
-                          <p className="eyebrow">{group.label}</p>
-                          <p className="nav-group-blurb">{group.blurb}</p>
-                          {group.items.map((slug) => {
-                            const service = services.find((s) => s.slug === slug)!;
-                            return (
-                              <a className="nav-service-link" href={serviceHref(slug)} key={slug}>
-                                <Icon name={service.icon} />
-                                <span>{service.title}</span>
-                                <span aria-hidden="true">↗</span>
-                              </a>
-                            );
-                          })}
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="nav-solution-grid">
-                      {solutions.map((solution) => (
-                        <a href={`/solutions/${solution.slug}/`} key={solution.slug}>
-                          <Icon name={solution.icon} />
-                          <strong>
-                            {solution.title}
-                            <span aria-hidden="true">↗</span>
-                          </strong>
-                          <small>{solution.summary}</small>
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                  <div className="nav-panel-footer">
-                    <p>{nav.mega_feature.text}</p>
-                    <Button href={nav.mega_feature.cta.href!} size="sm">
-                      {nav.mega_feature.cta.label}
-                    </Button>
-                  </div>
-                </div>
+                {panel(kind, link.href!, link.label)}
               </div>
             );
           })}
@@ -209,9 +235,9 @@ export default function Header() {
           className="menu-toggle"
           onClick={() => setMobile(true)}
           aria-haspopup="dialog"
+          aria-label={ui.menu}
         >
-          {ui.menu}
-          <span aria-hidden="true">☰</span>
+          <span aria-hidden="true" />
         </button>
       </div>
       <dialog
@@ -224,16 +250,26 @@ export default function Header() {
           if ((event.target as HTMLElement).closest('a')) setMobile(false);
         }}
       >
-        <button type="button" autoFocus onClick={() => setMobile(false)}>
-          {ui.close} ×
-        </button>
+        <div className="mobile-sheet-top">
+          <Brand />
+          <button type="button" className="sheet-close" autoFocus onClick={() => setMobile(false)}>
+            <span className="sr-only">{ui.close}</span>
+            <span aria-hidden="true">✕</span>
+          </button>
+        </div>
         <nav aria-label={ui.menu}>
           {nav.header.map((link) => {
-            const kind = menuType(link.href, link.mega);
-            return kind ? (
+            const kind = link.menu;
+            if (!kind)
+              return (
+                <a href={link.href} key={link.label} className="sheet-link">
+                  {link.label}
+                </a>
+              );
+            return (
               <details key={link.label}>
                 <summary>{link.label}</summary>
-                <a href={link.href}>
+                <a href={link.href} className="sheet-sub">
                   {ui.all} {link.label}
                 </a>
                 {kind === 'services'
@@ -241,22 +277,19 @@ export default function Header() {
                       <details key={group.pillar}>
                         <summary>{group.label}</summary>
                         {group.items.map((slug) => (
-                          <a key={slug} href={serviceHref(slug)}>
+                          <a key={slug} className="sheet-sub" href={serviceHref(slug)}>
                             {services.find((s) => s.slug === slug)!.title}
                           </a>
                         ))}
                       </details>
                     ))
-                  : solutions.map((solution) => (
-                      <a href={`/solutions/${solution.slug}/`} key={solution.slug}>
-                        {solution.title}
+                  : menuLinks(kind).map((l) => (
+                      <a key={l.href} className="sheet-sub" href={l.href}>
+                        {l.label}
+                        {l.text && <small>{l.text}</small>}
                       </a>
                     ))}
               </details>
-            ) : (
-              <a href={link.href} key={link.label}>
-                {link.label}
-              </a>
             );
           })}
         </nav>

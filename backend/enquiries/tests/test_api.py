@@ -18,7 +18,7 @@ def test_disabled_public_forms_reject_without_saving_or_email(api, settings, end
     assert EmailJob.objects.count() == 0
 
 
-@pytest.mark.parametrize("solution", ["voice-call-agent", "wims", "hr-desk"])
+@pytest.mark.parametrize("solution", ["voice-call-agent", "wims", "hr-desk", "penetration-testing", "managed-soc", "security-products"])
 def test_solution_enquiry(api, payload, solution):
     payload["services"] = [solution]
     response = api.post("/api/enquiries/", payload, format="json")
