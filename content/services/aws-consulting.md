@@ -28,16 +28,16 @@ process:
   - { title: "Implement", text: "Changes delivered in phases with rollback options." }
   - { title: "Manage & optimise", text: "Monitoring, monthly cost reports and ongoing improvement." }
 pricing:
-  price_from: 499
+  price_from: null
   unit: "cost audit"
   note: "Cost optimisation audits from £499. Managed AWS from £799 per month."
 faqs:
   - q: "We're new to AWS. Where do we start?"
     a: "With a scoping call to understand your application, your team's skills and your requirements. We then design an architecture that fits, not an over-engineered enterprise setup. Most new environments are production-ready within 2 to 4 weeks."
   - q: "Can you reduce our existing AWS costs?"
-    a: "In most environments, yes. Common savings come from right-sizing instances, Savings Plans or Reserved Instances for steady workloads, S3 lifecycle policies, scheduling non-production resources and removing resources nobody uses. Audits start from £499."
+    a: "In most environments, yes. Common savings come from right-sizing instances, Savings Plans or Reserved Instances for steady workloads, S3 lifecycle policies, scheduling non-production resources and removing resources nobody uses."
   - q: "Do you provide ongoing AWS management?"
-    a: "Yes. Managed AWS (from £799 per month) includes monitoring and alerting, monthly cost reviews, patch management, backup verification, incident response and a named consultant who acts as your external cloud team."
+    a: "Yes. Managed AWS includes monitoring and alerting, monthly cost reviews, patch management, backup verification, incident response and a named consultant who acts as your external cloud team."
   - q: "Can you migrate our on-premise servers to AWS?"
     a: "Yes. We plan and run lift-and-shift migrations and more involved modernisation projects. Every migration is phased, with a tested rollback option to minimise business risk."
   - q: "Which AWS services do you specialise in?"

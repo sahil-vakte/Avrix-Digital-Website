@@ -28,7 +28,7 @@ process:
   - { title: "Build & test", text: "Developed, optimised and tested on real devices." }
   - { title: "Launch & train", text: "Redirects, tracking checks, go-live and team training." }
 pricing:
-  price_from: 499
+  price_from: null
   unit: "one-off"
   note: "Business websites from £499, landing pages from £999 and e-commerce stores from £1,999. You get a fixed-price quote before any work begins."
   _owner_check: "TODO(owner): confirm prices. A landing page currently costs more than a whole website."
@@ -42,7 +42,7 @@ faqs:
   - q: "Do you redesign existing websites?"
     a: "Yes. We modernise outdated sites while protecting your existing rankings and URL structure. Every redesign starts with an audit of your current SEO and analytics so nothing important is lost."
   - q: "What does a website cost?"
-    a: "Business websites start from £499, landing pages from £999 and e-commerce stores from £1,999. The final price depends on pages, features and integrations. You'll always get a fixed-price quote before work begins, with no hidden costs."
+    a: "The price depends on the number of pages, features and integrations you need. You'll always get a fixed-price quote before work begins, with no hidden costs."
 related: [web-application-development, ga4-consulting, performance-marketing]
 updated: 2026-10-17
 ---

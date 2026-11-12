@@ -11,7 +11,7 @@ lead: >-
   locations and sales channels. Bring receiving, storage, order processing and
   dispatch into one organised operation.
 icon: build
-order: 2
+order: 3
 preview:
   src: /media/previews/wims.svg
   alt: >-

@@ -7,7 +7,7 @@
       "items": [
         {
           "q": "What services does AVRIX Digital offer?",
-          "a": "Performance marketing (Google Ads, Meta and LinkedIn), GA4 and analytics consulting, web development, bespoke web applications, AI and workflow automation, Microsoft 365 and Copilot, Google Workspace, AWS consulting, and specialist tech and digital recruitment, all from one team.",
+          "a": "Performance marketing (Google Ads, Meta and LinkedIn), GA4 and analytics consulting, web development, bespoke web applications, AI and workflow automation, Microsoft 365 and Copilot, Google Workspace, AWS consulting, cyber security (penetration testing, Cyber Essentials, compliance, 24/7 monitoring and incident response), and specialist tech and digital recruitment, all from one team. We also offer business software, including AI Marketing Automation.",
           "show_on_home": true
         },
         {
@@ -55,6 +55,32 @@
           "q": "How quickly will you reply to my enquiry?",
           "a": "Within one working day, from a real person.",
           "show_on_home": false
+        },
+        {
+          "q": "Who delivers the work?",
+          "a": "Every engagement is delivered by AVRIX with our specialist team. You have one contract, one point of contact and one team accountable for the results, whether the work is marketing, cloud, automation or cyber security.",
+          "show_on_home": false
+        }
+      ]
+    },
+    {
+      "key": "cyber-security",
+      "label": "Cyber security",
+      "items": [
+        {
+          "q": "Can you help a small business with cyber security?",
+          "a": "Yes. Most of our security clients are small and medium-sized businesses. We start with the basics that stop the most common attacks, such as Cyber Essentials, secure Microsoft 365 or Google Workspace settings and staff awareness, then add testing and monitoring where the risk justifies it.",
+          "show_on_home": false
+        },
+        {
+          "q": "We think we've been hacked. What should we do?",
+          "a": "Disconnect affected devices from the network but leave them switched on, don't pay any ransom, and contact us straight away through our incident response page or contact form. If personal data may be affected, you may need to report it to the ICO within 72 hours.",
+          "show_on_home": false
+        },
+        {
+          "q": "Do you need permission to test our systems?",
+          "a": "Yes. We only test systems after the owner has agreed the scope and signed written authorisation. That protects you and keeps the work lawful under the Computer Misuse Act 1990.",
+          "show_on_home": false
         }
       ]
     },
@@ -64,7 +90,7 @@
       "items": [
         {
           "q": "How do you charge?",
-          "a": "Project work (websites, migrations, GA4 setups, automations) is quoted at a fixed price before we start. Ongoing services (campaign management, managed cloud, support) are a flat monthly fee based on scope. Recruitment is success-based. We never charge a percentage of your ad spend.",
+          "a": "Project work (websites, migrations, GA4 setups, automations, security assessments) is quoted at a fixed price before we start. Ongoing services (campaign management, managed cloud, managed security, software subscriptions and support) are a flat monthly fee based on scope. Recruitment is success-based. We never charge a percentage of your ad spend.",
           "show_on_home": true
         },
         {

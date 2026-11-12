@@ -11,7 +11,7 @@ lead: >-
   response, capture confirmed enquiries and keep people in control of the next
   step.
 icon: chat
-order: 1
+order: 2
 preview:
   src: /media/previews/voice-call-agent.svg
   alt: >-
