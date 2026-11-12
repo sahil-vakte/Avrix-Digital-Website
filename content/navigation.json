@@ -52,12 +52,26 @@
     },
     {
       "pillar": "run",
-      "label": "Run & secure",
-      "blurb": "Cloud tools set up properly, secured and supported.",
+      "label": "Run",
+      "blurb": "Cloud tools set up properly, sized right and supported.",
       "items": [
         "microsoft-365-copilot",
         "google-workspace",
         "aws-consulting"
+      ]
+    },
+    {
+      "pillar": "secure",
+      "label": "Secure",
+      "blurb": "Protect your data, pass audits and recover fast if attacked.",
+      "items": [
+        "penetration-testing",
+        "cyber-essentials",
+        "security-compliance",
+        "managed-security",
+        "incident-response",
+        "vciso",
+        "security-awareness-training"
       ]
     },
     {

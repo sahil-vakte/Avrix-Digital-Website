@@ -482,6 +482,10 @@ header.scrolled {
   background: #f0e1dd;
   color: #673c2e;
 }
+.service-secure .icon {
+  background: #e4ebe6;
+  color: #2f5440;
+}
 .service-hire .icon {
   background: #f2e9db;
   color: #77542d;

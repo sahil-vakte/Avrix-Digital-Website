@@ -167,8 +167,8 @@
 }
 .nav-service-groups {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 26px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 22px;
   padding: 24px;
 }
 .nav-service-groups .eyebrow {
@@ -601,7 +601,7 @@
     padding-inline: 14px;
   }
   .nav-service-groups {
-    gap: 18px;
+    gap: 14px;
     padding: 20px;
   }
   .nav-panel {

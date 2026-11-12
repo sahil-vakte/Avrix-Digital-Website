@@ -6,7 +6,7 @@
       "type": "hero",
       "eyebrow": "[ AVRIX DIGITAL — UK ]",
       "h1": "Turn clicks into *customers*, tech into *advantage*.",
-      "lead": "One partner for marketing that pays for itself, cloud tools set up properly, and the tech talent to keep you moving. Plain English, measurable results, no five-supplier juggling act.",
+      "lead": "One partner for marketing that pays for itself, cloud tools set up properly, cyber security you can rely on, and the tech talent to keep you moving. Plain English, measurable results, no five-supplier juggling act.",
       "primary_cta": {
         "label": "Book a free 30-minute call",
         "href": "booking_url_or:/contact-us/"
@@ -28,7 +28,7 @@
         },
         {
           "label": "Build & run",
-          "text": "Websites, apps, automation, Microsoft 365, Google Workspace and AWS.",
+          "text": "Websites, apps, automation, Microsoft 365, Google Workspace, AWS and cyber security.",
           "href": "/services/"
         },
         {
@@ -62,14 +62,18 @@
         "WooCommerce",
         "Next.js",
         "React",
-        "Django"
+        "Django",
+        "Microsoft Sentinel",
+        "Cyber Essentials",
+        "ISO 27001",
+        "WhatsApp Business"
       ]
     },
     {
       "type": "solutions",
       "eyebrow": "BUSINESS SOFTWARE",
       "title": "Less juggling. More *joined-up work.*",
-      "intro": "Voice conversations, warehouse operations and everyday HR. Explore software shaped around the way your business works.",
+      "intro": "Marketing automation, cyber security tools, voice conversations, warehouse operations and everyday HR. Explore software shaped around the way your business works.",
       "link": {
         "label": "Explore all products",
         "href": "/solutions/"
@@ -79,7 +83,7 @@
       "type": "split_statement",
       "eyebrow": "[ 02 — WHY ONE PARTNER ]",
       "statement": "Most businesses juggle an ad agency, an IT supplier, a web developer and a recruiter, and none of them talk to each other.",
-      "body": "AVRIX Digital brings performance marketing, cloud technology, AI automation, web development and tech recruitment into one accountable team. Your ads connect to your analytics. Your analytics connect to your CRM. Your systems are set up so your people can do their best work. And when you need to grow the team, we find the right people.",
+      "body": "AVRIX Digital brings performance marketing, cloud technology, cyber security, AI automation, web development and tech recruitment into one accountable team. Your ads connect to your analytics. Your analytics connect to your CRM. Your systems are set up securely so your people can do their best work. And when you need to grow the team, we find the right people.",
       "link": {
         "label": "More about us",
         "href": "/about/"
@@ -89,7 +93,7 @@
       "type": "service_grid",
       "eyebrow": "[ 03 — SERVICES ]",
       "title": "Pick a problem. We'll *own* the outcome.",
-      "intro": "Nine services, one team, one point of contact.",
+      "intro": "Sixteen services, one team, one point of contact.",
       "show": "all"
     },
     {

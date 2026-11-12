@@ -74,7 +74,7 @@ export const serviceSchema = z.object({
   slug: text.regex(/^[a-z0-9-]+$/),
   title: text,
   h1: text,
-  pillar: z.enum(['grow', 'build', 'run', 'hire']),
+  pillar: z.enum(['grow', 'build', 'run', 'secure', 'hire']),
   order: z.number().int(),
   icon: text,
   summary: text.max(140),

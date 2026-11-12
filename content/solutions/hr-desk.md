@@ -11,7 +11,7 @@ lead: >-
   employees a clear place to make requests and give managers the context to keep
   people processes moving.
 icon: talent
-order: 3
+order: 4
 preview:
   src: /media/previews/hr-desk.svg
   alt: >-

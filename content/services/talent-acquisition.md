@@ -2,7 +2,7 @@
 slug: talent-acquisition
 title: Talent Acquisition
 pillar: hire
-order: 9
+order: 20
 icon: talent
 h1: "Hire the tech and digital talent that *moves you forward*"
 seo_title: "Tech & Digital Recruitment Agency UK | AVRIX Digital"
@@ -36,7 +36,7 @@ faqs:
   - q: "What roles do you specialise in?"
     a: "Technology roles including cloud engineers (AWS, Azure, GCP), DevOps and platform engineers, software developers (Python, React, Node.js), data engineers, cybersecurity analysts and architects, and IT infrastructure specialists. In digital marketing we place PPC and paid media managers, SEO specialists, analytics professionals, content strategists and performance marketing leaders. We also place fractional CTOs and interim technical leaders."
   - q: "Do you charge upfront fees?"
-    a: "No. Permanent placements are success-only: the fee is payable when a candidate accepts and starts, typically 12–15% of first-year salary depending on seniority and specialism. Contract staffing is charged as a margin on the contractor's day rate."
+    a: "No. Permanent placements are success-only: the fee is payable only when a candidate accepts and starts, and depends on seniority and specialism. Contract staffing is charged as a margin on the contractor's day rate."
   - q: "How quickly can you find candidates?"
     a: "For roles within our specialisms we typically present a shortlist of 3 to 5 qualified, interested candidates within 10 to 14 working days of the brief. Urgent contract and interim roles can often be filled within 3 to 5 working days."
   - q: "What if the candidate doesn't work out?"
