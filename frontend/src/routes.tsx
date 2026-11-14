@@ -6,6 +6,7 @@ import { buildRoutes, type RouteRecord } from './content/routes';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import CookieBanner from './components/layout/CookieBanner';
+import Accreditations from './components/layout/Accreditations';
 import EnquiryExperience from './components/forms/EnquiryExperience';
 import Seo from './components/seo/Seo';
 import { CtaBand, SocWidget } from './components/sections';
@@ -41,6 +42,7 @@ function Layout() {
       <main id="main" key={location.pathname}>
         <Outlet />
       </main>
+      <Accreditations />
       <Footer />
       <SocWidget />
       <CookieBanner />

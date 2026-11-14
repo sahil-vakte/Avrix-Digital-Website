@@ -284,6 +284,20 @@ export type Solution = z.infer<typeof solutionSchema> & {
   html: string;
   toc: { id: string; text: string }[];
 };
+export const accreditationsSchema = z.object({
+  eyebrow: z.string(),
+  title: z.string(),
+  items: z.array(
+    z.object({
+      name: z.string().min(2),
+      text: z.string().max(140),
+      logo: z.string().regex(/^\/media\/accreditations\/[a-z0-9-]+\.(svg|png|webp)$/),
+      reference: z.string().nullable(),
+      href: z.string().url().nullable(),
+      show: z.boolean().default(true),
+    }),
+  ),
+});
 export type Content = {
   site: Site;
   home: z.infer<typeof homeSchema>;
@@ -297,6 +311,7 @@ export type Content = {
   faqs: { groups: { key: string; label: string; items: Faq[] }[] };
   stats: z.infer<typeof statSchema>[];
   testimonials: z.infer<typeof testimonialSchema>[];
+  accreditations: z.infer<typeof accreditationsSchema>;
   ui: Record<string, string>;
   hasLogo: boolean;
 };

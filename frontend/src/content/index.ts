@@ -1,7 +1,7 @@
 import raw from './generated.json';
 import type { Content } from './schemas';
 export const content = raw as unknown as Content;
-export const { site, home, nav, services, solutions, posts, ui } = content;
+export const { site, home, nav, services, solutions, posts, accreditations, ui } = content;
 export const page = (slug: string) => {
   const result = [...content.pages, ...content.legal].find((p) => p.slug === slug);
   if (!result) throw new Error(`Missing page ${slug}`);
