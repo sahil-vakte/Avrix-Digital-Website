@@ -1,16 +1,12 @@
 ---
 slug: attack-surface-monitor
 title: AVRIX Attack Surface Monitor
-h1: 'See your business the way *attackers see it.*'
-eyebrow: ATTACK SURFACE MANAGEMENT
+h1: "Know everything you've left *open to the internet.*"
+eyebrow: EXPOSURE MONITORING
 summary: >-
-  Continuous discovery and monitoring of the websites, servers, cloud services
-  and leaked credentials your business exposes to the internet.
+  Always-on tracking of the websites, servers, cloud services and leaked passwords linked to your organisation, with alerts when something new appears.
 lead: >-
-  Old test sites, forgotten subdomains, open remote access ports and leaked
-  staff passwords are how many attacks begin. AVRIX Attack Surface Monitor finds
-  what your business exposes online, checks it continuously and alerts you to
-  new risks before they're used against you.
+  Forgotten test sites, remote access left switched on and staff passwords for sale online are common starting points for attacks. AVRIX Attack Surface Monitor keeps a live list of what you expose, checks it every day and tells you in plain English what to close first.
 icon: attack-surface
 order: 2
 preview:
@@ -19,19 +15,19 @@ preview:
     Illustrative Attack Surface Monitor workspace showing discovered websites,
     a flagged test site and an exposed remote access service
 highlights:
-  - title: Find what you didn't know you had
+  - title: A list you can trust
     text: >-
       Domains, subdomains, cloud services and systems discovered automatically.
-  - title: Know when something changes
+  - title: Alerts when things change
     text: >-
       Alerts when a new service appears, a certificate expires or a risky port
       opens.
-  - title: Fix in the right order
+  - title: A clear order of work
     text: >-
       Findings ranked by risk with clear, plain-English next steps.
 sections:
   - id: discover
-    title: A complete picture of your exposure.
+    title: Everything that faces the internet.
     items:
       - title: Asset discovery
         text: >-
@@ -45,7 +41,7 @@ sections:
           SSL certificate expiry and email protections such as SPF, DKIM and
           DMARC checked.
   - id: monitor
-    title: Watching continuously, not once a year.
+    title: Checked daily, not annually.
     items:
       - title: Change alerts
         text: >-
@@ -58,7 +54,7 @@ sections:
         text: >-
           Optional monitoring of key suppliers whose weaknesses could affect you.
   - id: act
-    title: From finding to fixed.
+    title: Closed off, then confirmed.
     items:
       - title: Prioritised findings
         text: >-
@@ -71,12 +67,12 @@ sections:
         text: >-
           Summaries for leadership showing exposure trends over time.
 workflow:
-  - title: Discover
+  - title: Map
     text: We map what your business exposes, starting from your domains.
-  - title: Verify
+  - title: Confirm
     text: >-
       You confirm which assets are yours, so monitoring stays accurate.
-  - title: Monitor and act
+  - title: Watch and close
     text: >-
       Continuous checks, alerts and prioritised fixes, with expert help when
       needed.
@@ -105,7 +101,7 @@ faqs:
     a: >-
       You get an alert with a clear explanation and recommended fix. If you'd
       like help, our security team can investigate and resolve it with you.
-updated: '2026-11-12'
+updated: '2026-11-14'
 seo_title: AVRIX Attack Surface Monitor | AVRIX Digital
 seo_description: >-
   Continuously discover and monitor the websites, cloud services and leaked

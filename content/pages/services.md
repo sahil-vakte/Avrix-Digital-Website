@@ -1,30 +1,36 @@
 ---
 slug: services
-h1: "Twenty services. *Four disciplines.*"
-seo_title: "Cyber Security Services UK & Europe | AVRIX"
-seo_description: "Penetration testing, managed SOC, MDR, Cyber Essentials, ISO 27001, GDPR, NIS2, DORA and incident response services for UK and European businesses."
-eyebrow: "Our services"
-lead: "Twenty specialist services across four disciplines, delivered by one accountable team. Start with the problem you need solved and we'll bring the right expertise."
-search_placeholder: "Search services…"
+h1: 'Twenty services. *Four disciplines.*'
+seo_title: 'Cyber Security Services UK & Europe | AVRIX Digital'
+seo_description: 'Security testing, 24/7 monitoring, Cyber Essentials, ISO 27001, GDPR, NIS2 and DORA support, and incident help for UK and European organisations.'
+eyebrow: 'Services'
+lead: "Twenty services grouped by the job they do: test and find, watch and detect, prove and comply, respond and recover. Tell us the problem and we'll scope the smallest piece of work that solves it."
+search_placeholder: 'Search by service, standard or problem…'
 filters:
-  - { key: all, label: "All services" }
-  - { key: offensive, label: "Offensive Security" }
-  - { key: managed, label: "Managed Defence & SOC" }
-  - { key: compliance, label: "Compliance & GRC" }
-  - { key: response, label: "Incident Response & DFIR" }
+  - { key: all, label: 'All services' }
+  - { key: offensive, label: 'Test & Find' }
+  - { key: managed, label: 'Watch & Detect' }
+  - { key: compliance, label: 'Prove & Comply' }
+  - { key: response, label: 'Respond & Recover' }
 highlights:
-  - { title: "Free initial consultation", text: "Talk through your needs with a security specialist." }
-  - { title: "Written scope and authorisation", text: "Clear rules of engagement before any testing starts." }
-  - { title: "Plain-English reporting", text: "Board summaries and technical detail in every report." }
-  - { title: "Confidentiality agreement on request", text: "Signed before you share anything sensitive." }
+  - { title: 'Free 30-minute scoping call', text: 'With a security specialist, not a salesperson.' }
+  - {
+      title: 'Fixed price before work starts',
+      text: 'Scope, cost and rules of engagement agreed in writing.',
+    }
+  - {
+      title: 'Reports for two audiences',
+      text: 'A summary for leaders and fix-by-fix detail for IT.',
+    }
+  - { title: 'Mutual NDA on request', text: 'Signed before you share anything sensitive.' }
 faqs:
-  - q: "Which service should we start with?"
-    a: "It depends on your goals. If a customer or tender needs proof of security, start with Cyber Essentials or ISO 27001. If you're launching or changing a system, start with a penetration test. If you have no-one watching for attacks, start with managed detection and response. A free consultation will help you decide."
-  - q: "Do you work with businesses outside the UK?"
-    a: "Yes. We support businesses across the UK and Europe, and our compliance work covers both UK and EU regulations, including UK GDPR, EU GDPR, NIS2 and DORA."
-  - q: "Can you work with our existing IT provider?"
-    a: "Yes. We regularly work alongside in-house IT teams and managed service providers, focusing on security while they look after day-to-day IT."
-  - q: "How do you price your services?"
-    a: "Every engagement is scoped to your needs. Testing and compliance projects are quoted at a fixed price after scoping; managed services are a monthly fee based on the number of users and systems."
-updated: 2026-11-12
+  - q: "We don't know what we need. Where do we begin?"
+    a: "Start with the pressure you're under. A customer or tender asking for proof usually points to Cyber Essentials or ISO 27001. A new system or website points to a test. Nobody watching for attacks points to managed detection. The scoping call is there to work this out with you."
+  - q: 'Can you work with organisations outside the UK?'
+    a: 'Yes. We support clients across the UK and Europe, and our compliance team covers both sets of rules, including UK GDPR, EU GDPR, UK NIS, NIS2 and DORA.'
+  - q: 'We already have an IT provider. Will you get in their way?'
+    a: 'No. We work alongside in-house teams and managed service providers every week. They keep running your IT; we focus on security and share findings in a form they can act on.'
+  - q: 'How is pricing worked out?'
+    a: "Projects such as tests and certification support are quoted at a fixed price once we've agreed the scope. Ongoing services such as monitoring are a monthly fee based on users and systems."
+updated: 2026-11-14
 ---

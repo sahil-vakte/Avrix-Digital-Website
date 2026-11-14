@@ -4,53 +4,121 @@
       "key": "general",
       "label": "General",
       "items": [
-        { "q": "What does AVRIX do?", "a": "AVRIX is a cyber security provider for UK and European businesses. We offer penetration testing, 24/7 managed security monitoring, compliance support (Cyber Essentials, ISO 27001, SOC 2, UK GDPR, EU GDPR, PCI DSS, NIS2 and DORA), incident response and security products, all from one team.", "show_on_home": false },
-        { "q": "Who do you work with?", "a": "Small and medium-sized businesses through to larger organisations across the UK and Europe, in sectors including financial services, healthcare, manufacturing, retail, technology, the public sector and education.", "show_on_home": false },
-        { "q": "Who delivers the work?", "a": "Every engagement is delivered by AVRIX with our specialist team. You have one contract, one point of contact and one team accountable for the results.", "show_on_home": false }
+        {
+          "q": "What does AVRIX Digital actually do?",
+          "a": "We help UK and European organisations do four things: find security gaps before attackers do, watch for attacks around the clock, prove they're protected (Cyber Essentials, ISO 27001, SOC 2, GDPR, PCI DSS, NIS2 and DORA), and recover quickly when something goes wrong.",
+          "show_on_home": false
+        },
+        {
+          "q": "What size of organisation do you work with?",
+          "a": "Anything from a 10-person firm with its first customer questionnaire to large, regulated groups. Typical clients are in finance, healthcare, manufacturing, retail, software, the public sector, charities and education.",
+          "show_on_home": false
+        },
+        {
+          "q": "Who will we be working with?",
+          "a": "Everything is delivered by AVRIX Digital with our specialist team. You sign one contract, have one named contact and deal with one team that is accountable for the outcome.",
+          "show_on_home": false
+        }
       ]
     },
     {
       "key": "testing",
       "label": "Security testing",
       "items": [
-        { "q": "How quickly can you start a security assessment or penetration test?", "a": "We normally hold a free scoping call within a few working days of your enquiry. Once the scope and written authorisation are agreed, testing can usually be scheduled quickly, with urgent work prioritised.", "show_on_home": true },
-        { "q": "Will testing disrupt our live systems?", "a": "Testing is planned to avoid disruption. We agree testing windows, limit traffic and avoid destructive techniques unless you approve them. Sensitive systems can be tested out of hours or in a staging environment.", "show_on_home": true },
-        { "q": "Do you retest after we fix the issues?", "a": "Yes. Penetration tests include a retest of the reported issues once you've fixed them, with an updated report you can share with customers and auditors.", "show_on_home": false },
-        { "q": "Is penetration testing legal?", "a": "Yes, when it's authorised. Testing systems without the owner's permission is an offence under the UK Computer Misuse Act 1990, and similar laws apply across Europe. We never start without a signed scope and written authorisation.", "show_on_home": false }
+        {
+          "q": "How soon can a test start?",
+          "a": "A scoping call can usually happen within a few working days. Once scope and written permission are signed off, we book the testing window, and urgent work goes to the front of the queue.",
+          "show_on_home": true
+        },
+        {
+          "q": "Could testing knock our systems over?",
+          "a": "We plan specifically to avoid that. We agree time windows, keep traffic under control and don't use anything destructive without your say-so. Fragile or critical systems can be tested out of hours or on a copy.",
+          "show_on_home": true
+        },
+        {
+          "q": "Is a retest included?",
+          "a": "Yes. Once you've fixed the issues we check them again and update the report, so you have a clean version to share with customers or auditors.",
+          "show_on_home": false
+        },
+        {
+          "q": "Is it legal to hack our own systems?",
+          "a": "It is when the owner has authorised it in writing. Unauthorised access is a crime under the UK Computer Misuse Act 1990 and equivalent laws across Europe, which is why nothing starts until scope and permission are signed.",
+          "show_on_home": false
+        }
       ]
     },
     {
       "key": "compliance",
       "label": "Compliance",
       "items": [
-        { "q": "Which standard should we start with?", "a": "For UK businesses, Cyber Essentials is usually the first step and is required for many public sector contracts. ISO 27001 is the most recognised standard across the UK and Europe, and SOC 2 is what US customers usually ask for. We'll recommend the right route based on your customers and regulators.", "show_on_home": true },
-        { "q": "Do NIS2 and DORA apply to UK businesses?", "a": "They're EU laws, so they don't apply in the UK directly. But UK businesses providing in-scope services in the EU may be covered, and many EU customers now write NIS2 or DORA requirements into supplier contracts. The UK has its own NIS Regulations, which are being strengthened.", "show_on_home": true },
-        { "q": "Do you issue certificates?", "a": "No. Certificates and audit reports are issued by independent, accredited bodies, such as IASME-licensed bodies for Cyber Essentials and UKAS-accredited bodies for ISO 27001. We prepare you and support you through the audit.", "show_on_home": false }
+        {
+          "q": "Which certification should we go for first?",
+          "a": "In the UK, Cyber Essentials is the usual first step and is required for many public sector contracts. ISO 27001 carries the most weight with UK and European buyers, while US customers tend to ask for SOC 2. We'll suggest a route based on who's asking.",
+          "show_on_home": true
+        },
+        {
+          "q": "Do NIS2 and DORA affect UK companies?",
+          "a": "Not directly, as they're EU laws. However, UK firms offering covered services in the EU can be in scope, and EU customers increasingly pass NIS2 or DORA obligations down through supplier contracts. The UK is also strengthening its own NIS Regulations.",
+          "show_on_home": true
+        },
+        {
+          "q": "Can you certify us?",
+          "a": "No, and no consultant should. Certificates come from independent, accredited bodies: IASME-licensed certification bodies for Cyber Essentials and UKAS-accredited bodies for ISO 27001. We get you ready and stay with you through the audit.",
+          "show_on_home": false
+        }
       ]
     },
     {
       "key": "managed",
       "label": "Managed security",
       "items": [
-        { "q": "Is 24/7 monitoring only for large companies?", "a": "No. Smaller businesses are frequent targets because they rarely have anyone watching. We size managed detection and SOC services to the number of users and systems you have.", "show_on_home": false },
-        { "q": "Where is our data stored?", "a": "We agree data locations during onboarding. For UK and EU clients, monitoring data can be kept in UK or EU regions to support UK GDPR and EU GDPR requirements.", "show_on_home": true }
+        {
+          "q": "Isn't 24/7 monitoring overkill for a smaller business?",
+          "a": "Not necessarily. Smaller organisations are attractive precisely because nobody is watching overnight. We price monitoring by users and systems, so it scales down as well as up.",
+          "show_on_home": false
+        },
+        {
+          "q": "Where will our data be kept?",
+          "a": "We agree this before onboarding. For UK and EU clients, monitoring data can stay in UK or EU hosting regions to support UK GDPR and EU GDPR obligations.",
+          "show_on_home": true
+        }
       ]
     },
     {
       "key": "incidents",
       "label": "Incidents",
       "items": [
-        { "q": "We think we've been hacked. What should we do?", "a": "Disconnect affected devices from the network but leave them switched on. Don't delete anything, don't pay a ransom and don't contact the attacker. Then contact us straight away and mark your enquiry as urgent. If personal data may be affected, you may need to report it to the ICO or relevant EU authority within 72 hours.", "show_on_home": true },
-        { "q": "Can you help us prepare before an incident?", "a": "Yes. We write incident response plans and ransomware playbooks, test your backups and run tabletop exercises so your team knows what to do.", "show_on_home": false }
+        {
+          "q": "We think we've been attacked. What now?",
+          "a": "Unplug affected devices from the network but leave them powered on. Don't delete files, pay a ransom or reply to the attackers. Then contact us and mark the enquiry urgent. If personal data could be involved, the ICO or your EU regulator may need to be told within 72 hours.",
+          "show_on_home": true
+        },
+        {
+          "q": "Can you help before anything happens?",
+          "a": "Yes, and it's far cheaper than responding unprepared. We write response plans and ransomware playbooks, check that backups actually restore and run rehearsals with your leadership team.",
+          "show_on_home": false
+        }
       ]
     },
     {
       "key": "working-with-us",
       "label": "Working with us",
       "items": [
-        { "q": "How do you charge?", "a": "Testing and compliance projects are quoted at a fixed price after a free scoping call. Managed services are a monthly fee based on the number of users and systems. Incident response can be arranged on demand or through a retainer.", "show_on_home": false },
-        { "q": "Will you sign an NDA?", "a": "Yes. We're happy to sign a mutual confidentiality agreement before you share anything sensitive.", "show_on_home": false },
-        { "q": "How do you handle our data during an engagement?", "a": "We only access what the agreed scope requires, use test accounts wherever possible, store findings securely and delete engagement data when it's no longer needed, in line with our contract and data protection law.", "show_on_home": false }
+        {
+          "q": "How is the work priced?",
+          "a": "Projects such as testing and certification support are quoted at a fixed price after a free scoping call. Ongoing services are a monthly fee based on users and systems. Incident support is available on demand or through a retainer.",
+          "show_on_home": false
+        },
+        {
+          "q": "Will you sign a confidentiality agreement?",
+          "a": "Yes. We can sign yours or offer a mutual NDA before you share anything sensitive.",
+          "show_on_home": false
+        },
+        {
+          "q": "What happens to our data during the work?",
+          "a": "We only touch what the agreed scope needs, use test accounts wherever we can, keep findings in secure storage and delete engagement data once it's no longer required, in line with our contract and data protection law.",
+          "show_on_home": false
+        }
       ]
     }
   ]

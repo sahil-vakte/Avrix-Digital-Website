@@ -1,47 +1,70 @@
 ---
 slug: incident-readiness
-title: Incident Readiness & Tabletop Exercises
+title: Incident Plans & Rehearsals
 pillar: response
 order: 32
 icon: checklist
-h1: "Be ready *before* the incident"
-seo_title: "Incident Response Plans & Tabletop Exercises | AVRIX"
-seo_description: "Incident response plans, ransomware playbooks and tabletop exercises for UK and European businesses. Know what to do, who decides and who to tell."
-summary: "Incident response plans, playbooks and tabletop exercises so your team knows what to do."
-intro: "The worst time to work out your incident plan is during an incident. We write practical response plans and ransomware playbooks, then run realistic tabletop exercises with your leadership and technical teams so everyone knows their role."
-tags: ["Response plans", "Ransomware playbooks", "Tabletop exercises", "Retainer"]
+h1: 'Rehearse the bad day *before it arrives*'
+seo_title: 'Incident Response Plans & Tabletop Exercises | AVRIX'
+seo_description: 'Incident response plans, ransomware playbooks and tabletop rehearsals for UK and European organisations, so everyone knows what to do, decide and report.'
+summary: 'Practical response plans, ransomware playbooks and rehearsals so your team knows exactly what to do.'
+intro: 'The worst time to write an incident plan is during an incident. We write short, practical plans and playbooks, then rehearse them with your directors and IT team in realistic scenarios. When something does happen, people know their role and the first hour goes to plan.'
+tags: ['Response plans', 'Ransomware playbooks', 'Board rehearsals', 'Priority retainer']
 included:
-  - { title: "Incident response plan", text: "Clear roles, decisions and contacts for when something goes wrong." }
-  - { title: "Playbooks", text: "Step-by-step guides for ransomware, email compromise and data breaches." }
-  - { title: "Tabletop exercises", text: "Realistic scenarios run with leadership and technical teams." }
-  - { title: "Backup and recovery review", text: "Confirm backups are protected and can actually be restored." }
-  - { title: "Regulatory reporting map", text: "Who must be told, by when, under UK GDPR, NIS2 and DORA." }
-  - { title: "Incident response retainer", text: "Priority access to our response team when you need it." }
+  - { title: 'Response plan', text: 'Roles, decisions and contacts for when something goes wrong.' }
+  - {
+      title: 'Playbooks',
+      text: 'Step-by-step guides for ransomware, email fraud and data breaches.',
+    }
+  - {
+      title: 'Tabletop rehearsals',
+      text: 'Realistic scenarios run with leadership and technical teams.',
+    }
+  - { title: 'Backup check', text: 'Confirm backups are protected and can actually be restored.' }
+  - { title: 'Reporting map', text: 'Who must be told, and by when, under UK GDPR, NIS2 and DORA.' }
+  - { title: 'Priority retainer', text: 'Pre-agreed access to our response team when you need it.' }
 outcomes:
-  - { title: "Faster, calmer response", text: "Everyone knows their role and what to do first." }
-  - { title: "Lower impact", text: "Better decisions in the first hours reduce cost and disruption." }
-  - { title: "Evidence of readiness", text: "Supports ISO 27001, NIS2, DORA and insurance requirements." }
-tools: ["NCSC Exercise in a Box", "NIST SP 800-61", "ISO 27035", "ISO 22301", "NIS2", "DORA", "UK GDPR", "Cyber insurance"]
+  - { title: 'A calmer first hour', text: 'Everyone knows who decides and what happens first.' }
+  - {
+      title: 'Less damage',
+      text: 'Better early decisions mean lower costs and shorter disruption.',
+    }
+  - { title: 'Proof of readiness', text: 'Evidence for ISO 27001, NIS2, DORA and your insurer.' }
+tools:
+  [
+    'NCSC Exercise in a Box',
+    'NIST SP 800-61',
+    'ISO 27035',
+    'ISO 22301',
+    'NIS2',
+    'DORA',
+    'UK GDPR',
+    'Cyber insurance',
+  ]
 process:
-  - { title: "Review", text: "Understand your current plans, teams and systems." }
-  - { title: "Write", text: "Create or update plans and playbooks." }
-  - { title: "Exercise", text: "Run a tabletop scenario and capture lessons." }
-  - { title: "Improve", text: "Update plans and repeat regularly." }
+  - { title: 'Review', text: 'Understand your current plans, people and systems.' }
+  - { title: 'Write', text: 'Create or update plans and playbooks.' }
+  - { title: 'Rehearse', text: "Run a scenario and capture what went well and what didn't." }
+  - { title: 'Improve', text: 'Update plans and repeat each year.' }
 faqs:
-  - q: "Who should take part in a tabletop exercise?"
-    a: "Usually directors, IT, communications, legal or compliance, and anyone who'd make decisions during an incident. We tailor the scenario to the audience."
-  - q: "How often should we exercise?"
-    a: "At least once a year, and after major changes. Regulators and insurers increasingly expect evidence of testing."
-  - q: "What is an incident response retainer?"
-    a: "A pre-agreed arrangement giving you priority access to our team, with terms and contacts set up in advance, so there's no delay when an incident happens."
+  - q: 'Who should take part in a rehearsal?'
+    a: "Usually directors, IT, communications, legal or compliance, and anyone who'd make decisions during an incident. We tailor the scenario to the room."
+  - q: 'How often should we rehearse?'
+    a: 'At least once a year and after major changes. Regulators and insurers increasingly expect to see evidence.'
+  - q: "What's a retainer?"
+    a: "An agreement set up in advance, with terms and contacts agreed, so there's no delay or paperwork when you need urgent help."
 related: [incident-response, digital-forensics, vciso]
-updated: 2026-11-12
+updated: 2026-11-14
 ---
 
-## Why readiness matters
+## Who it's for
 
-In an incident, the first few hours decide how bad it gets. Teams that have practised make faster, better decisions, protect evidence and meet reporting deadlines. Teams that haven't often make it worse.
+Boards and leadership teams who want to be ready, organisations subject to NIS2 or DORA, and anyone whose insurer has asked about incident planning.
 
-## How we help
+## Why it matters to your business
 
-We keep plans short and practical, then test them in realistic exercises. Afterwards you get a list of improvements and an updated plan your team actually understands.
+Teams that have practised make faster, better decisions under pressure, protect evidence and meet reporting deadlines. Teams that haven't often make things worse without meaning to.
+
+## How AVRIX Digital does it
+
+We keep plans short and usable, then test them in scenarios built around the threats your sector actually faces. You leave with an improved plan and a clear list of actions.

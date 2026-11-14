@@ -64,32 +64,32 @@ export default function ServiceDetail({ slug }: { slug: string }) {
           )}
         </div>
       </section>
-      <SectionShell tone="tint" eyebrow={ui.keyBenefits} title={`Why it *matters*`}>
+      <SectionShell tone="tint" eyebrow={ui.keyBenefits} title={`What it *means for your business*`}>
         <CardGrid items={s.outcomes} />
       </SectionShell>
-      <SectionShell id="process" eyebrow={ui.ourProcess} title={`How we *deliver it*`}>
+      <SectionShell id="process" eyebrow={ui.ourProcess} title={`From first call to *final report*`}>
         <Process steps={s.process} />
       </SectionShell>
-      <SectionShell id="included" tone="tint" eyebrow={ui.serviceAreas} title={`What's *included*`}>
+      <SectionShell id="included" tone="tint" eyebrow={ui.serviceAreas} title={`What we *look at*`}>
         <CardGrid items={s.included.map((i) => ({ ...i, icon: s.icon }))} />
       </SectionShell>
-      <SectionShell eyebrow={ui.whyAvrix} title={`The AVRIX *advantage*`}>
+      <SectionShell eyebrow={ui.whyAvrix} title={`Why clients *choose us*`}>
         <CardGrid items={advantage} numbered />
       </SectionShell>
       {s.deliverables && (
-        <SectionShell tone="tint" eyebrow={ui.deliverables} title={`Clear, *actionable* outputs`}>
+        <SectionShell tone="tint" eyebrow={ui.deliverables} title={`Documents you can *actually use*`}>
           <CardGrid items={s.deliverables} />
         </SectionShell>
       )}
-      <SectionShell eyebrow={ui.frameworks} title={`Aligned to recognised *standards*`}>
+      <SectionShell eyebrow={ui.frameworks} title={`Helps you *meet*`}>
         <Tags items={s.tools} />
       </SectionShell>
       <FaqSection items={s.faqs} title={`${s.title}: *your questions answered*`} />
-      <SectionShell tone="tint" eyebrow={ui.related} title={`Related *services*`}>
+      <SectionShell tone="tint" eyebrow={ui.related} title={`Often *paired with*`}>
         <ServiceGrid items={services.filter((v) => s.related.includes(v.slug))} />
       </SectionShell>
       {posts.some((p) => p.related_service === slug) && (
-        <SectionShell eyebrow={ui.blog} title={`Further *reading*`}>
+        <SectionShell eyebrow={ui.blog} title={`Worth *reading*`}>
           <BlogTeaser items={posts.filter((p) => p.related_service === slug)} />
         </SectionShell>
       )}

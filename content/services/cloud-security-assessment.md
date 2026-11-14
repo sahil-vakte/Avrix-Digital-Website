@@ -1,47 +1,94 @@
 ---
 slug: cloud-security-assessment
-title: Cloud Security Assessment
+title: Cloud Security Review
 pillar: offensive
 order: 3
 icon: cloud
-h1: "Cloud accounts configured *securely, not just quickly*"
-seo_title: "Cloud Security Assessment: AWS, Azure, Google | AVRIX"
-seo_description: "Security reviews of AWS, Microsoft Azure, Google Cloud and Microsoft 365 for UK and European businesses. Find risky settings, excess access and exposed data."
-summary: "AWS, Azure, Google Cloud and Microsoft 365 reviewed for risky settings, excess access and exposed data."
-intro: "Cloud platforms are secure by design, but only if they're configured well. We review your AWS, Microsoft Azure, Google Cloud and Microsoft 365 environments for exposed storage, over-powerful accounts, missing logging and weak network rules, then help you fix them."
-tags: ["AWS", "Microsoft Azure", "Google Cloud", "Microsoft 365"]
+h1: "Moved to the cloud quickly? *Let's check it's locked down.*"
+seo_title: 'Cloud Security Review: AWS, Azure, Google | AVRIX'
+seo_description: 'Security reviews of AWS, Microsoft Azure, Google Cloud and Microsoft 365 for UK and European organisations: exposed data, excess access and missing logging.'
+summary: 'AWS, Azure, Google Cloud and Microsoft 365 checked for exposed data, risky settings and excess access.'
+intro: 'Cloud platforms are secure by design, but how you set them up is your responsibility. We review your AWS, Azure, Google Cloud and Microsoft 365 settings with read-only access, then give you a short, prioritised list of what to change.'
+tags: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Microsoft 365']
 included:
-  - { title: "Configuration review", text: "Settings checked against CIS Benchmarks and each provider's security best practice." }
-  - { title: "Identity and access", text: "Users, roles and keys reviewed for excess permissions and missing MFA." }
-  - { title: "Data exposure", text: "Storage buckets, databases and file shares checked for public access." }
-  - { title: "Logging and monitoring", text: "Confirm you'd see an attack happening, and have the logs to investigate it." }
-  - { title: "Microsoft 365 and Entra ID", text: "Email, SharePoint, Teams and identity settings hardened against account takeover." }
-  - { title: "DevSecOps and containers", text: "Pipelines, infrastructure as code and Kubernetes reviewed for security gaps." }
+  - {
+      title: 'Settings review',
+      text: "Your configuration compared with CIS Benchmarks and each provider's own guidance.",
+    }
+  - {
+      title: 'Who has access',
+      text: 'Users, roles and keys checked for missing MFA and more access than needed.',
+    }
+  - { title: 'Exposed data', text: 'Storage, databases and file shares checked for public access.' }
+  - {
+      title: 'Logging',
+      text: 'Would you notice an attack, and could you investigate it afterwards?',
+    }
+  - {
+      title: 'Microsoft 365 and Entra ID',
+      text: 'Email, SharePoint, Teams and sign-in settings hardened against account takeover.',
+    }
+  - {
+      title: 'Pipelines and containers',
+      text: 'Build pipelines, infrastructure code and Kubernetes reviewed for gaps.',
+    }
 outcomes:
-  - { title: "No more open doors", text: "Find exposed data and risky settings before someone else does." }
-  - { title: "Least-privilege access", text: "People and services have only the access they need." }
-  - { title: "Evidence for audits", text: "Clear findings that support ISO 27001, SOC 2 and customer questionnaires." }
-tools: ["CIS Benchmarks", "AWS Well-Architected", "Microsoft Cloud Security Benchmark", "Google Cloud Security Foundations", "ISO 27017", "SOC 2", "DORA", "NCSC Cloud Security Principles"]
+  - {
+      title: 'Nothing left open by accident',
+      text: 'Public buckets and forgotten keys found before someone else finds them.',
+    }
+  - {
+      title: 'Only the access people need',
+      text: 'Smaller blast radius if an account is ever compromised.',
+    }
+  - {
+      title: 'Easier compliance',
+      text: 'Findings that map straight to ISO 27001, SOC 2 and customer questions.',
+    }
+tools:
+  [
+    'CIS Benchmarks',
+    'AWS Well-Architected',
+    'Microsoft Cloud Security Benchmark',
+    'Google Cloud Security Foundations',
+    'ISO 27017',
+    'SOC 2',
+    'DORA',
+    'NCSC Cloud Security Principles',
+  ]
 process:
-  - { title: "Read-only access", text: "You grant temporary, read-only access. We never need to change your environment." }
-  - { title: "Automated and manual review", text: "Tooling for coverage, plus expert review of how your environment is really used." }
-  - { title: "Prioritised findings", text: "Each issue rated by risk, with exact steps to fix it." }
-  - { title: "Fix and verify", text: "We help your team fix issues and confirm they're closed." }
+  - {
+      title: 'Read-only access',
+      text: 'You grant temporary read-only access, which you can remove at any time.',
+    }
+  - {
+      title: 'Review',
+      text: 'Automated checks for coverage and an expert look at how you actually use the platform.',
+    }
+  - { title: 'Prioritise', text: 'A short list of changes, ranked by risk, with exact steps.' }
+  - {
+      title: 'Fix and confirm',
+      text: "We help your team make the changes and confirm they're in place.",
+    }
 faqs:
-  - q: "Do you need admin access to our cloud accounts?"
-    a: "No. We use temporary read-only access, which you can revoke at any time. We never make changes unless you ask us to."
-  - q: "Is the cloud provider responsible for security?"
-    a: "Partly. Under the shared responsibility model, the provider secures the underlying platform, but you're responsible for how you configure it, who has access and what you store there. Most cloud breaches come from customer-side settings."
-  - q: "Can you review more than one cloud provider?"
-    a: "Yes. Many businesses use Microsoft 365 alongside AWS, Azure or Google Cloud. We can review them together and give you one prioritised plan."
+  - q: 'Will you change anything in our accounts?'
+    a: 'No. The review uses read-only access. We only make changes if you ask us to as a separate piece of work.'
+  - q: "Isn't security the cloud provider's job?"
+    a: "Partly. The provider secures the platform, but you're responsible for configuration, access and what you store. That's known as the shared responsibility model, and it's where most cloud incidents start."
+  - q: 'We use Microsoft 365 and AWS. Can you review both?'
+    a: 'Yes. Many clients use more than one platform. We review them together and give you one combined plan.'
 related: [penetration-testing, vulnerability-management, iso-27001]
-updated: 2026-11-12
+updated: 2026-11-14
 ---
 
-## Why cloud reviews matter
+## Who it's for
 
-Moving to the cloud doesn't move your security responsibility. A single storage bucket left public, an old access key in a code repository or an admin account without MFA can expose everything. These mistakes are easy to make as teams move quickly, and just as easy for attackers to find with automated tools.
+Teams that have moved quickly to the cloud, inherited an environment from someone else, or need to show customers and auditors that their cloud setup is sound.
 
-## How we review
+## Why it matters to your business
 
-We compare your configuration against recognised benchmarks, then look at how your environment is actually used. The result is a short, prioritised list of changes, not a thousand-line scanner export.
+A single public storage bucket, an old access key in a code repository or an admin account without MFA can expose everything you hold. These mistakes are easy to make under deadline pressure, and automated tools make them easy for attackers to find.
+
+## How AVRIX Digital does it
+
+We compare your setup with recognised benchmarks, then look at how your team really works. You get a short list of changes in priority order, not an unreadable export from a scanner.

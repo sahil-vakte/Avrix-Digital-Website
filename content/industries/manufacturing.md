@@ -1,41 +1,75 @@
 ---
 slug: manufacturing
 title: Manufacturing & OT
-h1: "Cyber security for *manufacturing and OT*"
+h1: 'Cyber security for *manufacturing and industrial sites*'
 eyebrow: MANUFACTURING & INDUSTRIAL
 icon: factory
 order: 3
-summary: "Keep production lines running: OT and IoT security, network segmentation, ransomware resilience and supply chain assurance for manufacturers."
-lead: "Manufacturers are a top target for ransomware because downtime is so costly. We help protect factory networks, industrial control systems and the IT that connects them, so production keeps running and customers keep trusting you."
-tagline: "Secure production. Protect uptime."
-tags: ["OT and ICS", "IEC 62443", "Ransomware resilience", "Supply chain"]
+summary: "For manufacturers who can't afford stopped lines: factory network separation, OT risk reviews, ransomware resilience and customer supply chain requirements."
+lead: 'When ransomware reaches the factory floor, every hour of stopped production costs money and customer goodwill. We help manufacturers keep office-network attacks away from production systems, meet customer security requirements and recover fast.'
+tagline: 'Secure production. Protect uptime.'
+tags: ['OT and ICS', 'IEC 62443', 'Ransomware resilience', 'Supply chain']
 points:
-  - { title: "Production uptime", text: "Reduce the risk of attacks stopping your lines." }
-  - { title: "IT and OT separation", text: "Stop office-network attacks reaching the factory floor." }
-  - { title: "Supply chain assurance", text: "Meet the security requirements of your customers." }
+  - { title: 'Production uptime', text: 'Keep lines running even if office systems are hit.' }
+  - {
+      title: 'IT and OT separation',
+      text: 'Stop attacks crossing from email to the factory floor.',
+    }
+  - { title: 'Customer requirements', text: 'Pass the security questions your customers now ask.' }
 pillars:
-  - { title: "OT and ICS assessment", text: "Understand risk in industrial systems.", bullets: ["Asset discovery", "SCADA and PLC risk review", "IEC 62443 alignment"] }
-  - { title: "Network segmentation", text: "Separate IT, OT and vendor access.", bullets: ["Zone and conduit design", "Firewall rule review", "Remote access control"] }
-  - { title: "IoT and device security", text: "Assess connected sensors and equipment.", bullets: ["Firmware analysis", "Default credential checks", "Device hardening"] }
-  - { title: "Ransomware resilience", text: "Prepare for the most likely attack.", bullets: ["Backup isolation", "Recovery testing", "Incident playbooks"] }
-  - { title: "Supply chain security", text: "Meet customer and regulator expectations.", bullets: ["Cyber Essentials", "ISO 27001", "Supplier questionnaires"] }
-  - { title: "24/7 monitoring", text: "Watch IT and OT for threats.", bullets: ["Managed SOC", "OT-aware detection", "Rapid containment"] }
+  - {
+      title: 'Understand the factory network',
+      text: "See what's connected and how.",
+      bullets: ['Asset discovery', 'PLC and SCADA risk review', 'IEC 62443 alignment'],
+    }
+  - {
+      title: 'Separate office and production',
+      text: 'Contain attacks to where they start.',
+      bullets: ['Zone design', 'Firewall rule review', 'Vendor remote access'],
+    }
+  - {
+      title: 'Prepare to recover',
+      text: 'Restore production quickly.',
+      bullets: ['Isolated backups', 'Recovery testing', 'Shift-level playbooks'],
+    }
+  - {
+      title: 'Satisfy customers',
+      text: 'Evidence for supply chain due diligence.',
+      bullets: ['Cyber Essentials', 'ISO 27001', 'Questionnaire support'],
+    }
 lifecycle:
-  - { title: "Map", label: "Stage 1", text: "Inventory IT and OT assets and connections." }
-  - { title: "Assess", label: "Stage 2", text: "Safe, non-disruptive assessment of risk." }
-  - { title: "Segment", label: "Stage 3", text: "Separate networks and lock down remote access." }
-  - { title: "Monitor", label: "Stage 4", text: "Detect threats across IT and OT." }
-  - { title: "Recover", label: "Stage 5", text: "Tested plans to restore production quickly." }
-frameworks: ["IEC 62443", "NIS2", "UK NIS Regulations", "Cyber Essentials", "ISO 27001", "EU Cyber Resilience Act", "NCSC CAF", "NIST CSF 2.0"]
+  - {
+      title: "A map of what's connected",
+      text: 'A clear inventory of IT and OT assets and the routes between them.',
+    }
+  - {
+      title: "Production that's protected",
+      text: 'Network separation and remote access controls you can demonstrate.',
+    }
+  - {
+      title: 'Supply chain credentials',
+      text: 'Certifications and answers that keep you on approved supplier lists.',
+    }
+frameworks:
+  [
+    'IEC 62443',
+    'NIS2',
+    'UK NIS Regulations',
+    'Cyber Essentials',
+    'ISO 27001',
+    'EU Cyber Resilience Act',
+    'NCSC CAF',
+    'NIST CSF 2.0',
+  ]
 services: [network-penetration-testing, managed-security, incident-readiness, cyber-essentials]
 faqs:
-  - q: "Can you test industrial systems without stopping production?"
-    a: "Yes. OT assessments are designed to be passive and non-disruptive, using careful observation rather than active scanning wherever live equipment is involved."
-  - q: "Does NIS2 apply to manufacturers?"
-    a: "NIS2 covers many manufacturing sectors in the EU, including medical devices, electronics, machinery and vehicles, above certain size thresholds. We can help you check whether you're in scope."
-  - q: "What is the EU Cyber Resilience Act?"
-    a: "It sets security requirements for products with digital elements sold in the EU, with obligations phasing in over the next few years. Manufacturers of connected products should start preparing now."
-updated: 2026-11-12
-seo_title: "Cyber Security for Manufacturing & OT | AVRIX"
-seo_description: "Cyber security for manufacturers: OT and ICS assessments, IEC 62443, network segmentation, ransomware resilience and supply chain assurance in the UK and EU."
+  - q: 'Can you assess industrial systems without stopping production?'
+    a: 'Yes. OT reviews are designed to be passive and non-disruptive, relying on careful observation rather than active scanning wherever live equipment is involved.'
+  - q: 'Does NIS2 apply to manufacturers?'
+    a: "It covers many manufacturing sectors in the EU, including medical devices, electronics, machinery and vehicles, above certain size thresholds. We'll help you check."
+  - q: 'What is the EU Cyber Resilience Act?'
+    a: 'It sets security requirements for products with digital elements sold in the EU, phasing in over the next few years. Makers of connected products should start preparing now.'
+updated: 2026-11-14
+seo_title: 'Cyber Security for Manufacturing & OT | AVRIX'
+seo_description: 'Cyber security for manufacturers: OT risk reviews, IEC 62443, separating office and production networks, ransomware recovery and supply chain assurance.'
 ---

@@ -4,70 +4,137 @@ title: Web & Mobile App Penetration Testing
 pillar: offensive
 order: 1
 icon: penetration-testing
-h1: "Penetration testing that finds what *scanners miss*"
-seo_title: "Web & Mobile App Penetration Testing UK | AVRIX"
-seo_description: "Manual penetration testing of websites, web apps and iOS and Android apps for UK and European businesses. Clear reports, prioritised fixes and a free retest."
-summary: "Manual testing of websites, web apps and mobile apps, with a plain-English report and a free retest."
-intro: "Our testers attack your websites, customer portals and mobile apps the way a real attacker would, by hand, within an agreed scope. You get every finding confirmed, explained in plain English and ranked by business risk, then a free retest once you've fixed them."
-tags: ["OWASP Top 10", "iOS and Android", "Authenticated testing", "Free retest"]
+h1: 'Find out what an attacker *could really do* with your app'
+seo_title: 'Web & Mobile App Penetration Testing UK | AVRIX'
+seo_description: 'Hands-on penetration testing of websites, portals and iOS and Android apps for UK and European organisations, with business-level findings and a retest.'
+summary: 'A tester tries to break your website, portal or app by hand, then shows you what to fix first.'
+intro: "Your website, customer portal or app is the front door to your data. One of our testers will try to get through it by hand, the way a real attacker would, within limits you agree. You'll learn what they could reach, how much it would matter to your business and exactly how to close each gap."
+tags: ['Websites and portals', 'iOS and Android', 'Logged-in testing', 'Retest included']
 explainer:
-  title: "Assessment and penetration testing, working together"
-  intro: "Most engagements combine both approaches: breadth from automation, depth from a skilled tester."
+  title: 'Two ways to look at the same application'
+  intro: 'We use both, because each catches what the other misses.'
   cards:
-    - title: "Vulnerability assessment"
-      label: "Objective: breadth"
-      text: "Automated and manual checks across the whole scope to find known weaknesses quickly."
-      bullets: ["Every page, endpoint and screen covered", "Known flaws and risky settings flagged", "False positives removed by a tester"]
-    - title: "Penetration testing"
-      label: "Objective: depth"
-      text: "A tester chains weaknesses together to prove what an attacker could actually reach."
-      bullets: ["Business logic and access control abuse", "Proof of impact with evidence", "Attack paths explained step by step"]
+    - title: 'Wide view'
+      label: 'Covers everything'
+      text: 'Automated checks sweep every page, form and screen for known weaknesses.'
+      bullets:
+        [
+          'Fast coverage of the whole scope',
+          'Out-of-date components spotted',
+          'Every result checked by a person',
+        ]
+    - title: 'Deep view'
+      label: 'Thinks like an attacker'
+      text: 'A tester looks for the flaws only a human would notice, and links them together.'
+      bullets:
+        [
+          "One customer seeing another's data",
+          'Discounts, refunds and payments abused',
+          'Admin areas reached without permission',
+        ]
 included:
-  - { title: "Web application testing", text: "Websites, portals and SaaS platforms tested against the OWASP Top 10 and your own business logic." }
-  - { title: "Mobile app testing", text: "iOS and Android apps, their local data storage and the servers they talk to." }
-  - { title: "Authentication and access control", text: "Logins, password resets, sessions and user roles checked for ways to see other customers' data." }
-  - { title: "E-commerce and payment journeys", text: "Basket, checkout, discount and account flows tested for fraud and data exposure." }
-  - { title: "Infrastructure behind the app", text: "The servers, storage and third-party services your application relies on." }
-  - { title: "Free retest", text: "Once you've fixed the issues, we test again and update the report." }
+  - {
+      title: 'Websites and web apps',
+      text: 'Public sites, booking systems, portals and SaaS platforms, including what logged-in users can do.',
+    }
+  - {
+      title: 'iOS and Android apps',
+      text: 'The app on the phone, what it stores locally and the servers behind it.',
+    }
+  - {
+      title: 'Logins and user roles',
+      text: "Sign-in, password reset, sessions and permissions, checked for ways to see someone else's data.",
+    }
+  - {
+      title: 'Checkout and payments',
+      text: 'Baskets, vouchers, refunds and account changes, tested for fraud routes.',
+    }
+  - {
+      title: 'Supporting systems',
+      text: 'The hosting, storage and third-party services your application depends on.',
+    }
+  - {
+      title: 'Retest',
+      text: 'Once your developers have made the fixes, we check them and update the report.',
+    }
 outcomes:
-  - { title: "Fewer surprises", text: "Find and fix weaknesses on your timetable, not an attacker's." }
-  - { title: "Evidence customers trust", text: "A professional report to share with clients, insurers and auditors." }
-  - { title: "Fixes in the right order", text: "Every finding is rated by risk, so developers start with what matters most." }
-tools: ["OWASP Top 10", "OWASP ASVS", "OWASP MASVS", "CVSS v3.1", "PCI DSS 11.4", "ISO 27001 A.8.29", "Cyber Essentials Plus", "UK GDPR Art. 32"]
+  - {
+      title: 'Fewer nasty surprises',
+      text: 'You hear about weaknesses from us, not from a customer, a journalist or the ICO.',
+    }
+  - {
+      title: 'Evidence that helps you sell',
+      text: 'A report summary and retest letter you can share with customers and insurers.',
+    }
+  - {
+      title: 'Developer time well spent',
+      text: 'Findings ranked by business impact, so the most dangerous issues get fixed first.',
+    }
+tools:
+  [
+    'OWASP Top 10',
+    'OWASP ASVS',
+    'OWASP MASVS',
+    'CVSS v3.1',
+    'PCI DSS 11.4',
+    'ISO 27001 A.8.29',
+    'Cyber Essentials Plus',
+    'UK GDPR Art. 32',
+  ]
 process:
-  - { title: "Scoping and authorisation", text: "We agree targets, test accounts, timings and rules of engagement. You sign written authorisation before anything starts." }
-  - { title: "Reconnaissance", text: "We map the application, its users, roles and connected services." }
-  - { title: "Testing", text: "Manual testing backed by automated scanning, with traffic controlled to avoid disruption." }
-  - { title: "Reporting", text: "A board-level summary and a technical report with evidence and fix guidance for each finding." }
-  - { title: "Walkthrough", text: "A call with your developers to explain findings and agree priorities." }
-  - { title: "Retest", text: "We confirm fixes work and issue an updated report." }
+  - {
+      title: 'Scoping call',
+      text: "We agree what's in scope, test accounts and timings. Nothing starts until you've signed written authorisation.",
+    }
+  - {
+      title: 'Map the application',
+      text: 'We learn how it works, who uses it and what it connects to.',
+    }
+  - {
+      title: 'Test by hand',
+      text: 'Manual testing supported by automated tools, paced to avoid affecting real users.',
+    }
+  - {
+      title: 'Report in two layers',
+      text: 'A one-page business summary and a technical section with evidence and fixes.',
+    }
+  - {
+      title: 'Walkthrough',
+      text: 'A call with your developers to explain each finding and agree what to fix first.',
+    }
+  - { title: 'Retest', text: 'We confirm the fixes work and reissue the report.' }
 deliverables:
-  - title: "Executive summary"
-    text: "For directors and customers."
-    bullets: ["Overall risk rating", "Key business risks in plain English", "Recommended priorities"]
-  - title: "Technical report"
-    text: "For your developers."
-    bullets: ["Each finding with evidence", "Risk rating and affected areas", "Step-by-step fix guidance"]
-  - title: "Retest letter"
-    text: "For auditors and customers."
-    bullets: ["Confirmation of fixed issues", "Remaining risks noted", "Dated and scoped"]
+  - title: 'Board summary'
+    text: 'One page for directors.'
+    bullets:
+      ['Overall risk in plain English', 'What it could cost the business', 'Top three priorities']
+  - title: 'Technical findings'
+    text: 'For whoever makes the fixes.'
+    bullets: ['Evidence for every issue', 'Severity and affected areas', 'Clear fix guidance']
+  - title: 'Retest letter'
+    text: 'For customers and auditors.'
+    bullets: ['Issues confirmed as fixed', 'Anything still open', 'Dated and scoped']
 faqs:
-  - q: "How often should we test our applications?"
-    a: "At least once a year and after any significant change, such as a new release, a new payment journey or a platform migration. Many customer contracts, insurers and standards such as ISO 27001 and PCI DSS expect annual testing."
-  - q: "Will testing disrupt our live website or app?"
-    a: "Testing is planned to avoid disruption. We agree testing windows, limit traffic and avoid destructive techniques unless you approve them. We can test a staging environment instead where one is available."
-  - q: "Do you need access to our source code?"
-    a: "No, but it helps. Black-box testing uses no inside knowledge, grey-box testing uses test accounts, and white-box testing adds source code or architecture details for the deepest coverage. We'll recommend the right model for your goals."
-  - q: "Do you need our permission in writing?"
-    a: "Yes. Testing systems without the owner's permission is an offence under the UK Computer Misuse Act 1990, and similar laws apply across Europe. We never start without signed authorisation and an agreed scope."
+  - q: 'How often should we have our app tested?'
+    a: 'At least once a year, and whenever something significant changes, such as a new payment journey, a major release or a platform move. Customer contracts, cyber insurers, ISO 27001 and PCI DSS often expect annual testing.'
+  - q: 'Could testing take our website down?'
+    a: "It's very unlikely. We agree testing windows, pace our traffic and avoid anything destructive unless you ask for it. If you have a staging copy of the site, we can test that instead."
+  - q: 'Do you need our source code?'
+    a: "No. We can test with no inside knowledge, with test accounts, or with code and design documents for the deepest look. We'll suggest the right option for what you're trying to achieve."
+  - q: 'Why do you need signed authorisation?'
+    a: "Accessing a computer system without the owner's permission is a criminal offence under the UK Computer Misuse Act 1990, and similar laws apply across Europe. Signed authorisation protects you and us."
 related: [api-security-testing, cloud-security-assessment, network-penetration-testing]
-updated: 2026-11-12
+updated: 2026-11-14
 ---
 
-## What is application penetration testing?
+## Who it's for
 
-A penetration test is a controlled, authorised attack on your application by a skilled tester. Automated scanners find many known problems, but they can't tell when a discount code can be reused forever, when one customer can open another's invoice, or when an admin page is reachable by changing a number in the address bar. Those flaws in business logic and access control are what lead to many real-world breaches.
+Any organisation whose customers log in, pay, book or share information online. Typical triggers are a new launch, an enterprise customer's security questionnaire, a cyber insurance renewal, or an ISO 27001 or PCI DSS requirement.
 
-## How we test
+## Why it matters to your business
 
-We combine automated scanning for coverage with hands-on testing for depth, following the OWASP testing guides. Every finding is confirmed by a tester before it reaches your report, so your developers don't waste time on false alarms. Delivered by AVRIX with our specialist security team.
+Most serious web breaches don't need clever hacking. They come from simple mistakes: changing a number in a web address to open someone else's invoice, reusing a discount code forever or finding an admin page nobody thought to lock. Automated scanners rarely spot these. A person does.
+
+## How AVRIX Digital does it
+
+We combine automated coverage with hands-on testing, following the OWASP testing guides. Nothing reaches your report until a tester has confirmed it, and every finding is written in two languages: business impact for leadership and step-by-step fixes for developers.

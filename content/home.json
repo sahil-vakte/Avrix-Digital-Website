@@ -1,12 +1,12 @@
 {
   "seo_title": "AVRIX | Cyber Security for UK & European Businesses",
-  "seo_description": "Penetration testing, 24/7 managed SOC, compliance (Cyber Essentials, ISO 27001, GDPR, NIS2, DORA) and incident response for UK and European businesses.",
+  "seo_description": "AVRIX Digital helps UK and European organisations find security gaps, watch for attacks and prove compliance: testing, monitoring, ISO 27001, NIS2 and DORA.",
   "sections": [
     {
       "type": "hero",
-      "eyebrow": "UK & European cyber security",
+      "eyebrow": "AVRIX Digital · UK & Europe",
       "h1": "Cyber security that keeps your business *open, compliant and trusted*",
-      "lead": "Penetration testing, 24/7 threat monitoring, compliance with UK and European standards, and rapid incident response, from one accountable team that explains everything in plain English.",
+      "lead": "We find the gaps attackers would use, watch your systems around the clock and give you the evidence customers, insurers and regulators ask for. Explained in plain English, priced before we start.",
       "primary_cta": {
         "label": "Talk to a Specialist",
         "href": "booking_url_or:/contact-us/"
@@ -15,51 +15,43 @@
         "label": "View Services",
         "href": "/services/"
       },
-      "signal_chips": [
-        "Cloud",
-        "Web",
-        "Mobile",
-        "API",
-        "Email"
-      ],
+      "signal_chips": ["Website", "Email", "Cloud", "Laptops", "Suppliers"],
       "items": [
         {
           "title": "Cyber Essentials",
-          "text": "Ready"
+          "text": "Certified"
         },
         {
-          "title": "ISO 27001:2022",
-          "text": "On track"
+          "title": "ISO 27001",
+          "text": "Audit booked"
         },
         {
-          "title": "UK & EU GDPR",
-          "text": "Mapped"
+          "title": "Pen test retest",
+          "text": "Passed"
         },
         {
-          "title": "NIS2 & DORA",
-          "text": "Assessed"
+          "title": "Supplier questionnaire",
+          "text": "Answered"
         }
       ],
-      "label": "Illustrative security posture view"
+      "label": "Example of the weekly summary clients receive"
     },
     {
       "type": "ticker",
       "items": [
-        "24/7 threat monitoring",
-        "Manual penetration testing",
-        "Cyber Essentials & ISO 27001",
-        "UK GDPR & EU GDPR",
-        "NIS2 & DORA readiness",
-        "Rapid incident response",
-        "Plain-English reporting",
-        "One accountable team"
+        "Win the tender that asks for Cyber Essentials",
+        "Answer the 200-question security questionnaire",
+        "Keep your cyber insurance",
+        "Show the board where the risk is",
+        "Meet UK GDPR and NIS2 duties",
+        "Know who to call at 2am"
       ]
     },
     {
       "type": "services_carousel",
-      "eyebrow": "Services",
+      "eyebrow": "Popular starting points",
       "title": "Security services built around *your real risks*",
-      "intro": "Start with the problem you need solved. We bring the right specialists, from testing and monitoring to compliance and response.",
+      "intro": "Most clients come to us with one pressing need: a tender, an audit, an insurer's question or a worrying email. These are the services that solve them most often.",
       "items": [
         "penetration-testing",
         "cloud-security-assessment",
@@ -79,7 +71,7 @@
       "type": "industries_tabs",
       "eyebrow": "Sectors",
       "title": "Sector know-how, *not one-size-fits-all*",
-      "intro": "Different industries face different attackers, regulators and pressures. Our approach starts with yours.",
+      "intro": "A clinic, a payments firm and a factory face different attackers and different rules. Pick your sector to see what usually matters most.",
       "link": {
         "label": "See all sectors",
         "href": "/industries/"
@@ -87,80 +79,52 @@
     },
     {
       "type": "capabilities",
-      "eyebrow": "How we protect you",
-      "title": "Four disciplines. *One accountable team.*",
-      "intro": "Find weaknesses, watch for attacks, prove compliance and recover fast, joined up rather than bought from four suppliers.",
+      "eyebrow": "The AVRIX model",
+      "title": "Find it. Watch it. Prove it. *Recover from it.*",
+      "intro": "Four connected disciplines, one team and one point of contact, so nothing falls between suppliers.",
       "items": [
         {
-          "title": "Offensive Security",
-          "text": "Find weaknesses before attackers do.",
+          "title": "Find it",
+          "text": "Hands-on testing that shows how an attacker would get in, and what they'd reach.",
           "icon": "penetration-testing",
           "href": "/services/#offensive",
           "bullets": [
-            "Web and mobile app testing",
-            "Network and cloud testing",
-            "API security testing",
-            "Red teaming and phishing"
+            "Website, app and API testing",
+            "Network and cloud reviews",
+            "Phishing and red team exercises"
           ]
         },
         {
-          "title": "Incident Response & Forensics",
-          "text": "Contain, investigate and recover.",
-          "icon": "incident-response",
-          "href": "/services/#response",
+          "title": "Watch it",
+          "text": "Analysts monitoring your devices, email and cloud day and night.",
+          "icon": "managed-security",
+          "href": "/services/#managed",
           "bullets": [
-            "Ransomware response",
-            "Email compromise",
-            "Digital forensics",
-            "Incident readiness"
+            "24/7 monitoring and response",
+            "Device-level protection",
+            "Leaked password alerts"
           ]
         },
         {
-          "title": "Compliance & Standards",
-          "text": "Meet UK and EU requirements.",
+          "title": "Prove it",
+          "text": "Certifications and evidence that open doors to bigger contracts.",
           "icon": "compliance",
           "href": "/services/#compliance",
           "bullets": [
             "Cyber Essentials and ISO 27001",
-            "UK GDPR and EU GDPR",
-            "NIS2 and DORA",
-            "PCI DSS and SOC 2"
+            "UK and EU GDPR",
+            "NIS2, DORA, PCI DSS, SOC 2"
           ]
         },
         {
-          "title": "Managed SOC & SIEM",
-          "text": "24/7 monitoring and response.",
-          "icon": "managed-security",
-          "href": "/services/managed-security/",
+          "title": "Recover from it",
+          "text": "Experienced help to contain an incident and get back to work.",
+          "icon": "incident-response",
+          "href": "/services/#response",
           "bullets": [
-            "Round-the-clock monitoring",
-            "SIEM deployment",
-            "Alert investigation",
-            "Monthly reporting"
-          ]
-        },
-        {
-          "title": "Detection & Response",
-          "text": "Stop attacks on every device.",
-          "icon": "radar",
-          "href": "/services/managed-detection-response/",
-          "bullets": [
-            "Endpoint detection (EDR)",
-            "Threat hunting",
-            "Identity protection",
-            "Rapid isolation"
-          ]
-        },
-        {
-          "title": "Security Products",
-          "text": "Tools that keep you protected.",
-          "icon": "attack-surface",
-          "href": "/solutions/",
-          "bullets": [
-            "AVRIX PhishDrill",
-            "AVRIX Attack Surface Monitor",
-            "AVRIX Compliance Hub",
-            "Dark web monitoring"
+            "Ransomware and email fraud",
+            "Forensic investigation",
+            "Plans and rehearsals"
           ]
         }
       ]
@@ -169,108 +133,108 @@
       "type": "frameworks",
       "eyebrow": "Standards",
       "title": "The standards your customers and regulators *ask about*",
-      "intro": "We help you meet the standards and regulations that UK and European customers, insurers and regulators ask for.",
+      "intro": "If a customer contract, insurer, tender or regulator mentions one of these, we can help you meet it and prove it.",
       "items": [
         {
           "title": "Cyber Essentials",
-          "text": "UK government-backed baseline",
+          "text": "Often required for UK public sector work",
           "icon": "cyber-essentials"
         },
         {
           "title": "ISO/IEC 27001:2022",
-          "text": "Information security management",
+          "text": "The certificate enterprise buyers recognise",
           "icon": "compliance"
         },
         {
           "title": "UK GDPR & EU GDPR",
-          "text": "Data protection",
+          "text": "Keeping personal data lawful and secure",
           "icon": "data-protection"
         },
         {
           "title": "NIS2 & UK NIS",
-          "text": "Essential and important entities",
+          "text": "Resilience rules for essential services",
           "icon": "shield-network"
         },
         {
           "title": "DORA",
-          "text": "EU financial sector resilience",
+          "text": "Digital resilience for EU finance",
           "icon": "finance"
         },
         {
           "title": "PCI DSS v4.0.1",
-          "text": "Card payment security",
+          "text": "If you take card payments",
           "icon": "card"
         },
         {
           "title": "SOC 2",
-          "text": "Assurance for SaaS providers",
+          "text": "Often requested by US customers",
           "icon": "badge"
         },
         {
           "title": "NHS DSPT",
-          "text": "Health and care data security",
+          "text": "For anyone handling NHS data",
           "icon": "healthcare"
         }
       ]
     },
     {
       "type": "advantage",
-      "eyebrow": "Why AVRIX",
+      "eyebrow": "Why AVRIX Digital",
       "title": "What makes AVRIX *different*",
-      "intro": "Practical security work, honest reporting and help that doesn't stop at the report.",
+      "intro": "We're judged on whether you're safer and can prove it, not on how long the report is.",
       "items": [
         {
           "n": "01",
-          "title": "Manual, expert testing",
-          "text": "Skilled testers go beyond automated scans to find the business logic and access control flaws that lead to real breaches."
+          "title": "Board-ready, not just tech-ready",
+          "text": "Every engagement ends with a one-page summary of business risk your directors can act on, alongside the technical detail."
         },
         {
           "n": "02",
-          "title": "Every finding confirmed",
-          "text": "We verify issues before they reach your report, with clear evidence and step-by-step fixes your team can act on."
+          "title": "Right-sized and fixed-price",
+          "text": "We scope to what you actually need to protect or prove, then quote a fixed price. No padded day rates, no tools you don't need."
         },
         {
           "n": "03",
-          "title": "Free retesting",
-          "text": "Once you've fixed the issues from a penetration test, we retest them and update your report at no extra cost."
+          "title": "UK and EU rules in-house",
+          "text": "Cyber Essentials, UK and EU GDPR, NIS2, DORA and the NHS toolkit are everyday work for us, not a referral elsewhere."
         },
         {
           "n": "04",
-          "title": "One accountable team",
-          "text": "Testing, monitoring, compliance and response from one team, with one point of contact and plain-English reporting."
+          "title": "We stay until it's fixed",
+          "text": "We walk your team through the findings, help with the fixes and retest penetration test issues, so the risk actually goes away."
         }
       ]
     },
     {
       "type": "engagement",
-      "eyebrow": "Our process",
-      "title": "Five clear steps, *from first call to proof*",
-      "intro": "You always know what's happening, what's next and what you'll receive.",
+      "eyebrow": "The AVRIX approach",
+      "title": "Listen, scope, assess, fix, *prove*",
+      "intro": "The same five steps whether it's a single test or an ongoing service.",
       "items": [
         {
-          "label": "Stage 1",
-          "title": "Free consultation and written scope",
-          "text": "We understand your goals, agree what's in scope and confirm rules of engagement. Testing never starts without signed authorisation."
+          "label": "Step 1 · Listen",
+          "title": "A free scoping call",
+          "text": "We learn what you need to protect, who's asking and by when, before suggesting anything."
         },
         {
-          "label": "Stage 2",
-          "title": "Hands-on testing and gap analysis",
-          "text": "Our specialists test your systems or review your controls against the standards that matter to you."
+          "label": "Step 2 · Scope",
+          "title": "A fixed-price proposal",
+          "text": "Clear scope, timings and price in writing. For testing, you sign authorisation before we touch a system."
         },
         {
-          "label": "Stage 3",
-          "title": "Prioritised findings and walkthrough",
-          "text": "A plain-English summary for leadership, technical detail for your team, and a call to agree priorities."
+          "label": "Step 3 · Assess",
+          "title": "The work itself",
+          "text": "Testing, monitoring set-up or a compliance review, with a named lead you can call at any point."
         },
         {
-          "label": "Stage 4",
-          "title": "Fixes verified",
-          "text": "We support your team through the fixes, then retest to confirm issues are closed."
+          "label": "Step 4 · Fix",
+          "title": "Help closing the gaps",
+          "text": "A walkthrough with your team, practical fixes and retesting where it applies."
         },
         {
-          "label": "Stage 5",
-          "title": "Evidence for customers and auditors",
-          "text": "Retest letters, compliance evidence and board-ready reporting you can share with confidence."
+          "label": "Step 5 · Prove",
+          "title": "Evidence you can share",
+          "text": "Reports, letters and evidence packs ready for customers, auditors, insurers and the board."
         }
       ]
     },
@@ -283,24 +247,24 @@
       "type": "faq",
       "eyebrow": "FAQs",
       "title": "Questions we're *often asked*",
-      "intro": "Straight answers on scoping, testing, compliance and incidents."
+      "intro": "The questions we hear most on first calls, answered plainly."
     },
     {
       "type": "final_cta",
       "title": "Let's find your weak spots *before anyone else does*",
-      "text": "Tell us what you need to protect or prove. A specialist will reply within one working day with a clear next step.",
+      "text": "Tell us what you need to protect or prove. A specialist will reply within one working day with honest advice on where to start.",
       "promises": [
         {
-          "title": "Free initial consultation",
-          "text": "No obligation"
+          "title": "Free 30-minute scoping call",
+          "text": "With a specialist, not a salesperson"
         },
         {
-          "title": "Confidentiality agreement on request",
-          "text": "Before any detail is shared"
+          "title": "Fixed price before work starts",
+          "text": "No surprise invoices"
         },
         {
-          "title": "Reply within one working day",
-          "text": "From the security team"
+          "title": "Mutual NDA on request",
+          "text": "Before you share anything sensitive"
         }
       ],
       "primary_cta": {

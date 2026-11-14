@@ -5,7 +5,6 @@ import {
   RequestCard,
   SectionShell,
   CardGrid,
-  Timeline,
   ServiceGrid,
   Tags,
   FaqSection,
@@ -54,22 +53,22 @@ export default function Industries({ route }: { route: RouteRecord }) {
       </PageHero>
       <SectionShell
         eyebrow={ui.industryPillars}
-        title={`How we protect *${i.title}*`}
+        title={`Where we *focus* first`}
         intro={i.summary}
       >
-        <CardGrid items={i.pillars.map((v) => ({ ...v, icon: i.icon }))} />
+        <CardGrid items={i.pillars.map((v) => ({ ...v, icon: i.icon }))} columns={i.pillars.length === 4 ? 4 : 3} />
       </SectionShell>
       <SectionShell
         tone="tint"
         eyebrow={ui.industryLifecycle}
-        title={`A clear path from *assessment to assurance*`}
+        title={`What you'll be able to *show*`}
       >
-        <Timeline steps={i.lifecycle} />
+        <CardGrid items={i.lifecycle} numbered />
       </SectionShell>
-      <SectionShell eyebrow={ui.frameworks} title={`Standards and regulations *we cover*`}>
+      <SectionShell eyebrow={ui.frameworks} title={`Rules and standards *in your sector*`}>
         <Tags items={i.frameworks} />
       </SectionShell>
-      <SectionShell tone="tint" eyebrow={ui.industryServices} title={`Services for *${i.title}*`}>
+      <SectionShell tone="tint" eyebrow={ui.industryServices} title={`Where clients in this sector *usually start*`}>
         <ServiceGrid items={services.filter((s) => i.services.includes(s.slug))} />
       </SectionShell>
       <FaqSection items={i.faqs} title={`${i.title}: *common questions*`} />

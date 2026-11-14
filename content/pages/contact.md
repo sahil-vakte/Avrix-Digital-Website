@@ -1,59 +1,59 @@
 ---
 slug: contact-us
-h1: Talk to the *AVRIX security team*
-seo_title: Contact AVRIX | Book a Free Security Consultation
+h1: Tell us what's *keeping you up at night*
+seo_title: Contact AVRIX Digital | Free Security Scoping Call
 seo_description: >-
-  Talk to AVRIX about penetration testing, managed SOC, compliance or an
-  urgent incident. We reply to every enquiry within one working day.
-eyebrow: Contact us
+  Speak to AVRIX Digital about security testing, 24/7 monitoring, compliance
+  or a live incident. A specialist replies within one working day.
+eyebrow: Speak to the team
 lead: >-
-  Whether you need a penetration test, help with Cyber Essentials, ISO 27001,
-  GDPR, NIS2 or DORA, 24/7 monitoring, or urgent help with an incident, our
-  security team is ready to help.
+  A tender asking for ISO 27001, an insurer's questionnaire, a new app going
+  live or something that just looks wrong: tell us what's going on and a
+  specialist will come back with practical next steps.
 hide_cta_band: true
 highlights:
-  - title: Encrypted form
-    text: Your enquiry is sent securely over HTTPS.
-  - title: Confidentiality agreement on request
-    text: Signed before you share anything sensitive.
-  - title: Reply within one working day
-    text: From a member of the security team.
+  - title: Sent securely
+    text: Your message travels over an encrypted connection.
+  - title: Mutual NDA on request
+    text: We'll sign before you share anything sensitive.
+  - title: A human reply within one working day
+    text: From a security specialist, not an autoresponder.
 next_steps:
-  - title: We read every enquiry
-    text: 'A security specialist reviews your message, not an auto-router.'
-  - title: We reply within one working day
-    text: 'With initial thoughts and, if useful, a time for a scoping call.'
-  - title: You get a clear proposal
-    text: 'Scope, approach and timeline, with no jargon and no pressure.'
+  - title: A specialist reads it
+    text: 'Every message is read by someone who can actually help.'
+  - title: We come back within a working day
+    text: 'With first thoughts and, where useful, a time for a free scoping call.'
+  - title: You receive a fixed-price proposal
+    text: 'What we will do, when and for how much, with no obligation.'
 side_card:
-  title: Suspect a breach or ransomware?
+  title: Dealing with an attack right now?
   text: >-
-    Mark your enquiry as urgent and choose "Incident response". Disconnect
-    affected devices from the network but leave them powered on, and don't pay
-    any ransom.
+    Choose "Incident response" and set the timeline to urgent. In the
+    meantime, unplug affected machines from the network but keep them
+    switched on, and don't reply to or pay the attackers.
 privacy_note: >-
-  We only use your details to respond to your enquiry. See our [privacy
+  Your details are used only to reply to this enquiry. Read our [privacy
   policy](/privacy-policy/).
 faqs:
-  - q: Is the first consultation really free?
+  - q: Is the scoping call genuinely free?
     a: >-
-      Yes. The initial consultation is free and there's no obligation. It's a
-      chance for us to understand your needs and for you to see if we're a good
-      fit.
-  - q: What should I prepare?
+      Yes. It's 30 minutes, there's no obligation and you'll leave with useful
+      advice whether or not you work with us.
+  - q: Do I need to prepare anything?
     a: >-
-      Nothing formal. It helps to know what you want to protect or achieve, any
-      deadlines (such as an audit or tender), and the main systems you use.
-  - q: Do you sign NDAs?
+      No paperwork needed. It helps to know what's driving the enquiry, any
+      deadline such as an audit or contract date, and roughly which systems
+      are involved.
+  - q: Will you sign our NDA?
     a: >-
-      Yes. We're happy to sign a mutual confidentiality agreement before you
-      share anything sensitive.
+      Yes. We can sign yours or offer a mutual agreement before any sensitive
+      details are shared.
 form:
-  title: Request a security consultation
-  submit_label: Send secure message
-  success_title: 'Thanks, we''ve got it.'
+  title: Tell us about your organisation
+  submit_label: Send my enquiry
+  success_title: 'Thank you, message received.'
   success_text: >-
-    A member of our security team will be in touch within one working day.
+    A specialist from AVRIX Digital will reply within one working day.
   error_text: >-
     Something went wrong sending your enquiry. Please email us at
     info@avrixdigital.co.uk and we'll pick it up straight away.
@@ -162,6 +162,5 @@ form:
         enquiry.
       type: checkbox
       required: true
-updated: 2026-11-12
+updated: 2026-11-14
 ---
-

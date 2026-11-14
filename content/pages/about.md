@@ -1,54 +1,114 @@
 ---
 slug: about
-h1: "Practical cyber security for *UK and European businesses*"
-seo_title: "About AVRIX | Cyber Security for UK & European Businesses"
-seo_description: "AVRIX is a UK cyber security provider offering penetration testing, 24/7 managed SOC, compliance and incident response for UK and European businesses."
-eyebrow: "About AVRIX"
-lead: "AVRIX helps organisations across the UK and Europe find their weaknesses, defend against attacks and prove their security to customers, insurers and regulators, with one accountable team and plain-English advice."
+h1: 'Security advice that *makes sense to the business*'
+seo_title: 'About AVRIX Digital | UK Cyber Security Partner'
+seo_description: "AVRIX Digital is a UK cyber security partner helping organisations across the UK and Europe find gaps, watch for attacks and prove they're protected."
+eyebrow: 'About AVRIX Digital'
+lead: "We started AVRIX Digital because too many organisations were buying security they couldn't understand. Our job is to find the risks that could cost you money, customers or a contract, fix them with you and give you evidence you can hand to anyone who asks."
 highlights:
-  - { title: "4", text: "Security disciplines under one roof" }
-  - { title: "20", text: "Specialist services" }
-  - { title: "24/7", text: "Monitoring and incident response" }
-  - { title: "UK & EU", text: "Regulations we help you meet" }
+  - { title: '1', text: 'Accountable team and contract' }
+  - { title: '20', text: 'Services, scoped to fit' }
+  - { title: '24/7', text: 'Watch over your systems' }
+  - { title: 'UK + EU', text: 'Rules covered in-house' }
 values:
-  - { title: "Manual, expert testing", text: "Skilled testers go beyond automated scans to find the flaws that matter." }
-  - { title: "Fixes, not just findings", text: "Every issue comes with clear evidence and practical steps to fix it." }
-  - { title: "Compliance that helps you sell", text: "Standards scoped around what your customers and regulators actually ask for." }
-  - { title: "Board-ready reporting", text: "Plain-English summaries that help directors make informed decisions." }
+  - {
+      title: 'Say it plainly',
+      text: "If a director can't follow our report, we haven't finished writing it.",
+    }
+  - {
+      title: 'Size it honestly',
+      text: "We recommend what your risk and budget justify, and tell you when something isn't worth it.",
+    }
+  - {
+      title: 'Stay to the fix',
+      text: "Findings are only useful once they're closed, so retests and follow-up are built in.",
+    }
+  - {
+      title: 'Leave proof behind',
+      text: 'Every engagement ends with documents you can show customers, insurers and auditors.',
+    }
 sections:
   - id: standards
-    eyebrow: "Standards we work to"
-    title: "Built around recognised *frameworks*"
-    intro: "Our testing, monitoring and compliance work follows recognised UK, European and international standards."
+    eyebrow: 'How we measure our work'
+    title: 'Benchmarks we *hold ourselves to*'
+    intro: "We don't invent our own yardsticks. Our testing, monitoring and compliance work lines up with standards your customers and auditors already recognise."
     items:
-      - { label: "Testing", title: "OWASP", text: "Web, mobile and API testing methodology." }
-      - { label: "Threats", title: "MITRE ATT&CK", text: "Attacker techniques used for testing and detection." }
-      - { label: "Baseline", title: "Cyber Essentials", text: "UK government-backed technical controls." }
-      - { label: "Management", title: "ISO/IEC 27001:2022", text: "Information security management systems." }
-      - { label: "Privacy", title: "UK GDPR & EU GDPR", text: "Data protection and security of processing." }
-      - { label: "Resilience", title: "NIS2 & DORA", text: "European cyber resilience regulation." }
-      - { label: "Payments", title: "PCI DSS v4.0.1", text: "Card data security." }
-      - { label: "Guidance", title: "NCSC & ENISA", text: "UK and EU national cyber security guidance." }
+      - {
+          label: 'Applications',
+          title: 'OWASP',
+          text: 'The reference checklist for websites, apps and APIs.',
+        }
+      - {
+          label: 'Attacker behaviour',
+          title: 'MITRE ATT&CK',
+          text: 'How real attackers operate, used to shape tests and alerts.',
+        }
+      - {
+          label: 'UK baseline',
+          title: 'Cyber Essentials',
+          text: 'The government-backed starting point for UK organisations.',
+        }
+      - {
+          label: 'Management',
+          title: 'ISO/IEC 27001:2022',
+          text: 'The international benchmark for running security well.',
+        }
+      - {
+          label: 'Personal data',
+          title: 'UK GDPR & EU GDPR',
+          text: 'Keeping personal information secure and lawful.',
+        }
+      - {
+          label: 'EU resilience',
+          title: 'NIS2 & DORA',
+          text: "The EU's newer cyber and operational resilience laws.",
+        }
+      - {
+          label: 'Card payments',
+          title: 'PCI DSS v4.0.1',
+          text: 'The rules for anyone taking card payments.',
+        }
+      - {
+          label: 'Official guidance',
+          title: 'NCSC & ENISA',
+          text: 'The UK and EU national cyber security agencies.',
+        }
   - id: coverage
-    eyebrow: "Where we work"
-    title: "Supporting businesses across *the UK and Europe*"
-    intro: "We work remotely and on site, with compliance expertise across UK and EU rules."
+    eyebrow: 'Where we work'
+    title: 'Built for the UK, *ready for Europe*'
+    intro: 'Most of our work is delivered remotely, with people on site when a job genuinely needs it.'
     items:
-      - { label: "United Kingdom", title: "England, Scotland, Wales & Northern Ireland", text: "Cyber Essentials, UK GDPR, NIS Regulations, FCA resilience and NHS DSPT." }
-      - { label: "Ireland", title: "Republic of Ireland", text: "EU GDPR, NIS2 and DORA support for Irish organisations and UK–Irish groups." }
-      - { label: "European Union", title: "EU member states", text: "NIS2, DORA, EU GDPR and the Cyber Resilience Act for EU businesses and suppliers." }
-      - { label: "Remote delivery", title: "Wherever you operate", text: "Remote testing, monitoring and advisory, with on-site work where it's needed." }
+      - {
+          label: 'United Kingdom',
+          title: 'All four nations',
+          text: 'Cyber Essentials, UK GDPR, UK NIS, FCA resilience rules and the NHS DSPT.',
+        }
+      - {
+          label: 'Ireland',
+          title: 'Republic of Ireland',
+          text: 'EU GDPR, NIS2 and DORA for Irish organisations and cross-border groups.',
+        }
+      - {
+          label: 'European Union',
+          title: 'EU member states',
+          text: 'NIS2, DORA, EU GDPR and the Cyber Resilience Act for EU firms and their suppliers.',
+        }
+      - {
+          label: 'Remote first',
+          title: 'Wherever your systems are',
+          text: 'Testing, monitoring and advice delivered online, with site visits when needed.',
+        }
 team_image: null
 team: []
-updated: 2026-11-12
+updated: 2026-11-14
 ---
 
-## Who we are
+## Why AVRIX Digital exists
 
-AVRIX is a UK cyber security provider. We help organisations understand their real risks, strengthen their defences and meet the standards their customers, insurers and regulators expect.
+Security buying is often confusing. Organisations end up with several suppliers, reports full of jargon and a long list of findings nobody owns. Meanwhile, customers, insurers and regulators keep asking harder questions.
 
-Many businesses find cyber security confusing: too many suppliers, too much jargon and reports nobody can act on. We do it differently. Testing, monitoring, compliance and incident response come from one team, with one point of contact and advice in plain English.
+AVRIX Digital puts testing, monitoring, compliance and incident support under one roof. You get one contract and one named contact, and our advice is tied to what matters to your business: revenue, reputation and keeping the doors open.
 
-## Our mission
+## What we're aiming for
 
-To give every business, whatever its size, access to the kind of security expertise that used to be reserved for large enterprises, so they can grow with confidence.
+We want organisations of any size to be able to answer a simple question with confidence: "How do you know you're protected?"
