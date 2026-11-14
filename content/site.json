@@ -4,6 +4,7 @@
   "company_number": null,
   "registered_office": null,
   "vat_number": null,
+  "show_solutions": false,
   "tagline": "Cyber security for UK and European businesses.",
   "site_url": "https://avrixdigital.co.uk",
   "email": "info@avrixdigital.co.uk",

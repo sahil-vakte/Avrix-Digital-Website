@@ -3,7 +3,7 @@ import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/re
 import { MemoryRouter } from 'react-router-dom';
 import EnquiryExperience from './EnquiryExperience';
 import { Button } from '../ui';
-import { ui } from '../../content';
+import { solutions, ui } from '../../content';
 
 vi.mock('./EnquiryForm', () => ({
   default: ({ service, preferredContact }: { service?: string; preferredContact: string }) => (
@@ -51,14 +51,16 @@ const wrap = (path: string, children = <Button href="#enquiry">Discuss project</
     </MemoryRouter>,
   );
 
-it('opens only on request and preselects the solution from the current page', async () => {
-  wrap('/solutions/phishdrill/');
+it('opens only on request and preselects the topic from the current page', async () => {
+  // Solutions can be hidden in site.json; fall back to a service page then.
+  const onSolution = solutions.length > 0;
+  wrap(onSolution ? `/solutions/${solutions[0].slug}/` : '/services/penetration-testing/');
   expect(screen.queryByRole('dialog')).toBeNull();
   const trigger = screen.getByRole('link', { name: /Discuss project/ });
   trigger.focus();
   fireEvent.click(trigger);
   expect(await screen.findByRole('form', { name: 'Project enquiry' })).toBeTruthy();
-  expect(screen.getByText('security-products')).toBeTruthy();
+  expect(screen.getByText(onSolution ? 'security-products' : 'penetration-testing')).toBeTruthy();
   expect(document.body.style.overflow).toBe('hidden');
   fireEvent.click(screen.getByRole('button', { name: ui.closeEnquiry }));
   await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());

@@ -3,7 +3,7 @@ import { cleanup, fireEvent, render, screen, within } from '@testing-library/rea
 import { MemoryRouter } from 'react-router-dom';
 import { ServicesDirectory } from './sections';
 import Header from './layout/Header';
-import { page, services, ui } from '../content';
+import { page, services, site, ui } from '../content';
 
 beforeEach(() => {
   vi.stubGlobal(
@@ -103,7 +103,7 @@ it('navigates the services dropdown with the keyboard and closes on an outside c
   expect(button.getAttribute('aria-expanded')).toBe('false');
 });
 
-it('keeps a hover-opened menu open on the first click and exposes the solutions menu', () => {
+it('keeps a hover-opened menu open on the first click and shows Solutions only when enabled', () => {
   render(
     <MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <Header />
@@ -115,6 +115,10 @@ it('keeps a hover-opened menu open on the first click and exposes the solutions 
   expect(servicesButton.getAttribute('aria-expanded')).toBe('true');
   fireEvent.click(servicesButton);
   expect(servicesButton.getAttribute('aria-expanded')).toBe('false');
+  if (!site.show_solutions) {
+    expect(screen.queryByRole('button', { name: /Solutions/ })).toBeNull();
+    return;
+  }
   fireEvent.click(screen.getByRole('button', { name: /Solutions/ }));
   expect(screen.getByRole('link', { name: /AVRIX PhishDrill/ }).getAttribute('href')).toBe(
     '/solutions/phishdrill/',

@@ -201,6 +201,7 @@ export const siteSchema = z.object({
   company_number: text.nullable(),
   registered_office: text.nullable(),
   vat_number: text.nullable(),
+  show_solutions: z.boolean().default(true),
   tagline: text,
   site_url: z.string().url(),
   email: z.string().email(),
