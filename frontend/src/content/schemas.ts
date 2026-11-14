@@ -287,9 +287,11 @@ export type Solution = z.infer<typeof solutionSchema> & {
 export const accreditationsSchema = z.object({
   eyebrow: z.string(),
   title: z.string(),
+  intro: z.string().max(400),
   items: z.array(
     z.object({
       name: z.string().min(2),
+      label: z.string().max(40),
       text: z.string().max(140),
       logo: z.string().regex(/^\/media\/accreditations\/[a-z0-9-]+\.(svg|png|webp)$/),
       reference: z.string().nullable(),
