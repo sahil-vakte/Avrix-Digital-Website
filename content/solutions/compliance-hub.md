@@ -1,17 +1,12 @@
 ---
 slug: compliance-hub
 title: AVRIX Compliance Hub
-h1: 'Stay audit-ready *all year, not just audit week.*'
-eyebrow: AUTOMATED COMPLIANCE MANAGEMENT
+h1: 'No more scramble *before the audit.*'
+eyebrow: COMPLIANCE TRACKING
 summary: >-
-  Track controls, collect evidence and monitor cloud settings for ISO 27001,
-  SOC 2 and Cyber Essentials in one organised workspace.
+  One workspace for ISO 27001, SOC 2, Cyber Essentials and GDPR controls, with evidence gathered automatically and owners reminded before deadlines slip.
 lead: >-
-  Compliance usually means a scramble for screenshots and spreadsheets before
-  every audit. AVRIX Compliance Hub keeps controls, evidence, risks and
-  supplier reviews in one place, checks cloud settings automatically and shows
-  what needs attention, so the next audit or customer questionnaire is
-  straightforward.
+  Audits and customer questionnaires usually trigger a hunt for screenshots and old spreadsheets. AVRIX Compliance Hub keeps your controls, policies, risks and supplier checks in one place, collects cloud evidence on a schedule and flags what is overdue, so the next request takes hours rather than weeks.
 icon: compliance
 order: 3
 preview:
@@ -20,19 +15,19 @@ preview:
     Illustrative Compliance Hub workspace showing audit readiness tasks,
     control status and supported frameworks
 highlights:
-  - title: One home for compliance
+  - title: Everything in one place
     text: >-
       Controls, policies, evidence and risks organised by framework.
-  - title: Evidence collected automatically
+  - title: Evidence that gathers itself
     text: >-
       Cloud and workspace settings checked on a schedule, with results stored
       as evidence.
-  - title: Always know what's next
+  - title: Nothing slips
     text: >-
       Clear owners and due dates for reviews, renewals and fixes.
 sections:
   - id: frameworks
-    title: Built around the standards you need.
+    title: The standards buyers ask about.
     items:
       - title: ISO 27001:2022
         text: Annex A controls, risk register and statement of applicability.
@@ -43,7 +38,7 @@ sections:
           Baseline security controls and data protection records alongside your
           other frameworks.
   - id: automation
-    title: Less manual evidence gathering.
+    title: Fewer screenshots, less chasing.
     items:
       - title: Cloud configuration checks
         text: >-
@@ -58,7 +53,7 @@ sections:
           Access reviews, policy reviews and supplier assessments assigned and
           tracked.
   - id: assurance
-    title: Answers on hand when customers ask.
+    title: Ready when the questionnaire lands.
     items:
       - title: Questionnaire support
         text: >-
@@ -72,13 +67,13 @@ sections:
           Backed by our compliance and virtual CISO services when you need
           hands-on help.
 workflow:
-  - title: Choose frameworks
+  - title: Pick your standards
     text: Agree the standards that matter to your customers.
-  - title: Connect and map
+  - title: Connect your tools
     text: >-
       Connect cloud and workspace accounts and map existing controls and
       evidence.
-  - title: Maintain
+  - title: Keep it current
     text: >-
       Keep controls current with automated checks, reminders and regular
       reviews.
@@ -107,7 +102,7 @@ faqs:
     a: >-
       Yes. Many controls overlap between ISO 27001, SOC 2 and Cyber Essentials,
       so evidence can be reused across frameworks.
-updated: '2026-11-12'
+updated: '2026-11-14'
 seo_title: AVRIX Compliance Hub | ISO 27001 & SOC 2 Tracking
 seo_description: >-
   Track ISO 27001, SOC 2 and Cyber Essentials controls, collect evidence and

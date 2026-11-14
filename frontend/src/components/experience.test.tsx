@@ -96,7 +96,7 @@ it('navigates the services dropdown with the keyboard and closes on an outside c
   const button = screen.getByRole('button', { name: /Services/ });
   fireEvent.click(button);
   fireEvent.keyDown(button, { key: 'ArrowDown' });
-  expect(document.activeElement?.textContent).toContain('Offensive Security');
+  expect(document.activeElement?.textContent).toContain('Test & Find');
   fireEvent.keyDown(document.activeElement!, { key: 'End' });
   expect(document.activeElement?.textContent).toContain(ui.directory);
   fireEvent.pointerDown(document.body);

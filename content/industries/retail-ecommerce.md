@@ -1,41 +1,72 @@
 ---
 slug: retail-ecommerce
 title: Retail & E-commerce
-h1: "Cyber security for *retail and e-commerce*"
+h1: 'Cyber security for *retail and e-commerce*'
 eyebrow: RETAIL & E-COMMERCE
 icon: retail
 order: 4
-summary: "Protect checkouts, customer accounts and stores: PCI DSS, e-commerce testing, fraud prevention and 24/7 monitoring for retailers."
-lead: "Retailers handle card payments, customer accounts and complex supply chains, often across physical stores and online platforms. We help protect every channel, meet PCI DSS and keep trading through peak season."
-tagline: "Keep checkouts, accounts and stores safe all year round."
-tags: ["PCI DSS v4.0.1", "Checkout security", "Account takeover", "Peak trading"]
+summary: 'For retailers and online brands protecting checkouts, customer accounts and stores, especially in the run-up to peak trading.'
+lead: 'Retailers juggle card payments, customer accounts, stores and a long list of platforms and plugins. We help you protect every channel, meet PCI DSS and go into peak season knowing your checkout has been tested.'
+tagline: 'Keep checkouts, accounts and stores safe all year round.'
+tags: ['PCI DSS v4.0.1', 'Checkout testing', 'Account takeover', 'Peak readiness']
 points:
-  - { title: "Payment security", text: "Protect card data online and in store." }
-  - { title: "Customer account protection", text: "Stop credential stuffing and account takeover." }
-  - { title: "Trading continuity", text: "Stay online and secure through peak periods." }
+  - { title: 'Card payments', text: 'Card data protected online and in store.' }
+  - { title: 'Customer accounts', text: 'Password-stuffing and account takeover stopped.' }
+  - { title: 'Peak season', text: 'Tested and monitored before the busiest weeks.' }
 pillars:
-  - { title: "E-commerce testing", text: "Test the journeys customers use.", bullets: ["Basket and checkout", "Discount and loyalty abuse", "Account and password reset"] }
-  - { title: "PCI DSS compliance", text: "Meet card industry requirements.", bullets: ["Scope reduction", "SAQ support", "Payment page script controls"] }
-  - { title: "Bot and fraud defence", text: "Protect against automated attacks.", bullets: ["Credential stuffing", "Scraping and scalping", "Gift card fraud"] }
-  - { title: "Platform security", text: "Secure the platforms you trade on.", bullets: ["Shopify, Magento and custom builds", "Third-party scripts", "API integrations"] }
-  - { title: "Store and network security", text: "Protect tills, Wi-Fi and back office.", bullets: ["Network segmentation", "Guest Wi-Fi separation", "Remote access review"] }
-  - { title: "24/7 monitoring", text: "Detect attacks at any hour.", bullets: ["Managed SOC", "Brand impersonation monitoring", "Rapid response"] }
+  - {
+      title: 'Test the shopping journey',
+      text: 'Where real money and data change hands.',
+      bullets: ['Basket and checkout', 'Vouchers and loyalty', 'Account recovery'],
+    }
+  - {
+      title: 'Stay PCI compliant',
+      text: 'With as little scope as possible.',
+      bullets: ['Scope reduction', 'SAQ support', 'Payment page scripts'],
+    }
+  - {
+      title: 'Stop automated abuse',
+      text: 'Bots, scrapers and fraudsters.',
+      bullets: ['Credential stuffing', 'Gift card fraud', 'Scalping and scraping'],
+    }
+  - {
+      title: 'Protect the brand',
+      text: 'Spot impersonation before customers fall for it.',
+      bullets: ['Fake websites', 'Lookalike domains', 'Takedown support'],
+    }
 lifecycle:
-  - { title: "Map", label: "Stage 1", text: "Map channels, payment flows and customer data." }
-  - { title: "Test", label: "Stage 2", text: "Test checkout, accounts, APIs and stores." }
-  - { title: "Fix", label: "Stage 3", text: "Prioritised remediation before peak trading." }
-  - { title: "Monitor", label: "Stage 4", text: "24/7 detection and fraud signals." }
-  - { title: "Validate", label: "Stage 5", text: "Annual PCI DSS validation and retesting." }
-frameworks: ["PCI DSS v4.0.1", "UK GDPR", "EU GDPR", "PSD2 SCA", "PECR", "Cyber Essentials", "ISO 27001", "OWASP Top 10"]
+  - {
+      title: 'A tested checkout',
+      text: 'Retest letters showing your key journeys were checked before peak.',
+    }
+  - {
+      title: 'Annual PCI validation',
+      text: 'A completed SAQ or QSA assessment, with the evidence behind it.',
+    }
+  - {
+      title: 'Fewer customer scams',
+      text: 'Monitoring and takedowns that protect customers from fake sites.',
+    }
+frameworks:
+  [
+    'PCI DSS v4.0.1',
+    'UK GDPR',
+    'EU GDPR',
+    'PSD2 SCA',
+    'PECR',
+    'Cyber Essentials',
+    'ISO 27001',
+    'OWASP Top 10',
+  ]
 services: [penetration-testing, pci-dss, threat-intelligence, managed-security]
 faqs:
-  - q: "When should we test before peak season?"
-    a: "Ideally two to three months before, so there's time to fix issues and retest before code freezes."
-  - q: "Do hosted platforms like Shopify remove our PCI obligations?"
-    a: "They reduce them significantly, but you still have responsibilities, including validating compliance and controlling scripts on pages that link to payment. We'll confirm exactly what applies."
-  - q: "Can you help with brand impersonation scams?"
-    a: "Yes. Our threat intelligence service watches for fake websites and social profiles using your brand and supports takedowns."
-updated: 2026-11-12
-seo_title: "Cyber Security for Retail & E-commerce | AVRIX"
-seo_description: "Cyber security for retailers: e-commerce and checkout testing, PCI DSS v4.0.1, bot and fraud defence, brand protection and 24/7 monitoring across the UK and EU."
+  - q: 'When should we test before peak season?'
+    a: 'Two to three months ahead is ideal, leaving time to fix issues and retest before your code freeze.'
+  - q: 'Does Shopify or another hosted platform cover our PCI obligations?'
+    a: "It reduces them significantly, but you still have responsibilities, including validating compliance and controlling scripts on pages that link to payment. We'll confirm what applies."
+  - q: 'Can you deal with fake versions of our website?'
+    a: 'Yes. We monitor for lookalike sites and profiles using your brand and help get them taken down.'
+updated: 2026-11-14
+seo_title: 'Cyber Security for Retail & E-commerce | AVRIX'
+seo_description: 'Cyber security for retailers and online brands: checkout and account testing, PCI DSS v4.0.1, bot and fraud defence, brand protection and peak readiness.'
 ---

@@ -1,41 +1,73 @@
 ---
 slug: education
 title: Education
-h1: "Cyber security for *education*"
+h1: 'Cyber security for *schools, colleges and universities*'
 eyebrow: SCHOOLS, COLLEGES & UNIVERSITIES
 icon: education
 order: 7
-summary: "Protect students, staff and research: cyber security standards, testing, awareness training and ransomware resilience for schools, colleges and universities."
-lead: "Education is one of the most targeted sectors, with open networks, many users and valuable research and personal data. We help schools, multi-academy trusts, colleges and universities meet the DfE cyber security standards and stay resilient."
-tagline: "Protect learning. Safeguard students."
-tags: ["DfE cyber standards", "Ransomware resilience", "Student data", "Research security"]
+summary: 'For schools, multi-academy trusts, colleges and universities protecting student data, research and teaching time.'
+lead: 'Education is one of the most targeted sectors: busy networks, thousands of users and valuable personal and research data. We help schools, trusts, colleges and universities meet the DfE cyber security standards and recover quickly if attacked.'
+tagline: 'Protect learning. Safeguard students.'
+tags: ['DfE cyber standards', 'Ransomware resilience', 'Student data', 'Research security']
 points:
-  - { title: "Student and staff data", text: "Protect sensitive personal and safeguarding information." }
-  - { title: "Learning continuity", text: "Keep teaching running through an incident." }
-  - { title: "Research protection", text: "Secure valuable intellectual property." }
+  - { title: 'Student and staff data', text: 'Safeguarding and personal records protected.' }
+  - { title: 'Teaching continuity', text: 'Lessons keep running through an incident.' }
+  - { title: 'Research protection', text: 'Valuable intellectual property kept secure.' }
 pillars:
-  - { title: "DfE standards alignment", text: "Meet the Department for Education's cyber security standards.", bullets: ["Gap assessment", "Improvement plan", "Governor reporting"] }
-  - { title: "Microsoft 365 and Google security", text: "Harden the platforms staff and students use.", bullets: ["MFA and identity", "Sharing controls", "Email protection"] }
-  - { title: "Ransomware resilience", text: "Prepare for the most damaging attack.", bullets: ["Offline backups", "Recovery testing", "Incident plans"] }
-  - { title: "Network testing", text: "Test open, busy networks.", bullets: ["Segmentation of staff and student networks", "Wi-Fi security", "Device management"] }
-  - { title: "Awareness training", text: "Help staff spot phishing and fraud.", bullets: ["Phishing simulations", "Short lessons", "Finance team scenarios"] }
-  - { title: "Research security", text: "Protect sensitive research and partnerships.", bullets: ["Trusted Research guidance", "Access controls", "Data handling"] }
+  - {
+      title: 'Meet the DfE standards',
+      text: "A clear plan against the Department for Education's standards.",
+      bullets: ['Gap assessment', 'Improvement plan', 'Governor reporting'],
+    }
+  - {
+      title: 'Harden everyday tools',
+      text: 'Microsoft 365 and Google Workspace for Education.',
+      bullets: ['MFA and sign-in', 'Sharing controls', 'Email protection'],
+    }
+  - {
+      title: 'Be ransomware-ready',
+      text: 'For the attack that hurts most.',
+      bullets: ['Offline backups', 'Recovery testing', 'Incident plans'],
+    }
+  - {
+      title: 'Train staff',
+      text: 'Especially finance and admin teams.',
+      bullets: ['Phishing practice', 'Short lessons', 'Payment fraud scenarios'],
+    }
 lifecycle:
-  - { title: "Review", label: "Stage 1", text: "Assess against the DfE standards and your risks." }
-  - { title: "Harden", label: "Stage 2", text: "Fix identity, backup and network gaps." }
-  - { title: "Train", label: "Stage 3", text: "Awareness for staff, governors and students." }
-  - { title: "Test", label: "Stage 4", text: "Penetration tests and incident exercises." }
-  - { title: "Report", label: "Stage 5", text: "Clear updates for governors and trustees." }
-frameworks: ["DfE cyber security standards", "Cyber Essentials", "UK GDPR", "NCSC guidance", "ISO 27001", "Trusted Research", "JISC guidance", "NIST CSF 2.0"]
-services: [cyber-essentials, security-awareness-training, network-penetration-testing, incident-readiness]
+  - {
+      title: 'A DfE standards report',
+      text: "Where you stand and what's planned, ready for governors and trustees.",
+    }
+  - {
+      title: 'Restorable backups',
+      text: 'Evidence that backups are protected and recovery has been tested.',
+    }
+  - {
+      title: 'Trained staff',
+      text: 'Training records and improving phishing results across the trust or institution.',
+    }
+frameworks:
+  [
+    'DfE cyber security standards',
+    'Cyber Essentials',
+    'UK GDPR',
+    'NCSC guidance',
+    'ISO 27001',
+    'Trusted Research',
+    'JISC guidance',
+    'NIST CSF 2.0',
+  ]
+services:
+  [cyber-essentials, security-awareness-training, network-penetration-testing, incident-readiness]
 faqs:
-  - q: "What are the DfE cyber security standards?"
-    a: "The Department for Education publishes cyber security standards for schools and colleges in England, covering areas such as backups, MFA, training and incident planning. We help you assess against them and plan improvements."
-  - q: "Do you work with multi-academy trusts?"
-    a: "Yes. We can assess and improve security consistently across all schools in a trust."
-  - q: "Can students be included in awareness training?"
-    a: "Yes, with age-appropriate content agreed with your safeguarding lead."
-updated: 2026-11-12
-seo_title: "Cyber Security for Schools, Colleges & Universities | AVRIX"
-seo_description: "Cyber security for education: DfE cyber standards, Microsoft 365 and Google hardening, ransomware resilience, network testing and staff awareness training."
+  - q: 'What are the DfE cyber security standards?'
+    a: 'The Department for Education publishes cyber security standards for schools and colleges in England, covering areas such as backups, MFA, training and incident planning. We help you assess against them and plan improvements.'
+  - q: 'Do you work with multi-academy trusts?'
+    a: 'Yes. We can assess and improve security consistently across every school in a trust.'
+  - q: 'Can students be included in awareness training?'
+    a: 'Yes, with age-appropriate content agreed with your safeguarding lead.'
+updated: 2026-11-14
+seo_title: 'Cyber Security for Schools, Colleges & Universities | AVRIX'
+seo_description: 'Cyber security for education: DfE cyber standards, Microsoft 365 and Google hardening, ransomware readiness and staff training for schools, trusts and colleges.'
 ---

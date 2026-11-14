@@ -4,44 +4,79 @@ title: API Security Testing
 pillar: offensive
 order: 4
 icon: api
-h1: "Secure the APIs that *power your business*"
-seo_title: "API Security Testing UK | AVRIX"
-seo_description: "API penetration testing for UK and European businesses: REST, GraphQL and partner integrations tested against the OWASP API Security Top 10, with clear fixes."
-summary: "REST, GraphQL and partner APIs tested for broken access control, data leaks and abuse."
-intro: "APIs connect your apps, partners and payment systems, and they're now one of the most common targets for attackers. We test your REST and GraphQL APIs for broken access controls, excessive data exposure and business logic abuse, against the OWASP API Security Top 10."
-tags: ["OWASP API Top 10", "REST and GraphQL", "Open Banking", "Partner integrations"]
+h1: "Your APIs share data at scale. *Make sure it's only the right data.*"
+seo_title: 'API Security Testing UK | AVRIX'
+seo_description: 'API testing for UK and European organisations: REST, GraphQL, mobile and partner APIs checked for data leaks, broken access control and business logic abuse.'
+summary: 'REST, GraphQL, mobile and partner APIs tested for data leaks, broken permissions and abuse.'
+intro: "APIs connect your apps, partners and payment providers, and they often expose far more than the screens built on them. We test each endpoint with different users and roles to make sure no one can pull data or trigger actions they shouldn't."
+tags: ['REST and GraphQL', 'Mobile app APIs', 'Partner integrations', 'Open Banking']
 included:
-  - { title: "Access control testing", text: "Can one user read or change another user's data by changing an ID?" }
-  - { title: "Authentication and tokens", text: "API keys, OAuth flows and session tokens tested for weaknesses." }
-  - { title: "Data exposure", text: "Responses checked for personal or sensitive data that shouldn't be returned." }
-  - { title: "Rate limiting and abuse", text: "Protection against scraping, brute force and automated fraud." }
-  - { title: "Business logic", text: "Workflows tested for ways to skip steps, reuse offers or bypass payment." }
-  - { title: "Gateway and configuration", text: "API gateways, CORS and error handling reviewed for unsafe settings." }
+  - {
+      title: 'Permission checks',
+      text: "Can one user read or change another user's records by altering an ID?",
+    }
+  - { title: 'Keys and tokens', text: 'API keys, OAuth flows and tokens checked for weaknesses.' }
+  - {
+      title: 'Over-sharing',
+      text: "Responses checked for personal or sensitive data that shouldn't be there.",
+    }
+  - {
+      title: 'Rate limits and abuse',
+      text: 'Protection against scraping, password guessing and automated fraud.',
+    }
+  - { title: 'Business rules', text: 'Workflows checked for ways to skip steps or avoid payment.' }
+  - {
+      title: 'Gateway settings',
+      text: 'API gateways, cross-origin rules and error messages reviewed.',
+    }
 outcomes:
-  - { title: "Protect customer data", text: "Close the gaps that let attackers pull data at scale." }
-  - { title: "Safer integrations", text: "Partners and apps connect without opening new risks." }
-  - { title: "Confidence to ship", text: "Release new features knowing the API behind them has been tested." }
-tools: ["OWASP API Security Top 10", "OpenAPI", "GraphQL", "OAuth 2.0", "FAPI", "PSD2 / Open Banking", "PCI DSS", "UK GDPR"]
+  - {
+      title: 'Data stays where it belongs',
+      text: 'Close the gaps that let someone harvest records in bulk.',
+    }
+  - { title: 'Safer partnerships', text: 'Connect partners and apps without opening new doors.' }
+  - {
+      title: 'Confident releases',
+      text: 'Ship new features knowing the API behind them has been checked.',
+    }
+tools:
+  [
+    'OWASP API Security Top 10',
+    'OpenAPI',
+    'GraphQL',
+    'OAuth 2.0',
+    'FAPI',
+    'PSD2 / Open Banking',
+    'PCI DSS',
+    'UK GDPR',
+  ]
 process:
-  - { title: "Scope", text: "We agree endpoints, roles and test data, using your API documentation where available." }
-  - { title: "Map", text: "We build a picture of every endpoint, parameter and permission." }
-  - { title: "Test", text: "Manual and automated testing of each endpoint and workflow." }
-  - { title: "Report and retest", text: "Findings with request and response evidence, fix guidance and a free retest." }
+  - {
+      title: 'Scope',
+      text: 'Agree endpoints, roles and test data, using any documentation you have.',
+    }
+  - { title: 'Map', text: 'Build a full picture of endpoints, parameters and permissions.' }
+  - { title: 'Test', text: 'Hands-on and automated testing of every endpoint and workflow.' }
+  - { title: 'Report and retest', text: 'Findings with request evidence and fixes, then a retest.' }
 faqs:
-  - q: "Do we need API documentation?"
-    a: "It helps but isn't essential. An OpenAPI or Postman collection speeds things up. Without one, we can map the API from your apps and traffic."
-  - q: "Can you test APIs used only by our mobile app?"
-    a: "Yes. Mobile app APIs are often less protected than web ones because developers assume only the app will call them. We test them directly."
-  - q: "Can you help with Open Banking or FAPI requirements?"
-    a: "Yes. We can test against the security expectations used in UK and EU open banking, alongside the wider OWASP API risks."
+  - q: "We don't have API documentation. Is that a problem?"
+    a: 'No. A Postman collection or OpenAPI file speeds things up, but we can map the API from your apps and their traffic.'
+  - q: 'Our API is only used by our own app. Does it still need testing?'
+    a: 'Yes. Attackers can call it directly, bypassing any checks the app does. Mobile app APIs are a common source of data leaks for exactly this reason.'
+  - q: 'Can you help with Open Banking security?'
+    a: 'Yes. We test against the security expectations used in UK and EU open banking, alongside the wider OWASP API risks.'
 related: [penetration-testing, cloud-security-assessment, pci-dss]
-updated: 2026-11-12
+updated: 2026-11-14
 ---
 
-## Why API testing matters
+## Who it's for
 
-APIs often expose far more data and functionality than the screens built on top of them. If an API trusts the app to enforce the rules, an attacker who calls it directly can bypass them. Many large data leaks have come from APIs that simply returned whatever was asked for.
+SaaS businesses, fintechs, retailers and anyone with a mobile app or partner integrations, especially before a launch or a large customer's security review.
 
-## How we test
+## Why it matters to your business
 
-We test every endpoint with different users and roles, look for ways to access other people's data, and probe the business logic behind each workflow. Findings come with the exact requests needed to reproduce them, so your developers can fix them quickly.
+Some of the largest data leaks of recent years came from APIs that simply returned whatever they were asked for. If the API trusts the app to enforce the rules, anyone who calls it directly can ignore them.
+
+## How AVRIX Digital does it
+
+We test each endpoint as different users, look for ways to access other people's data and probe the business rules behind every workflow. Each finding includes the exact requests your developers need to reproduce and fix it.

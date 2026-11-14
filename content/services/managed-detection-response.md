@@ -4,44 +4,79 @@ title: Managed Detection & Response (MDR)
 pillar: managed
 order: 11
 icon: radar
-h1: "Detect and stop attacks *on every device*"
-seo_title: "Managed Detection & Response (MDR) UK | AVRIX"
-seo_description: "Managed detection and response for UK and European businesses: EDR on every laptop and server, threat hunting and rapid containment by security analysts."
-summary: "Endpoint detection, threat hunting and rapid containment on every laptop and server."
-intro: "Managed detection and response (MDR) puts advanced protection on every laptop and server, with analysts watching for attacks and acting immediately when they find one. It's the fastest way for a growing business to stop ransomware and account takeover."
-tags: ["EDR", "Threat hunting", "Ransomware protection", "Identity protection"]
+h1: 'Stop ransomware on the *first laptop*, not the fiftieth'
+seo_title: 'Managed Detection & Response (MDR) UK | AVRIX'
+seo_description: 'Managed detection and response for UK and European organisations: protection on every laptop and server, threat hunting and fast isolation of infected devices.'
+summary: 'Protection on every laptop and server, with analysts who hunt for threats and isolate infected devices fast.'
+intro: "Ransomware spreads from device to device. Managed detection and response (MDR) puts behaviour-based protection on every laptop and server and pairs it with analysts who can cut an infected machine off within minutes, so one bad click doesn't become a company-wide outage."
+tags: ['Every device covered', 'Threat hunting', 'Fast isolation', 'Sign-in monitoring']
 included:
-  - { title: "Endpoint detection and response", text: "Behaviour-based protection on Windows, macOS and Linux devices." }
-  - { title: "Identity threat detection", text: "Suspicious sign-ins, impossible travel and risky account changes flagged." }
-  - { title: "Proactive threat hunting", text: "Analysts search for signs of attackers that automated tools can miss." }
-  - { title: "Rapid isolation", text: "Infected devices cut off from the network within minutes of confirmation." }
-  - { title: "Email threat response", text: "Malicious emails pulled from every inbox once one is reported." }
-  - { title: "Guided recovery", text: "Clear steps to clean up and restore affected devices." }
+  - {
+      title: 'Endpoint protection (EDR)',
+      text: 'Behaviour-based protection for Windows, macOS and Linux.',
+    }
+  - {
+      title: 'Sign-in monitoring',
+      text: 'Suspicious logins, impossible travel and risky account changes flagged.',
+    }
+  - {
+      title: 'Threat hunting',
+      text: 'Analysts actively look for attackers that automated tools can miss.',
+    }
+  - {
+      title: 'Device isolation',
+      text: 'Infected machines cut off from the network as soon as a threat is confirmed.',
+    }
+  - {
+      title: 'Email clean-up',
+      text: 'Malicious emails removed from every inbox once one is reported.',
+    }
+  - { title: 'Recovery guidance', text: 'Clear steps to clean and restore affected devices.' }
 outcomes:
-  - { title: "Ransomware stopped early", text: "Attacks are caught at the first device, not after they spread." }
-  - { title: "Faster response", text: "Containment happens in minutes, not when someone notices on Monday." }
-  - { title: "Better use of existing licences", text: "Get full value from tools such as Microsoft Defender for Endpoint." }
-tools: ["Microsoft Defender for Endpoint", "CrowdStrike Falcon", "SentinelOne", "Entra ID Protection", "MITRE ATT&CK", "NCSC guidance", "Cyber Essentials", "ISO 27001"]
+  - {
+      title: 'Outbreaks contained',
+      text: 'Attacks stopped at the first device rather than across the business.',
+    }
+  - { title: 'Response in minutes', text: 'Not whenever someone happens to notice.' }
+  - {
+      title: 'More from your licences',
+      text: 'Full value from tools such as Microsoft Defender for Endpoint.',
+    }
+tools:
+  [
+    'Microsoft Defender for Endpoint',
+    'CrowdStrike Falcon',
+    'SentinelOne',
+    'Entra ID Protection',
+    'MITRE ATT&CK',
+    'NCSC guidance',
+    'Cyber Essentials',
+    'ISO 27001',
+  ]
 process:
-  - { title: "Deploy", text: "Agents rolled out to devices with minimal disruption." }
-  - { title: "Baseline", text: "We learn what normal looks like in your environment." }
-  - { title: "Detect and hunt", text: "24/7 monitoring plus regular proactive hunts." }
-  - { title: "Respond and report", text: "Containment, guided recovery and monthly reporting." }
+  - { title: 'Roll out', text: 'Agents deployed to devices with minimal disruption.' }
+  - { title: 'Learn normal', text: 'We establish what normal activity looks like for you.' }
+  - { title: 'Watch and hunt', text: 'Round-the-clock monitoring plus regular threat hunts.' }
+  - { title: 'Respond and report', text: 'Isolation, recovery guidance and a monthly summary.' }
 faqs:
-  - q: "What's the difference between MDR and a SOC?"
-    a: "MDR focuses on devices and identities with a ready-made toolset and fast response. A full managed SOC adds wider log collection and correlation across your whole estate. Many businesses start with MDR and add SOC coverage as they grow."
-  - q: "Will it slow down our computers?"
-    a: "Modern EDR agents are lightweight. Most users won't notice them."
-  - q: "Can you use our existing Microsoft Defender licences?"
-    a: "Yes. If you already have Microsoft 365 Business Premium or E5, we can usually build the service on the tools you're paying for."
+  - q: 'How is MDR different from a full SOC?'
+    a: 'MDR focuses on devices and sign-ins, with a ready-made toolset and fast response. A full SOC also brings in logs from firewalls, cloud and other systems. Many organisations start with MDR and grow into a SOC.'
+  - q: 'Will it slow our computers down?'
+    a: "Modern agents are lightweight. Most people won't notice them."
+  - q: 'Can it use our existing Microsoft licences?'
+    a: 'Usually, yes. With Microsoft 365 Business Premium or E5, the service can often run on tools you already pay for.'
 related: [managed-security, incident-response, vulnerability-management]
-updated: 2026-11-12
+updated: 2026-11-14
 ---
 
-## Why MDR?
+## Who it's for
 
-Traditional antivirus looks for known bad files. Modern attackers avoid them, using stolen credentials and built-in system tools instead. MDR watches behaviour, so it can spot an attack in progress even when nothing looks obviously malicious.
+Growing organisations that need strong protection on every device but don't have, or don't want, a full security operations function.
 
-## How it works
+## Why it matters to your business
 
-Every device reports to a central platform. Our analysts review detections around the clock, hunt for hidden threats and act immediately to contain anything real. You get a short report each month showing what happened.
+Traditional antivirus looks for known bad files. Today's attackers avoid them, using stolen credentials and the computer's own tools. MDR watches behaviour, so it can catch an attack in progress even when nothing looks obviously malicious.
+
+## How AVRIX Digital does it
+
+Every device reports to a central platform. Our analysts review detections around the clock, hunt for hidden threats and act immediately when something is real. You get a short summary each month.

@@ -1,16 +1,12 @@
 ---
 slug: phishdrill
 title: AVRIX PhishDrill
-h1: 'Find out who would click, *before an attacker does.*'
-eyebrow: PHISHING SIMULATION AND HUMAN RISK
+h1: 'Turn staff into your *early warning system.*'
+eyebrow: STAFF PHISHING PRACTICE
 summary: >-
-  Realistic phishing simulations, short training and clear reporting that
-  show where human risk sits in your business and how it improves.
+  Safe practice phishing emails, two-minute lessons and simple reporting that show which teams are most exposed and whether they are getting better.
 lead: >-
-  AVRIX PhishDrill sends realistic test emails based on current scams, gives
-  instant bite-sized training to anyone who clicks and shows leadership how
-  risk is changing over time. It turns security awareness from a yearly tick
-  box into a habit.
+  Most breaches still start with a convincing email. AVRIX PhishDrill sends harmless test messages modelled on the scams in circulation this month, teaches anyone who falls for one on the spot and gives leaders a monthly view of how habits are improving.
 icon: awareness-training
 order: 1
 preview:
@@ -19,20 +15,19 @@ preview:
     Illustrative PhishDrill workspace showing a phishing simulation campaign,
     reported emails and follow-up training
 highlights:
-  - title: Realistic simulations
+  - title: Scams people actually receive
     text: >-
-      Test emails and fake login pages modelled on the scams UK businesses
-      receive today.
-  - title: Learning at the moment it matters
+      Fake invoices, parcel notices and login pages based on live UK and EU
+      campaigns.
+  - title: A lesson, not a telling-off
     text: >-
-      Anyone who clicks sees a short, friendly explanation of what they missed.
-  - title: Risk you can measure
+      Anyone who clicks gets a short, friendly note on the signs they missed.
+  - title: Progress you can show
     text: >-
-      Reports show click and reporting rates by team, and how they change over
-      time.
+      Click and report rates by team, month on month, ready for the board pack.
 sections:
   - id: simulate
-    title: Practise on safe attacks.
+    title: Safe tests, real-world tricks.
     items:
       - title: Campaign templates
         text: >-
@@ -46,7 +41,7 @@ sections:
         text: >-
           Optional SMS and phone-based scenarios when you want a wider test.
   - id: train
-    title: Short lessons people finish.
+    title: Training that fits in a coffee break.
     items:
       - title: Bite-sized modules
         text: >-
@@ -60,7 +55,7 @@ sections:
           A report button in Microsoft 365 or Google Workspace so staff can flag
           suspicious emails in one click.
   - id: report
-    title: Evidence for the board and auditors.
+    title: Records insurers and auditors accept.
     items:
       - title: Human risk dashboard
         text: >-
@@ -73,12 +68,12 @@ sections:
           Training records that support ISO 27001, Cyber Essentials and cyber
           insurance requirements.
 workflow:
-  - title: Baseline test
-    text: A first simulation shows where you stand today.
-  - title: Train and repeat
+  - title: Measure
+    text: An unannounced first test shows your starting point.
+  - title: Practise
     text: >-
       Targeted training and regular, varied simulations that build good habits.
-  - title: Review progress
+  - title: Report
     text: >-
       Regular reports show improvement and where extra support is needed.
 industries:
@@ -105,9 +100,8 @@ faqs:
     a: >-
       Yes. PhishDrill is part of our security awareness training service, which
       can also include workshops and social engineering tests.
-updated: '2026-11-12'
+updated: '2026-11-14'
 seo_title: AVRIX PhishDrill Phishing Simulation | AVRIX Digital
 seo_description: >-
-  Phishing simulation and security awareness training for UK businesses.
-  Realistic test emails, instant lessons and clear reporting on human risk.
+  Phishing practice and staff training for UK and European organisations: safe test emails, short lessons and monthly reports on how habits improve.
 ---

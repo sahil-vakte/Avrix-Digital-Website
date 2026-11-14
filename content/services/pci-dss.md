@@ -1,47 +1,73 @@
 ---
 slug: pci-dss
-title: PCI DSS v4.0.1 Compliance
+title: PCI DSS Compliance
 pillar: compliance
 order: 24
 icon: card
-h1: "Card payment security, *made manageable*"
-seo_title: "PCI DSS v4.0.1 Compliance Support UK | AVRIX"
-seo_description: "PCI DSS v4.0.1 readiness for UK and European merchants and service providers: scoping, SAQ support, gap analysis, segmentation testing and evidence."
-summary: "Scoping, SAQ support, gap analysis and testing for PCI DSS v4.0.1 merchants and providers."
-intro: "If you take card payments, PCI DSS applies to you. We help merchants and service providers reduce their scope, complete the right self-assessment questionnaire or prepare for a QSA audit, and meet the new v4.0.1 requirements."
-tags: ["PCI DSS v4.0.1", "SAQ support", "Scope reduction", "Segmentation testing"]
+h1: 'Take card payments *without the compliance headache*'
+seo_title: 'PCI DSS v4.0.1 Compliance Support UK | AVRIX'
+seo_description: 'PCI DSS v4.0.1 help for UK and European merchants and service providers: shrink your scope, pick the right SAQ, close gaps and prepare for your QSA.'
+summary: 'Shrink your scope, choose the right SAQ and close the gaps for PCI DSS v4.0.1.'
+intro: 'If you take card payments, your bank expects PCI DSS compliance every year. The quickest path is usually to shrink how much of your business card data touches. We help you do that, choose the right self-assessment, close the remaining gaps and get ready for a QSA if you need one.'
+tags: ['PCI DSS v4.0.1', 'Right SAQ', 'Smaller scope', 'Payment page scripts']
 included:
-  - { title: "Scoping and scope reduction", text: "Work out what's in scope and how to shrink it." }
-  - { title: "SAQ guidance", text: "Choose and complete the right self-assessment questionnaire." }
-  - { title: "Gap analysis", text: "Your controls checked against all PCI DSS v4.0.1 requirements." }
-  - { title: "Payment page security", text: "Script management for requirements 6.4.3 and 11.6.1 on e-commerce sites." }
-  - { title: "Penetration and segmentation testing", text: "Testing required under requirement 11.4." }
-  - { title: "QSA audit preparation", text: "Evidence and walkthroughs ready for your assessor." }
+  - { title: 'Scope reduction', text: "Work out what's in scope and how to make it smaller." }
+  - {
+      title: 'SAQ guidance',
+      text: 'Pick the right self-assessment questionnaire and complete it accurately.',
+    }
+  - {
+      title: 'Gap analysis',
+      text: 'Your controls checked against the v4.0.1 requirements that apply.',
+    }
+  - {
+      title: 'Payment page scripts',
+      text: 'Controls for requirements 6.4.3 and 11.6.1 on e-commerce sites.',
+    }
+  - { title: 'Testing', text: 'Penetration and segmentation testing required by requirement 11.4.' }
+  - { title: 'QSA preparation', text: 'Evidence and walkthroughs ready for your assessor.' }
 outcomes:
-  - { title: "Stay compliant with your bank", text: "Meet acquirer requirements and avoid penalties." }
-  - { title: "Smaller scope, lower cost", text: "Reduce the systems that need to meet PCI DSS." }
-  - { title: "Safer customer payments", text: "Protect card data from skimming and fraud." }
-tools: ["PCI DSS v4.0.1", "SAQ A", "SAQ A-EP", "SAQ D", "ASV scanning", "PSD2 SCA", "ISO 27001", "UK GDPR"]
+  - {
+      title: 'No trouble with your bank',
+      text: 'Meet acquirer requirements and avoid non-compliance fees.',
+    }
+  - { title: 'Less to protect', text: 'A smaller scope means lower cost and effort every year.' }
+  - { title: 'Safer checkouts', text: 'Card data protected from skimming and fraud.' }
+tools:
+  [
+    'PCI DSS v4.0.1',
+    'SAQ A',
+    'SAQ A-EP',
+    'SAQ D',
+    'ASV scanning',
+    'PSD2 SCA',
+    'ISO 27001',
+    'UK GDPR',
+  ]
 process:
-  - { title: "Scope", text: "Map card data flows and systems." }
-  - { title: "Assess", text: "Gap analysis against the relevant requirements." }
-  - { title: "Remediate", text: "Fix gaps and test controls." }
-  - { title: "Validate", text: "Complete the SAQ or support your QSA assessment." }
+  - { title: 'Map', text: 'Follow card data through your business.' }
+  - { title: 'Assess', text: 'Gap analysis against the requirements that apply.' }
+  - { title: 'Fix', text: 'Close the gaps and test the controls.' }
+  - { title: 'Validate', text: 'Complete the SAQ or support your QSA assessment.' }
 faqs:
-  - q: "We use Stripe or Worldpay. Do we still need PCI DSS?"
-    a: "Yes, but usually with a much smaller scope. Most e-commerce merchants using hosted payment pages complete a shorter SAQ. We'll confirm which one applies."
-  - q: "What changed in PCI DSS v4.0.1?"
-    a: "Version 4 added new requirements, now mandatory, including payment page script controls, stronger authentication and targeted risk analyses. We'll check which apply to you."
-  - q: "Are you a QSA?"
-    a: "We prepare you for assessment and provide testing services. Formal Reports on Compliance must be signed by a Qualified Security Assessor; we work alongside yours."
+  - q: 'We use Stripe or Worldpay. Do we still need PCI DSS?'
+    a: "Yes, but usually far less of it. Most merchants using hosted payment pages complete a short SAQ. We'll confirm exactly which one applies."
+  - q: 'What changed in version 4?'
+    a: 'New requirements, now mandatory, include controls on scripts running on payment pages, stronger authentication and targeted risk analyses.'
+  - q: 'Are you a QSA?'
+    a: 'We prepare you and provide testing. A Report on Compliance must be signed by a Qualified Security Assessor, and we work alongside yours.'
 related: [api-security-testing, penetration-testing, iso-27001]
-updated: 2026-11-12
+updated: 2026-11-14
 ---
 
-## What is PCI DSS?
+## Who it's for
 
-The Payment Card Industry Data Security Standard sets requirements for anyone who stores, processes or transmits card data. Your bank or payment provider expects you to comply and to validate it every year.
+Retailers, hospitality groups, subscription businesses, charities taking donations and payment service providers across the UK and Europe.
 
-## How we help
+## Why it matters to your business
 
-The fastest route to PCI DSS is usually reducing scope. We look at how card data flows through your business, recommend changes that shrink what needs protecting, then help you meet and evidence the remaining requirements.
+Non-compliance can mean fees from your bank, higher transaction costs and, after a breach, liability for fraud losses. Card skimming on e-commerce checkouts remains a common way criminals steal card details.
+
+## How AVRIX Digital does it
+
+We start by reducing scope, because the cheapest control is the one you no longer need. Then we help you meet and evidence what's left, year after year.

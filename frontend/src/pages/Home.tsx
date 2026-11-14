@@ -85,7 +85,7 @@ export default function Home() {
           case 'capabilities':
             return (
               <SectionShell key={i} eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
-                <CardGrid items={s.items as Item[]} className="capability-grid" />
+                <CardGrid items={s.items as Item[]} columns={4} className="capability-grid" />
               </SectionShell>
             );
           case 'frameworks':

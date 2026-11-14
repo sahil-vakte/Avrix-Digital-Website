@@ -40,8 +40,8 @@
   "mega_menu": [
     {
       "pillar": "offensive",
-      "label": "Offensive Security",
-      "blurb": "Find and fix weaknesses before attackers do.",
+      "label": "Test & Find",
+      "blurb": "See your business the way an attacker would, then close the gaps.",
       "items": [
         "penetration-testing",
         "network-penetration-testing",
@@ -53,8 +53,8 @@
     },
     {
       "pillar": "managed",
-      "label": "Managed Defence & SOC",
-      "blurb": "Round-the-clock monitoring, detection and response.",
+      "label": "Watch & Detect",
+      "blurb": "Someone qualified watching your systems when you aren't.",
       "items": [
         "managed-security",
         "managed-detection-response",
@@ -64,8 +64,8 @@
     },
     {
       "pillar": "compliance",
-      "label": "Compliance & GRC",
-      "blurb": "Meet UK and EU standards and win the contracts that need them.",
+      "label": "Prove & Comply",
+      "blurb": "Evidence that wins tenders and satisfies auditors and regulators.",
       "items": [
         "cyber-essentials",
         "iso-27001",
@@ -78,34 +78,30 @@
     },
     {
       "pillar": "response",
-      "label": "Incident Response & DFIR",
-      "blurb": "Contain, investigate and recover when something goes wrong.",
-      "items": [
-        "incident-response",
-        "digital-forensics",
-        "incident-readiness"
-      ]
+      "label": "Respond & Recover",
+      "blurb": "Calm, practical help when something has gone wrong.",
+      "items": ["incident-response", "digital-forensics", "incident-readiness"]
     }
   ],
   "resources": [
     {
-      "label": "Insights & Guides",
+      "label": "Insights",
       "href": "/blog/",
-      "text": "Plain-English advice on UK and EU cyber security."
+      "text": "Short, practical reads on UK and EU cyber risk."
     },
     {
       "label": "FAQs",
       "href": "/faqs/",
-      "text": "Answers on scoping, testing, compliance and response."
+      "text": "Straight answers before you pick up the phone."
     },
     {
-      "label": "Contact the Security Team",
+      "label": "Speak to the team",
       "href": "/contact-us/",
-      "text": "Talk to us about a project or an urgent issue."
+      "text": "For projects, questions or something urgent."
     }
   ],
   "footer": {
-    "tagline": "Cyber security, compliance and 24/7 defence for UK and European businesses.",
+    "tagline": "AVRIX Digital helps UK and European organisations find their security gaps, watch for attacks and prove they're protected, in plain English.",
     "explore": [
       {
         "label": "Home",

@@ -1,41 +1,81 @@
 ---
 slug: financial-services
 title: Financial Services
-h1: "Cyber security for *financial services*"
+h1: 'Cyber security for *financial services and fintech*'
 eyebrow: FINANCIAL SERVICES & FINTECH
 icon: finance
 order: 1
-summary: "Security testing, DORA and FCA resilience, and 24/7 monitoring for banks, insurers, payment firms, wealth managers and fintechs."
-lead: "Financial firms face determined attackers, strict regulators and demanding customers. We help banks, insurers, payment and e-money firms, wealth managers and fintechs protect customer money and data, meet DORA and FCA operational resilience expectations, and evidence it."
-tagline: "Protect customer money, data and regulatory standing."
-tags: ["DORA", "FCA operational resilience", "PCI DSS", "Open Banking APIs"]
+summary: 'For banks, insurers, payment and e-money firms, wealth managers and fintechs facing DORA, FCA resilience rules and relentless fraud attempts.'
+lead: 'Regulators, partner banks and customers all want proof that your systems can withstand attack. We help UK and European financial firms test the journeys that move money, meet DORA and FCA operational resilience expectations, and keep watch around the clock.'
+tagline: 'Protect customer money, data and regulatory standing.'
+tags: ['DORA', 'FCA operational resilience', 'PCI DSS', 'Open Banking APIs']
 points:
-  - { title: "Fraud and account takeover", text: "Protect customer accounts, payments and onboarding journeys." }
-  - { title: "Regulatory resilience", text: "Meet DORA, FCA and PRA operational resilience expectations." }
-  - { title: "Third-party and API risk", text: "Secure partners, payment providers and open banking integrations." }
+  - {
+      title: 'Account takeover and fraud',
+      text: 'Logins, onboarding and payment journeys tested for abuse.',
+    }
+  - {
+      title: 'Regulator expectations',
+      text: 'DORA, FCA and PRA resilience requirements mapped and evidenced.',
+    }
+  - { title: 'Supplier dependency', text: 'Oversight of the technology providers you rely on.' }
 pillars:
-  - { title: "Application and API testing", text: "Test the apps and APIs that move money.", bullets: ["Online and mobile banking", "Open Banking and PSD2 APIs", "Payment and onboarding journeys"] }
-  - { title: "DORA readiness", text: "Build the ICT risk framework DORA expects.", bullets: ["ICT risk management", "Incident classification and reporting", "Register of information"] }
-  - { title: "Threat-led testing", text: "Prepare for advanced, intelligence-led testing.", bullets: ["Red team exercises", "TIBER-EU and CBEST-style scenarios", "Purple team improvement"] }
-  - { title: "24/7 monitoring", text: "Detect and contain attacks around the clock.", bullets: ["Managed SOC and SIEM", "Identity threat detection", "Fraud signal correlation"] }
-  - { title: "Third-party risk", text: "Oversee the suppliers you depend on.", bullets: ["Critical supplier assessments", "Contract security clauses", "Exit and concentration planning"] }
-  - { title: "Payment security", text: "Protect card data and payment pages.", bullets: ["PCI DSS v4.0.1", "Payment page script controls", "Segmentation testing"] }
+  - {
+      title: 'Test the money journeys',
+      text: 'Apps, portals and APIs where customers move funds.',
+      bullets:
+        ['Online and mobile banking', 'Open Banking and PSD2 APIs', 'Onboarding and KYC flows'],
+    }
+  - {
+      title: 'Meet DORA and FCA rules',
+      text: 'Turn regulation into a practical plan.',
+      bullets:
+        ['ICT risk framework', 'Incident classification and reporting', 'Register of information'],
+    }
+  - {
+      title: 'Rehearse the worst day',
+      text: 'Threat-led testing and scenario exercises.',
+      bullets: ['Red team exercises', 'TIBER-EU style scenarios', 'Impact tolerance testing'],
+    }
+  - {
+      title: 'Watch around the clock',
+      text: 'Detect and contain attacks fast.',
+      bullets: ['24/7 SOC and MDR', 'Sign-in and fraud signals', 'Leaked credential alerts'],
+    }
 lifecycle:
-  - { title: "Assess", label: "Stage 1", text: "Map critical services, systems and regulatory obligations." }
-  - { title: "Test", label: "Stage 2", text: "Penetration testing, red teaming and resilience scenarios." }
-  - { title: "Remediate", label: "Stage 3", text: "Prioritised fixes with developer and IT walkthroughs." }
-  - { title: "Monitor", label: "Stage 4", text: "24/7 detection, response and threat intelligence." }
-  - { title: "Evidence", label: "Stage 5", text: "Board reporting and documentation for regulators and auditors." }
-frameworks: ["DORA", "FCA SYSC & operational resilience", "PRA SS1/21", "PCI DSS v4.0.1", "PSD2", "ISO 27001", "UK GDPR", "NIS2"]
-services: [penetration-testing, api-security-testing, red-teaming, nis2-dora, managed-security, pci-dss]
+  - {
+      title: 'Evidence for your regulator',
+      text: 'Testing results, incident procedures and supplier oversight records that support DORA, FCA and PRA reviews.',
+    }
+  - {
+      title: 'Assurance for partner banks',
+      text: 'Penetration test letters and policies that satisfy sponsor bank and partner due diligence.',
+    }
+  - {
+      title: 'A board that understands the risk',
+      text: 'Plain-English reporting on cyber resilience and the decisions directors need to make.',
+    }
+frameworks:
+  [
+    'DORA',
+    'FCA SYSC & operational resilience',
+    'PRA SS1/21',
+    'PCI DSS v4.0.1',
+    'PSD2',
+    'ISO 27001',
+    'UK GDPR',
+    'NIS2',
+  ]
+services:
+  [penetration-testing, api-security-testing, red-teaming, nis2-dora, managed-security, pci-dss]
 faqs:
-  - q: "Does DORA apply to UK financial firms?"
-    a: "DORA is EU regulation. It applies directly to EU financial entities, including EU subsidiaries of UK groups. UK firms that provide ICT services to EU financial clients often find DORA requirements written into their contracts. UK firms are also subject to FCA and PRA operational resilience rules."
-  - q: "Can you help with FCA operational resilience?"
-    a: "Yes. We help identify important business services, map the systems behind them and test whether you can stay within impact tolerances during a severe cyber incident."
-  - q: "Do you support fintech start-ups?"
-    a: "Yes. Many fintechs need to show strong security to partner banks, investors and regulators early on. We scale the work to your stage."
-updated: 2026-11-12
-seo_title: "Cyber Security for Financial Services UK & EU | AVRIX"
-seo_description: "Cyber security for banks, insurers, payment firms and fintechs: penetration testing, DORA and FCA resilience, PCI DSS and 24/7 managed SOC across the UK and EU."
+  - q: 'Does DORA affect UK financial firms?'
+    a: 'DORA applies directly to EU financial entities, including EU subsidiaries of UK groups. UK firms providing technology services to EU financial clients often find DORA terms in their contracts. UK firms also have FCA and PRA operational resilience rules to meet.'
+  - q: 'Can you help us stay within impact tolerances?'
+    a: 'Yes. We help identify important business services, map the systems behind them and test whether you could stay within tolerance during a severe cyber incident.'
+  - q: "We're an early-stage fintech. Is this overkill?"
+    a: "No, but we'd scale it. Partner banks and investors expect sound security from day one, so we focus on what they'll actually ask for first."
+updated: 2026-11-14
+seo_title: 'Cyber Security for Financial Services UK & EU | AVRIX'
+seo_description: 'Cyber security for banks, insurers, payment firms and fintechs: testing money journeys, DORA and FCA resilience, PCI DSS and 24/7 monitoring in the UK and EU.'
 ---
