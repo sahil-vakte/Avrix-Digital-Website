@@ -2,7 +2,7 @@
 slug: blog
 h1: 'Insights for people who *run organisations*'
 seo_title: 'Cyber Security Insights & Guides | AVRIX Digital'
-seo_description: 'Plain-English guides on cyber risk, UK and EU regulation, incident readiness and security testing, written for directors, owners and IT leads.'
+seo_description: 'Practical guides and plain-English advice on cyber risk, UK and EU rules, incident readiness and security testing, for directors, owners and IT leads.'
 eyebrow: 'Insights'
 lead: "Short, practical reads from the AVRIX Digital team: what's changing, what it means for you and what to do next."
 categories:
