@@ -1887,8 +1887,7 @@ fieldset {
 }
 @keyframes cookie-in {
   from {
-    opacity: 0;
-    transform: translate(-50%, 16px);
+    transform: translate(-50%, 24px);
   }
 }
 .cookie-head {
