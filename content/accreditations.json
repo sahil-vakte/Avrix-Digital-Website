@@ -1,11 +1,11 @@
 {
   "eyebrow": "Accreditations",
-  "title": "Registered, accountable and independently checked",
+  "title": "Registered and accountable",
   "items": [
     {
-      "name": "ICO registered",
+      "name": "Information Commissioner's Office (ICO)",
       "text": "Registered with the Information Commissioner's Office as a data controller.",
-      "logo": "/media/accreditations/ico-registered.svg",
+      "logo": "/media/accreditations/ico.webp",
       "reference": null,
       "href": "https://ico.org.uk/ESDWebPages/Search",
       "show": true
