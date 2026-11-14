@@ -19,7 +19,8 @@ fs.cpSync('../content/assets/brand', 'public/brand', { recursive: true });
 await prepareBrandAssets(data.site);
 fs.mkdirSync('public/fonts', { recursive: true });
 for (const [pkg, name, match] of [
-  ['@fontsource-variable/mulish', 'body', 'latin-wght-normal.woff2'],
+  ['@fontsource-variable/manrope', 'body', 'latin-wght-normal.woff2'],
+  ['@fontsource-variable/space-grotesk', 'display', 'latin-wght-normal.woff2'],
 ]) {
   const dir = `node_modules/${pkg}/files`;
   const file = fs.readdirSync(dir).find((f) => f.endsWith(match) && !f.includes('latin-ext'));

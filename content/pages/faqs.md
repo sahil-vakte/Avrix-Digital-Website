@@ -1,6 +1,6 @@
 ---
 slug: faqs
-h1: "Everything you need to know about *our services*"
+h1: "Cyber security *questions, answered*"
 seo_title: "Cyber Security FAQs | AVRIX"
 seo_description: "Answers to common questions about AVRIX cyber security services: penetration testing, managed SOC, compliance, incident response, contracts and data handling."
 eyebrow: "FAQs"

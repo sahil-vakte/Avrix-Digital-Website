@@ -1,6 +1,6 @@
 ---
 slug: contact-us
-h1: Connect with the *AVRIX security team*
+h1: Talk to the *AVRIX security team*
 seo_title: Contact AVRIX | Book a Free Security Consultation
 seo_description: >-
   Talk to AVRIX about penetration testing, managed SOC, compliance or an

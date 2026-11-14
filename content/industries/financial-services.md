@@ -7,7 +7,7 @@ icon: finance
 order: 1
 summary: "Security testing, DORA and FCA resilience, and 24/7 monitoring for banks, insurers, payment firms, wealth managers and fintechs."
 lead: "Financial firms face determined attackers, strict regulators and demanding customers. We help banks, insurers, payment and e-money firms, wealth managers and fintechs protect customer money and data, meet DORA and FCA operational resilience expectations, and evidence it."
-tagline: "Strengthen trust. Secure every transaction."
+tagline: "Protect customer money, data and regulatory standing."
 tags: ["DORA", "FCA operational resilience", "PCI DSS", "Open Banking APIs"]
 points:
   - { title: "Fraud and account takeover", text: "Protect customer accounts, payments and onboarding journeys." }

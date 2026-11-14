@@ -1,14 +1,42 @@
 {
   "header": [
-    { "label": "Home", "href": "/" },
-    { "label": "About Us", "href": "/about/" },
-    { "label": "Services", "href": "/services/", "menu": "services" },
-    { "label": "Solutions", "href": "/solutions/", "menu": "solutions" },
-    { "label": "Industries", "href": "/industries/", "menu": "industries" },
-    { "label": "Resources", "href": "/blog/", "menu": "resources" },
-    { "label": "Contact Us", "href": "/contact-us/" }
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "About",
+      "href": "/about/"
+    },
+    {
+      "label": "Services",
+      "href": "/services/",
+      "menu": "services"
+    },
+    {
+      "label": "Solutions",
+      "href": "/solutions/",
+      "menu": "solutions"
+    },
+    {
+      "label": "Industries",
+      "href": "/industries/",
+      "menu": "industries"
+    },
+    {
+      "label": "Insights",
+      "href": "/blog/",
+      "menu": "resources"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact-us/"
+    }
   ],
-  "header_cta": { "label": "Book a Free Consultation", "href": "booking_url_or:/contact-us/" },
+  "header_cta": {
+    "label": "Talk to a Specialist",
+    "href": "booking_url_or:/contact-us/"
+  },
   "mega_menu": [
     {
       "pillar": "offensive",
@@ -38,49 +66,115 @@
       "pillar": "compliance",
       "label": "Compliance & GRC",
       "blurb": "Meet UK and EU standards and win the contracts that need them.",
-      "items": ["cyber-essentials", "iso-27001", "soc-2", "gdpr-compliance", "pci-dss", "nis2-dora", "vciso"]
+      "items": [
+        "cyber-essentials",
+        "iso-27001",
+        "soc-2",
+        "gdpr-compliance",
+        "pci-dss",
+        "nis2-dora",
+        "vciso"
+      ]
     },
     {
       "pillar": "response",
       "label": "Incident Response & DFIR",
       "blurb": "Contain, investigate and recover when something goes wrong.",
-      "items": ["incident-response", "digital-forensics", "incident-readiness"]
+      "items": [
+        "incident-response",
+        "digital-forensics",
+        "incident-readiness"
+      ]
     }
   ],
   "resources": [
-    { "label": "Insights & Guides", "href": "/blog/", "text": "Plain-English advice on UK and EU cyber security." },
-    { "label": "FAQs", "href": "/faqs/", "text": "Answers on scoping, testing, compliance and response." },
-    { "label": "Contact the Security Team", "href": "/contact-us/", "text": "Talk to us about a project or an urgent issue." }
+    {
+      "label": "Insights & Guides",
+      "href": "/blog/",
+      "text": "Plain-English advice on UK and EU cyber security."
+    },
+    {
+      "label": "FAQs",
+      "href": "/faqs/",
+      "text": "Answers on scoping, testing, compliance and response."
+    },
+    {
+      "label": "Contact the Security Team",
+      "href": "/contact-us/",
+      "text": "Talk to us about a project or an urgent issue."
+    }
   ],
   "footer": {
     "tagline": "Cyber security, compliance and 24/7 defence for UK and European businesses.",
     "explore": [
-      { "label": "Home", "href": "/" },
-      { "label": "About Us", "href": "/about/" },
-      { "label": "Services", "href": "/services/" },
-      { "label": "Solutions", "href": "/solutions/" },
-      { "label": "Industries", "href": "/industries/" },
-      { "label": "Insights", "href": "/blog/" },
-      { "label": "FAQs", "href": "/faqs/" },
-      { "label": "Contact Us", "href": "/contact-us/" }
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "About Us",
+        "href": "/about/"
+      },
+      {
+        "label": "Services",
+        "href": "/services/"
+      },
+      {
+        "label": "Solutions",
+        "href": "/solutions/"
+      },
+      {
+        "label": "Industries",
+        "href": "/industries/"
+      },
+      {
+        "label": "Insights",
+        "href": "/blog/"
+      },
+      {
+        "label": "FAQs",
+        "href": "/faqs/"
+      },
+      {
+        "label": "Contact Us",
+        "href": "/contact-us/"
+      }
     ],
     "legal": [
-      { "label": "Privacy policy", "href": "/privacy-policy/" },
-      { "label": "Cookie policy", "href": "/cookie-policy/" },
-      { "label": "Terms of business", "href": "/terms/" },
-      { "label": "Cookie preferences", "action": "open-cookie-preferences" }
+      {
+        "label": "Privacy policy",
+        "href": "/privacy-policy/"
+      },
+      {
+        "label": "Cookie policy",
+        "href": "/cookie-policy/"
+      },
+      {
+        "label": "Terms of business",
+        "href": "/terms/"
+      },
+      {
+        "label": "Cookie preferences",
+        "action": "open-cookie-preferences"
+      }
     ]
   },
   "soc_widget": {
-    "label": "Active 24/7",
-    "title": "Managed SOC & Monitoring",
+    "label": "24/7 incident help",
+    "title": "Suspect a breach?",
     "points": [
-      "Round-the-clock threat monitoring",
-      "Investigation of every alert",
-      "Rapid containment of real threats",
-      "Plain-English monthly reporting"
+      "Disconnect affected devices but leave them on",
+      "Don't pay any ransom or contact the attacker",
+      "Change passwords from a clean device",
+      "Contact our incident response team now"
     ],
-    "primary": { "label": "Explore Managed SOC", "href": "/services/managed-security/" },
-    "secondary": { "label": "Talk to us", "href": "/contact-us/" }
+    "primary": {
+      "label": "Get incident help",
+      "href": "/services/incident-response/"
+    },
+    "secondary": {
+      "label": "Send an urgent enquiry",
+      "href": "/contact-us/"
+    }
   }
 }

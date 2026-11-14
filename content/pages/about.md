@@ -1,6 +1,6 @@
 ---
 slug: about
-h1: "Securing UK and European businesses with *confidence*"
+h1: "Practical cyber security for *UK and European businesses*"
 seo_title: "About AVRIX | Cyber Security for UK & European Businesses"
 seo_description: "AVRIX is a UK cyber security provider offering penetration testing, 24/7 managed SOC, compliance and incident response for UK and European businesses."
 eyebrow: "About AVRIX"

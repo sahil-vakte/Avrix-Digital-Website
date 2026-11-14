@@ -550,7 +550,7 @@ export function SocWidget() {
         aria-controls="soc-widget-panel"
         onClick={() => setOpen(!open)}
       >
-        <Icon name="managed-security" />
+        <Icon name="incident-response" />
         <span>
           <small>
             <i aria-hidden="true" />
