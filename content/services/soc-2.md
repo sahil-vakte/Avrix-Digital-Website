@@ -31,17 +31,7 @@ outcomes:
       title: 'Better engineering habits',
       text: 'Stronger access control, change management and monitoring.',
     }
-tools:
-  [
-    'SOC 2',
-    'AICPA TSC',
-    'ISO 27001',
-    'AVRIX Compliance Hub',
-    'AWS',
-    'Microsoft Azure',
-    'Google Cloud',
-    'GitHub',
-  ]
+tools: ['SOC 2', 'AICPA TSC', 'ISO 27001', 'AWS', 'Microsoft Azure', 'Google Cloud', 'GitHub']
 process:
   - { title: 'Readiness', text: 'Gap analysis and scope.' }
   - { title: 'Close gaps', text: 'Missing controls and policies put in place.' }

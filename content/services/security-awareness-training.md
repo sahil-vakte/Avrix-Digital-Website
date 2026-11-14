@@ -51,7 +51,6 @@ outcomes:
     }
 tools:
   [
-    'AVRIX PhishDrill',
     'Microsoft 365',
     'Google Workspace',
     'NCSC guidance',

@@ -38,7 +38,6 @@ outcomes:
   - { title: 'Smarter spending', text: "Security budget aimed at what's actually targeting you." }
 tools:
   [
-    'AVRIX Attack Surface Monitor',
     'MITRE ATT&CK',
     'STIX/TAXII',
     'NCSC advisories',
