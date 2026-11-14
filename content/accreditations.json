@@ -1,9 +1,11 @@
 {
   "eyebrow": "Accreditations",
-  "title": "Registered and accountable",
+  "title": "Registered, accountable and *independently checked*",
+  "intro": "We look after client data to the same standard we help clients meet. AVRIX Digital is registered with the Information Commissioner's Office, the UK's data protection regulator, and handles personal information in line with UK GDPR. As further certifications are awarded, you'll find them here.",
   "items": [
     {
       "name": "Information Commissioner's Office (ICO)",
+      "label": "ICO registered",
       "text": "Registered with the Information Commissioner's Office as a data controller.",
       "logo": "/media/accreditations/ico.webp",
       "reference": null,
