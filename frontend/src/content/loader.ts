@@ -5,6 +5,7 @@ import { marked } from 'marked';
 import sanitize from 'sanitize-html';
 import { z } from 'zod';
 import {
+  accreditationsSchema,
   homeSchema,
   siteSchema,
   navSchema,
@@ -101,6 +102,13 @@ export function loadContent(): Content {
       .object({ items: z.array(testimonialSchema) })
       .parse(read('testimonials.json'))
       .items.filter((v) => v.verified),
+    accreditations: (() => {
+      const a = accreditationsSchema.parse(read('accreditations.json'));
+      for (const item of a.items)
+        if (!fs.existsSync(path.join(root, 'assets', item.logo.replace(/^\/media\//, ''))))
+          throw new Error(`Accreditation logo missing: ${item.logo}`);
+      return { ...a, items: a.items.filter((i) => i.show) };
+    })(),
     ui: z.record(z.string()).parse(read('ui.json')),
     hasLogo: fs.existsSync(
       path.join(root, 'assets', site.logo.light_on_dark.replace(/^\/media\//, '')),
