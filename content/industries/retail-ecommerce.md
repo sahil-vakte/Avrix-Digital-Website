@@ -7,7 +7,7 @@ icon: retail
 order: 4
 summary: "Protect checkouts, customer accounts and stores: PCI DSS, e-commerce testing, fraud prevention and 24/7 monitoring for retailers."
 lead: "Retailers handle card payments, customer accounts and complex supply chains, often across physical stores and online platforms. We help protect every channel, meet PCI DSS and keep trading through peak season."
-tagline: "Secure every checkout. Protect every customer."
+tagline: "Keep checkouts, accounts and stores safe all year round."
 tags: ["PCI DSS v4.0.1", "Checkout security", "Account takeover", "Peak trading"]
 points:
   - { title: "Payment security", text: "Protect card data online and in store." }

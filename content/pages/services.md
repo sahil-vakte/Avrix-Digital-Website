@@ -1,6 +1,6 @@
 ---
 slug: services
-h1: "Cyber security *services*"
+h1: "Twenty services. *Four disciplines.*"
 seo_title: "Cyber Security Services UK & Europe | AVRIX"
 seo_description: "Penetration testing, managed SOC, MDR, Cyber Essentials, ISO 27001, GDPR, NIS2, DORA and incident response services for UK and European businesses."
 eyebrow: "Our services"

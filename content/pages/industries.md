@@ -1,6 +1,6 @@
 ---
 slug: industries
-h1: "Securing every industry, *every day*"
+h1: "Sector-specific *cyber security*"
 seo_title: "Cyber Security by Industry | AVRIX"
 seo_description: "Sector-focused cyber security for financial services, healthcare, manufacturing, retail, technology, public sector and education across the UK and Europe."
 eyebrow: "Industries"

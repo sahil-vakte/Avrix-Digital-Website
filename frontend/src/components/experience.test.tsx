@@ -66,7 +66,7 @@ it('opens the mobile navigation, closes it on a link, and unlocks page scrolling
   fireEvent.click(screen.getByRole('button', { name: ui.menu }));
   const dialog = screen.getByRole('dialog');
   expect(document.body.style.overflow).toBe('hidden');
-  const about = within(dialog).getByRole('link', { name: 'About Us' });
+  const about = within(dialog).getByRole('link', { name: 'About' });
   about.addEventListener('click', (event) => event.preventDefault());
   fireEvent.click(about);
   expect(dialog.hasAttribute('open')).toBe(false);

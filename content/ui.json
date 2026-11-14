@@ -68,7 +68,7 @@
   "businessTypes": "Built around your business",
   "solutionSetup": "Before you get started",
   "allSolutions": "All solutions",
-  "openEnquiry": "Request a security consultation",
+  "openEnquiry": "Send an enquiry",
   "closeEnquiry": "Close enquiry form",
   "solutionsEyebrow": "SOFTWARE THAT WORKS WITH YOU",
   "solutionsTitle": "Your next step. Already connected.",
@@ -78,7 +78,7 @@
   "learnMore": "Learn more",
   "industries": "Industries",
   "allIndustries": "All industries overview",
-  "requestAssessment": "Request a security assessment",
+  "requestAssessment": "Get a scoped proposal",
   "requestAssessmentText": "Tell us what you need and a security specialist will reply within one working day.",
   "trustScope": "Written scope and authorisation",
   "trustReport": "Plain-English reporting",
@@ -115,5 +115,5 @@
   "activeDefence": "24/7 active defence",
   "complianceStatus": "Compliance status",
   "socMonitoring": "24/7 SOC monitoring",
-  "freeConsultation": "Free consultation"
+  "freeConsultation": "Free, no-obligation"
 }

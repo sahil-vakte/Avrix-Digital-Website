@@ -33,7 +33,9 @@
   "devDependencies": {
     "@axe-core/cli": "4.10.1",
     "@eslint/js": "9.22.0",
+    "@fontsource-variable/manrope": "^5.3.0",
     "@fontsource-variable/mulish": "^5.3.0",
+    "@fontsource-variable/space-grotesk": "^5.3.0",
     "@fontsource/bricolage-grotesque": "5.2.5",
     "@fontsource/mulish": "^5.3.0",
     "@lhci/cli": "0.14.0",
