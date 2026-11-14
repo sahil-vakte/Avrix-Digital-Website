@@ -52,10 +52,10 @@
 /services/aws-consulting/                      /services/cloud-security-assessment/  301
 /services/talent-acquisition/                  /services/                        301
 /services/security-compliance/                 /services/iso-27001/              301
-/solutions/ai-marketing-automation/            /solutions/                       301
-/solutions/voice-call-agent/                   /solutions/                       301
-/solutions/wims/                               /solutions/                       301
-/solutions/hr-desk/                            /solutions/                       301
+/solutions/ai-marketing-automation/            /services/                       301
+/solutions/voice-call-agent/                   /services/                       301
+/solutions/wims/                               /services/                       301
+/solutions/hr-desk/                            /services/                       301
 /blog/ga4-health-check-for-uk-smes/            /blog/                            301
 /blog/right-size-microsoft-365-licences/       /blog/                            301
 /blog/admin-tasks-to-automate-first/           /blog/                            301
@@ -65,3 +65,8 @@
 /blog/category/ai-automation/                  /blog/                            301
 /blog/category/web/                            /blog/                            301
 /blog/category/hiring/                         /blog/                            301
+# Solutions are hidden (site.json show_solutions: false)
+/solutions/                                   /services/                        302
+/solutions/phishdrill/                        /services/                        302
+/solutions/attack-surface-monitor/            /services/                        302
+/solutions/compliance-hub/                    /services/                        302

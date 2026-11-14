@@ -81,12 +81,16 @@ export default function Footer() {
             ))}
           </div>
           <div>
-            <h3>{ui.solutions}</h3>
-            {content.solutions.map((s) => (
-              <a key={s.slug} href={`/solutions/${s.slug}/`}>
-                {s.title}
-              </a>
-            ))}
+            {content.solutions.length > 0 && (
+              <>
+                <h3>{ui.solutions}</h3>
+                {content.solutions.map((s) => (
+                  <a key={s.slug} href={`/solutions/${s.slug}/`}>
+                    {s.title}
+                  </a>
+                ))}
+              </>
+            )}
             <h3>{ui.legal}</h3>
             {nav.footer.legal.map((l) =>
               l.action ? (

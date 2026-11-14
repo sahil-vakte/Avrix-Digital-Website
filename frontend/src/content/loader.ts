@@ -106,6 +106,18 @@ export function loadContent(): Content {
       path.join(root, 'assets', site.logo.light_on_dark.replace(/^\/media\//, '')),
     ),
   };
+  // Solutions can be switched off in site.json. When hidden, the pages are not
+  // built and every link to them is removed, so nothing points at a missing page.
+  if (!site.show_solutions) {
+    const keep = (l: { href?: string }) => !l.href?.startsWith('/solutions/');
+    data.solutions = [];
+    data.pages = data.pages.filter((p) => p.slug !== 'solutions');
+    data.nav.header = data.nav.header.filter(keep);
+    data.nav.footer.explore = data.nav.footer.explore.filter(keep);
+    for (const p of data.pages)
+      for (const f of p.form?.fields || [])
+        if (f.options) f.options = f.options.filter((o) => o.value !== 'security-products');
+  }
   const slugs = new Set(data.services.map((s) => s.slug));
   for (const s of data.services) {
     for (const r of s.related) if (!slugs.has(r)) throw new Error(`Unknown related service ${r}`);
