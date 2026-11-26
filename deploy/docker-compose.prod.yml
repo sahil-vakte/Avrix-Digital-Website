@@ -27,7 +27,7 @@ services:
         condition: service_healthy
     expose: ["8000"]
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; r=urllib.request.Request('http://127.0.0.1:8000/api/health/',headers={'Host':'api.avrixdigital.co.uk','X-Forwarded-Proto':'https'}); urllib.request.urlopen(r,timeout=5)"]
+      test: ["CMD", "python", "-c", "import urllib.request; r=urllib.request.Request('http://127.0.0.1:8000/api/health/',headers={'Host':'api.avrixdigital.com','X-Forwarded-Proto':'https'}); urllib.request.urlopen(r,timeout=5)"]
       interval: 10s
       timeout: 6s
       retries: 10

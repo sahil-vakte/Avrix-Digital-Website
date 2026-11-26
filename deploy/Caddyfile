@@ -1,4 +1,4 @@
-api.avrixdigital.co.uk {
+api.avrixdigital.com {
     encode zstd gzip
     header {
         X-Content-Type-Options nosniff

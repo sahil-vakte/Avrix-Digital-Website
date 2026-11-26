@@ -3,7 +3,7 @@
 
 # Non-canonical / legacy pages
 # NOTE: /?page_id=31 → /faqs/ can't be done here (_redirects ignores query strings).
-#       Create a Cloudflare Redirect Rule: URI Path equals "/" AND query contains "page_id=31" → https://avrixdigital.co.uk/faqs/ (301).
+#       Create a Cloudflare Redirect Rule: URI Path equals "/" AND query contains "page_id=31" → https://avrixdigital.com/faqs/ (301).
 /sample-page/                                  /             301
 /our-services/                                 /services/    301
 /services/smart-schedule-control/              /services/    301

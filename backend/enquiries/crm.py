@@ -69,7 +69,7 @@ def lead_payload(e: Enquiry):
         "attribution": attribution,
         "customFields": {"website": e.website or None, "timeline": e.timeline or None, "preferredContact": e.preferred_contact,
                          "services": e.services, "sourcePage": e.source_page or None},
-        "consent": {"marketing": bool(e.marketing_opt_in), "text": "Opted in on avrixdigital.co.uk enquiry form" if e.marketing_opt_in else ""},
+        "consent": {"marketing": bool(e.marketing_opt_in), "text": "Opted in on avrixdigital.com enquiry form" if e.marketing_opt_in else ""},
         "occurredAt": e.created_at.isoformat(),
     }
 

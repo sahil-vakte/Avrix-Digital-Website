@@ -8,4 +8,4 @@ Your message:
 {{ enquiry.message }}
 
 AVRIX Digital
-info@avrixdigital.co.uk
+info@avrixdigital.com

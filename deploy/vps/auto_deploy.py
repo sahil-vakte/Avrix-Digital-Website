@@ -108,7 +108,7 @@ def activate(release):
 
 def healthy(sha):
     request = urllib.request.Request("http://127.0.0.1:8011/api/health/", headers={
-        "Host": "avrixdigital.co.uk", "X-Forwarded-Proto": "https",
+        "Host": "avrixdigital.com", "X-Forwarded-Proto": "https",
     })
     for attempt in range(20):
         try:
@@ -121,9 +121,9 @@ def healthy(sha):
             time.sleep(1)
     # Verify the actual Nginx frontend with hostname/certificate validation,
     # bypassing external DNS caches on this same server.
-    connection = http.client.HTTPSConnection("avrixdigital.co.uk", timeout=10)
+    connection = http.client.HTTPSConnection("avrixdigital.com", timeout=10)
     connection.sock = ssl.create_default_context().wrap_socket(
-        socket.create_connection(("127.0.0.1", 443), timeout=10), server_hostname="avrixdigital.co.uk",
+        socket.create_connection(("127.0.0.1", 443), timeout=10), server_hostname="avrixdigital.com",
     )
     try:
         connection.request("GET", "/release.txt")

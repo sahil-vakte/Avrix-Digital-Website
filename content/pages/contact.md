@@ -56,7 +56,7 @@ form:
     A specialist from AVRIX Digital will reply within one working day.
   error_text: >-
     Something went wrong sending your enquiry. Please email us at
-    info@avrixdigital.co.uk and we'll pick it up straight away.
+    info@avrixdigital.com and we'll pick it up straight away.
   fields:
     - name: full_name
       label: Your name
