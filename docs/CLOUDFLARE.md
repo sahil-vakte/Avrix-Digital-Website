@@ -48,7 +48,7 @@ Build variables and Worker runtime variables are separate. Set `PUBLIC_ORIGIN` i
 | `EMAIL_HOST_USER` | Secret | SMTP username |
 | `EMAIL_HOST_PASSWORD` | Secret | SMTP password |
 | `EMAIL_USE_TLS` | Variable | `true` for STARTTLS |
-| `DEFAULT_FROM_EMAIL` | Variable | Verified sender, e.g. `AVRIX Digital <info@avrixdigital.co.uk>` |
+| `DEFAULT_FROM_EMAIL` | Variable | Verified sender, e.g. `AVRIX Digital <info@avrixdigital.com>` |
 | `ENQUIRY_NOTIFY_TO` | Variable | Comma-separated team email addresses |
 | `BOOKING_URL` | Variable | Optional; otherwise your contact page |
 | `SENTRY_DSN` | Secret | Optional error reporting |
@@ -80,7 +80,7 @@ Pending email jobs are persisted in PostgreSQL. The container retries them on st
 
 ## Connect your domain later
 
-Add `avrixdigital.co.uk` as a **Custom Domain** on the same Worker. Set `PUBLIC_ORIGIN=https://avrixdigital.co.uk` in both build and runtime settings, allow the domain in Turnstile, set `VITE_SITE_ENV=production` and rebuild/redeploy. The API, admin, email links and SEO URLs then use your domain. Configure a redirect for `www` and disable the old `workers.dev` public route after verifying the custom domain. The database stays the same.
+Add `avrixdigital.com` as a **Custom Domain** on the same Worker. Set `PUBLIC_ORIGIN=https://avrixdigital.com` in both build and runtime settings, allow the domain in Turnstile, set `VITE_SITE_ENV=production` and rebuild/redeploy. The API, admin, email links and SEO URLs then use your domain. Configure a redirect for `www` and disable the old `workers.dev` public route after verifying the custom domain. The database stays the same.
 
 ## CI and limits of local verification
 

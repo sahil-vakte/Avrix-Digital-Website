@@ -10,7 +10,7 @@ export const apiOrigin =
   import.meta.env.VITE_API_SAME_ORIGIN === 'true'
     ? ''
     : import.meta.env.VITE_API_URL ||
-      (import.meta.env.PROD ? 'https://api.avrixdigital.co.uk' : 'http://localhost:8000');
+      (import.meta.env.PROD ? 'https://api.avrixdigital.com' : 'http://localhost:8000');
 export async function post<T>(path: string, data: unknown): Promise<T> {
   const response = await fetch(`${apiOrigin}/api/${path}/`, {
     method: 'POST',

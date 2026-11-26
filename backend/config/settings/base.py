@@ -67,7 +67,7 @@ CORS_ALLOW_CREDENTIALS = False
 from corsheaders.defaults import default_headers  # noqa: E402
 
 CORS_ALLOW_HEADERS = [*default_headers, "x-env"]
-CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=["https://api.avrixdigital.co.uk"])
+CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=["https://api.avrixdigital.com"])
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [],
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
@@ -82,18 +82,18 @@ EMAIL_PORT = env.int("EMAIL_PORT", default=587)
 EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
 EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
-DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default="AVRIX Digital <info@avrixdigital.co.uk>")
-ENQUIRY_NOTIFY_TO = env.list("ENQUIRY_NOTIFY_TO", default=["info@avrixdigital.co.uk"])
+DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default="AVRIX Digital <info@avrixdigital.com>")
+ENQUIRY_NOTIFY_TO = env.list("ENQUIRY_NOTIFY_TO", default=["info@avrixdigital.com"])
 TURNSTILE_SECRET_KEY = env("TURNSTILE_SECRET_KEY", default="")
 PUBLIC_FORMS_ENABLED = env.bool("PUBLIC_FORMS_ENABLED", default=True)
 IP_HASH_SALT = env("IP_HASH_SALT", default=SECRET_KEY)
 ENQUIRY_RETENTION_MONTHS = env.int("ENQUIRY_RETENTION_MONTHS", default=24)
 ADMIN_URL = env("ADMIN_URL", default="manage-7f3k/").strip("/") + "/"
 SUPERADMIN_BOOTSTRAP_TOKEN = env("SUPERADMIN_BOOTSTRAP_TOKEN", default="")
-SITE_URL = env("SITE_URL", default="https://avrixdigital.co.uk").rstrip("/")
-API_URL = env("API_URL", default="https://api.avrixdigital.co.uk").rstrip("/")
+SITE_URL = env("SITE_URL", default="https://avrixdigital.com").rstrip("/")
+API_URL = env("API_URL", default="https://api.avrixdigital.com").rstrip("/")
 BOOKING_URL = env("BOOKING_URL", default="") or SITE_URL + "/contact-us/"
-TURNSTILE_HOSTNAMES = env.list("TURNSTILE_HOSTNAMES", default=["avrixdigital.co.uk", "www.avrixdigital.co.uk"])
+TURNSTILE_HOSTNAMES = env.list("TURNSTILE_HOSTNAMES", default=["avrixdigital.com", "www.avrixdigital.com"])
 EMAIL_ASYNC = True
 DATA_UPLOAD_MAX_MEMORY_SIZE = 65536
 UNFOLD = {

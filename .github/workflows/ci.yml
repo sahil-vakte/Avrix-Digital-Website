@@ -68,7 +68,7 @@ jobs:
       - run: npm run build && npm run seo:check
         env:
           VITE_SITE_ENV: production
-          VITE_SITE_URL: https://avrixdigital.co.uk
+          VITE_SITE_URL: https://avrixdigital.com
           VITE_API_SAME_ORIGIN: 'true'
           VITE_ADMIN_URL: /manage-7f3k/
           VITE_PUBLIC_FORMS_ENABLED: ${{ vars.PUBLIC_FORMS_ENABLED || 'false' }}

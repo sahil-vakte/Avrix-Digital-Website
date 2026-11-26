@@ -127,7 +127,7 @@ def test_turnstile_network_failure(api, payload, settings):
 
 def test_turnstile_success(api, payload, settings):
     settings.DEBUG = False
-    with patch("enquiries.serializers.requests.post", return_value=Mock(json=lambda: {"success": True, "hostname": "avrixdigital.co.uk"})):
+    with patch("enquiries.serializers.requests.post", return_value=Mock(json=lambda: {"success": True, "hostname": "avrixdigital.com"})):
         assert api.post("/api/enquiries/", payload, format="json").status_code == 201
 
 

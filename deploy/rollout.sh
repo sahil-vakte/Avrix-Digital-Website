@@ -12,7 +12,7 @@ export API_IMAGE="$new_image"
 "${compose[@]}" up -d api mail-worker caddy
 healthy=false
 for attempt in {1..10}; do
-  if curl --fail --silent --max-time 10 https://api.avrixdigital.co.uk/api/health/; then healthy=true; break; fi
+  if curl --fail --silent --max-time 10 https://api.avrixdigital.com/api/health/; then healthy=true; break; fi
   sleep 6
 done
 if [ "$healthy" != true ]; then

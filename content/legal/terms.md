@@ -10,7 +10,7 @@ _notes: "TEMPLATE covering website use only. Client services are governed by sep
 
 ## About these terms
 
-These terms apply to your use of avrixdigital.co.uk, operated by [LEGAL NAME] trading as AVRIX Digital. By using the website you agree to them. Our services are provided under separate written proposals and terms of business.
+These terms apply to your use of avrixdigital.com, operated by [LEGAL NAME] trading as AVRIX Digital. By using the website you agree to them. Our services are provided under separate written proposals and terms of business.
 
 ## Information on this website
 
@@ -34,4 +34,4 @@ These terms are governed by the law of England and Wales, and the courts of Engl
 
 ## Contact
 
-info@avrixdigital.co.uk
+info@avrixdigital.com
