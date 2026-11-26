@@ -1,6 +1,6 @@
 # Avrix on the existing WIMS server
 
-Website: `https://avrixdigital.co.uk`. SSH connection details are kept outside this public repository.
+Website: `https://avrixdigital.com`. SSH connection details are kept outside this public repository.
 Cloudflare hosting and Containers are not used. Turnstile is only the form's
 spam protection and can run on a website hosted on this server.
 
@@ -39,7 +39,7 @@ site and any firewall exception for port 8081 after the domain is verified.
 
 ## Deployment verification
 
-The website is deployed at `https://avrixdigital.co.uk/`. All 36 generated pages
+The website is deployed at `https://avrixdigital.com/`. All 36 generated pages
 passed HTTPS checks, missing pages return 404, and HTTP/www redirect to the
 canonical HTTPS domain. HTTPS health, admin login, initial registration and
 fingerprinted admin CSS checks pass. The production build permits indexing.
@@ -86,10 +86,10 @@ Do not copy a development database, `.env`, virtual environment or local account
 Set `DJANGO_SETTINGS_MODULE=config.settings.vps`, a fresh strong
 `DJANGO_SECRET_KEY`, separate `IP_HASH_SALT`, a dedicated PostgreSQL
 `DATABASE_URL`, and a fresh one-use `SUPERADMIN_BOOTSTRAP_TOKEN`.
-Set `DJANGO_DEBUG=False`, `DJANGO_ALLOWED_HOSTS=avrixdigital.co.uk,www.avrixdigital.co.uk`,
-`SITE_URL=https://avrixdigital.co.uk`, `API_URL=https://avrixdigital.co.uk`,
-`CSRF_TRUSTED_ORIGINS=https://avrixdigital.co.uk`,
-`CORS_ALLOWED_ORIGINS=https://avrixdigital.co.uk`, `CORS_ALLOWED_ORIGIN_REGEXES=`,
+Set `DJANGO_DEBUG=False`, `DJANGO_ALLOWED_HOSTS=avrixdigital.com,www.avrixdigital.com`,
+`SITE_URL=https://avrixdigital.com`, `API_URL=https://avrixdigital.com`,
+`CSRF_TRUSTED_ORIGINS=https://avrixdigital.com`,
+`CORS_ALLOWED_ORIGINS=https://avrixdigital.com`, `CORS_ALLOWED_ORIGIN_REGEXES=`,
 `ADMIN_URL=manage-7f3k/` and real `TURNSTILE_SECRET_KEY`.
 
 Hostinger Email uses `EMAIL_HOST=smtp.hostinger.com`, `EMAIL_PORT=587`,
@@ -98,7 +98,7 @@ as `EMAIL_HOST_PASSWORD`. Configure `DEFAULT_FROM_EMAIL` and `ENQUIRY_NOTIFY_TO`
 with the intended addresses. Set `EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend`.
 The SMTP login must be verified separately from website deployment.
 
-Build the frontend with `VITE_SITE_URL=https://avrixdigital.co.uk`,
+Build the frontend with `VITE_SITE_URL=https://avrixdigital.com`,
 `VITE_API_SAME_ORIGIN=true`, `VITE_SITE_ENV=production`,
 `VITE_ADMIN_URL=/manage-7f3k/` and a real `VITE_TURNSTILE_SITE_KEY`.
 From `frontend/`, run `npm ci --include=dev`, `npm run content:validate` and
@@ -115,7 +115,7 @@ admin static assets. The admin URL is `/manage-7f3k/`; initial registration is
 
 First enable the HTTP bootstrap site, retaining the existing WIMS site.
 In Hostinger DNS, point the apex A record (`@`) to the server?s public IPv4 address and `www`
-to `avrixdigital.co.uk` using a CNAME. Remove only conflicting old website A/AAAA
+to `avrixdigital.com` using a CNAME. Remove only conflicting old website A/AAAA
 records. Preserve MX and email TXT records; mailbox migration is a separate task.
 
 After both names resolve to this server, obtain a separate Let's Encrypt
@@ -150,3 +150,23 @@ only `avrix-api`. Database migrations require a separate compatibility decision;
 never automatically reverse a migration or restore over a live database.
 To withdraw this initial site, disable only the Avrix Nginx symlink and services,
 check Nginx syntax and reload gracefully. Preserve its database and shared files.
+
+## November 2026 domain migration
+
+The canonical website and public contact address now use `avrixdigital.com`.
+Keep the `avrixdigital.co.uk` apex and www DNS pointing at this server and renew
+its existing certificate: the HTTPS configuration redirects both old hosts to
+`https://avrixdigital.com$request_uri`, retaining paths and query strings.
+
+Before installing the HTTPS configuration, obtain a separate certificate for
+`avrixdigital.com` and `www.avrixdigital.com` using the existing ACME webroot.
+Keep both domains in the HTTP ACME server block. Configure a checked Nginx reload
+after certificate renewal. Update the shared backend environment and the
+root-owned `/usr/local/sbin/avrix-deploy` health-check host alongside the site.
+Routine CI releases do not update these root-owned files.
+
+Keep public forms disabled until SMTP credentials and Turnstile for the new
+hostnames are verified. The public mailbox is owner-confirmed; that does not
+verify application SMTP authentication. Preserve the existing WIMS service and
+Nginx configuration throughout the cutover. Back up Avrix configuration and retain
+the previous release for rollback.

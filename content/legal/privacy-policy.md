@@ -10,7 +10,7 @@ _notes: "TEMPLATE. Must be reviewed and completed by the business owner (and ide
 
 ## Who we are
 
-This website is operated by [LEGAL NAME] trading as AVRIX Digital ("we", "us"). [Registered in England and Wales, company number [NUMBER]. Registered office: [ADDRESS].] We are the controller of the personal information described in this policy. Contact us about privacy at info@avrixdigital.co.uk.
+This website is operated by [LEGAL NAME] trading as AVRIX Digital ("we", "us"). [Registered in England and Wales, company number [NUMBER]. Registered office: [ADDRESS].] We are the controller of the personal information described in this policy. Contact us about privacy at info@avrixdigital.com.
 
 ## What we collect and why
 
@@ -37,7 +37,7 @@ Enquiries that don't become clients are deleted after [24] months. Client record
 
 ## Your rights
 
-You have the right to access, correct, delete or restrict the use of your information, to object to processing based on legitimate interests, to data portability, and to withdraw consent at any time. To exercise these rights, email info@avrixdigital.co.uk. You can also complain to the Information Commissioner's Office (ico.org.uk), though we'd appreciate the chance to resolve your concern first.
+You have the right to access, correct, delete or restrict the use of your information, to object to processing based on legitimate interests, to data portability, and to withdraw consent at any time. To exercise these rights, email info@avrixdigital.com. You can also complain to the Information Commissioner's Office (ico.org.uk), though we'd appreciate the chance to resolve your concern first.
 
 ## Cookies
 

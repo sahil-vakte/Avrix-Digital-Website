@@ -14,7 +14,7 @@ Pull requests run CI; successful `main` builds deploy Avrix through a dedicated
 restricted SSH account. Deployment credentials are encrypted in GitHub's
 production environment and are not needed by your AI coding tool.
 
-The website is live at **https://avrixdigital.co.uk/**, with HTTPS admin login at
+The website is live at **https://avrixdigital.com/**, with HTTPS admin login at
 `/manage-7f3k/` and one-use initial registration at `/admin-setup/`. Forms remain
 disabled until email and Turnstile are configured. The temporary HTTP preview
 has been withdrawn after the domain cutover.
@@ -146,7 +146,7 @@ On the server only: a read-only GHCR token, GitHub read-only deploy key, backend
 ## Cloudflare Pages setup
 
 1. Create a Pages project named `avrix-website`; deploy the static `frontend/dist` directory using the supplied workflow. Do not enable a second, duplicate automatic production deployment path.
-2. Add `avrixdigital.co.uk` and `www.avrixdigital.co.uk`. Configure HTTPS and a permanent www-to-apex redirect.
+2. Add `avrixdigital.com` and `www.avrixdigital.com`. Configure HTTPS and a permanent www-to-apex redirect.
 3. Add a Cloudflare Redirect Rule for `/` with query `page_id=31` → `/faqs/` (301). `_redirects` cannot match query strings.
 4. The supplied `_redirects` and `_headers` are preserved verbatim. The supplied redirect file chooses 301s for several URLs the audit called 410s, and routes `/author/*` to About rather than Blog. Resolve that audit/spec conflict deliberately before DNS cut-over; the pack explicitly required the seed file unchanged.
 5. Create a Turnstile widget for production and staging domains. Set its site key in repository variables and the secret/allowed hostnames in the backend environment. For unbounded PR preview hosts, point to a controlled staging host rather than weakening server-side hostname verification.
@@ -157,7 +157,7 @@ On the server only: a read-only GHCR token, GitHub read-only deploy key, backend
 
 Use a Linux server with Docker Compose, ports 80/443 open, SSH restricted, and the API container port unexposed. The API's Caddy configuration overwrites `X-Real-IP`; don't place another proxy in front without configuring the trust chain.
 
-1. Point `api.avrixdigital.co.uk` at the server. Clone into `/opt/avrix-website` using a read-only deploy key.
+1. Point `api.avrixdigital.com` at the server. Clone into `/opt/avrix-website` using a read-only deploy key.
 2. Copy `backend/.env.example` to `backend/.env`, fill every production setting, and set `DJANGO_DEBUG=False`. Set the real SMTP credentials and verified sender domain. Copy `deploy/.env.example` to `deploy/.env` and set the database password.
 3. Authenticate Docker for private GHCR pulls. Ensure the SSH deployment account can run Docker and update this checkout.
 4. Initial local-image launch: `docker compose --env-file deploy/.env -f deploy/docker-compose.prod.yml up --build -d`. Caddy obtains a certificate. Static admin assets are served by WhiteNoise through Caddy.
