@@ -5,18 +5,13 @@
       "href": "/"
     },
     {
-      "label": "About",
-      "href": "/about/"
-    },
-    {
       "label": "Services",
       "href": "/services/",
       "menu": "services"
     },
     {
-      "label": "Solutions",
-      "href": "/solutions/",
-      "menu": "solutions"
+      "label": "Case Studies",
+      "href": "/case-studies/"
     },
     {
       "label": "Industries",
@@ -29,70 +24,154 @@
       "menu": "resources"
     },
     {
+      "label": "About",
+      "href": "/about/"
+    },
+    {
       "label": "Contact",
       "href": "/contact-us/"
     }
   ],
   "header_cta": {
-    "label": "Talk to a Specialist",
+    "label": "Book a free consultation",
     "href": "booking_url_or:/contact-us/"
   },
   "mega_menu": [
     {
-      "pillar": "offensive",
-      "label": "Test & Find",
-      "blurb": "See your business the way an attacker would, then close the gaps.",
-      "items": [
-        "penetration-testing",
-        "network-penetration-testing",
-        "cloud-security-assessment",
-        "api-security-testing",
-        "red-teaming",
-        "security-awareness-training"
+      "pillar": "digital-transformation",
+      "label": "Digital Transformation",
+      "href": "/digital-transformation/",
+      "icon": "transform",
+      "blurb": "Modern platforms built around how you work.",
+      "links": [
+        {
+          "label": "Custom Software & Platforms",
+          "href": "/digital-transformation/custom-software-development/"
+        },
+        {
+          "label": "Legacy Modernisation",
+          "href": "/digital-transformation/legacy-modernisation/"
+        },
+        {
+          "label": "Web & Mobile Apps",
+          "href": "/digital-transformation/web-mobile-app-development/"
+        },
+        {
+          "label": "Process Automation & Operations",
+          "href": "/digital-transformation/process-automation/"
+        },
+        {
+          "label": "Cloud & Workplace Modernisation",
+          "href": "/digital-transformation/cloud-modernisation/"
+        },
+        {
+          "label": "Data, Integration & APIs",
+          "href": "/digital-transformation/data-integration-apis/"
+        },
+        {
+          "label": "UX & Product Design",
+          "href": "/digital-transformation/ux-product-design/"
+        }
       ]
     },
     {
-      "pillar": "managed",
-      "label": "Watch & Detect",
-      "blurb": "Someone qualified watching your systems when you aren't.",
-      "items": [
-        "managed-security",
-        "managed-detection-response",
-        "threat-intelligence",
-        "vulnerability-management"
+      "pillar": "ai-solutions",
+      "label": "AI Solutions",
+      "href": "/ai-solutions/",
+      "icon": "ai-automation",
+      "blurb": "Practical AI that saves hours.",
+      "links": [
+        {
+          "label": "AI Strategy & Readiness",
+          "href": "/ai-solutions/ai-strategy-consulting/"
+        },
+        {
+          "label": "AI Voice Agents",
+          "href": "/ai-solutions/ai-voice-agents/"
+        },
+        {
+          "label": "AI Agents & Automation",
+          "href": "/ai-solutions/ai-agents-automation/"
+        },
+        {
+          "label": "Generative AI & Document AI",
+          "href": "/ai-solutions/generative-ai-development/"
+        },
+        {
+          "label": "Computer Vision",
+          "href": "/ai-solutions/computer-vision/"
+        },
+        {
+          "label": "AI Governance & Security",
+          "href": "/ai-solutions/ai-governance-security/"
+        },
+        {
+          "label": "Industry AI Solutions",
+          "href": "/ai-solutions/industry-ai/"
+        }
       ]
     },
     {
-      "pillar": "compliance",
-      "label": "Prove & Comply",
-      "blurb": "Evidence that wins tenders and satisfies auditors and regulators.",
-      "items": [
-        "cyber-essentials",
-        "iso-27001",
-        "soc-2",
-        "gdpr-compliance",
-        "pci-dss",
-        "nis2-dora",
-        "vciso"
+      "pillar": "cyber-security",
+      "label": "Cyber Security",
+      "href": "/cyber-security/",
+      "icon": "shield-network",
+      "blurb": "Find gaps, watch for attacks, prove it.",
+      "links": [
+        {
+          "label": "Test & Find",
+          "href": "/cyber-security/test-and-find/"
+        },
+        {
+          "label": "Watch & Detect",
+          "href": "/cyber-security/watch-and-detect/"
+        },
+        {
+          "label": "Prove & Comply",
+          "href": "/cyber-security/prove-and-comply/"
+        },
+        {
+          "label": "Respond & Recover",
+          "href": "/cyber-security/respond-and-recover/"
+        },
+        {
+          "label": "All 20 cyber services",
+          "href": "/services/#cyber-services"
+        }
       ]
     },
     {
-      "pillar": "response",
-      "label": "Respond & Recover",
-      "blurb": "Calm, practical help when something has gone wrong.",
-      "items": ["incident-response", "digital-forensics", "incident-readiness"]
+      "pillar": "professional-services",
+      "label": "Professional Services",
+      "href": "/professional-services/",
+      "icon": "team",
+      "blurb": "Specialist people when you need them.",
+      "links": [
+        {
+          "label": "Staff Augmentation",
+          "href": "/professional-services/staff-augmentation/"
+        },
+        {
+          "label": "Talent Acquisition",
+          "href": "/professional-services/talent-acquisition/"
+        },
+        {
+          "label": "Dedicated Delivery Teams",
+          "href": "/professional-services/dedicated-delivery-teams/"
+        }
+      ]
     }
   ],
   "resources": [
     {
       "label": "Insights",
       "href": "/blog/",
-      "text": "Short, practical reads on UK and EU cyber risk."
+      "text": "Practical reads on technology, AI and cyber risk."
     },
     {
       "label": "FAQs",
       "href": "/faqs/",
-      "text": "Straight answers before you pick up the phone."
+      "text": "Straight answers before you get in touch."
     },
     {
       "label": "Speak to the team",
@@ -101,23 +180,19 @@
     }
   ],
   "footer": {
-    "tagline": "AVRIX Digital helps UK and European organisations find their security gaps, watch for attacks and prove they're protected, in plain English.",
+    "tagline": "AVRIX Digital helps UK and European organisations modernise, put AI to work and stay secure, with one accountable team and plain-English advice.",
     "explore": [
       {
         "label": "Home",
         "href": "/"
       },
       {
-        "label": "About Us",
-        "href": "/about/"
-      },
-      {
         "label": "Services",
         "href": "/services/"
       },
       {
-        "label": "Solutions",
-        "href": "/solutions/"
+        "label": "Case Studies",
+        "href": "/case-studies/"
       },
       {
         "label": "Industries",
@@ -128,11 +203,15 @@
         "href": "/blog/"
       },
       {
+        "label": "About",
+        "href": "/about/"
+      },
+      {
         "label": "FAQs",
         "href": "/faqs/"
       },
       {
-        "label": "Contact Us",
+        "label": "Contact",
         "href": "/contact-us/"
       }
     ],

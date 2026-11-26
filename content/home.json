@@ -1,274 +1,271 @@
 {
-  "seo_title": "AVRIX | Cyber Security for UK & European Businesses",
-  "seo_description": "AVRIX Digital helps UK and European organisations find security gaps, watch for attacks and prove compliance: testing, monitoring, ISO 27001, NIS2 and DORA.",
+  "seo_title": "Digital Transformation, AI & Cyber Security | AVRIX",
+  "seo_description": "AVRIX helps UK and European organisations modernise, use AI safely and stay secure: custom software, AI agents, cyber security and specialist tech talent.",
   "sections": [
     {
       "type": "hero",
-      "eyebrow": "AVRIX Digital · UK & Europe",
-      "h1": "Cyber security that keeps your business *open, compliant and trusted*",
-      "lead": "We find the gaps attackers would use, watch your systems around the clock and give you the evidence customers, insurers and regulators ask for. Explained in plain English, priced before we start.",
+      "eyebrow": "Intelligent Technology. Secure Growth.",
+      "h1": "Modernise, automate and protect your business with *one accountable technology partner*",
+      "lead": "AVRIX Digital helps UK and European organisations replace slow, manual processes with modern platforms, put AI to work where it pays back, and stay secure and compliant while they do it.",
       "primary_cta": {
-        "label": "Talk to a Specialist",
+        "label": "Book a free consultation",
         "href": "booking_url_or:/contact-us/"
       },
       "secondary_cta": {
-        "label": "View Services",
-        "href": "/services/"
+        "label": "See our case studies",
+        "href": "/case-studies/"
       },
-      "signal_chips": ["Website", "Email", "Cloud", "Laptops", "Suppliers"],
+      "trust": [
+        "UK and Europe coverage",
+        "Fixed-price proposals",
+        "NDA on request",
+        "ICO registered"
+      ],
+      "signal_chips": ["Software", "AI agents", "Cloud", "Security", "People"],
+      "label": "Illustrative example of a client programme view",
       "items": [
         {
-          "title": "Cyber Essentials",
-          "text": "Certified"
+          "title": "Operations platform",
+          "text": "Live"
         },
         {
-          "title": "ISO 27001",
-          "text": "Audit booked"
+          "title": "AI receptionist",
+          "text": "Answering"
         },
         {
           "title": "Pen test retest",
           "text": "Passed"
         },
         {
-          "title": "Supplier questionnaire",
-          "text": "Answered"
-        }
-      ],
-      "label": "Example of the weekly summary clients receive"
-    },
-    {
-      "type": "ticker",
-      "items": [
-        "Win the tender that asks for Cyber Essentials",
-        "Answer the 200-question security questionnaire",
-        "Keep your cyber insurance",
-        "Show the board where the risk is",
-        "Meet UK GDPR and NIS2 duties",
-        "Know who to call at 2am"
-      ]
-    },
-    {
-      "type": "services_carousel",
-      "eyebrow": "Popular starting points",
-      "title": "Security services built around *your real risks*",
-      "intro": "Most clients come to us with one pressing need: a tender, an audit, an insurer's question or a worrying email. These are the services that solve them most often.",
-      "items": [
-        "penetration-testing",
-        "cloud-security-assessment",
-        "cyber-essentials",
-        "managed-security",
-        "red-teaming",
-        "iso-27001",
-        "api-security-testing",
-        "incident-response"
-      ],
-      "link": {
-        "label": "Browse all 20 services",
-        "href": "/services/"
-      }
-    },
-    {
-      "type": "industries_tabs",
-      "eyebrow": "Sectors",
-      "title": "Sector know-how, *not one-size-fits-all*",
-      "intro": "A clinic, a payments firm and a factory face different attackers and different rules. Pick your sector to see what usually matters most.",
-      "link": {
-        "label": "See all sectors",
-        "href": "/industries/"
-      }
-    },
-    {
-      "type": "capabilities",
-      "eyebrow": "The AVRIX model",
-      "title": "Find it. Watch it. Prove it. *Recover from it.*",
-      "intro": "Four connected disciplines, one team and one point of contact, so nothing falls between suppliers.",
-      "items": [
-        {
-          "title": "Find it",
-          "text": "Hands-on testing that shows how an attacker would get in, and what they'd reach.",
-          "icon": "penetration-testing",
-          "href": "/services/#offensive",
-          "bullets": [
-            "Website, app and API testing",
-            "Network and cloud reviews",
-            "Phishing and red team exercises"
-          ]
-        },
-        {
-          "title": "Watch it",
-          "text": "Analysts monitoring your devices, email and cloud day and night.",
-          "icon": "managed-security",
-          "href": "/services/#managed",
-          "bullets": [
-            "24/7 monitoring and response",
-            "Device-level protection",
-            "Leaked password alerts"
-          ]
-        },
-        {
-          "title": "Prove it",
-          "text": "Certifications and evidence that open doors to bigger contracts.",
-          "icon": "compliance",
-          "href": "/services/#compliance",
-          "bullets": [
-            "Cyber Essentials and ISO 27001",
-            "UK and EU GDPR",
-            "NIS2, DORA, PCI DSS, SOC 2"
-          ]
-        },
-        {
-          "title": "Recover from it",
-          "text": "Experienced help to contain an incident and get back to work.",
-          "icon": "incident-response",
-          "href": "/services/#response",
-          "bullets": [
-            "Ransomware and email fraud",
-            "Forensic investigation",
-            "Plans and rehearsals"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "frameworks",
-      "eyebrow": "Standards",
-      "title": "The standards your customers and regulators *ask about*",
-      "intro": "If a customer contract, insurer, tender or regulator mentions one of these, we can help you meet it and prove it.",
-      "items": [
-        {
           "title": "Cyber Essentials",
-          "text": "Often required for UK public sector work",
-          "icon": "cyber-essentials"
-        },
-        {
-          "title": "ISO/IEC 27001:2022",
-          "text": "The certificate enterprise buyers recognise",
-          "icon": "compliance"
-        },
-        {
-          "title": "UK GDPR & EU GDPR",
-          "text": "Keeping personal data lawful and secure",
-          "icon": "data-protection"
-        },
-        {
-          "title": "NIS2 & UK NIS",
-          "text": "Resilience rules for essential services",
-          "icon": "shield-network"
-        },
-        {
-          "title": "DORA",
-          "text": "Digital resilience for EU finance",
-          "icon": "finance"
-        },
-        {
-          "title": "PCI DSS v4.0.1",
-          "text": "If you take card payments",
-          "icon": "card"
-        },
-        {
-          "title": "SOC 2",
-          "text": "Often requested by US customers",
-          "icon": "badge"
-        },
-        {
-          "title": "NHS DSPT",
-          "text": "For anyone handling NHS data",
-          "icon": "healthcare"
+          "text": "Certified"
         }
       ]
+    },
+    {
+      "type": "pillars",
+      "eyebrow": "What we do",
+      "title": "Three disciplines, *one accountable partner*",
+      "intro": "Most organisations buy software, AI and security from different suppliers who never speak to each other. We bring them together under one plan.",
+      "items": [
+        {
+          "title": "Digital Transformation",
+          "text": "Replace spreadsheets, disconnected tools and ageing systems with software built around how your business really works.",
+          "href": "/digital-transformation/",
+          "icon": "transform",
+          "label": "Explore Digital Transformation",
+          "bullets": [
+            "Custom platforms",
+            "Web & mobile apps",
+            "Legacy modernisation",
+            "Cloud & automation"
+          ]
+        },
+        {
+          "title": "AI Solutions",
+          "text": "Practical AI that saves hours, not hype that saves nothing. Voice agents that answer every call, AI agents that run routine work, and document AI that turns audio and paperwork into structured records.",
+          "href": "/ai-solutions/",
+          "icon": "ai-automation",
+          "label": "Explore AI Solutions",
+          "bullets": ["AI voice agents", "AI agents & automation", "Document AI", "AI governance"]
+        },
+        {
+          "title": "Cyber Security",
+          "text": "Find your security gaps, watch for attacks around the clock and prove compliance to customers, insurers and regulators.",
+          "href": "/cyber-security/",
+          "icon": "shield-network",
+          "label": "Explore Cyber Security",
+          "bullets": [
+            "Penetration testing",
+            "Managed SOC",
+            "Cyber Essentials & ISO 27001",
+            "NIS2 & DORA"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "problem",
+      "eyebrow": "The problem we solve",
+      "title": "Technology should make growth easier, *not riskier*",
+      "paragraphs": [
+        "Most organisations we meet have the same three problems. Work is stuck in manual steps and systems that do not talk to each other. AI has been talked about but not delivered. And every new system adds security and compliance risk that nobody fully owns.",
+        "AVRIX brings all three under one roof. We design and build the systems, add AI where it earns its place, and secure the whole estate, so you deal with one partner, one plan and one accountable contact."
+      ],
+      "items": [
+        {
+          "title": "Manual work",
+          "text": "Processes stuck in spreadsheets, inboxes and systems that do not talk to each other.",
+          "icon": "checklist"
+        },
+        {
+          "title": "AI not delivered",
+          "text": "Plenty of talk about AI, but nothing running real work end to end.",
+          "icon": "ai-automation"
+        },
+        {
+          "title": "Unowned risk",
+          "text": "Every new system adds security and compliance risk that nobody fully owns.",
+          "icon": "shield-network"
+        }
+      ]
+    },
+    {
+      "type": "connected",
+      "eyebrow": "How it fits together",
+      "title": "Built, automated and secured *in one programme*",
+      "items": [
+        {
+          "title": "Modernise",
+          "text": "We map how work really flows, then build or rebuild the platforms that run it.",
+          "href": "/digital-transformation/"
+        },
+        {
+          "title": "Automate",
+          "text": "We add AI agents, voice agents and document AI to remove repetitive work and speed up response times.",
+          "href": "/ai-solutions/"
+        },
+        {
+          "title": "Secure",
+          "text": "We test, monitor and harden what we build and what you already run, and give you the evidence to prove it.",
+          "href": "/cyber-security/"
+        },
+        {
+          "title": "Scale",
+          "text": "When you need extra hands, our specialist engineers, AI and cyber professionals join your team.",
+          "href": "/professional-services/"
+        }
+      ]
+    },
+    {
+      "type": "proof",
+      "eyebrow": "Case studies",
+      "title": "Real problems, solved for *real organisations*",
+      "intro": "Client names are kept confidential. Each project was planned, architected, built and delivered by the AVRIX team and our specialist partners.",
+      "items": [
+        "ai-clinical-documentation-fhir",
+        "warehouse-inventory-platform",
+        "ai-voice-receptionist-platform"
+      ],
+      "link": {
+        "label": "View all case studies",
+        "href": "/case-studies/"
+      }
+    },
+    {
+      "type": "people",
+      "eyebrow": "People & capacity",
+      "title": "Need the people *as well as the plan*?",
+      "text": "When your project needs extra skills, we provide vetted software engineers, AI specialists and cyber security professionals who work as part of your team, from a single contractor to a full delivery squad. You get the capacity without the hiring delay.",
+      "link": {
+        "label": "Explore Professional Services",
+        "href": "/professional-services/"
+      }
     },
     {
       "type": "advantage",
-      "eyebrow": "Why AVRIX Digital",
-      "title": "What makes AVRIX *different*",
-      "intro": "We're judged on whether you're safer and can prove it, not on how long the report is.",
+      "eyebrow": "Why AVRIX",
+      "title": "Why organisations *choose AVRIX*",
       "items": [
         {
-          "n": "01",
-          "title": "Board-ready, not just tech-ready",
-          "text": "Every engagement ends with a one-page summary of business risk your directors can act on, alongside the technical detail."
+          "title": "One accountable partner",
+          "text": "Software, AI and security under one contract and one named contact."
         },
         {
-          "n": "02",
+          "title": "Board-ready reporting",
+          "text": "Plain-English updates on cost, risk and return, not technical jargon."
+        },
+        {
           "title": "Right-sized and fixed-price",
-          "text": "We scope to what you actually need to protect or prove, then quote a fixed price. No padded day rates, no tools you don't need."
+          "text": "We scope to your budget and say when something is not worth doing."
         },
         {
-          "n": "03",
+          "title": "Secure by design",
+          "text": "Every system we build is tested and documented before it goes live."
+        },
+        {
           "title": "UK and EU rules in-house",
-          "text": "Cyber Essentials, UK and EU GDPR, NIS2, DORA and the NHS toolkit are everyday work for us, not a referral elsewhere."
+          "text": "UK GDPR, EU GDPR, NIS2, DORA, Cyber Essentials and the EU AI Act."
         },
         {
-          "n": "04",
-          "title": "We stay until it's fixed",
-          "text": "We walk your team through the findings, help with the fixes and retest penetration test issues, so the risk actually goes away."
+          "title": "We stay until it works",
+          "text": "Support, retesting and improvement are built into every engagement."
         }
       ]
     },
     {
       "type": "engagement",
-      "eyebrow": "The AVRIX approach",
-      "title": "Listen, scope, assess, fix, *prove*",
-      "intro": "The same five steps whether it's a single test or an ongoing service.",
+      "eyebrow": "Our approach",
+      "title": "From first call to measurable result *in five steps*",
       "items": [
         {
-          "label": "Step 1 · Listen",
-          "title": "A free scoping call",
-          "text": "We learn what you need to protect, who's asking and by when, before suggesting anything."
+          "title": "Listen",
+          "text": "A free 30-minute call to understand your goals, risks and constraints.",
+          "label": "Step 1"
         },
         {
-          "label": "Step 2 · Scope",
-          "title": "A fixed-price proposal",
-          "text": "Clear scope, timings and price in writing. For testing, you sign authorisation before we touch a system."
+          "title": "Scope",
+          "text": "A fixed-price proposal with clear deliverables and timelines.",
+          "label": "Step 2"
         },
         {
-          "label": "Step 3 · Assess",
-          "title": "The work itself",
-          "text": "Testing, monitoring set-up or a compliance review, with a named lead you can call at any point."
+          "title": "Design",
+          "text": "Architecture, security and success measures agreed before build starts.",
+          "label": "Step 3"
         },
         {
-          "label": "Step 4 · Fix",
-          "title": "Help closing the gaps",
-          "text": "A walkthrough with your team, practical fixes and retesting where it applies."
+          "title": "Deliver",
+          "text": "Built, tested and launched in phases, with a named lead throughout.",
+          "label": "Step 4"
         },
         {
-          "label": "Step 5 · Prove",
-          "title": "Evidence you can share",
-          "text": "Reports, letters and evidence packs ready for customers, auditors, insurers and the board."
+          "title": "Prove",
+          "text": "Results reported in business terms, plus documentation for auditors, insurers and your board.",
+          "label": "Step 5"
         }
       ]
     },
     {
+      "type": "industries_tabs",
+      "eyebrow": "Industries",
+      "title": "Shaped around *your sector*",
+      "intro": "A clinic, a retailer and a manufacturer face different pressures and rules. Pick your sector to see what usually matters most.",
+      "link": {
+        "label": "All industries",
+        "href": "/industries/"
+      }
+    },
+    {
       "type": "testimonials",
-      "eyebrow": "Client feedback",
-      "title": "What our *clients say*"
+      "eyebrow": "Testimonials",
+      "title": "What clients *say*"
     },
     {
       "type": "faq",
       "eyebrow": "FAQs",
-      "title": "Questions we're *often asked*",
-      "intro": "The questions we hear most on first calls, answered plainly."
+      "title": "Questions we are *often asked*",
+      "intro": "Straight answers to what people ask us on first calls."
     },
     {
       "type": "final_cta",
-      "title": "Let's find your weak spots *before anyone else does*",
-      "text": "Tell us what you need to protect or prove. A specialist will reply within one working day with honest advice on where to start.",
+      "title": "Let's talk about what you want to *fix first*",
+      "text": "Book a free 30-minute consultation. You will get a clear view of options, costs and risks, whether or not you work with us.",
       "promises": [
         {
-          "title": "Free 30-minute scoping call",
-          "text": "With a specialist, not a salesperson"
+          "title": "Free 30-minute consultation",
+          "text": "With a specialist, not a salesperson."
         },
         {
           "title": "Fixed price before work starts",
-          "text": "No surprise invoices"
+          "text": "Scope and cost agreed in writing."
         },
         {
           "title": "Mutual NDA on request",
-          "text": "Before you share anything sensitive"
+          "text": "Signed before you share anything sensitive."
         }
       ],
       "primary_cta": {
-        "label": "Talk to a Specialist",
+        "label": "Book a free consultation",
         "href": "booking_url_or:/contact-us/"
       }
     }

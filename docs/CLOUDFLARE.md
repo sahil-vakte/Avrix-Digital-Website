@@ -72,7 +72,7 @@ npm.cmd run deploy:cloudflare
 
 After the first deployment, visit `/api/health/` and expect `{"status":"ok"}`. The container runs database migrations and creates the rate-limit cache table automatically before Gunicorn starts. The first request after an idle period can take longer while the container starts.
 
-Visit `/admin-setup/` directly and enter the runtime bootstrap token to create the first superadmin. It is not linked in navigation. After success, remove `SUPERADMIN_BOOTSTRAP_TOKEN` from Cloudflare and redeploy. The database records token use, preventing reuse even before removal. Sign in at `/manage-7f3k/` or use the footer Admin login link.
+Visit `/admin-setup/` directly and enter the runtime bootstrap token to create the first superadmin. It is not linked in navigation. After success, remove `SUPERADMIN_BOOTSTRAP_TOKEN` from Cloudflare and redeploy. The database records token use, preventing reuse even before removal. Sign in at `/manage-7f3k/` (it is not linked from the public site).
 
 Submit a real enquiry, confirm it appears in admin, open its detail drawer, update its status and check both notification emails. Test newsletter confirmation too. Preview submissions are labelled test and excluded from production admin lists; use `VITE_SITE_ENV=production` when checking live enquiries.
 

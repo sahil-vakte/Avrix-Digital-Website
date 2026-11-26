@@ -1,4 +1,18 @@
-import { content, site, services, solutions, posts, serviceHref, postHref } from '../../content';
+import {
+  content,
+  site,
+  services,
+  solutions,
+  posts,
+  offerings,
+  caseStudies,
+  findOffering,
+  hub,
+  offeringPath,
+  caseStudyHref,
+  serviceHref,
+  postHref,
+} from '../../content';
 import type { RouteRecord } from '../../content/routes';
 export function jsonLd(route: RouteRecord) {
   const base = site.site_url;
@@ -42,15 +56,21 @@ export function jsonLd(route: RouteRecord) {
       name: site.brand_name,
       url: base,
       email: site.email,
-      areaServed: 'GB',
+      areaServed: ['GB', 'IE', 'EU'],
       priceRange: '££',
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: site.brand_name,
-        itemListElement: services.map((s) => ({
-          '@type': 'Offer',
-          itemOffered: { '@type': 'Service', name: s.title, url: base + serviceHref(s.slug) },
-        })),
+        itemListElement: [
+          ...offerings.map((o) => ({
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: o.title, url: base + offeringPath(o) },
+          })),
+          ...services.map((s) => ({
+            '@type': 'Offer',
+            itemOffered: { '@type': 'Service', name: s.title, url: base + serviceHref(s.slug) },
+          })),
+        ],
       },
     });
   let faqs =
@@ -67,6 +87,32 @@ export function jsonLd(route: RouteRecord) {
       url: base + route.path,
       provider,
       areaServed: ['GB', 'IE', 'EU'],
+    });
+  }
+  if (route.kind === 'pillar' || route.kind === 'offering') {
+    const o = findOffering(route.slug!);
+    faqs = o.faqs;
+    graph.push({
+      '@type': 'Service',
+      name: o.title,
+      serviceType: hub(o.pillar).title,
+      description: o.summary,
+      url: base + route.path,
+      provider,
+      areaServed: ['GB', 'IE', 'EU'],
+    });
+  }
+  if (route.kind === 'case-study') {
+    const c = caseStudies.find((v) => v.slug === route.slug)!;
+    graph.push({
+      '@type': 'Article',
+      headline: c.title,
+      description: c.summary,
+      datePublished: c.updated,
+      dateModified: c.updated,
+      author: { '@type': 'Organization', name: site.brand_name },
+      publisher: provider,
+      mainEntityOfPage: base + caseStudyHref(c.slug),
     });
   }
   if (faqs.length)
@@ -112,6 +158,14 @@ export function jsonLd(route: RouteRecord) {
       mainEntityOfPage: base + postHref(p.slug),
     });
   }
+  if (route.kind === 'about')
+    graph.push({
+      '@type': 'ProfessionalService',
+      name: site.brand_name,
+      url: base,
+      email: site.email,
+      areaServed: ['GB', 'IE', 'EU'],
+    });
   if (route.kind === 'about' || route.kind === 'contact')
     graph.push({
       '@type': route.kind === 'about' ? 'AboutPage' : 'ContactPage',
@@ -122,7 +176,13 @@ export function jsonLd(route: RouteRecord) {
   if (route.path !== '/') {
     const parts = [{ name: content.ui.home, item: base + '/' }];
     if (route.kind === 'service')
-      parts.push({ name: content.ui.services, item: base + '/services/' });
+      parts.push({ name: content.ui.cyberSecurity, item: base + '/cyber-security/' });
+    if (route.kind === 'offering') {
+      const h = hub(findOffering(route.slug!).pillar);
+      parts.push({ name: h.title, item: base + offeringPath(h) });
+    }
+    if (route.kind === 'case-study')
+      parts.push({ name: content.ui.caseStudies, item: base + '/case-studies/' });
     if (route.kind === 'solution')
       parts.push({ name: content.ui.solutions, item: base + '/solutions/' });
     if (route.kind === 'post')

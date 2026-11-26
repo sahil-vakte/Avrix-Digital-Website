@@ -3,17 +3,182 @@ import {
   content,
   services,
   posts,
+  offerings,
+  caseStudies,
+  offeringPath,
+  caseStudyHref,
   serviceHref,
   postHref,
   homeSection,
   nav,
   ui,
 } from '../../content';
-import type { Section, Item, Faq, Service, Post, Industry } from '../../content/schemas';
+import type {
+  Section,
+  Item,
+  Faq,
+  Service,
+  Post,
+  Industry,
+  Offering,
+  CaseStudy,
+  Block,
+} from '../../content/schemas';
 import { Button, Em, Heading, Icon } from '../ui';
 
+/** Label of a cyber service group (Test & Find, Watch & Detect, ...). */
 export const pillarLabel = (pillar: string) =>
-  nav.mega_menu.find((g) => g.pillar === pillar)?.label || '';
+  offerings.find((o) => o.group === pillar)?.title || '';
+export const groupFor = (pillar: string) => offerings.find((o) => o.group === pillar);
+export const pillarTitle = (pillar: string) =>
+  offerings.find((o) => o.pillar === pillar && o.slug === 'index')?.title || '';
+
+/** Card linking to a pillar hub, sub-page or cyber service group. */
+export function OfferingGrid({
+  items,
+  columns = 3,
+  withServices = false,
+}: {
+  items: Offering[];
+  columns?: 2 | 3 | 4;
+  withServices?: boolean;
+}) {
+  return (
+    <div className={`grid cards-${columns} stagger offering-grid`}>
+      {items.map((o) => (
+        <article className={`card offering-card pillar-${o.pillar}`} key={o.pillar + o.slug}>
+          <Icon name={o.icon} />
+          <h3>
+            <a href={offeringPath(o)}>{o.title}</a>
+          </h3>
+          <p>{o.summary}</p>
+          {withServices && o.services && (
+            <ul className="link-list">
+              {o.services.map((slug) => (
+                <li key={slug}>
+                  <a href={serviceHref(slug)}>{services.find((s) => s.slug === slug)!.title}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+          <a className="more" href={offeringPath(o)} aria-label={`${ui.learnMore}: ${o.title}`}>
+            {ui.learnMore} <span aria-hidden="true">→</span>
+          </a>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+export function CaseStudyCard({ c }: { c: CaseStudy }) {
+  return (
+    <article className="card case-card">
+      <p className="card-label">{c.industry}</p>
+      <h3>
+        <a href={caseStudyHref(c.slug)}>{c.title}</a>
+      </h3>
+      <p>{c.summary}</p>
+      <ul className="tags small">
+        {c.technology.map((t) => (
+          <li key={t}>{t}</li>
+        ))}
+      </ul>
+      <a
+        className="more"
+        href={caseStudyHref(c.slug)}
+        aria-label={`${ui.readCaseStudy}: ${c.title}`}
+      >
+        {ui.readCaseStudy} <span aria-hidden="true">→</span>
+      </a>
+    </article>
+  );
+}
+
+export function CaseStudyGrid({ slugs }: { slugs?: string[] }) {
+  const items = slugs ? slugs.map((s) => caseStudies.find((c) => c.slug === s)!) : caseStudies;
+  return (
+    <div className="grid cards-3 stagger case-grid">
+      {items.map((c) => (
+        <CaseStudyCard key={c.slug} c={c} />
+      ))}
+    </div>
+  );
+}
+
+export function DataTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
+  return (
+    <div className="table-wrap" tabIndex={0} role="region" aria-label={headers.join(', ')}>
+      <table className="data-table">
+        <thead>
+          <tr>
+            {headers.map((h) => (
+              <th scope="col" key={h}>
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r[0]}>
+              {r.map((cell, i) =>
+                i === 0 ? (
+                  <th scope="row" key={i}>
+                    {cell}
+                  </th>
+                ) : (
+                  <td key={i}>{cell}</td>
+                ),
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+/** Renders a structured content block from a pillar page. */
+export function BlockSection({ block, tone }: { block: Block; tone?: 'light' | 'tint' }) {
+  const items = block.items || [];
+  return (
+    <SectionShell
+      id={block.id}
+      tone={block.tone || tone}
+      eyebrow={block.eyebrow}
+      title={block.title}
+      intro={block.intro}
+    >
+      {block.style === 'table' && block.table ? (
+        <DataTable headers={block.table.headers} rows={block.table.rows} />
+      ) : block.style === 'checklist' ? (
+        <ul className="check-cards stagger">
+          {items.map((i) => (
+            <li key={i.title} className="card">
+              <strong>{i.title}</strong>
+              <span>{i.text}</span>
+            </li>
+          ))}
+        </ul>
+      ) : block.style === 'points' ? (
+        <ul className="standard-chips">
+          {items.map((i) => (
+            <li key={i.title}>
+              <strong>{i.title}</strong>
+              <span>{i.text}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <CardGrid
+          items={items}
+          columns={block.columns || 3}
+          numbered={block.style === 'numbered'}
+        />
+      )}
+    </SectionShell>
+  );
+}
 
 /** Light, centred page hero used by every inner page. */
 export function PageHero({
@@ -361,7 +526,7 @@ export function HeroDashboard({ section }: { section: Section }) {
           <i />
         </div>
         <div className="dash-row">
-          <span className="pill danger">{ui.threatBlocked}</span>
+          <span className="pill success">{ui.threatBlocked}</span>
           <span>{ui.activeDefence}</span>
         </div>
       </div>

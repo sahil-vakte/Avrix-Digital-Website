@@ -1,6 +1,7 @@
 import { home, content, services } from '../content';
-import { Button, Em } from '../components/ui';
+import { Button, Em, Icon } from '../components/ui';
 import {
+  CaseStudyGrid,
   Ticker,
   HeroDashboard,
   ServiceCard,
@@ -46,6 +47,13 @@ export default function Home() {
                         {s.secondary_cta!.label}
                       </Button>
                     </div>
+                    {s.trust && (
+                      <ul className="hero-trust">
+                        {s.trust.map((t) => (
+                          <li key={t}>{t}</li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                   <HeroDashboard section={s} />
                 </div>
@@ -53,6 +61,96 @@ export default function Home() {
             );
           case 'ticker':
             return <Ticker key={i} section={s} />;
+          case 'pillars':
+            return (
+              <SectionShell
+                key={i}
+                id="pillars"
+                eyebrow={s.eyebrow}
+                title={s.title}
+                intro={s.intro}
+              >
+                <div className="pillar-cards stagger">
+                  {(s.items as Item[]).map((p) => (
+                    <article
+                      className={`pillar-card pillar-${p.href!.replace(/\//g, '')}`}
+                      key={p.title}
+                    >
+                      <div className="pillar-card-top">
+                        <Icon name={p.icon!} />
+                        <h3>
+                          <a href={p.href}>{p.title}</a>
+                        </h3>
+                      </div>
+                      <p>{p.text}</p>
+                      <ul className="check-list">{p.bullets?.map((b) => <li key={b}>{b}</li>)}</ul>
+                      <a className="more" href={p.href}>
+                        {p.label} <span aria-hidden="true">→</span>
+                      </a>
+                    </article>
+                  ))}
+                </div>
+              </SectionShell>
+            );
+          case 'problem':
+            return (
+              <SectionShell key={i} tone="tint" eyebrow={s.eyebrow} title={s.title}>
+                <div className="problem-split">
+                  <div className="problem-copy">
+                    {s.paragraphs?.map((p) => <p key={p.slice(0, 20)}>{p}</p>)}
+                  </div>
+                  <ul className="problem-list">
+                    {(s.items as Item[]).map((p) => (
+                      <li key={p.title}>
+                        <Icon name={p.icon!} />
+                        <span>
+                          <strong>{p.title}</strong>
+                          {p.text}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </SectionShell>
+            );
+          case 'connected':
+            return (
+              <SectionShell key={i} eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
+                <CardGrid
+                  items={s.items as Item[]}
+                  columns={4}
+                  numbered
+                  className="connected-grid"
+                />
+              </SectionShell>
+            );
+          case 'proof':
+            return (
+              <SectionShell key={i} tone="tint" eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
+                <CaseStudyGrid slugs={s.items as string[]} />
+                {link}
+              </SectionShell>
+            );
+          case 'people':
+            return (
+              <section className="section light" key={i}>
+                <div className="container">
+                  <div className="people-band">
+                    <Icon name="team" />
+                    <div>
+                      <p className="eyebrow">{s.eyebrow}</p>
+                      <h2>
+                        <Em text={s.title!} />
+                      </h2>
+                      <p>{s.text}</p>
+                    </div>
+                    <Button href={s.link!.href!} variant="secondary">
+                      {s.link!.label}
+                    </Button>
+                  </div>
+                </div>
+              </section>
+            );
           case 'services_carousel':
             return (
               <SectionShell
@@ -97,7 +195,7 @@ export default function Home() {
           case 'advantage':
             return (
               <SectionShell key={i} eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
-                <CardGrid items={s.items as Item[]} columns={4} numbered />
+                <CardGrid items={s.items as Item[]} columns={3} numbered />
               </SectionShell>
             );
           case 'engagement':

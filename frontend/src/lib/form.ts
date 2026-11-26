@@ -1,5 +1,11 @@
 import { z } from 'zod';
 export const serviceSlugs = [
+  'web-application-development',
+  'web-development',
+  'aws-consulting',
+  'ai-automation',
+  'voice-call-agent',
+  'talent-acquisition',
   'penetration-testing',
   'managed-soc',
   'security-compliance',

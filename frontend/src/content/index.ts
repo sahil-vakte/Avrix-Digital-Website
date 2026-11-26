@@ -1,7 +1,28 @@
 import raw from './generated.json';
 import type { Content } from './schemas';
 export const content = raw as unknown as Content;
-export const { site, home, nav, services, solutions, posts, accreditations, ui } = content;
+export const {
+  site,
+  home,
+  nav,
+  services,
+  solutions,
+  offerings,
+  caseStudies,
+  posts,
+  accreditations,
+  ui,
+} = content;
+export { offeringPath } from './paths';
+export const hub = (pillar: string) =>
+  offerings.find((o) => o.pillar === pillar && o.slug === 'index')!;
+export const subPages = (pillar: string) =>
+  offerings.filter((o) => o.pillar === pillar && o.slug !== 'index');
+export const findOffering = (key: string) => {
+  const [pillar, slug] = key.split('/');
+  return offerings.find((o) => o.pillar === pillar && o.slug === slug)!;
+};
+export const caseStudyHref = (slug: string) => `/case-studies/${slug}/`;
 export const page = (slug: string) => {
   const result = [...content.pages, ...content.legal].find((p) => p.slug === slug);
   if (!result) throw new Error(`Missing page ${slug}`);

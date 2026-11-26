@@ -6,6 +6,8 @@ module.exports = {
         'http://localhost/',
         'http://localhost/services/',
         'http://localhost/services/penetration-testing/',
+        'http://localhost/ai-solutions/',
+        'http://localhost/case-studies/warehouse-inventory-platform/',
         'http://localhost/contact-us/',
         'http://localhost/blog/',
       ],

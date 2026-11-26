@@ -1,10 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { content, site, nav, ui } from '../../content';
 import { track } from '../../lib/analytics';
-import { apiOrigin } from '../../lib/api';
 import { Brand } from './Header';
 const Newsletter = lazy(() => import('../forms/Newsletter'));
-const adminLoginUrl = import.meta.env.VITE_ADMIN_URL || `${apiOrigin}/manage-7f3k/`;
 export default function Footer() {
   const socials = Object.entries(site.socials).filter(([, v]) => v);
   return (
@@ -66,10 +64,11 @@ export default function Footer() {
           <div>
             <h3>{ui.services}</h3>
             {nav.mega_menu.map((g) => (
-              <a key={g.pillar} href={`/services/#${g.pillar}`}>
+              <a key={g.pillar} href={g.href}>
                 {g.label}
               </a>
             ))}
+            <a href="/case-studies/">{ui.caseStudies}</a>
             <a href="/services/incident-response/">{ui.emergencyCta}</a>
           </div>
           <div>
@@ -117,9 +116,6 @@ export default function Footer() {
             {site.vat_number && `${ui.vat} ${site.vat_number}`}
           </span>
           <div className="footer-utilities">
-            <a className="footer-admin" href={adminLoginUrl}>
-              {ui.adminLogin}
-            </a>
             <a className="back-top" href="#main">
               {ui.backToTop} <span aria-hidden="true">↑</span>
             </a>

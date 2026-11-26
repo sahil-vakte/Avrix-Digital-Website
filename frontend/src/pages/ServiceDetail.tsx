@@ -1,5 +1,5 @@
 import rawBodies from '../content/generated-services.json';
-import { services, ui, posts, homeSection } from '../content';
+import { services, ui, posts, homeSection, offeringPath } from '../content';
 import {
   PageHero,
   RequestCard,
@@ -11,6 +11,7 @@ import {
   FaqSection,
   BlogTeaser,
   pillarLabel,
+  groupFor,
 } from '../components/sections';
 import { Breadcrumbs, Prose } from '../components/ui';
 import type { Item } from '../content/schemas';
@@ -38,7 +39,10 @@ export default function ServiceDetail({ slug }: { slug: string }) {
       >
         <Breadcrumbs
           items={[
-            { label: ui.services, href: '/services/' },
+            { label: ui.cyberSecurity, href: '/cyber-security/' },
+            ...(groupFor(s.pillar)
+              ? [{ label: groupFor(s.pillar)!.title, href: offeringPath(groupFor(s.pillar)!) }]
+              : []),
             { label: s.title, href: `/services/${slug}/` },
           ]}
         />
@@ -64,10 +68,18 @@ export default function ServiceDetail({ slug }: { slug: string }) {
           )}
         </div>
       </section>
-      <SectionShell tone="tint" eyebrow={ui.keyBenefits} title={`What it *means for your business*`}>
+      <SectionShell
+        tone="tint"
+        eyebrow={ui.keyBenefits}
+        title={`What it *means for your business*`}
+      >
         <CardGrid items={s.outcomes} />
       </SectionShell>
-      <SectionShell id="process" eyebrow={ui.ourProcess} title={`From first call to *final report*`}>
+      <SectionShell
+        id="process"
+        eyebrow={ui.ourProcess}
+        title={`From first call to *final report*`}
+      >
         <Process steps={s.process} />
       </SectionShell>
       <SectionShell id="included" tone="tint" eyebrow={ui.serviceAreas} title={`What we *look at*`}>
@@ -77,7 +89,11 @@ export default function ServiceDetail({ slug }: { slug: string }) {
         <CardGrid items={advantage} numbered />
       </SectionShell>
       {s.deliverables && (
-        <SectionShell tone="tint" eyebrow={ui.deliverables} title={`Documents you can *actually use*`}>
+        <SectionShell
+          tone="tint"
+          eyebrow={ui.deliverables}
+          title={`Documents you can *actually use*`}
+        >
           <CardGrid items={s.deliverables} />
         </SectionShell>
       )}

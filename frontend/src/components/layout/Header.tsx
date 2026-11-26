@@ -1,6 +1,6 @@
 ﻿import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
-import { content, nav, site, services, solutions, serviceHref, ui } from '../../content';
+import { content, nav, site, solutions, ui } from '../../content';
 import { Button, Icon } from '../ui';
 
 type Menu = 'services' | 'solutions' | 'industries' | 'resources';
@@ -95,20 +95,17 @@ export default function Header() {
         <div className="nav-panel nav-panel-services" id="menu-services" hidden={open !== kind}>
           <div className="nav-service-groups">
             {nav.mega_menu.map((group) => (
-              <div key={group.pillar}>
-                <a className="nav-group-title" href={`/services/#${group.pillar}`}>
+              <div key={group.pillar} className={`nav-pillar pillar-${group.pillar}`}>
+                <a className="nav-group-title" href={group.href}>
+                  <Icon name={group.icon} />
                   {group.label}
                 </a>
                 <p className="nav-group-blurb">{group.blurb}</p>
-                {group.items.map((slug) => {
-                  const service = services.find((s) => s.slug === slug)!;
-                  return (
-                    <a className="nav-link-row" href={serviceHref(slug)} key={slug}>
-                      <Icon name={service.icon} />
-                      <span>{service.title}</span>
-                    </a>
-                  );
-                })}
+                {group.links.map((l) => (
+                  <a className="nav-link-row" href={l.href} key={l.href}>
+                    <span>{l.label}</span>
+                  </a>
+                ))}
               </div>
             ))}
           </div>
@@ -276,9 +273,12 @@ export default function Header() {
                   ? nav.mega_menu.map((group) => (
                       <details key={group.pillar}>
                         <summary>{group.label}</summary>
-                        {group.items.map((slug) => (
-                          <a key={slug} className="sheet-sub" href={serviceHref(slug)}>
-                            {services.find((s) => s.slug === slug)!.title}
+                        <a className="sheet-sub" href={group.href}>
+                          {ui.overview}: {group.label}
+                        </a>
+                        {group.links.map((l) => (
+                          <a key={l.href} className="sheet-sub" href={l.href}>
+                            {l.label}
                           </a>
                         ))}
                       </details>

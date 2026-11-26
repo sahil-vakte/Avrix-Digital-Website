@@ -5,6 +5,29 @@ import { content, page, services, site, solutions, ui } from '../../content';
 const EnquiryForm = lazy(() => import('./EnquiryForm'));
 
 /** Map a service page to the matching "What can we help with?" option on the enquiry form. */
+/** Enquiry topic for pages under the four pillars. */
+export function pillarTopic(pathname: string) {
+  const [, pillar, page] = pathname.match(/^\/([a-z-]+)\/([a-z0-9-]*)\/?$/) || [];
+  if (pillar === 'ai-solutions')
+    return page === 'ai-voice-agents' ? 'voice-call-agent' : 'ai-automation';
+  if (pillar === 'professional-services') return 'talent-acquisition';
+  if (pillar === 'digital-transformation')
+    return page === 'web-mobile-app-development' || page === 'ux-product-design'
+      ? 'web-development'
+      : page === 'cloud-modernisation'
+        ? 'aws-consulting'
+        : 'web-application-development';
+  if (pillar === 'cyber-security')
+    return (
+      {
+        'test-and-find': 'penetration-testing',
+        'watch-and-detect': 'managed-soc',
+        'prove-and-comply': 'security-compliance',
+        'respond-and-recover': 'incident-response',
+      }[page] || undefined
+    );
+  return undefined;
+}
 export function enquiryTopic(slug: string, pillar: string) {
   if (slug === 'security-awareness-training') return 'security-training';
   return (
@@ -61,7 +84,7 @@ export default function EnquiryExperience({ children }: { children: ReactNode })
         ? 'security-products'
         : match
           ? enquiryTopic(match.slug, match.pillar)
-          : undefined;
+          : pillarTopic(pathname);
     setRequest({ service, call });
   }
   function intercept(event: MouseEvent<HTMLDivElement>) {
