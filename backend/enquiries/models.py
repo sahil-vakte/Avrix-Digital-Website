@@ -46,6 +46,11 @@ class Enquiry(models.Model):
     is_test = models.BooleanField(default=False)
     spam_score = models.PositiveSmallIntegerField(default=0)
     email_failed = models.BooleanField(default=False)
+    # Avrix CRM hub sync
+    crm_synced_at = models.DateTimeField(null=True, blank=True)
+    crm_lead_id = models.CharField(max_length=64, blank=True)
+    crm_status = models.CharField(max_length=24, blank=True)
+    crm_error = models.CharField(max_length=300, blank=True)
 
     class Meta:
         ordering = ["-created_at"]

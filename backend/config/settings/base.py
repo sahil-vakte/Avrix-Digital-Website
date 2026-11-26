@@ -93,6 +93,11 @@ SUPERADMIN_BOOTSTRAP_TOKEN = env("SUPERADMIN_BOOTSTRAP_TOKEN", default="")
 SITE_URL = env("SITE_URL", default="https://avrixdigital.co.uk").rstrip("/")
 API_URL = env("API_URL", default="https://api.avrixdigital.co.uk").rstrip("/")
 BOOKING_URL = env("BOOKING_URL", default="") or SITE_URL + "/contact-us/"
+# Avrix CRM hub (avrix-marketing). Leave blank to keep enquiries in this admin only.
+AVRIX_CRM_URL = env("AVRIX_CRM_URL", default="").rstrip("/")
+AVRIX_CRM_KEY = env("AVRIX_CRM_KEY", default="")
+AVRIX_CRM_SECRET = env("AVRIX_CRM_SECRET", default="")
+AVRIX_CRM_WEBHOOK_SECRET = env("AVRIX_CRM_WEBHOOK_SECRET", default="")
 TURNSTILE_HOSTNAMES = env.list("TURNSTILE_HOSTNAMES", default=["avrixdigital.co.uk", "www.avrixdigital.co.uk"])
 EMAIL_ASYNC = True
 DATA_UPLOAD_MAX_MEMORY_SIZE = 65536

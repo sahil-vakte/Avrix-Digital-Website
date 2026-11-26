@@ -8,7 +8,11 @@ from rest_framework.views import APIView
 from .models import Subscriber, EmailJob
 from .serializers import EnquirySerializer, NewsletterSerializer
 from .throttles import private_ip
-from .emails import dispatch
+from .emails import dispatch, pool
+from . import crm
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+import json
 
 
 class EnquiryCreate(APIView):
@@ -28,7 +32,36 @@ class EnquiryCreate(APIView):
             if enquiry.status != "spam":
                 jobs = [EmailJob.objects.create(enquiry=enquiry, kind=kind).pk for kind in ["team", "reply"]]
                 transaction.on_commit(lambda: dispatch(jobs))
+            if enquiry.status != "spam" and crm.enabled():
+                transaction.on_commit(lambda: crm_async(enquiry.pk))
         return Response({"id": str(enquiry.id), "message": "Thanks, we'll be in touch within 1 working day."}, status=201)
+
+
+def crm_async(pk):
+    if getattr(settings, "EMAIL_ASYNC", True):
+        pool.submit(crm.sync_enquiry, pk)
+    else:
+        crm.sync_enquiry(pk)
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+class CrmWebhook(APIView):
+    """Signed stage changes from the Avrix CRM hub."""
+
+    authentication_classes = []
+    permission_classes = []
+    throttle_classes = []
+
+    def post(self, request):
+        body = request.body
+        if not crm.verify(settings.AVRIX_CRM_WEBHOOK_SECRET, request.headers.get("X-Avrix-Timestamp"), request.headers.get("X-Avrix-Signature"), body):
+            return Response({"error": "bad signature"}, status=401)
+        try:
+            event = json.loads(body)
+        except ValueError:
+            return Response({"error": "invalid json"}, status=400)
+        crm.apply_stage_event(event)
+        return Response({"ok": True})
 
 
 class NewsletterCreate(APIView):
