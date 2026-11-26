@@ -6,6 +6,9 @@ import sanitize from 'sanitize-html';
 import { z } from 'zod';
 import {
   accreditationsSchema,
+  offeringSchema,
+  caseStudySchema,
+  pillarKeys,
   homeSchema,
   siteSchema,
   navSchema,
@@ -19,6 +22,7 @@ import {
   faq,
   type Content,
 } from './schemas';
+import { offeringPath } from './paths';
 const root = path.resolve(process.cwd(), '../content');
 export function markdown(source: string) {
   if (/^# /m.test(source)) throw new Error('Markdown body must not contain H1');
@@ -39,6 +43,20 @@ export function markdown(source: string) {
     return `<h2 id="${id}">${t}</h2>`;
   });
   return { html, toc };
+}
+/** Front-matter-only collection (no Markdown body is rendered). */
+function frontMatter<T>(folder: string, schema: z.ZodType<T, z.ZodTypeDef, unknown>) {
+  const dir = path.join(root, folder);
+  if (!fs.existsSync(dir)) return [] as T[];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith('.md'))
+    .map((f) => {
+      const data = schema.parse(matter(fs.readFileSync(path.join(dir, f), 'utf8')).data);
+      if ((data as { slug: string }).slug !== f.slice(0, -3))
+        throw new Error(`Slug mismatch: ${folder}/${f}`);
+      return data;
+    });
 }
 function read(name: string): unknown {
   return JSON.parse(fs.readFileSync(path.join(root, name), 'utf8'));
@@ -85,6 +103,15 @@ export function loadContent(): Content {
     legal: collection('legal', pageSchema),
     services: collection('services', serviceSchema).sort((a, b) => a.order - b.order),
     solutions: collection('solutions', solutionSchema).sort((a, b) => a.order - b.order),
+    offerings: pillarKeys
+      .flatMap((p) =>
+        frontMatter(`pillars/${p}`, offeringSchema).map((o) => {
+          if (o.pillar !== p) throw new Error(`Pillar mismatch: ${p}/${o.slug}`);
+          return o;
+        }),
+      )
+      .sort((a, b) => a.order - b.order),
+    caseStudies: frontMatter('case-studies', caseStudySchema).sort((a, b) => a.order - b.order),
     industries: collection('industries', industrySchema).sort((a, b) => a.order - b.order),
     posts: collection('blog', blogSchema)
       .filter((p) => !p.draft)
@@ -134,8 +161,24 @@ export function loadContent(): Content {
   }
   for (const p of data.posts)
     if (!slugs.has(p.related_service)) throw new Error(`Unknown service ${p.related_service}`);
+  const studySlugs = new Set(data.caseStudies.map((c) => c.slug));
+  for (const p of pillarKeys)
+    if (!data.offerings.some((o) => o.pillar === p && o.slug === 'index'))
+      throw new Error(`Missing hub for ${p}`);
+  for (const o of data.offerings) {
+    for (const s of o.services || []) if (!slugs.has(s)) throw new Error(`Unknown service ${s}`);
+    for (const c of o.case_studies || [])
+      if (!studySlugs.has(c)) throw new Error(`Unknown case study ${c} in ${o.slug}`);
+    if (!fs.existsSync(path.join(root, `assets/icons/${o.icon}.svg`)))
+      throw new Error(`Missing icon ${o.icon}`);
+  }
+  for (const s of data.home.sections)
+    if (s.type === 'proof')
+      for (const c of s.items as string[])
+        if (!studySlugs.has(c)) throw new Error(`Unknown case study ${c} on home`);
   for (const group of data.nav.mega_menu)
-    for (const s of group.items) if (!slugs.has(s)) throw new Error(`Unknown menu service ${s}`);
+    if (!fs.existsSync(path.join(root, `assets/icons/${group.icon}.svg`)))
+      throw new Error(`Missing icon ${group.icon}`);
   for (const industry of data.industries) {
     for (const r of industry.services)
       if (!slugs.has(r)) throw new Error(`Unknown industry service ${r}`);
@@ -155,6 +198,8 @@ export function loadContent(): Content {
     ...data.legal,
     ...data.services,
     ...data.solutions,
+    ...data.offerings,
+    ...data.caseStudies,
     ...data.industries,
     ...data.posts,
   ];
@@ -175,6 +220,8 @@ export function loadContent(): Content {
     ...data.legal.map((p) => `/${p.slug}/`),
     ...data.services.map((p) => `/services/${p.slug}/`),
     ...data.solutions.map((p) => `/solutions/${p.slug}/`),
+    ...data.offerings.map(offeringPath),
+    ...data.caseStudies.map((p) => `/case-studies/${p.slug}/`),
     ...data.industries.map((p) => `/industries/${p.slug}/`),
     ...data.posts.map((p) => `/blog/${p.slug}/`),
   ]);

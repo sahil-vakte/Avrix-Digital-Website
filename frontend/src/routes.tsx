@@ -15,6 +15,8 @@ const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 const ContentPages = lazy(() => import('./pages/ContentPages'));
 const Solutions = lazy(() => import('./pages/Solutions'));
 const Industries = lazy(() => import('./pages/Industries'));
+const Pillars = lazy(() => import('./pages/Pillars'));
+const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 import { captureAttribution } from './lib/utm';
 import { initConsent } from './lib/analytics';
 const Enhance = lazy(() => import('./components/motion/Enhance'));
@@ -73,6 +75,10 @@ function RoutePage({ route }: { route: RouteRecord }) {
           <Solutions route={route} />
         ) : route.kind === 'industry' || route.kind === 'industries' ? (
           <Industries route={route} />
+        ) : route.kind === 'pillar' || route.kind === 'offering' ? (
+          <Pillars route={route} />
+        ) : route.kind === 'case-studies' || route.kind === 'case-study' ? (
+          <CaseStudies route={route} />
         ) : (
           <ContentPages route={route} />
         )}

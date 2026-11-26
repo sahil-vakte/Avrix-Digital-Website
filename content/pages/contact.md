@@ -1,15 +1,15 @@
 ---
 slug: contact-us
-h1: Tell us what's *keeping you up at night*
-seo_title: Contact AVRIX Digital | Free Security Scoping Call
+h1: Tell us what you want to *fix first*
+seo_title: Contact AVRIX Digital | Book a Free Consultation
 seo_description: >-
-  Speak to AVRIX Digital about security testing, 24/7 monitoring, compliance
-  or a live incident. A specialist replies within one working day.
+  Talk to AVRIX Digital about software, AI, cyber security or specialist
+  talent. Book a free 30-minute consultation; we reply within one working day.
 eyebrow: Speak to the team
 lead: >-
-  A tender asking for ISO 27001, an insurer's questionnaire, a new app going
-  live or something that just looks wrong: tell us what's going on and a
-  specialist will come back with practical next steps.
+  A slow process, an AI idea, a new system going live, a tender asking for
+  ISO 27001 or a gap in your team: tell us what's going on and a specialist
+  will come back with practical next steps.
 hide_cta_band: true
 highlights:
   - title: Sent securely
@@ -17,7 +17,7 @@ highlights:
   - title: Mutual NDA on request
     text: We'll sign before you share anything sensitive.
   - title: A human reply within one working day
-    text: From a security specialist, not an autoresponder.
+    text: From a specialist, not an autoresponder.
 next_steps:
   - title: A specialist reads it
     text: 'Every message is read by someone who can actually help.'
@@ -87,6 +87,16 @@ form:
       type: multiselect-chips
       required: true
       options:
+        - value: web-application-development
+          label: Custom software & digital transformation
+        - value: web-development
+          label: Websites & mobile apps
+        - value: aws-consulting
+          label: Cloud & workplace modernisation
+        - value: ai-automation
+          label: AI agents, document AI & AI strategy
+        - value: voice-call-agent
+          label: AI voice agents
         - value: penetration-testing
           label: Penetration testing
         - value: managed-soc
@@ -97,8 +107,8 @@ form:
           label: Incident response
         - value: security-training
           label: Awareness training
-        - value: security-products
-          label: Security products
+        - value: talent-acquisition
+          label: Specialist talent & delivery teams
         - value: not-sure
           label: Not sure yet
     - name: budget

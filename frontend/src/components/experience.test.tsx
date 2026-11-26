@@ -3,7 +3,7 @@ import { cleanup, fireEvent, render, screen, within } from '@testing-library/rea
 import { MemoryRouter } from 'react-router-dom';
 import { ServicesDirectory } from './sections';
 import Header from './layout/Header';
-import { page, services, site, ui } from '../content';
+import { nav, page, services, site, ui } from '../content';
 
 beforeEach(() => {
   vi.stubGlobal(
@@ -53,7 +53,8 @@ it('lets visitors explore each service category and return to all services', () 
       ),
     );
   }
-  fireEvent.click(screen.getByRole('button', { name: /^All services/ }));
+  const all = page('services').filters![0].label;
+  fireEvent.click(screen.getByRole('button', { name: new RegExp(`^${all}`) }));
   expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(services.length);
 });
 
@@ -96,7 +97,7 @@ it('navigates the services dropdown with the keyboard and closes on an outside c
   const button = screen.getByRole('button', { name: /Services/ });
   fireEvent.click(button);
   fireEvent.keyDown(button, { key: 'ArrowDown' });
-  expect(document.activeElement?.textContent).toContain('Test & Find');
+  expect(document.activeElement?.textContent).toContain(nav.mega_menu[0].label);
   fireEvent.keyDown(document.activeElement!, { key: 'End' });
   expect(document.activeElement?.textContent).toContain(ui.directory);
   fireEvent.pointerDown(document.body);

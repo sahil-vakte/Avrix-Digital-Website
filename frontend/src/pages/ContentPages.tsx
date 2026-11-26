@@ -1,14 +1,27 @@
 import rawBodies from '../content/generated-pages.json';
 import { lazy, Suspense, useState } from 'react';
-import { content, page, services, posts, site, ui, homeSection, nav } from '../content';
+import {
+  content,
+  page,
+  services,
+  posts,
+  site,
+  ui,
+  homeSection,
+  nav,
+  hub,
+  subPages,
+  offerings,
+  offeringPath,
+} from '../content';
 import type { RouteRecord } from '../content/routes';
 import type { Item } from '../content/schemas';
 import {
   PageHero,
   SectionShell,
   CardGrid,
-  ServiceGrid,
   ServicesDirectory,
+  OfferingGrid,
   FAQ,
   FaqSection,
   FrameworkGrid,
@@ -16,6 +29,7 @@ import {
   Timeline,
 } from '../components/sections';
 import { Breadcrumbs, Button, Em, Icon, Prose } from '../components/ui';
+const pillarHubs = offerings.filter((o) => o.slug === 'index');
 const pageBodies = rawBodies as Record<
   string,
   { html: string; toc: { id: string; text: string }[] }
@@ -121,37 +135,37 @@ export default function ContentPages({ route }: { route: RouteRecord }) {
         <PageHero eyebrow={p!.eyebrow} title={p!.h1} lead={p!.lead}>
           <Breadcrumbs items={[{ label: ui.services, href: '/services/' }]} />
         </PageHero>
+        {p!.pillar_overview!.map((po, i) => {
+          const h = hub(po.pillar);
+          const children = subPages(po.pillar);
+          return (
+            <SectionShell
+              key={po.pillar}
+              id={po.pillar}
+              tone={i % 2 ? 'light' : 'tint'}
+              eyebrow={`${String(i + 1).padStart(2, '0')} / ${po.title}`}
+              title={h.h1}
+              intro={po.text}
+            >
+              <OfferingGrid
+                items={children}
+                columns={children.length === 4 ? 2 : 3}
+                withServices={po.pillar === 'cyber-security'}
+              />
+              <div className="section-link">
+                <Button href={offeringPath(h)} variant="secondary">
+                  {ui.explorePillar} {po.title}
+                </Button>
+              </div>
+            </SectionShell>
+          );
+        })}
         <SectionShell
-          eyebrow={homeSection('services_carousel').eyebrow}
-          title={`Our core *capabilities*`}
-          intro={homeSection('services_carousel').intro}
+          id="cyber-services"
+          eyebrow={ui.directory}
+          title={`All 20 cyber *security services*`}
+          intro={ui.cyberDirectoryIntro}
         >
-          <ServiceGrid
-            items={services.filter((s) =>
-              [
-                'penetration-testing',
-                'cloud-security-assessment',
-                'managed-security',
-                'red-teaming',
-                'cyber-essentials',
-                'incident-response',
-              ].includes(s.slug),
-            )}
-          />
-        </SectionShell>
-        {nav.mega_menu.map((g, i) => (
-          <SectionShell
-            key={g.pillar}
-            id={g.pillar}
-            tone={i % 2 ? 'light' : 'tint'}
-            eyebrow={`${String(i + 1).padStart(2, '0')} / ${g.items.length} ${ui.servicesCount}`}
-            title={g.label}
-            intro={g.blurb}
-          >
-            <ServiceGrid items={g.items.map((slug) => services.find((s) => s.slug === slug)!)} />
-          </SectionShell>
-        ))}
-        <SectionShell id="directory" eyebrow={ui.directory} title={`Find the *right service*`}>
           <ServicesDirectory />
         </SectionShell>
         <section className="section tint">
@@ -323,7 +337,7 @@ export default function ContentPages({ route }: { route: RouteRecord }) {
                 </Button>
               ))}
             </div>
-            <ServiceGrid items={services.slice(0, 6)} />
+            <OfferingGrid items={pillarHubs} columns={2} />
           </div>
         </section>
       </>

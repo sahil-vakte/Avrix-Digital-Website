@@ -8,6 +8,7 @@ import satori from 'satori';
 import { decompress } from 'wawoff2';
 import { loadContent } from '../src/content/loader';
 import { buildRoutes, ogSlug } from '../src/content/routes';
+import { offeringPath } from '../src/content/paths';
 const c = loadContent();
 const routes = buildRoutes(c);
 const base = c.site.site_url;
@@ -41,6 +42,42 @@ fs.writeFileSync(
     ? `User-agent: *\nAllow: /\nDisallow: /thank-you/\nSitemap: ${base}/sitemap.xml\n`
     : 'User-agent: *\nDisallow: /\n',
 );
+// llms.txt: a plain-text map of the site for AI assistants.
+{
+  const strip = (v: string) => v.replaceAll('*', '');
+  const hubs = c.offerings.filter((o) => o.slug === 'index');
+  const lines = [
+    `# ${c.site.brand_name}`,
+    '',
+    `> ${c.site.tagline} Contact: ${c.site.email}.`,
+    '',
+    ...hubs.flatMap((h) => [
+      `## ${h.title}`,
+      '',
+      `- [${h.title}](${base}${offeringPath(h)}): ${h.summary}`,
+      ...c.offerings
+        .filter((o) => o.pillar === h.pillar && o.slug !== 'index')
+        .map((o) => `- [${o.title}](${base}${offeringPath(o)}): ${o.summary}`),
+      ...(h.pillar === 'cyber-security'
+        ? c.services.map((s) => `- [${s.title}](${base}/services/${s.slug}/): ${s.summary}`)
+        : []),
+      '',
+    ]),
+    '## Case studies',
+    '',
+    ...c.caseStudies.map((s) => `- [${s.title}](${base}/case-studies/${s.slug}/): ${s.summary}`),
+    '',
+    '## Company',
+    '',
+    `- [About](${base}/about/): ${strip(c.pages.find((p) => p.slug === 'about')!.seo_description)}`,
+    `- [Industries](${base}/industries/)`,
+    `- [Insights](${base}/blog/)`,
+    `- [FAQs](${base}/faqs/)`,
+    `- [Contact](${base}/contact-us/)`,
+    '',
+  ];
+  fs.writeFileSync('dist/llms.txt', lines.join('\n'));
+}
 fs.writeFileSync(
   'dist/rss.xml',
   `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>${esc(c.site.brand_name)}</title><link>${base}/blog/</link><description>${esc(c.pages.find((p) => p.slug === 'blog')!.seo_description)}</description><language>en-gb</language>${c.posts.map((p) => `<item><title>${esc(p.title)}</title><link>${base}/blog/${p.slug}/</link><guid>${base}/blog/${p.slug}/</guid><description>${esc(p.excerpt)}</description><pubDate>${new Date(p.published).toUTCString()}</pubDate></item>`).join('')}</channel></rss>`,

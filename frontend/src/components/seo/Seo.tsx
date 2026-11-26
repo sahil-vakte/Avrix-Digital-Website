@@ -9,6 +9,8 @@ export default function Seo({ route }: { route: RouteRecord }) {
       <title>{route.seo_title}</title>
       <meta name="description" content={route.seo_description} />
       <link rel="canonical" href={canonical} />
+      <link rel="alternate" hrefLang="en-GB" href={canonical} />
+      <link rel="alternate" hrefLang="x-default" href={canonical} />
       <meta
         name="robots"
         content={

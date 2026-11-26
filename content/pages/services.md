@@ -1,36 +1,52 @@
 ---
 slug: services
-h1: 'Twenty services. *Four disciplines.*'
-seo_title: 'Cyber Security Services UK & Europe | AVRIX Digital'
-seo_description: 'Security testing, 24/7 monitoring, Cyber Essentials, ISO 27001, GDPR, NIS2 and DORA support, and incident help for UK and European organisations.'
-eyebrow: 'Services'
-lead: "Twenty services grouped by the job they do: test and find, watch and detect, prove and comply, respond and recover. Tell us the problem and we'll scope the smallest piece of work that solves it."
-search_placeholder: 'Search by service, standard or problem…'
+h1: Four pillars. *One accountable partner.*
+seo_title: Technology, AI & Cyber Security Services | AVRIX
+seo_description: Digital transformation, AI solutions, cyber security and professional services for UK and European organisations, scoped and priced before work starts.
+eyebrow: Services
+lead: Digital transformation, AI solutions and cyber security, with specialist people when you need extra capacity. Buy one service or combine them into a single programme with one plan and one named contact.
+search_placeholder: Search by service, standard or problem…
 filters:
-  - { key: all, label: 'All services' }
-  - { key: offensive, label: 'Test & Find' }
-  - { key: managed, label: 'Watch & Detect' }
-  - { key: compliance, label: 'Prove & Comply' }
-  - { key: response, label: 'Respond & Recover' }
+  - key: all
+    label: All cyber services
+  - key: offensive
+    label: Test & Find
+  - key: managed
+    label: Watch & Detect
+  - key: compliance
+    label: Prove & Comply
+  - key: response
+    label: Respond & Recover
 highlights:
-  - { title: 'Free 30-minute scoping call', text: 'With a security specialist, not a salesperson.' }
-  - {
-      title: 'Fixed price before work starts',
-      text: 'Scope, cost and rules of engagement agreed in writing.',
-    }
-  - {
-      title: 'Reports for two audiences',
-      text: 'A summary for leaders and fix-by-fix detail for IT.',
-    }
-  - { title: 'Mutual NDA on request', text: 'Signed before you share anything sensitive.' }
+  - title: Free 30-minute consultation
+    text: With a specialist, not a salesperson.
+  - title: Fixed price before work starts
+    text: Scope, cost and deliverables agreed in writing.
+  - title: Reports for two audiences
+    text: A summary for leaders and detail for technical teams.
+  - title: Mutual NDA on request
+    text: Signed before you share anything sensitive.
 faqs:
-  - q: "We don't know what we need. Where do we begin?"
-    a: "Start with the pressure you're under. A customer or tender asking for proof usually points to Cyber Essentials or ISO 27001. A new system or website points to a test. Nobody watching for attacks points to managed detection. The scoping call is there to work this out with you."
-  - q: 'Can you work with organisations outside the UK?'
-    a: 'Yes. We support clients across the UK and Europe, and our compliance team covers both sets of rules, including UK GDPR, EU GDPR, UK NIS, NIS2 and DORA.'
-  - q: 'We already have an IT provider. Will you get in their way?'
-    a: 'No. We work alongside in-house teams and managed service providers every week. They keep running your IT; we focus on security and share findings in a form they can act on.'
-  - q: 'How is pricing worked out?'
-    a: "Projects such as tests and certification support are quoted at a fixed price once we've agreed the scope. Ongoing services such as monitoring are a monthly fee based on users and systems."
-updated: 2026-11-14
+  - q: We do not know what we need. Where do we begin?
+    a: Start with the problem. Slow, manual work points to digital transformation. Repetitive admin or missed calls point to AI. A customer, insurer or regulator asking for proof points to cyber security. The free consultation is there to work it out with you.
+  - q: Can you deliver more than one pillar together?
+    a: Yes. Many clients combine them, for example a new platform that is security-tested before launch with AI added once processes are digital. You get one plan and one named contact.
+  - q: Do you work with organisations outside the UK?
+    a: Yes. We support clients across the UK, the Republic of Ireland and EU member states.
+  - q: How is pricing worked out?
+    a: Projects are quoted at a fixed price once scope is agreed. Ongoing services such as monitoring are a monthly fee, and specialist people are priced by role and duration.
+updated: '2026-11-26'
+pillar_overview:
+  - pillar: digital-transformation
+    title: Digital Transformation
+    text: Custom platforms, web and mobile apps, legacy modernisation, automation, cloud, integration and product design.
+  - pillar: ai-solutions
+    title: AI Solutions
+    text: AI strategy, voice agents, AI agents, generative and document AI, computer vision and AI governance.
+  - pillar: cyber-security
+    title: Cyber Security
+    text: Twenty services across testing, 24/7 monitoring, compliance and incident response.
+  - pillar: professional-services
+    title: Professional Services
+    text: Staff augmentation, talent acquisition and dedicated delivery teams.
 ---

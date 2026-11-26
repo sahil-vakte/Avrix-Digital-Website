@@ -1,4 +1,5 @@
 import type { Content } from './schemas';
+import { offeringPath } from './paths';
 export type RouteRecord = {
   path: string;
   kind:
@@ -8,6 +9,10 @@ export type RouteRecord = {
     | 'service'
     | 'solutions'
     | 'solution'
+    | 'pillar'
+    | 'offering'
+    | 'case-studies'
+    | 'case-study'
     | 'industries'
     | 'industry'
     | 'faqs'
@@ -39,6 +44,7 @@ export function buildRoutes(c: Content): RouteRecord[] {
     faqs: 'faqs',
     'contact-us': 'contact',
     blog: 'blog',
+    'case-studies': 'case-studies',
     '404': '404',
   };
   c.pages.forEach((p) =>
@@ -52,6 +58,17 @@ export function buildRoutes(c: Content): RouteRecord[] {
   c.services.forEach((s) => result.push({ path: `/services/${s.slug}/`, kind: 'service', ...s }));
   c.solutions.forEach((s) =>
     result.push({ path: `/solutions/${s.slug}/`, kind: 'solution', ...s }),
+  );
+  c.offerings.forEach((o) =>
+    result.push({
+      path: offeringPath(o),
+      kind: o.slug === 'index' ? 'pillar' : 'offering',
+      ...o,
+      slug: `${o.pillar}/${o.slug}`,
+    }),
+  );
+  c.caseStudies.forEach((s) =>
+    result.push({ path: `/case-studies/${s.slug}/`, kind: 'case-study', ...s, h1: s.title }),
   );
   c.industries.forEach((s) =>
     result.push({ path: `/industries/${s.slug}/`, kind: 'industry', ...s }),

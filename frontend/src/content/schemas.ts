@@ -55,6 +55,10 @@ export const pageSchema = z.object({
     })
     .optional(),
   categories: z.array(z.object({ key: text, label: text })).optional(),
+  more: z.array(z.object({ solution: text, industry: text, area: text })).optional(),
+  pillar_overview: z
+    .array(z.object({ pillar: text, title: text, text: text, share: text.optional() }))
+    .optional(),
   newsletter: z.object({ title: text, text: text, consent: text }).optional(),
   next_steps: z.array(item).optional(),
   side_card: z.object({ title: text, text: text }).optional(),
@@ -147,6 +151,79 @@ export const solutionSchema = z.object({
   faqs: z.array(faq),
   updated: date,
 });
+export const pillarKeys = [
+  'digital-transformation',
+  'ai-solutions',
+  'cyber-security',
+  'professional-services',
+] as const;
+export type PillarKey = (typeof pillarKeys)[number];
+const block = z.object({
+  id: text.optional(),
+  eyebrow: text.optional(),
+  title: text,
+  intro: text.optional(),
+  style: z.enum(['cards', 'numbered', 'checklist', 'table', 'points']).default('cards'),
+  columns: z.union([z.literal(2), z.literal(3), z.literal(4)]).optional(),
+  items: z.array(item).optional(),
+  table: z.object({ headers: z.array(text), rows: z.array(z.array(text)) }).optional(),
+  tone: z.enum(['light', 'tint']).optional(),
+});
+export type Block = z.infer<typeof block>;
+/** A pillar hub (slug "index") or one of its sub-pages. */
+export const offeringSchema = z.object({
+  ...meta,
+  pillar: z.enum(pillarKeys),
+  slug: text.regex(/^[a-z0-9-]+$/),
+  title: text,
+  h1: text,
+  eyebrow: text,
+  icon: text,
+  order: z.number().int(),
+  summary: text.max(220),
+  intro: text,
+  tags: z.array(text).max(8).optional(),
+  group: z.enum(pillars).optional(),
+  deliver_title: text.optional(),
+  deliver_intro: text.optional(),
+  blocks: z.array(block),
+  process_title: text.optional(),
+  process: z.array(item).optional(),
+  services: z.array(text).optional(),
+  case_studies: z.array(text).optional(),
+  cross_links: z.array(item).optional(),
+  faqs: z.array(faq),
+  updated: date,
+});
+export const sectorKeys = [
+  'healthcare',
+  'retail-logistics',
+  'education',
+  'marketing',
+  'business-services',
+  'community',
+] as const;
+export const caseStudySchema = z.object({
+  ...meta,
+  slug: text.regex(/^[a-z0-9-]+$/),
+  title: text,
+  order: z.number().int(),
+  summary: text.max(220),
+  industry: text,
+  sector: z.enum(sectorKeys),
+  areas: z.array(z.enum(pillarKeys)).min(1),
+  solution_area: text,
+  technology: z.array(text),
+  problem: text,
+  objective: text,
+  solution: text,
+  features: z.array(text).min(3),
+  phases: z.array(item).length(4),
+  secure: text.optional(),
+  outcome: text,
+  related: z.array(link.extend({ href: text })).min(1),
+  updated: date,
+});
 export const blogSchema = z.object({
   ...meta,
   slug: text,
@@ -164,6 +241,11 @@ export const sectionSchema = z.object({
   type: z.enum([
     'hero',
     'ticker',
+    'pillars',
+    'problem',
+    'connected',
+    'proof',
+    'people',
     'services_carousel',
     'industries_tabs',
     'capabilities',
@@ -193,6 +275,8 @@ export const sectionSchema = z.object({
   secondary_cta: link.optional(),
   link: link.optional(),
   count: z.number().optional(),
+  trust: z.array(text).optional(),
+  paragraphs: z.array(text).optional(),
 });
 export const homeSchema = z.object({ ...meta, sections: z.array(sectionSchema) });
 export const siteSchema = z.object({
@@ -247,7 +331,14 @@ export const navSchema = z.object({
   ),
   header_cta: link,
   mega_menu: z.array(
-    z.object({ pillar: z.enum(pillars), label: text, blurb: text, items: z.array(text) }),
+    z.object({
+      pillar: z.enum(pillarKeys),
+      label: text,
+      href: text,
+      blurb: text,
+      icon: text,
+      links: z.array(link),
+    }),
   ),
   resources: z.array(link.extend({ text: text })),
   footer: z.object({ tagline: text, explore: z.array(link), legal: z.array(link) }),
@@ -280,6 +371,8 @@ export type Industry = z.infer<typeof industrySchema> & {
   html: string;
   toc: { id: string; text: string }[];
 };
+export type Offering = z.infer<typeof offeringSchema>;
+export type CaseStudy = z.infer<typeof caseStudySchema>;
 export type Solution = z.infer<typeof solutionSchema> & {
   html: string;
   toc: { id: string; text: string }[];
@@ -306,6 +399,8 @@ export type Content = {
   nav: z.infer<typeof navSchema>;
   services: Service[];
   solutions: Solution[];
+  offerings: Offering[];
+  caseStudies: CaseStudy[];
   industries: Industry[];
   posts: Post[];
   pages: Page[];
