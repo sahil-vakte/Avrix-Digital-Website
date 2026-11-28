@@ -30,7 +30,7 @@
       "items": [
         {
           "title": "Digital Transformation",
-          "text": "Replace spreadsheets, disconnected tools and ageing systems with software built around how your business really works.",
+          "text": "Replace spreadsheets and ageing systems with connected software built around how your team works.",
           "href": "/digital-transformation/",
           "icon": "transform",
           "label": "Explore Digital Transformation",
@@ -43,7 +43,7 @@
         },
         {
           "title": "AI Solutions",
-          "text": "Practical AI that saves hours, not hype that saves nothing. Voice agents that answer every call, AI agents that run routine work, and document AI that turns audio and paperwork into structured records.",
+          "text": "Practical AI that saves hours: voice agents, AI agents and document AI that take on your routine work.",
           "href": "/ai-solutions/",
           "icon": "ai-automation",
           "label": "Explore AI Solutions",
@@ -51,7 +51,7 @@
         },
         {
           "title": "Cyber Security",
-          "text": "Find your security gaps, watch for attacks around the clock and prove compliance to customers, insurers and regulators.",
+          "text": "Find your security gaps, watch for attacks around the clock and prove compliance to your customers.",
           "href": "/cyber-security/",
           "icon": "shield-network",
           "label": "Explore Cyber Security",
