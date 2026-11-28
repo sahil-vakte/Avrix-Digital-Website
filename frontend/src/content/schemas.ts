@@ -356,12 +356,17 @@ export const navSchema = z.object({
     shortcuts: z.array(link),
     legal: z.array(link),
   }),
-  soc_widget: z.object({
-    label: text,
+  sticky_cta: z.object({
+    kicker: text,
     title: text,
-    points: z.array(text),
-    primary: link,
-    secondary: link,
+    question: text,
+    intro: text,
+    options: z
+      .array(z.object({ label: text, icon: text, topic: text }))
+      .min(2)
+      .max(6),
+    promise: text,
+    incident: z.object({ text: text, label: text, href: text }),
   }),
 });
 export type Section = z.infer<typeof sectionSchema>;

@@ -16,7 +16,7 @@ from django.db import transaction
 from django.utils import timezone
 
 from .constants import STATUSES
-from .models import Enquiry, EnquiryActivity
+from .models import Enquiry, EnquiryActivity, Subscriber
 
 logger = logging.getLogger(__name__)
 
@@ -100,6 +100,53 @@ def pending():
     from django.db.models import F, Q
 
     return Enquiry.objects.filter(is_test=False).filter(Q(crm_synced_at__isnull=True) | ~Q(crm_status=F("status"))).order_by("created_at")
+
+
+SUBSCRIBER_STAGE = "Subscriber"
+SUBSCRIBER_TAGS = ["Newsletter subscriber", "AVRIX website"]
+
+
+def subscriber_payload(s: Subscriber):
+    return {
+        "externalId": f"subscriber-{s.pk}",
+        "name": s.name or s.email, "email": s.email,
+        "source": "newsletter", "stage": SUBSCRIBER_STAGE, "tags": SUBSCRIBER_TAGS,
+        "message": "Subscribed to the AVRIX monthly newsletter on avrixdigital.com and confirmed by email.",
+        "customFields": {"sourcePage": s.source_page or None, "subscribedAt": s.created_at.isoformat(), "confirmedAt": s.confirmed_at.isoformat()},
+        "consent": {"marketing": True, "text": s.consent_text[:1000], "at": s.confirmed_at.isoformat()},
+        "occurredAt": s.confirmed_at.isoformat(),
+    }
+
+
+def sync_subscriber(subscriber_id):
+    """Send a confirmed subscriber to the CRM once; mirror a later unsubscribe. Safe to call repeatedly."""
+    if not enabled():
+        return False
+    s = Subscriber.objects.filter(pk=subscriber_id).first()
+    if not s:
+        return False
+    try:
+        if s.confirmed_at and not s.unsubscribed_at and not s.crm_synced_at:
+            result = _post("/api/intake/leads", subscriber_payload(s), idempotency_key=f"subscriber-{s.pk}-{int(s.confirmed_at.timestamp())}")
+            Subscriber.objects.filter(pk=s.pk).update(crm_synced_at=timezone.now(), crm_lead_id=str(result.get("leadId", ""))[:64], crm_unsubscribe_synced_at=None, crm_error="")
+        elif s.unsubscribed_at and s.crm_synced_at and not s.crm_unsubscribe_synced_at:
+            _post("/api/intake/status", {"externalId": f"subscriber-{s.pk}", "stage": "Unsubscribed",
+                                         "note": f"Unsubscribed from the newsletter on {s.unsubscribed_at:%d %b %Y}. Do not send marketing emails."})
+            Subscriber.objects.filter(pk=s.pk).update(crm_unsubscribe_synced_at=timezone.now(), crm_synced_at=None, crm_error="")
+        return True
+    except Exception as exc:  # retried by `manage.py sync_to_crm`
+        Subscriber.objects.filter(pk=s.pk).update(crm_error=str(exc)[:300])
+        logger.warning("CRM sync failed for subscriber %s: %s", s.pk, exc)
+        return False
+
+
+def pending_subscribers():
+    from django.db.models import Q
+
+    return Subscriber.objects.filter(
+        Q(confirmed_at__isnull=False, unsubscribed_at__isnull=True, crm_synced_at__isnull=True)
+        | Q(unsubscribed_at__isnull=False, crm_synced_at__isnull=False, crm_unsubscribe_synced_at__isnull=True)
+    ).order_by("created_at")
 
 
 def verify(secret, timestamp, header, body: bytes, now=None):

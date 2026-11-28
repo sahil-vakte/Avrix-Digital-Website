@@ -1,5 +1,5 @@
 /**
- * Keeps at most one overlay (consultation, newsletter, cookie preferences,
+ * Keeps at most one overlay (consultation, cookie preferences, sticky consultation menu,
  * mobile menu) open at a time. An overlay announces itself when it opens and
  * closes when another one announces.
  */
@@ -35,7 +35,5 @@ export function trackOverlays(onChange: (open: boolean) => void) {
     removeEventListener(CLOSED, closed);
   };
 }
-/** Opens the newsletter popup from anywhere. */
-export const openNewsletter = () => dispatchEvent(new Event('open-newsletter'));
 /** Opens the cookie preferences modal from anywhere. */
 export const openCookiePreferences = () => dispatchEvent(new Event('cookie-preferences'));

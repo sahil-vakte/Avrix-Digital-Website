@@ -101,6 +101,7 @@ class EnquirySerializer(SpamFields, serializers.ModelSerializer):
 
 
 class NewsletterSerializer(SpamFields):
+    name = serializers.CharField(min_length=2, max_length=120, trim_whitespace=True)
     email = serializers.EmailField(max_length=254)
     source_page = serializers.CharField(max_length=300, required=False, allow_blank=True)
     consent_text = serializers.CharField(min_length=10, max_length=1000)
@@ -109,4 +110,9 @@ class NewsletterSerializer(SpamFields):
     def validate_privacy_ack(self, value):
         if value is not True:
             raise serializers.ValidationError("Consent is required.")
+        return value
+
+    def validate_name(self, value):
+        if re.search(r"https?://|www\.|[<>{}]", value) or not re.search(r"[^\W\d_]", value):
+            raise serializers.ValidationError("Enter your name.")
         return value

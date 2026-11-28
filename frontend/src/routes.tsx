@@ -6,11 +6,11 @@ import { buildRoutes, type RouteRecord } from './content/routes';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import CookieBanner from './components/layout/CookieBanner';
-import NewsletterDialog from './components/forms/NewsletterDialog';
+import NewsletterBand from './components/layout/NewsletterBand';
 import Accreditations from './components/layout/Accreditations';
 import EnquiryExperience from './components/forms/EnquiryExperience';
 import Seo from './components/seo/Seo';
-import { CtaBand, SocWidget } from './components/sections';
+import { CtaBand, StickyCta } from './components/sections';
 const Home = lazy(() => import('./pages/Home'));
 const ServiceDetail = lazy(() => import('./pages/ServiceDetail'));
 const ContentPages = lazy(() => import('./pages/ContentPages'));
@@ -46,10 +46,10 @@ function Layout() {
         <Outlet />
       </main>
       <Accreditations />
+      <NewsletterBand />
       <Footer />
-      <SocWidget />
+      <StickyCta />
       <CookieBanner />
-      <NewsletterDialog />
       {ready && (
         <Suspense>
           <Enhance />

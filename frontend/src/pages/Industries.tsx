@@ -51,12 +51,11 @@ export default function Industries({ route }: { route: RouteRecord }) {
           ]}
         />
       </PageHero>
-      <SectionShell
-        eyebrow={ui.industryPillars}
-        title={`Where we *focus* first`}
-        intro={i.summary}
-      >
-        <CardGrid items={i.pillars.map((v) => ({ ...v, icon: i.icon }))} columns={i.pillars.length === 4 ? 4 : 3} />
+      <SectionShell eyebrow={ui.industryPillars} title={`Where we *focus* first`} intro={i.summary}>
+        <CardGrid
+          items={i.pillars.map((v) => ({ ...v, icon: i.icon }))}
+          columns={i.pillars.length === 4 ? 4 : 3}
+        />
       </SectionShell>
       <SectionShell
         tone="tint"
@@ -68,7 +67,11 @@ export default function Industries({ route }: { route: RouteRecord }) {
       <SectionShell eyebrow={ui.frameworks} title={`Rules and standards *in your sector*`}>
         <Tags items={i.frameworks} />
       </SectionShell>
-      <SectionShell tone="tint" eyebrow={ui.industryServices} title={`Where clients in this sector *usually start*`}>
+      <SectionShell
+        tone="tint"
+        eyebrow={ui.industryServices}
+        title={`Where clients in this sector *usually start*`}
+      >
         <ServiceGrid items={services.filter((s) => i.services.includes(s.slug))} />
       </SectionShell>
       <FaqSection items={i.faqs} title={`${i.title}: *common questions*`} />

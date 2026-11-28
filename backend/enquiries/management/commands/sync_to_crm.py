@@ -3,7 +3,7 @@ from enquiries import crm
 
 
 class Command(BaseCommand):
-    help = "Send new enquiries and status changes to the Avrix CRM hub (run every minute; also backfills existing enquiries)."
+    help = "Send new enquiries, status changes and confirmed newsletter subscribers to the Avrix CRM hub (run every minute; also backfills existing enquiries)."
 
     def add_arguments(self, parser):
         parser.add_argument("--limit", type=int, default=200)
@@ -15,6 +15,11 @@ class Command(BaseCommand):
         ok = failed = 0
         for pk in crm.pending().values_list("pk", flat=True)[:limit]:
             if crm.sync_enquiry(pk):
+                ok += 1
+            else:
+                failed += 1
+        for pk in crm.pending_subscribers().values_list("pk", flat=True)[:limit]:
+            if crm.sync_subscriber(pk):
                 ok += 1
             else:
                 failed += 1

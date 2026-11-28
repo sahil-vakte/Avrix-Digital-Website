@@ -253,15 +253,15 @@ class EnquiryAdmin(ModelAdmin, ExportActionModelAdmin):
 class SubscriberResource(SafeExportMixin, resources.ModelResource):
     class Meta:
         model = Subscriber
-        fields = ("email", "created_at", "source_page", "consent_text", "confirmed_at", "unsubscribed_at")
+        fields = ("name", "email", "created_at", "source_page", "consent_text", "confirmed_at", "unsubscribed_at", "crm_synced_at")
 
 
 @admin.register(Subscriber)
 class SubscriberAdmin(ModelAdmin, ExportActionModelAdmin):
     resource_classes = [SubscriberResource]
-    list_display = ("email", "created_at", "confirmed_at", "unsubscribed_at")
+    list_display = ("email", "name", "created_at", "confirmed_at", "unsubscribed_at", "crm_synced_at")
     list_filter = ("confirmed_at", "unsubscribed_at", "created_at")
-    search_fields = ("email",)
+    search_fields = ("email", "name")
     readonly_fields = (
         "email",
         "created_at",
@@ -272,6 +272,10 @@ class SubscriberAdmin(ModelAdmin, ExportActionModelAdmin):
         "unsubscribe_token",
         "confirmation_sent_at",
         "unsubscribed_at",
+        "crm_synced_at",
+        "crm_lead_id",
+        "crm_unsubscribe_synced_at",
+        "crm_error",
     )
 
     def has_add_permission(self, request):

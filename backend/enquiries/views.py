@@ -37,11 +37,15 @@ class EnquiryCreate(APIView):
         return Response({"id": str(enquiry.id), "message": "Thanks, we'll be in touch within 1 working day."}, status=201)
 
 
-def crm_async(pk):
+def crm_run(fn, pk):
     if getattr(settings, "EMAIL_ASYNC", True):
-        pool.submit(crm.sync_enquiry, pk)
+        pool.submit(fn, pk)
     else:
-        crm.sync_enquiry(pk)
+        fn(pk)
+
+
+def crm_async(pk):
+    crm_run(crm.sync_enquiry, pk)
 
 
 @method_decorator(csrf_exempt, name="dispatch")
@@ -77,7 +81,7 @@ class NewsletterCreate(APIView):
             return Response({"message": "Check your email to confirm."}, status=201)
         with transaction.atomic():
             subscriber, _ = Subscriber.objects.get_or_create(
-                email=data["email"].lower(), defaults={"source_page": data.get("source_page", ""), "consent_text": data["consent_text"]}
+                email=data["email"].lower(), defaults={"name": data["name"], "source_page": data.get("source_page", ""), "consent_text": data["consent_text"]}
             )
             # Do not disclose membership or send repeated unsolicited confirmations.
             if (not subscriber.confirmed_at or subscriber.unsubscribed_at) and (
@@ -88,6 +92,7 @@ class NewsletterCreate(APIView):
                 subscriber.confirm_token = token()
                 subscriber.confirmation_sent_at = timezone.now()
                 subscriber.consent_text = data["consent_text"]
+                subscriber.name = data["name"]
                 subscriber.source_page = data.get("source_page", "")
                 subscriber.save()
                 job = EmailJob.objects.create(subscriber=subscriber, kind="confirm")
@@ -106,6 +111,8 @@ class NewsletterConfirm(APIView):
         subscriber.confirmed_at = timezone.now()
         subscriber.unsubscribed_at = None
         subscriber.save(update_fields=["confirmed_at", "unsubscribed_at", "confirm_token"])
+        if crm.enabled():
+            transaction.on_commit(lambda: crm_run(crm.sync_subscriber, subscriber.pk))
         return redirect(settings.SITE_URL + "/newsletter-confirmed/")
 
 
@@ -116,6 +123,8 @@ class NewsletterUnsubscribe(APIView):
             return redirect(settings.SITE_URL + "/newsletter-invalid/")
         subscriber.unsubscribed_at = timezone.now()
         subscriber.save(update_fields=["unsubscribed_at"])
+        if crm.enabled():
+            transaction.on_commit(lambda: crm_run(crm.sync_subscriber, subscriber.pk))
         return redirect(settings.SITE_URL + "/newsletter-unsubscribed/")
 
 
