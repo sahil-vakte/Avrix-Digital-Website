@@ -20,9 +20,9 @@ tags:
 blocks:
   - id: why-now
     eyebrow: Why it matters now
-    title: Proving your security is now a *sales requirement*
+    title: Security and *compliance*
     intro: The UK's Cyber Security and Resilience Bill is in its final stages in Parliament and will widen the range of organisations covered by cyber rules. Across Europe, NIS2 and DORA already apply. Customers and insurers increasingly ask for Cyber Essentials, ISO 27001 or SOC 2 before they sign.
-    style: cards
+    style: band
     columns: 3
     items:
       - title: Customers ask first
@@ -34,6 +34,7 @@ blocks:
       - title: Insurers want evidence
         text: Cyber insurance renewals increasingly depend on proof of basic controls.
         icon: badge
+    art: /media/art/thumb-cubes.svg
   - id: groups-table
     eyebrow: At a glance
     title: Which group answers *your question*?
@@ -101,16 +102,16 @@ blocks:
         text: UK and EU national guidance
 deliver_title: Our four *service groups*
 deliver_intro: Twenty services organised by the question they answer. Start with the one that matches the pressure you are under.
-process_title: How a security engagement *runs*
+process_title: Our delivery *approach*
 process:
-  - title: Listen
-    text: A free 30-minute call to understand your systems, deadlines and what customers or regulators are asking for.
-  - title: Scope
-    text: A fixed-price proposal with written authorisation and rules of engagement before any testing begins.
   - title: Assess
-    text: Testing, review or monitoring carried out by experienced specialists, with urgent issues reported immediately.
-  - title: Prove
-    text: Plain-English reports for leaders, technical detail for IT, and evidence for auditors, insurers and customers.
+    text: 'Understand your risk and security posture: what you run, what is exposed and what customers or regulators expect.'
+  - title: Prioritise
+    text: Focus on what matters most, ranking issues by business impact rather than technical severity alone.
+  - title: Protect
+    text: Put the right controls in place, from fixes and hardening to 24/7 monitoring and staff awareness.
+  - title: Verify
+    text: Retest, evidence and improve, so you can prove to customers, insurers and auditors that controls work.
 case_studies: []
 cross_links:
   - title: Building something new?

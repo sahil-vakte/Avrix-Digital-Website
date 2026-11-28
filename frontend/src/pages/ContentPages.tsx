@@ -121,6 +121,7 @@ export default function ContentPages({ route }: { route: RouteRecord }) {
           </SectionShell>
         )}
         <SectionShell
+          id="approach"
           eyebrow={homeSection('engagement').eyebrow}
           title={homeSection('engagement').title}
         >

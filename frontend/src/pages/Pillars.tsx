@@ -1,8 +1,7 @@
-import { findOffering, hub, services, subPages, ui, offeringPath } from '../content';
+import { caseStudies, findOffering, hub, services, subPages, ui, offeringPath } from '../content';
 import type { RouteRecord } from '../content/routes';
 import {
   PageHero,
-  RequestCard,
   SectionShell,
   CardGrid,
   Process,
@@ -11,8 +10,31 @@ import {
   OfferingGrid,
   CaseStudyGrid,
   BlockSection,
+  FeaturedCase,
+  caseThumb,
 } from '../components/sections';
-import { Breadcrumbs, Button } from '../components/ui';
+import { Breadcrumbs, Button, Em, Icon } from '../components/ui';
+import type { Offering } from '../content/schemas';
+
+/** Linked service cards with an arrow, as in the hub designs. */
+function ServiceLinks({ items, compact = false }: { items: Offering[]; compact?: boolean }) {
+  return (
+    <ul className={`service-links ${compact ? 'compact' : ''}`}>
+      {items.map((o) => (
+        <li key={o.slug} className={`pillar-${o.pillar}`}>
+          <a href={offeringPath(o)}>
+            <Icon name={o.icon} />
+            <strong>{o.title}</strong>
+            {!compact && <span>{o.summary}</span>}
+            <span className="arrow" aria-hidden="true">
+              →
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 /** Pillar hub (e.g. /ai-solutions/) or one of its sub-pages. */
 export default function Pillars({ route }: { route: RouteRecord }) {
@@ -26,16 +48,25 @@ export default function Pillars({ route }: { route: RouteRecord }) {
         { label: parent.title, href: offeringPath(parent) },
         { label: o.title, href: offeringPath(o) },
       ];
-  const [first, ...rest] = o.blocks;
   const siblings = children.filter((c) => c.slug !== o.slug);
+  const featured = new Set(o.featured || []);
+  const remaining = (o.case_studies || []).filter((c) => !featured.has(c));
+  const proof = o.proof && caseStudies.find((c) => c.slug === o.proof!.slug)!;
   return (
     <div className={`pillar-page pillar-${o.pillar}`}>
       <PageHero
-        eyebrow={o.eyebrow}
+        eyebrow={isHub ? `${o.title} hub` : o.eyebrow}
         title={o.h1}
         lead={o.intro}
-        tags={o.tags}
-        aside={<RequestCard title={isHub ? ui.bookConsultation : undefined} />}
+        tags={isHub ? undefined : o.tags}
+        art={`/media/art/hero-${o.pillar}.svg`}
+        secondary={
+          isHub
+            ? { label: ui.exploreServices, href: '#deliver' }
+            : o.case_studies?.length
+              ? { label: ui.caseStudies, href: '#case-studies' }
+              : undefined
+        }
       >
         <Breadcrumbs items={crumbs} />
       </PageHero>
@@ -50,30 +81,72 @@ export default function Pillars({ route }: { route: RouteRecord }) {
           </div>
         </div>
       )}
-      {first && <BlockSection block={first} />}
       {isHub && (
         <SectionShell
           id="deliver"
-          tone="tint"
-          eyebrow={o.title}
+          tone={o.pillar === 'ai-solutions' ? 'tint' : 'light'}
+          eyebrow={ui.ourServicesEyebrow}
           title={o.deliver_title || ui.whatWeDeliver}
           intro={o.deliver_intro}
         >
-          <OfferingGrid
-            items={children}
-            columns={children.length === 4 ? 2 : children.length === 3 ? 3 : 3}
-            withServices={o.pillar === 'cyber-security'}
-          />
+          {o.pillar === 'cyber-security' ? (
+            <ul className="group-row">
+              {children.map((g) => (
+                <li key={g.slug}>
+                  <a href={offeringPath(g)}>
+                    <Icon name={g.icon} />
+                    <strong>{g.title}</strong>
+                    <span>{g.summary.split('?')[0]}?</span>
+                    <span className="arrow" aria-hidden="true">
+                      →
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <ServiceLinks items={children} compact={o.pillar === 'ai-solutions'} />
+          )}
           {o.pillar === 'cyber-security' && (
             <div className="section-link">
               <Button href="/services/#cyber-services" variant="secondary">
-                {ui.allCyberServices}
+                {ui.allCyberServicesLong}
               </Button>
             </div>
           )}
         </SectionShell>
       )}
-      {rest.map((b, i) => (
+      {proof && (
+        <section className="section light">
+          <div className="container">
+            <div className="proof-band">
+              <div>
+                <p className="eyebrow">{ui.caseStudy}</p>
+                <h2>
+                  <Em text={o.proof!.title} />
+                </h2>
+                <p>{o.proof!.text}</p>
+                <Button href={`/case-studies/${proof.slug}/`}>{ui.viewProject}</Button>
+              </div>
+              <img src={caseThumb(proof)} alt="" width="480" height="260" loading="lazy" />
+            </div>
+          </div>
+        </section>
+      )}
+      {featured.size > 0 && (
+        <SectionShell
+          id="case-studies"
+          eyebrow={ui.caseStudies}
+          title={`Real-world ${o.title.split(' ')[0]}, *real business results*`}
+        >
+          <div className="featured-cases">
+            {[...featured].map((slug) => (
+              <FeaturedCase key={slug} c={caseStudies.find((c) => c.slug === slug)!} />
+            ))}
+          </div>
+        </SectionShell>
+      )}
+      {o.blocks.map((b, i) => (
         <BlockSection key={b.title} block={b} tone={i % 2 ? 'tint' : 'light'} />
       ))}
       {o.services && (
@@ -91,14 +164,14 @@ export default function Pillars({ route }: { route: RouteRecord }) {
           <Process steps={o.process} />
         </SectionShell>
       )}
-      {!!o.case_studies?.length && (
+      {remaining.length > 0 && (
         <SectionShell
-          id="case-studies"
+          id={featured.size ? 'more-case-studies' : 'case-studies'}
           tone="tint"
           eyebrow={ui.caseStudies}
-          title={`Related *case studies*`}
+          title={featured.size ? `More *case studies*` : `Related *case studies*`}
         >
-          <CaseStudyGrid slugs={o.case_studies} />
+          <CaseStudyGrid slugs={remaining} />
           <div className="section-link">
             <Button href="/case-studies/" variant="secondary">
               {ui.allCaseStudies}

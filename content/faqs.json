@@ -27,12 +27,12 @@
         {
           "q": "Do you work outside the UK?",
           "a": "Yes. We support clients across the UK, the Republic of Ireland and EU member states, remotely first with on-site visits when needed.",
-          "show_on_home": true
+          "show_on_home": false
         },
         {
           "q": "Where is our data stored?",
           "a": "We agree data residency up front. UK and EU hosting are both available.",
-          "show_on_home": true
+          "show_on_home": false
         }
       ]
     },

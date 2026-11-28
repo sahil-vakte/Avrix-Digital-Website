@@ -70,9 +70,33 @@ export function OfferingGrid({
   );
 }
 
+/** Thumbnail artwork for a case study card. */
+export function caseThumb(c: CaseStudy) {
+  const bySlug: Record<string, string> = {
+    'ai-voice-receptionist-platform': 'voice',
+    'ai-dental-practice-workspace': 'voice',
+    'computer-vision-exercise-coach': 'waves',
+    'warehouse-inventory-platform': 'logistics',
+    'retail-commerce-fulfilment': 'cubes',
+    'ai-marketing-automation-mcp': 'ai-solutions',
+    'learning-management-platform': 'digital-transformation',
+  };
+  const key =
+    bySlug[c.slug] ||
+    (c.sector === 'healthcare'
+      ? 'healthcare'
+      : c.sector === 'retail-logistics'
+        ? 'logistics'
+        : 'cubes');
+  return `/media/art/thumb-${key}.svg`;
+}
+
 export function CaseStudyCard({ c }: { c: CaseStudy }) {
   return (
     <article className="card case-card">
+      <div className="card-media" aria-hidden="true">
+        <img src={caseThumb(c)} alt="" width="480" height="260" loading="lazy" />
+      </div>
       <p className="card-label">{c.industry}</p>
       <h3>
         <a href={caseStudyHref(c.slug)}>{c.title}</a>
@@ -88,9 +112,80 @@ export function CaseStudyCard({ c }: { c: CaseStudy }) {
         href={caseStudyHref(c.slug)}
         aria-label={`${ui.readCaseStudy}: ${c.title}`}
       >
-        {ui.readCaseStudy} <span aria-hidden="true">→</span>
+        {ui.viewCaseStudy} <span aria-hidden="true">→</span>
       </a>
     </article>
+  );
+}
+
+/** Large horizontal case study card used on hub pages. */
+export function FeaturedCase({ c }: { c: CaseStudy }) {
+  return (
+    <article className="featured-case">
+      <img src={caseThumb(c)} alt="" width="480" height="260" loading="lazy" />
+      <div>
+        <p className="card-label">{c.industry}</p>
+        <h3>
+          <a href={caseStudyHref(c.slug)}>{c.title}</a>
+        </h3>
+        <p>{c.summary}</p>
+        <span className="button primary sm" aria-hidden="true">
+          {ui.viewCaseStudy} <span>→</span>
+        </span>
+      </div>
+    </article>
+  );
+}
+
+/** Industry cards with icon and arrow, linking to each sector page. */
+export function IndustriesGrid() {
+  return (
+    <ul className="industry-links">
+      {content.industries.map((i) => (
+        <li key={i.slug}>
+          <a href={`/industries/${i.slug}/`}>
+            <Icon name={i.icon} />
+            <span>{i.title}</span>
+            <span className="arrow" aria-hidden="true">
+              →
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** Latest published articles with artwork. */
+export function InsightsGrid({ count = 3 }: { count?: number }) {
+  const art: Record<string, string> = {
+    compliance: 'cyber-security',
+    threats: 'waves',
+    guides: 'digital-transformation',
+  };
+  return (
+    <div className="grid cards-3 stagger insight-grid">
+      {posts.slice(0, count).map((p, n) => (
+        <article className="card insight-card" key={p.slug}>
+          <div className="card-media" aria-hidden="true">
+            <img
+              src={`/media/art/thumb-${n === 2 ? 'cubes' : art[p.category] || 'ai-solutions'}.svg`}
+              alt=""
+              width="480"
+              height="260"
+              loading="lazy"
+            />
+          </div>
+          <h3>
+            <a href={postHref(p.slug)}>{p.title}</a>
+          </h3>
+          <p>{p.excerpt}</p>
+          <span className="more" aria-hidden="true">
+            {ui.readInsight} →
+          </span>
+        </article>
+      ))}
+    </div>
   );
 }
 
@@ -149,7 +244,19 @@ export function BlockSection({ block, tone }: { block: Block; tone?: 'light' | '
       title={block.title}
       intro={block.intro}
     >
-      {block.style === 'table' && block.table ? (
+      {block.style === 'band' ? (
+        <div className="info-band">
+          {block.art && <img src={block.art} alt="" width="480" height="260" loading="lazy" />}
+          <ul className="band-points">
+            {items.map((i) => (
+              <li key={i.title}>
+                <strong>{i.title}</strong>
+                <span>{i.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : block.style === 'table' && block.table ? (
         <DataTable headers={block.table.headers} rows={block.table.rows} />
       ) : block.style === 'checklist' ? (
         <ul className="check-cards stagger">
@@ -190,6 +297,8 @@ export function PageHero({
   tags,
   footer,
   actions = true,
+  art,
+  secondary,
 }: {
   eyebrow?: string;
   title: string;
@@ -199,9 +308,13 @@ export function PageHero({
   tags?: string[];
   footer?: ReactNode;
   actions?: boolean;
+  /** Decorative hero artwork shown beside the copy when there is no aside. */
+  art?: string;
+  secondary?: { label: string; href: string };
 }) {
+  const artwork = aside ? null : art || '/media/art/hero-page.svg';
   return (
-    <section className={`page-hero ${aside ? 'with-aside' : ''}`}>
+    <section className={`page-hero ${aside ? 'with-aside' : 'with-art'}`}>
       <div className="hero-glow" aria-hidden="true" />
       <div className="container page-hero-grid">
         <div className="page-hero-copy">
@@ -213,16 +326,23 @@ export function PageHero({
           {lead && <p className="lead">{lead}</p>}
           {actions && (
             <div className="actions">
-              <Button href={nav.header_cta.href!}>{nav.header_cta.label}</Button>
-              <Button href="#enquiry" variant="secondary">
-                {ui.openEnquiry}
-              </Button>
+              <Button href="#enquiry">{ui.bookConsultation}</Button>
+              {secondary && (
+                <Button href={secondary.href} variant="secondary">
+                  {secondary.label}
+                </Button>
+              )}
             </div>
           )}
           {tags && <Tags items={tags} />}
           {footer}
         </div>
         {aside}
+        {artwork && (
+          <div className="hero-art" aria-hidden="true">
+            <img src={artwork} alt="" width="760" height="600" fetchPriority="high" />
+          </div>
+        )}
       </div>
     </section>
   );
@@ -466,29 +586,31 @@ export function BlogTeaser({ items = posts.slice(0, 3) }: { items?: Post[] }) {
 export function CtaBand() {
   const s = homeSection('final_cta');
   return (
-    <section className="cta-band">
+    <section className="cta-band" aria-labelledby="cta-band-title">
       <div className="container">
         <div className="cta-panel">
-          <h2>
-            <Em text={s.title!} />
-          </h2>
-          <p className="lead">{s.text}</p>
-          {s.promises && (
-            <ul className="cta-promises">
-              {s.promises.map((p) => (
-                <li key={p.title}>
-                  <strong>{p.title}</strong>
-                  <span>{p.text}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-          <div className="actions">
-            <Button href={s.primary_cta!.href!}>{s.primary_cta!.label}</Button>
-            <Button href="#enquiry" variant="secondary">
-              {ui.openEnquiry}
-            </Button>
+          <div className="cta-copy">
+            <h2 id="cta-band-title">
+              <Em text={s.title!} />
+            </h2>
+            <p>{s.text}</p>
+            <div className="actions">
+              <Button href="#enquiry" variant="light">
+                {ui.bookConsultation}
+              </Button>
+              <Button href="/contact-us/" variant="outline-light">
+                {ui.contactUs}
+              </Button>
+            </div>
           </div>
+          <img
+            className="cta-art"
+            src="/media/art/band-ribbon.svg"
+            alt=""
+            width="900"
+            height="300"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>

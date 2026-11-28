@@ -1,40 +1,36 @@
-import { home, content, services } from '../content';
+import { home, content } from '../content';
 import { Button, Em, Icon } from '../components/ui';
 import {
   CaseStudyGrid,
-  Ticker,
-  HeroDashboard,
-  ServiceCard,
   SectionShell,
-  IndustryTabs,
-  CardGrid,
-  FrameworkGrid,
   Timeline,
-  Testimonials,
   FAQ,
   CtaBand,
+  IndustriesGrid,
+  InsightsGrid,
 } from '../components/sections';
 import type { Item } from '../content/schemas';
+
+const pillarKey = (href: string) => href.replace(/\//g, '');
 
 export default function Home() {
   return (
     <>
       {home.sections.map((s, i) => {
         const link = s.link && (
-          <div className="section-link">
-            <Button href={s.link.href!} variant="secondary">
-              {s.link.label}
-            </Button>
+          <div className="section-link start">
+            <a className="text-link" href={s.link.href!}>
+              {s.link.label} <span aria-hidden="true">→</span>
+            </a>
           </div>
         );
         switch (s.type) {
           case 'hero':
             return (
               <section className="home-hero" key={i}>
-                <div className="hero-glow" aria-hidden="true" />
                 <div className="container">
                   <div className="home-hero-copy">
-                    {s.eyebrow && <p className="eyebrow pill-eyebrow">{s.eyebrow}</p>}
+                    {s.eyebrow && <p className="eyebrow">{s.eyebrow}</p>}
                     <h1>
                       <Em text={s.h1!} />
                     </h1>
@@ -55,88 +51,90 @@ export default function Home() {
                       </ul>
                     )}
                   </div>
-                  <HeroDashboard section={s} />
+                  <div className="hero-art home-art" aria-hidden="true">
+                    <img
+                      src="/media/art/hero-home.svg"
+                      alt=""
+                      width="760"
+                      height="680"
+                      fetchPriority="high"
+                    />
+                  </div>
                 </div>
               </section>
             );
-          case 'ticker':
-            return <Ticker key={i} section={s} />;
           case 'pillars':
             return (
               <SectionShell
                 key={i}
-                id="pillars"
+                id="services"
+                tone="tint"
                 eyebrow={s.eyebrow}
                 title={s.title}
                 intro={s.intro}
               >
                 <div className="pillar-cards stagger">
                   {(s.items as Item[]).map((p) => (
-                    <article
-                      className={`pillar-card pillar-${p.href!.replace(/\//g, '')}`}
-                      key={p.title}
-                    >
-                      <div className="pillar-card-top">
-                        <Icon name={p.icon!} />
-                        <h3>
-                          <a href={p.href}>{p.title}</a>
-                        </h3>
+                    <article className={`pillar-card pillar-${pillarKey(p.href!)}`} key={p.title}>
+                      <div className="card-media" aria-hidden="true">
+                        <img
+                          src={`/media/art/thumb-${pillarKey(p.href!)}.svg`}
+                          alt=""
+                          width="480"
+                          height="260"
+                          loading="lazy"
+                        />
                       </div>
+                      <h3>
+                        <a href={p.href}>{p.title}</a>
+                      </h3>
                       <p>{p.text}</p>
                       <ul className="check-list">{p.bullets?.map((b) => <li key={b}>{b}</li>)}</ul>
-                      <a className="more" href={p.href}>
-                        {p.label} <span aria-hidden="true">→</span>
-                      </a>
+                      <span className="more" aria-hidden="true">
+                        {p.label} →
+                      </span>
                     </article>
                   ))}
                 </div>
               </SectionShell>
             );
-          case 'problem':
-            return (
-              <SectionShell key={i} tone="tint" eyebrow={s.eyebrow} title={s.title}>
-                <div className="problem-split">
-                  <div className="problem-copy">
-                    {s.paragraphs?.map((p) => <p key={p.slice(0, 20)}>{p}</p>)}
-                  </div>
-                  <ul className="problem-list">
-                    {(s.items as Item[]).map((p) => (
-                      <li key={p.title}>
-                        <Icon name={p.icon!} />
-                        <span>
-                          <strong>{p.title}</strong>
-                          {p.text}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </SectionShell>
-            );
           case 'connected':
             return (
-              <SectionShell key={i} eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
-                <CardGrid
-                  items={s.items as Item[]}
-                  columns={4}
-                  numbered
-                  className="connected-grid"
-                />
-              </SectionShell>
+              <section className="section light growth" key={i} aria-labelledby="growth-title">
+                <div className="container growth-grid">
+                  <div className="growth-copy">
+                    <p className="eyebrow">{s.eyebrow}</p>
+                    <h2 id="growth-title">
+                      <Em text={s.title!} />
+                    </h2>
+                    {s.paragraphs?.map((p) => <p key={p.slice(0, 24)}>{p}</p>)}
+                    {link}
+                  </div>
+                  <ol className="glass-tiles">
+                    {(s.items as Item[]).map((t) => (
+                      <li key={t.title}>
+                        <a href={t.href}>
+                          <strong>{t.title}</strong>
+                          <span>{t.text}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </section>
             );
           case 'proof':
             return (
-              <SectionShell key={i} tone="tint" eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
+              <SectionShell key={i} eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
                 <CaseStudyGrid slugs={s.items as string[]} />
                 {link}
               </SectionShell>
             );
           case 'people':
             return (
-              <section className="section light" key={i}>
+              <section className="section light people-section" key={i}>
                 <div className="container">
                   <div className="people-band">
-                    <Icon name="team" />
                     <div>
                       <p className="eyebrow">{s.eyebrow}</p>
                       <h2>
@@ -144,77 +142,63 @@ export default function Home() {
                       </h2>
                       <p>{s.text}</p>
                     </div>
-                    <Button href={s.link!.href!} variant="secondary">
-                      {s.link!.label}
-                    </Button>
+                    <Button href={s.link!.href!}>{s.link!.label}</Button>
                   </div>
                 </div>
               </section>
             );
-          case 'services_carousel':
-            return (
-              <SectionShell
-                key={i}
-                id="services"
-                eyebrow={s.eyebrow}
-                title={s.title}
-                intro={s.intro}
-              >
-                <div
-                  className="carousel stagger"
-                  tabIndex={0}
-                  aria-label={s.title?.replace(/\*/g, '')}
-                >
-                  {(s.items as string[]).map((slug) => {
-                    const service = services.find((v) => v.slug === slug)!;
-                    return <ServiceCard key={slug} s={service} />;
-                  })}
-                </div>
-                {link}
-              </SectionShell>
-            );
-          case 'industries_tabs':
-            return (
-              <SectionShell key={i} tone="tint" eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
-                <IndustryTabs industries={content.industries.slice(0, 6)} />
-                {link}
-              </SectionShell>
-            );
-          case 'capabilities':
-            return (
-              <SectionShell key={i} eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
-                <CardGrid items={s.items as Item[]} columns={4} className="capability-grid" />
-              </SectionShell>
-            );
-          case 'frameworks':
-            return (
-              <SectionShell key={i} tone="tint" eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
-                <FrameworkGrid items={s.items as Item[]} />
-              </SectionShell>
-            );
           case 'advantage':
             return (
-              <SectionShell key={i} eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
-                <CardGrid items={s.items as Item[]} columns={3} numbered />
+              <SectionShell key={i} tone="tint" eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
+                <ul className="why-grid">
+                  {(s.items as Item[]).map((w, n) => (
+                    <li key={w.title}>
+                      <Icon
+                        name={
+                          ['team', 'optimise', 'scale', 'shield-network', 'compliance', 'check'][
+                            n
+                          ] || 'check'
+                        }
+                      />
+                      <strong>{w.title}</strong>
+                      <span>{w.text}</span>
+                    </li>
+                  ))}
+                </ul>
+                {link}
               </SectionShell>
             );
           case 'engagement':
             return (
-              <SectionShell key={i} tone="tint" eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
+              <SectionShell key={i} eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
                 <Timeline steps={s.items as Item[]} />
+                {link}
               </SectionShell>
             );
-          case 'testimonials':
-            return <Testimonials key={i} section={s} />;
-          case 'faq':
+          case 'industries_grid':
+            return (
+              <SectionShell key={i} tone="tint" eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
+                <IndustriesGrid />
+                {link}
+              </SectionShell>
+            );
+          case 'insights':
             return (
               <SectionShell key={i} eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
+                <InsightsGrid />
+                {link}
+              </SectionShell>
+            );
+          case 'faq':
+            return (
+              <SectionShell key={i} tone="tint" eyebrow={s.eyebrow} title={s.title} intro={s.intro}>
                 <div className="narrow">
                   <FAQ
                     items={content.faqs.groups
                       .flatMap((g) => g.items)
                       .filter((f) => f.show_on_home)}
                   />
+                  {link}
                 </div>
               </SectionShell>
             );

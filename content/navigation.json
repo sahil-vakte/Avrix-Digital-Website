@@ -1,10 +1,6 @@
 {
   "header": [
     {
-      "label": "Home",
-      "href": "/"
-    },
-    {
       "label": "Services",
       "href": "/services/",
       "menu": "services"
@@ -26,15 +22,11 @@
     {
       "label": "About",
       "href": "/about/"
-    },
-    {
-      "label": "Contact",
-      "href": "/contact-us/"
     }
   ],
   "header_cta": {
-    "label": "Book a free consultation",
-    "href": "booking_url_or:/contact-us/"
+    "label": "Contact",
+    "href": "/contact-us/"
   },
   "mega_menu": [
     {
@@ -231,6 +223,36 @@
       {
         "label": "Cookie preferences",
         "action": "open-cookie-preferences"
+      }
+    ],
+    "shortcuts": [
+      {
+        "label": "Custom software & platforms",
+        "href": "/digital-transformation/custom-software-development/"
+      },
+      {
+        "label": "AI voice agents",
+        "href": "/ai-solutions/ai-voice-agents/"
+      },
+      {
+        "label": "AI agents & automation",
+        "href": "/ai-solutions/ai-agents-automation/"
+      },
+      {
+        "label": "Penetration testing",
+        "href": "/services/penetration-testing/"
+      },
+      {
+        "label": "Cyber Essentials",
+        "href": "/services/cyber-essentials/"
+      },
+      {
+        "label": "ISO 27001",
+        "href": "/services/iso-27001/"
+      },
+      {
+        "label": "Staff augmentation",
+        "href": "/professional-services/staff-augmentation/"
       }
     ]
   },

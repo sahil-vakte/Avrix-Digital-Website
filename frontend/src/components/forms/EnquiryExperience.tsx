@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import type { MouseEvent, ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import { content, page, services, site, solutions, ui } from '../../content';
+import { announceClosed, announceOpen, closeWhenOtherOpens } from '../../lib/overlay';
 const EnquiryForm = lazy(() => import('./EnquiryForm'));
 
 /** Map a service page to the matching "What can we help with?" option on the enquiry form. */
@@ -48,14 +49,17 @@ export default function EnquiryExperience({ children }: { children: ReactNode })
   useEffect(() => {
     setRequest(null);
   }, [pathname]);
+  useEffect(() => closeWhenOtherOpens('enquiry', () => setRequest(null)), []);
   useEffect(() => {
     if (!request) return;
     const element = dialog.current;
     const previousOverflow = document.body.style.overflow;
+    announceOpen('enquiry');
     element?.showModal();
     document.body.style.overflow = 'hidden';
     return () => {
       element?.close();
+      announceClosed('enquiry');
       document.body.style.overflow = previousOverflow;
       if (opener.current?.isConnected) {
         const closedSheet = opener.current.closest('dialog:not([open])');
@@ -107,19 +111,6 @@ export default function EnquiryExperience({ children }: { children: ReactNode })
   return (
     <div className="app-shell" onClickCapture={intercept}>
       {children}
-      <div className="schedule-tab">
-        {site.booking_url ? (
-          <a href={site.booking_url}>
-            <span aria-hidden="true">↗</span>
-            {ui.scheduleCall}
-          </a>
-        ) : (
-          <button type="button" onClick={(event) => open(event.currentTarget, true)}>
-            <span aria-hidden="true">↗</span>
-            {ui.scheduleCall}
-          </button>
-        )}
-      </div>
       {request && (
         <dialog
           ref={dialog}
@@ -131,7 +122,7 @@ export default function EnquiryExperience({ children }: { children: ReactNode })
           <div className="enquiry-dialog-toolbar">
             <span className="enquiry-brand">
               {content.hasLogo ? (
-                <img src={site.logo.dark_on_light} alt={site.logo.alt} width="705" height="150" />
+                <img src={site.logo.dark_on_light} alt={site.logo.alt} width="720" height="141" />
               ) : (
                 site.brand_name
               )}

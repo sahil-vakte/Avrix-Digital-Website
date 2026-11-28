@@ -41,4 +41,27 @@ related:
   - label: Custom software & platforms
     href: /digital-transformation/custom-software-development/
 updated: '2026-11-26'
+h1: From spreadsheets to one connected *warehouse platform*
+art: /media/art/hero-case-study.svg
+workflow:
+  - label: Stock inward
+    icon: box
+  - label: Orders
+    icon: cart
+  - label: Picking
+    icon: barcode
+  - label: Packing
+    icon: package
+  - label: Dispatch
+    icon: truck
+outcome_points:
+  - title: One version of the truth
+    text: Stock and orders tracked in a single platform.
+    icon: checklist
+  - title: Fewer errors
+    text: Fewer picking and dispatch mistakes.
+    icon: target
+  - title: Full traceability
+    text: Every order traceable when customers ask.
+    icon: discover
 ---

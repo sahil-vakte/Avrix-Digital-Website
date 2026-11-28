@@ -68,9 +68,14 @@ it('opens only on request and preselects the topic from the current page', async
   expect(document.activeElement).toBe(trigger);
 });
 
-it('uses a call preference from the sticky button and supports native Escape dismissal', async () => {
-  wrap('/services/managed-security/');
-  fireEvent.click(screen.getByRole('button', { name: /Schedule a call/ }));
+it('uses a call preference from a call trigger and supports native Escape dismissal', async () => {
+  wrap(
+    '/services/managed-security/',
+    <a href="#enquiry" data-enquiry-mode="call">
+      Book a call
+    </a>,
+  );
+  fireEvent.click(screen.getByRole('link', { name: /Book a call/ }));
   await screen.findByRole('form', { name: 'Project enquiry' });
   expect(screen.getByText('managed-soc')).toBeTruthy();
   expect(screen.getByText('video-call')).toBeTruthy();

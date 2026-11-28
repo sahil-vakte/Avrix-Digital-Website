@@ -68,7 +68,12 @@ export function buildRoutes(c: Content): RouteRecord[] {
     }),
   );
   c.caseStudies.forEach((s) =>
-    result.push({ path: `/case-studies/${s.slug}/`, kind: 'case-study', ...s, h1: s.title }),
+    result.push({
+      path: `/case-studies/${s.slug}/`,
+      kind: 'case-study',
+      ...s,
+      h1: s.h1 || s.title,
+    }),
   );
   c.industries.forEach((s) =>
     result.push({ path: `/industries/${s.slug}/`, kind: 'industry', ...s }),

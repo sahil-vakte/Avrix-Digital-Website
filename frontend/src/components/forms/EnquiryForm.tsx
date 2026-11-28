@@ -81,7 +81,12 @@ export default function EnquiryForm({
     return (
       <div id="enquiry" className="enquiry-form" role="status">
         <h2>{copy.title}</h2>
-        <p>Online enquiries will be available soon.</p>
+        <p>{ui.formsUnavailable}</p>
+        <p>
+          <a className="button primary" href={`mailto:${site.email}`}>
+            {ui.emailUs}: {site.email}
+          </a>
+        </p>
       </div>
     );
   if (success)

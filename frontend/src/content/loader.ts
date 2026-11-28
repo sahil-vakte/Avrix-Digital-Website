@@ -162,6 +162,20 @@ export function loadContent(): Content {
   for (const p of data.posts)
     if (!slugs.has(p.related_service)) throw new Error(`Unknown service ${p.related_service}`);
   const studySlugs = new Set(data.caseStudies.map((c) => c.slug));
+  const media = (p: string) => path.join(root, 'assets', p.replace(/^\/media\//, ''));
+  for (const c of data.caseStudies) {
+    if (c.art && !fs.existsSync(media(c.art))) throw new Error(`Missing art ${c.art}`);
+    for (const w of c.workflow || [])
+      if (!fs.existsSync(path.join(root, `assets/icons/${w.icon}.svg`)))
+        throw new Error(`Missing icon ${w.icon}`);
+  }
+  for (const o of data.offerings) {
+    for (const b of o.blocks)
+      if (b.art && !fs.existsSync(media(b.art))) throw new Error(`Missing art ${b.art}`);
+    if (o.proof && !studySlugs.has(o.proof.slug)) throw new Error(`Unknown proof ${o.proof.slug}`);
+    for (const f of o.featured || [])
+      if (!studySlugs.has(f)) throw new Error(`Unknown featured case study ${f}`);
+  }
   for (const p of pillarKeys)
     if (!data.offerings.some((o) => o.pillar === p && o.slug === 'index'))
       throw new Error(`Missing hub for ${p}`);

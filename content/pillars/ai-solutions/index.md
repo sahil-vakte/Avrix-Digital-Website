@@ -45,9 +45,9 @@ blocks:
         icon: chat
   - id: responsible
     eyebrow: Responsible AI
-    title: Responsible AI, *built in*
+    title: Built with human review and *governance*
     intro: Because AVRIX is also a cyber security partner, your AI is tested against prompt injection, data leakage and misuse before it goes live.
-    style: checklist
+    style: band
     tone: tint
     items:
       - title: Human review where decisions matter
@@ -60,6 +60,7 @@ blocks:
         text: Call recording, transcription and data use follow clear consent rules.
       - title: UK GDPR and EU AI Act alignment
         text: Data stays in agreed regions and the right documentation is kept.
+    art: /media/art/thumb-ai-solutions.svg
 deliver_title: What we *deliver*
 deliver_intro: From a short strategy sprint to a production AI agent, each service is scoped and priced before work starts.
 process_title: How an AI project *runs*
@@ -103,4 +104,7 @@ faqs:
   - q: Which AI models do you use?
     a: We choose models to suit the task, cost and data rules, and can use providers that keep data in the UK or EU. We avoid locking you in to one vendor.
 updated: '2026-11-26'
+featured:
+  - ai-clinical-documentation-fhir
+  - ai-voice-receptionist-platform
 ---

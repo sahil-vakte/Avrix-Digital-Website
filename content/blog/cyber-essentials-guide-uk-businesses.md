@@ -8,7 +8,7 @@ category: compliance
 author: avrix-team
 published: 2026-11-12
 updated: 2026-11-12
-cover: { src: /media/covers/blog/cyber-essentials-guide-uk-businesses.svg, alt: "Abstract AVRIX cover graphic with a certificate badge icon for the Cyber Essentials guide" }
+cover: { src: /media/covers/blog/cyber-essentials-guide-uk-businesses.svg, alt: "Faceted glass shield, the AVRIX cover for the Cyber Essentials guide" }
 related_service: cyber-essentials
 draft: false
 ---

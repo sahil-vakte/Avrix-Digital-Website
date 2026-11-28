@@ -8,13 +8,14 @@ export default function Newsletter() {
   const [state, setState] = useState('');
   const [token, setToken] = useState('');
   const [active, setActive] = useState(false);
+  const [sending, setSending] = useState(false);
   const start = useRef(Date.now());
   const onToken = useCallback((v: string) => setToken(v), []);
   if (import.meta.env.VITE_PUBLIC_FORMS_ENABLED === 'false')
     return (
-      <div className="newsletter">
-        <h3>{copy.title}</h3>
+      <div className="newsletter" role="status">
         <p>Newsletter sign-ups will be available soon.</p>
+        <p>{ui.newsletterUnavailableText}</p>
       </div>
     );
   return (
@@ -29,6 +30,8 @@ export default function Newsletter() {
         }
         const form = e.currentTarget;
         const data = new FormData(form);
+        setSending(true);
+        setState(ui.sending);
         try {
           await post('newsletter', {
             email: data.get('email'),
@@ -44,13 +47,14 @@ export default function Newsletter() {
           form.reset();
         } catch {
           setState(ui.newsletterError);
+        } finally {
+          setSending(false);
         }
       }}
     >
-      <h3>{copy.title}</h3>
       <p>{copy.text}</p>
       <label>
-        Email
+        {ui.emailAddress}
         <input type="email" name="email" required autoComplete="email" />
       </label>
       <div className="honeypot" aria-hidden="true">
@@ -65,12 +69,16 @@ export default function Newsletter() {
         <input type="checkbox" required />
         {copy.consent}
       </label>
-      <a href="/privacy-policy/">{ui.legal}</a>
+      <p className="form-note">
+        <a href="/privacy-policy/">{ui.privacyPolicy}</a>
+      </p>
       {active && <Turnstile onToken={onToken} />}
-      <button type="submit" disabled={!active} className="button secondary">
+      <button type="submit" disabled={!active || sending} className="button primary">
         {ui.newsletterSubmit} →
       </button>
-      <p role="status">{state}</p>
+      <p role="status" aria-live="polite">
+        {state}
+      </p>
       <noscript>
         <a href={`mailto:${site.email}`}>{site.email}</a>
       </noscript>
