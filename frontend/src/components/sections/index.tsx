@@ -180,9 +180,9 @@ export function InsightsGrid({ count = 3 }: { count?: number }) {
             <a href={postHref(p.slug)}>{p.title}</a>
           </h3>
           <p>{p.excerpt}</p>
-          <span className="more" aria-hidden="true">
-            {ui.readInsight} →
-          </span>
+          <a className="more" href={postHref(p.slug)} aria-label={`${ui.readInsight}: ${p.title}`}>
+            {ui.readInsight} <span aria-hidden="true">→</span>
+          </a>
         </article>
       ))}
     </div>
@@ -605,7 +605,7 @@ export function CtaBand() {
           </div>
           <img
             className="cta-art"
-            src="/media/art/band-ribbon.svg"
+            src="/media/art/band-squares.svg"
             alt=""
             width="900"
             height="300"

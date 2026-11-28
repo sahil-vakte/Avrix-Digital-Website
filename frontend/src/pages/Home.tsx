@@ -19,9 +19,7 @@ export default function Home() {
       {home.sections.map((s, i) => {
         const link = s.link && (
           <div className="section-link start">
-            <a className="text-link" href={s.link.href!}>
-              {s.link.label} <span aria-hidden="true">→</span>
-            </a>
+            <Button href={s.link.href!}>{s.link.label}</Button>
           </div>
         );
         switch (s.type) {
@@ -90,9 +88,9 @@ export default function Home() {
                       </h3>
                       <p>{p.text}</p>
                       <ul className="check-list">{p.bullets?.map((b) => <li key={b}>{b}</li>)}</ul>
-                      <span className="more" aria-hidden="true">
-                        {p.label} →
-                      </span>
+                      <a className="more" href={p.href} aria-label={p.label}>
+                        {p.label} <span aria-hidden="true">→</span>
+                      </a>
                     </article>
                   ))}
                 </div>
@@ -135,14 +133,40 @@ export default function Home() {
               <section className="section light people-section" key={i}>
                 <div className="container">
                   <div className="people-band">
-                    <div>
+                    <div className="people-copy">
                       <p className="eyebrow">{s.eyebrow}</p>
                       <h2>
                         <Em text={s.title!} />
                       </h2>
                       <p>{s.text}</p>
+                      {s.items && (
+                        <ul className="people-routes">
+                          {(s.items as Item[]).map((r) => (
+                            <li key={r.title}>
+                              <a href={r.href}>
+                                <Icon name={r.icon || 'team'} />
+                                <span>
+                                  <strong>{r.title}</strong>
+                                  <small>{r.text}</small>
+                                </span>
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <div className="actions">
+                        <Button href={s.link!.href!}>{s.link!.label}</Button>
+                      </div>
                     </div>
-                    <Button href={s.link!.href!}>{s.link!.label}</Button>
+                    <div className="people-art" aria-hidden="true">
+                      <img
+                        src="/media/art/talent-band.svg"
+                        alt=""
+                        width="560"
+                        height="460"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                 </div>
               </section>
