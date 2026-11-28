@@ -5,11 +5,11 @@
     {
       "type": "hero",
       "eyebrow": "Intelligent Technology. Secure Growth.",
-      "h1": "Modernise, automate and protect your business with *one accountable technology partner*",
+      "h1": "Modernise, automate and protect *your business.*",
       "lead": "AVRIX Digital helps UK and European organisations replace slow, manual processes with modern platforms, put AI to work where it pays back, and stay secure and compliant while they do it.",
       "primary_cta": {
         "label": "Book a free consultation",
-        "href": "booking_url_or:/contact-us/"
+        "href": "#enquiry"
       },
       "secondary_cta": {
         "label": "See our case studies",
@@ -20,31 +20,11 @@
         "Fixed-price proposals",
         "NDA on request",
         "ICO registered"
-      ],
-      "signal_chips": ["Software", "AI agents", "Cloud", "Security", "People"],
-      "label": "Illustrative example of a client programme view",
-      "items": [
-        {
-          "title": "Operations platform",
-          "text": "Live"
-        },
-        {
-          "title": "AI receptionist",
-          "text": "Answering"
-        },
-        {
-          "title": "Pen test retest",
-          "text": "Passed"
-        },
-        {
-          "title": "Cyber Essentials",
-          "text": "Certified"
-        }
       ]
     },
     {
       "type": "pillars",
-      "eyebrow": "What we do",
+      "eyebrow": "Our services",
       "title": "Three disciplines, *one accountable partner*",
       "intro": "Most organisations buy software, AI and security from different suppliers who never speak to each other. We bring them together under one plan.",
       "items": [
@@ -85,35 +65,9 @@
       ]
     },
     {
-      "type": "problem",
-      "eyebrow": "The problem we solve",
-      "title": "Technology should make growth easier, *not riskier*",
-      "paragraphs": [
-        "Most organisations we meet have the same three problems. Work is stuck in manual steps and systems that do not talk to each other. AI has been talked about but not delivered. And every new system adds security and compliance risk that nobody fully owns.",
-        "AVRIX brings all three under one roof. We design and build the systems, add AI where it earns its place, and secure the whole estate, so you deal with one partner, one plan and one accountable contact."
-      ],
-      "items": [
-        {
-          "title": "Manual work",
-          "text": "Processes stuck in spreadsheets, inboxes and systems that do not talk to each other.",
-          "icon": "checklist"
-        },
-        {
-          "title": "AI not delivered",
-          "text": "Plenty of talk about AI, but nothing running real work end to end.",
-          "icon": "ai-automation"
-        },
-        {
-          "title": "Unowned risk",
-          "text": "Every new system adds security and compliance risk that nobody fully owns.",
-          "icon": "shield-network"
-        }
-      ]
-    },
-    {
       "type": "connected",
       "eyebrow": "How it fits together",
-      "title": "Built, automated and secured *in one programme*",
+      "title": "Technology should make growth *easier*",
       "items": [
         {
           "title": "Modernise",
@@ -135,7 +89,15 @@
           "text": "When you need extra hands, our specialist engineers, AI and cyber professionals join your team.",
           "href": "/professional-services/"
         }
-      ]
+      ],
+      "paragraphs": [
+        "Most organisations we meet have the same three problems. Work is stuck in manual steps and systems that do not talk to each other. AI has been talked about but not delivered. And every new system adds security and compliance risk that nobody fully owns.",
+        "AVRIX brings all three under one roof. We design and build the systems, add AI where it earns its place, and secure the whole estate, so you deal with one partner, one plan and one accountable contact."
+      ],
+      "link": {
+        "label": "Explore our services",
+        "href": "/services/"
+      }
     },
     {
       "type": "proof",
@@ -191,11 +153,15 @@
           "title": "We stay until it works",
           "text": "Support, retesting and improvement are built into every engagement."
         }
-      ]
+      ],
+      "link": {
+        "label": "About AVRIX",
+        "href": "/about/"
+      }
     },
     {
       "type": "engagement",
-      "eyebrow": "Our approach",
+      "eyebrow": "How we work",
       "title": "From first call to measurable result *in five steps*",
       "items": [
         {
@@ -223,32 +189,45 @@
           "text": "Results reported in business terms, plus documentation for auditors, insurers and your board.",
           "label": "Step 5"
         }
-      ]
+      ],
+      "link": {
+        "label": "Explore our approach",
+        "href": "/about/#approach"
+      }
     },
     {
-      "type": "industries_tabs",
+      "type": "industries_grid",
       "eyebrow": "Industries",
-      "title": "Shaped around *your sector*",
-      "intro": "A clinic, a retailer and a manufacturer face different pressures and rules. Pick your sector to see what usually matters most.",
+      "title": "Industries *we support*",
+      "intro": "Sector rules, risks and priorities built into every engagement.",
       "link": {
-        "label": "All industries",
+        "label": "View all industries",
         "href": "/industries/"
       }
     },
     {
-      "type": "testimonials",
-      "eyebrow": "Testimonials",
-      "title": "What clients *say*"
+      "type": "insights",
+      "eyebrow": "Insights",
+      "title": "Latest *insights*",
+      "intro": "Practical reads on technology, AI and cyber risk for people who run organisations.",
+      "link": {
+        "label": "Browse insights",
+        "href": "/blog/"
+      }
     },
     {
       "type": "faq",
       "eyebrow": "FAQs",
       "title": "Questions we are *often asked*",
-      "intro": "Straight answers to what people ask us on first calls."
+      "intro": "Straight answers to what people ask us on first calls.",
+      "link": {
+        "label": "View all FAQs",
+        "href": "/faqs/"
+      }
     },
     {
       "type": "final_cta",
-      "title": "Let's talk about what you want to *fix first*",
+      "title": "Let's talk about *your project*",
       "text": "Book a free 30-minute consultation. You will get a clear view of options, costs and risks, whether or not you work with us.",
       "promises": [
         {

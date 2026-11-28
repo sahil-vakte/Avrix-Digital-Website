@@ -1,5 +1,6 @@
 import './styles/tokens.css';
 import './styles/site.css';
+import './styles/theme.css';
 
 // Paint the complete static page before downloading and hydrating React.
 if (!import.meta.env.SSR && typeof window !== 'undefined') {

@@ -8,7 +8,7 @@ category: compliance
 author: avrix-team
 published: 2026-11-12
 updated: 2026-11-12
-cover: { src: /media/covers/blog/nis2-dora-what-uk-suppliers-need-to-know.svg, alt: "Abstract AVRIX cover graphic with a network shield icon for the NIS2 and DORA guide" }
+cover: { src: /media/covers/blog/nis2-dora-what-uk-suppliers-need-to-know.svg, alt: "Glass planes rising to the right, the AVRIX cover for the NIS2 and DORA guide" }
 related_service: nis2-dora
 draft: false
 ---

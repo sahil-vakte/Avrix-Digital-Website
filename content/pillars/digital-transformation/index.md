@@ -98,4 +98,8 @@ faqs:
   - q: How do you keep costs under control?
     a: Every phase is scoped and priced before it starts. You see working software every two weeks and can pause, reprioritise or stop between phases.
 updated: '2026-11-26'
+proof:
+  slug: warehouse-inventory-platform
+  title: From disconnected tools to *one platform*
+  text: Stock inward, inventory, orders and dispatch moved out of separate spreadsheets into one connected warehouse platform, with every stock movement traceable from goods in to dispatch.
 ---

@@ -8,7 +8,7 @@ category: threats
 author: avrix-team
 published: 2026-11-12
 updated: 2026-11-12
-cover: { src: /media/covers/blog/first-24-hours-ransomware-attack.svg, alt: "Abstract AVRIX cover graphic with a warning icon for the ransomware response guide" }
+cover: { src: /media/covers/blog/first-24-hours-ransomware-attack.svg, alt: "Glass rings joined by a waveform, the AVRIX cover for the ransomware response guide" }
 related_service: incident-response
 draft: false
 ---

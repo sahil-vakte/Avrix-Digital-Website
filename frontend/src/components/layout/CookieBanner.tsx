@@ -1,77 +1,75 @@
 import { useEffect, useRef, useState } from 'react';
 import { ui } from '../../content';
 import { applyConsent, readConsent } from '../../lib/analytics';
+import {
+  announceClosed,
+  announceOpen,
+  closeWhenOtherOpens,
+  trackOverlays,
+} from '../../lib/overlay';
 
-// Consent pop-up. Shown until the visitor makes a choice; "Reject all" is as
-// prominent as "Accept all", and nothing optional loads before consent.
+/**
+ * Cookie consent. On a first visit a non-blocking banner asks for a choice;
+ * "Cookie preferences" in the footer opens the same choices as a modal.
+ * Reject is as prominent as accept, and nothing optional loads before consent.
+ */
 export default function CookieBanner() {
-  const [open, setOpen] = useState(false);
   const [decided, setDecided] = useState(true);
+  const [modal, setModal] = useState(false);
   const [prefs, setPrefs] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [analytics, setAnalytics] = useState(false);
   const [advertising, setAdvertising] = useState(false);
-  const panel = useRef<HTMLElement>(null);
+  const banner = useRef<HTMLElement>(null);
+  const dialog = useRef<HTMLDialogElement>(null);
+  const opener = useRef<HTMLElement | null>(null);
   useEffect(() => {
-    const c = readConsent();
-    setDecided(!!c);
-    setOpen(!c);
+    setDecided(!!readConsent());
     const show = () => {
       const current = readConsent();
       setAnalytics(current?.analytics || false);
       setAdvertising(current?.advertising || false);
+      opener.current = document.activeElement as HTMLElement;
       setPrefs(true);
-      setOpen(true);
+      setModal(true);
     };
     addEventListener('cookie-preferences', show);
-    return () => removeEventListener('cookie-preferences', show);
+    const offOther = closeWhenOtherOpens('cookies', () => setModal(false));
+    const offTrack = trackOverlays(setHidden);
+    return () => {
+      removeEventListener('cookie-preferences', show);
+      offOther();
+      offTrack();
+    };
   }, []);
   useEffect(() => {
-    if (open) panel.current?.focus({ preventScroll: true });
-  }, [open, prefs]);
+    if (!modal) return;
+    const el = dialog.current;
+    announceOpen('cookies');
+    el?.showModal();
+    return () => {
+      el?.close();
+      announceClosed('cookies');
+      setPrefs(false);
+      if (opener.current?.isConnected) opener.current.focus();
+    };
+  }, [modal]);
   function save(a: boolean, b: boolean) {
     applyConsent({ analytics: a, advertising: b });
     setDecided(true);
-    setOpen(false);
+    setModal(false);
     setPrefs(false);
   }
-  if (!open)
-    return decided ? (
-      <button
-        type="button"
-        className="cookie-reopen"
-        aria-label={ui.cookieSettings}
-        title={ui.cookieSettings}
-        onClick={() => dispatchEvent(new Event('cookie-preferences'))}
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            d="M12 3a9 9 0 1 0 9 9 4 4 0 0 1-4-4 4 4 0 0 1-4-4 1 1 0 0 0-1-1Z"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinejoin="round"
-          />
-          <circle cx="8.5" cy="10" r="1.2" fill="currentColor" />
-          <circle cx="13" cy="15.5" r="1.2" fill="currentColor" />
-          <circle cx="8" cy="15" r="1" fill="currentColor" />
-        </svg>
-      </button>
-    ) : null;
-  return (
-    <section
-      ref={panel}
-      tabIndex={-1}
-      className="cookie-card"
-      role="dialog"
-      aria-modal="false"
-      aria-labelledby="cookie-title"
-      aria-describedby="cookie-text"
-    >
+  const body = (
+    <>
       <div className="cookie-head">
-        <span className="cookie-icon" aria-hidden="true">
-          🍪
-        </span>
         <h2 id="cookie-title">{ui.cookieTitle}</h2>
+        {modal && (
+          <button type="button" className="modal-close" onClick={() => setModal(false)}>
+            <span className="sr-only">{ui.closeCookies}</span>
+            <span aria-hidden="true">×</span>
+          </button>
+        )}
       </div>
       <p id="cookie-text">
         {ui.cookieText} <a href="/cookie-policy/">{ui.cookiePolicy}</a>.
@@ -129,6 +127,31 @@ export default function CookieBanner() {
           {ui.accept}
         </button>
       </div>
+    </>
+  );
+  if (modal)
+    return (
+      <dialog
+        ref={dialog}
+        className="modal-dialog cookie-dialog"
+        aria-labelledby="cookie-title"
+        aria-describedby="cookie-text"
+        onCancel={() => setModal(false)}
+        onClose={() => setModal(false)}
+      >
+        {body}
+      </dialog>
+    );
+  if (decided || hidden) return null;
+  return (
+    <section
+      ref={banner}
+      className="cookie-card"
+      role="region"
+      aria-labelledby="cookie-title"
+      aria-describedby="cookie-text"
+    >
+      {body}
     </section>
   );
 }

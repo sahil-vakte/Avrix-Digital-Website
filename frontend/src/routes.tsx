@@ -6,6 +6,7 @@ import { buildRoutes, type RouteRecord } from './content/routes';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
 import CookieBanner from './components/layout/CookieBanner';
+import NewsletterDialog from './components/forms/NewsletterDialog';
 import Accreditations from './components/layout/Accreditations';
 import EnquiryExperience from './components/forms/EnquiryExperience';
 import Seo from './components/seo/Seo';
@@ -48,6 +49,7 @@ function Layout() {
       <Footer />
       <SocWidget />
       <CookieBanner />
+      <NewsletterDialog />
       {ready && (
         <Suspense>
           <Enhance />

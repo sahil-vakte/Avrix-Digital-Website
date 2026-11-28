@@ -1,8 +1,9 @@
-import { lazy, Suspense } from 'react';
 import { content, site, nav, ui } from '../../content';
 import { track } from '../../lib/analytics';
+import { openCookiePreferences, openNewsletter } from '../../lib/overlay';
 import { Brand } from './Header';
-const Newsletter = lazy(() => import('../forms/Newsletter'));
+
+/** Expanded light footer: brand and contact, link directory, utilities. */
 export default function Footer() {
   const socials = Object.entries(site.socials).filter(([, v]) => v);
   return (
@@ -12,30 +13,6 @@ export default function Footer() {
           <div className="footer-brand">
             <Brand />
             <p>{nav.footer.tagline}</p>
-            <ul className="footer-contact">
-              <li>
-                <span>{ui.emailUs}</span>
-                <a href={`mailto:${site.email}`} onClick={() => track('email_click')}>
-                  {site.email}
-                </a>
-              </li>
-              {site.phone && (
-                <li>
-                  <span>Phone</span>
-                  <a href={`tel:${site.phone}`} onClick={() => track('phone_click')}>
-                    {site.phone}
-                  </a>
-                </li>
-              )}
-              <li>
-                <span>{ui.hours}</span>
-                {site.opening_hours}
-              </li>
-              <li>
-                <span>{ui.coverage}</span>
-                {site.service_area}
-              </li>
-            </ul>
             {!!socials.length && (
               <div className="footer-socials" aria-label={ui.follow}>
                 {socials.map(([k, v]) => (
@@ -46,71 +23,102 @@ export default function Footer() {
               </div>
             )}
           </div>
-          <div className="footer-newsletter">
-            <Suspense>
-              <Newsletter />
-            </Suspense>
-          </div>
-        </div>
-        <div className="footer-grid">
-          <div>
-            <h3>{ui.explore}</h3>
-            {nav.footer.explore.map((l) => (
-              <a key={l.label} href={l.href}>
-                {l.label}
+          <ul className="footer-contact">
+            <li>
+              <span>{ui.emailUs}</span>
+              <a href={`mailto:${site.email}`} onClick={() => track('email_click')}>
+                {site.email}
               </a>
-            ))}
-          </div>
-          <div>
-            <h3>{ui.services}</h3>
-            {nav.mega_menu.map((g) => (
-              <a key={g.pillar} href={g.href}>
-                {g.label}
-              </a>
-            ))}
-            <a href="/case-studies/">{ui.caseStudies}</a>
-            <a href="/services/incident-response/">{ui.emergencyCta}</a>
-          </div>
-          <div>
-            <h3>{ui.industries}</h3>
-            {content.industries.map((i) => (
-              <a key={i.slug} href={`/industries/${i.slug}/`}>
-                {i.title}
-              </a>
-            ))}
-          </div>
-          <div>
-            {content.solutions.length > 0 && (
-              <>
-                <h3>{ui.solutions}</h3>
-                {content.solutions.map((s) => (
-                  <a key={s.slug} href={`/solutions/${s.slug}/`}>
-                    {s.title}
-                  </a>
-                ))}
-              </>
-            )}
-            <h3>{ui.legal}</h3>
-            {nav.footer.legal.map((l) =>
-              l.action ? (
-                <button
-                  key={l.label}
-                  type="button"
-                  onClick={() => dispatchEvent(new Event('cookie-preferences'))}
-                >
-                  {l.label}
-                </button>
-              ) : (
-                <a key={l.label} href={l.href}>
-                  {l.label}
+            </li>
+            {site.phone && (
+              <li>
+                <span>Phone</span>
+                <a href={`tel:${site.phone}`} onClick={() => track('phone_click')}>
+                  {site.phone}
                 </a>
-              ),
+              </li>
             )}
+            <li>
+              <span>{ui.hours}</span>
+              {site.opening_hours}
+            </li>
+            <li>
+              <span>{ui.coverage}</span>
+              {site.service_area}
+            </li>
+          </ul>
+          <div className="footer-actions">
+            <a className="button primary" href="#enquiry">
+              {site.booking_label} <span aria-hidden="true">→</span>
+            </a>
+            <button type="button" className="button secondary" onClick={openNewsletter}>
+              {ui.joinNewsletter} <span aria-hidden="true">→</span>
+            </button>
+            <a className="footer-contact-link" href="/contact-us/">
+              {ui.contactUs} <span aria-hidden="true">→</span>
+            </a>
           </div>
         </div>
+        <nav className="footer-grid" aria-label={ui.footerNav}>
+          <div>
+            <h2>{ui.explore}</h2>
+            <ul>
+              {nav.footer.explore.map((l) => (
+                <li key={l.label}>
+                  <a href={l.href}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2>{ui.services}</h2>
+            <ul>
+              {nav.mega_menu.map((g) => (
+                <li key={g.pillar}>
+                  <a href={g.href}>{g.label}</a>
+                </li>
+              ))}
+              <li>
+                <a href="/services/incident-response/">{ui.incidentResponse}</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2>{ui.popularServices}</h2>
+            <ul>
+              {nav.footer.shortcuts.map((l) => (
+                <li key={l.href}>
+                  <a href={l.href}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2>{ui.industries}</h2>
+            <ul>
+              {content.industries.map((i) => (
+                <li key={i.slug}>
+                  <a href={`/industries/${i.slug}/`}>{i.title}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2>{ui.legal}</h2>
+            <ul>
+              {nav.footer.legal
+                .filter((l) => !l.action)
+                .map((l) => (
+                  <li key={l.label}>
+                    <a href={l.href}>{l.label}</a>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </nav>
         <div className="footer-bottom">
           <span>
-            © {new Date().getFullYear()} {site.legal_name || site.brand_name}. All rights reserved.{' '}
+            © {new Date().getFullYear()} {site.legal_name || site.brand_name}. {ui.rightsReserved}{' '}
             {site.company_number && `${ui.registration} ${site.company_number}. `}
             {site.registered_office && `${ui.office} ${site.registered_office}. `}
             {site.vat_number && `${ui.vat} ${site.vat_number}`}
@@ -119,6 +127,9 @@ export default function Footer() {
             <a className="back-top" href="#main">
               {ui.backToTop} <span aria-hidden="true">↑</span>
             </a>
+            <button type="button" onClick={openCookiePreferences}>
+              {ui.cookiePreferences}
+            </button>
           </div>
         </div>
       </div>

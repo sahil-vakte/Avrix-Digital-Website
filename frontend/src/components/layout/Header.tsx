@@ -8,8 +8,7 @@ type Menu = 'services' | 'solutions' | 'industries' | 'resources';
 export function Brand() {
   return (
     <a className="brand" href="/" aria-label={`${site.brand_name} home`}>
-      <img src={site.logo.mark} alt="" width="246" height="192" />
-      <span>{site.logo.alt.toUpperCase()}</span>
+      <img src={site.logo.dark_on_light} alt={site.brand_name} width="720" height="141" />
     </a>
   );
 }

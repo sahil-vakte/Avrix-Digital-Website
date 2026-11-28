@@ -9,8 +9,23 @@ import {
   DataTable,
   Process,
   pillarTitle,
+  caseThumb,
 } from '../components/sections';
-import { Breadcrumbs, Button } from '../components/ui';
+import { Breadcrumbs, Button, Em, Icon } from '../components/ui';
+import { content } from '../content';
+
+const pillarIcon: Record<string, string> = {
+  'digital-transformation': 'transform',
+  'ai-solutions': 'ai-automation',
+  'cyber-security': 'shield-network',
+  'professional-services': 'team',
+};
+const industry = (slug: string) => content.industries.find((i) => i.slug === slug);
+const sectorIndustry: Record<string, ReturnType<typeof industry>> = {
+  healthcare: industry('healthcare'),
+  'retail-logistics': industry('retail-ecommerce'),
+  education: industry('education'),
+};
 
 function Directory() {
   const p = page('case-studies');
@@ -73,7 +88,12 @@ export default function CaseStudies({ route }: { route: RouteRecord }) {
     const p = page('case-studies');
     return (
       <>
-        <PageHero eyebrow={p.eyebrow} title={p.h1} lead={p.lead}>
+        <PageHero
+          eyebrow={p.eyebrow}
+          title={p.h1}
+          lead={p.lead}
+          art="/media/art/hero-case-study.svg"
+        >
           <Breadcrumbs items={[{ label: p.eyebrow!, href: '/case-studies/' }]} />
         </PageHero>
         <SectionShell id="work" eyebrow={ui.featuredWork} title={`Featured *case studies*`}>
@@ -97,18 +117,114 @@ export default function CaseStudies({ route }: { route: RouteRecord }) {
     .filter((v) => v.slug !== c.slug && v.areas.some((a) => c.areas.includes(a)))
     .slice(0, 3)
     .map((v) => v.slug);
+  const industryPage = sectorIndustry[c.sector];
   return (
     <>
-      <PageHero eyebrow={c.industry} title={c.title} lead={c.summary} tags={c.technology}>
-        <Breadcrumbs
-          items={[
-            { label: ui.caseStudies, href: '/case-studies/' },
-            { label: c.title, href: route.path },
-          ]}
-        />
-      </PageHero>
+      <section className="page-hero case-hero with-art">
+        <div className="container page-hero-grid">
+          <div className="page-hero-copy">
+            <Breadcrumbs
+              items={[
+                { label: ui.caseStudies, href: '/case-studies/' },
+                { label: c.title, href: route.path },
+              ]}
+            />
+            <p className="eyebrow">{c.industry}</p>
+            <h1>
+              <Em text={c.h1 || c.title} />
+            </h1>
+            <p className="lead">{c.summary}</p>
+            <ul className="topic-chips">
+              {industryPage && (
+                <li>
+                  <a href={`/industries/${industryPage.slug}/`}>
+                    <Icon name={industryPage.icon} />
+                    {industryPage.title}
+                  </a>
+                </li>
+              )}
+              {c.areas.map((a) => (
+                <li key={a}>
+                  <a href={`/${a}/`}>
+                    <Icon name={pillarIcon[a]} />
+                    {pillarTitle(a)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="hero-art" aria-hidden="true">
+            <img src={c.art || caseThumb(c)} alt="" width="760" height="520" fetchPriority="high" />
+          </div>
+        </div>
+      </section>
       <section className="section light">
         <div className="container case-layout">
+          <article className="case-story">
+            <div className="story-block">
+              <h2>{ui.theChallenge}</h2>
+              <p>{c.problem}</p>
+              <p>
+                <strong>{ui.objective}: </strong>
+                {c.objective}
+              </p>
+            </div>
+            <div className="story-block built">
+              <div>
+                <h2>{ui.whatWeBuilt}</h2>
+                <p>{c.solution}</p>
+              </div>
+              {c.workflow ? (
+                <ol className="workflow" aria-label={ui.howItFlows}>
+                  {c.workflow.map((w) => (
+                    <li key={w.label}>
+                      <Icon name={w.icon} />
+                      <span>{w.label}</span>
+                    </li>
+                  ))}
+                </ol>
+              ) : (
+                <ul className="check-list">
+                  {c.features.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            {c.workflow && (
+              <div className="story-block">
+                <h2 className="h3">{ui.keyFeatures}</h2>
+                <ul className="check-list columns">
+                  {c.features.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <div className="story-block outcome">
+              <div>
+                <h2>{ui.theOutcome}</h2>
+                <p>{c.outcome}</p>
+              </div>
+              {c.outcome_points && (
+                <ul className="outcome-points">
+                  {c.outcome_points.map((p) => (
+                    <li key={p.title}>
+                      <Icon name={p.icon || 'check'} />
+                      <strong>{p.title}</strong>
+                      <span>{p.text}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            {c.secure && (
+              <div className="secure-note">
+                <h2 className="h3">{ui.secureByDesign}</h2>
+                <p>{c.secure}</p>
+              </div>
+            )}
+          </article>
           <aside className="case-facts card" aria-label={ui.projectFacts}>
             <dl>
               <dt>{ui.industry}</dt>
@@ -117,54 +233,34 @@ export default function CaseStudies({ route }: { route: RouteRecord }) {
               <dd>{c.areas.map(pillarTitle).join(', ')}</dd>
               <dt>{ui.technology}</dt>
               <dd>{c.technology.join(', ')}</dd>
+              <dt>{ui.related}</dt>
+              <dd>
+                <ul className="link-list">
+                  {c.related.map((l) => (
+                    <li key={l.href}>
+                      <a href={l.href}>{l.label}</a>
+                    </li>
+                  ))}
+                </ul>
+              </dd>
             </dl>
             <Button href="#enquiry" size="sm">
               {ui.discussProject}
             </Button>
           </aside>
-          <article className="case-story">
-            <h2>{ui.problemStatement}</h2>
-            <p>{c.problem}</p>
-            <h2>{ui.objective}</h2>
-            <p>{c.objective}</p>
-            <h2>{ui.ourSolution}</h2>
-            <p>{c.solution}</p>
-            <h2>{ui.keyFeatures}</h2>
-            <ul className="check-list">
-              {c.features.map((f) => (
-                <li key={f}>{f}</li>
-              ))}
-            </ul>
-            {c.secure && (
-              <div className="secure-note">
-                <h2 className="h3">{ui.secureByDesign}</h2>
-                <p>{c.secure}</p>
-              </div>
-            )}
-            <div className="outcome-note">
-              <h2 className="h3">{ui.finalOutcome}</h2>
-              <p>{c.outcome}</p>
-            </div>
-          </article>
         </div>
       </section>
       <SectionShell tone="tint" eyebrow={ui.projectPhases} title={`How we *delivered it*`}>
         <Process steps={c.phases} />
       </SectionShell>
-      <SectionShell eyebrow={ui.related} title={`Services behind *this project*`}>
-        <ul className="related-links">
-          {c.related.map((l) => (
-            <li key={l.href}>
-              <a href={l.href}>
-                {l.label} <span aria-hidden="true">→</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </SectionShell>
       {others.length > 0 && (
-        <SectionShell tone="tint" eyebrow={ui.caseStudies} title={`More *case studies*`}>
+        <SectionShell eyebrow={ui.caseStudies} title={`Related *case studies*`}>
           <CaseStudyGrid slugs={others} />
+          <div className="section-link">
+            <Button href="/case-studies/" variant="secondary">
+              {ui.allCaseStudies}
+            </Button>
+          </div>
         </SectionShell>
       )}
     </>

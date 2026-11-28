@@ -18,7 +18,7 @@ export function Button({
 }: {
   href: string;
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'ghost' | 'link';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'link' | 'light' | 'outline-light';
   size?: 'sm' | 'md' | 'lg';
 }) {
   return (
