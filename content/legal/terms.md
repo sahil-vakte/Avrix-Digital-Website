@@ -3,14 +3,14 @@ slug: terms
 h1: "Website terms of use"
 seo_title: "Website Terms of Use | AVRIX Digital"
 seo_description: "The terms that apply when you use the AVRIX Digital website, including information accuracy, intellectual property, links and governing law."
-last_updated: 2026-10-17
+last_updated: 2026-11-28
 review_required: true
 _notes: "TEMPLATE covering website use only. Client services are governed by separate terms of business / proposals."
 ---
 
 ## About these terms
 
-These terms apply to your use of avrixdigital.com, operated by [LEGAL NAME] trading as AVRIX Digital. By using the website you agree to them. Our services are provided under separate written proposals and terms of business.
+These terms apply to your use of avrixdigital.com, operated by AVRIX LTD, trading as AVRIX DIGITAL ("we", "us"). By using the website you agree to them. Our services are provided under separate written proposals and terms of business.
 
 ## Information on this website
 
@@ -31,6 +31,14 @@ Nothing in these terms limits liability that can't be limited by law. Otherwise 
 ## Governing law
 
 These terms are governed by the law of England and Wales, and the courts of England and Wales have jurisdiction.
+
+## Company details
+
+- **Trading name:** AVRIX DIGITAL
+- **Company name:** AVRIX LTD
+- **Registered in:** England and Wales
+- **Companies House number:** 16853300
+- **Registered office:** 29 Fairfield Road, Oadby, Leicester, England, LE2 4NF
 
 ## Contact
 

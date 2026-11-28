@@ -3,10 +3,14 @@ slug: cookie-policy
 h1: "Cookie policy"
 seo_title: "Cookie Policy | AVRIX Digital"
 seo_description: "Which cookies the AVRIX Digital website uses, why we use them and how you can change your cookie preferences at any time."
-last_updated: 2026-10-17
+last_updated: 2026-11-28
 review_required: true
 _notes: "TEMPLATE. Keep the cookie table in sync with the tags actually deployed."
 ---
+
+## Who we are
+
+This website is operated by AVRIX LTD, trading as AVRIX DIGITAL ("we", "us"). AVRIX LTD is a company registered in England and Wales, Companies House number 16853300. Registered office: 29 Fairfield Road, Oadby, Leicester, England, LE2 4NF. Questions about cookies can go to our data protection officer, Abhi, at info@avrixdigital.com.
 
 ## What cookies are
 
@@ -16,7 +20,7 @@ Cookies are small files stored on your device. Some are essential for a website 
 
 | Category | Name | Provider | Purpose | Duration |
 |---|---|---|---|---|
-| Strictly necessary | `avrix_consent` | AVRIX Digital | Remembers your cookie choices | 6 months |
+| Strictly necessary | `avrix_consent` | AVRIX DIGITAL | Remembers your cookie choices | 6 months |
 | Strictly necessary | Turnstile cookies | Cloudflare | Protects forms from spam bots | Session |
 | Analytics (consent) | `_ga`, `_ga_*` | Google Analytics 4 | Measures how visitors use the site | Up to 13 months |
 | Advertising (consent) | `_gcl_au` and platform cookies | Google Ads / Meta / LinkedIn [only if used] | Measures ad performance | Up to 13 months |
