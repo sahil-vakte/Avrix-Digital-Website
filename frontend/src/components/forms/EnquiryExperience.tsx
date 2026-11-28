@@ -68,7 +68,7 @@ export default function EnquiryExperience({ children }: { children: ReactNode })
       }
     };
   }, [request]);
-  function open(trigger: HTMLElement, call = false) {
+  function open(trigger: HTMLElement, call = false, topic?: string) {
     if (pathname === '/contact-us/') {
       const form = document.getElementById('enquiry');
       form?.scrollIntoView({
@@ -83,8 +83,9 @@ export default function EnquiryExperience({ children }: { children: ReactNode })
     opener.current = trigger;
     const [, section, candidate] = pathname.match(/^\/(services|solutions)\/([^/]+)\/?$/) || [];
     const match = services.find((item) => item.slug === candidate);
-    const service =
-      section === 'solutions' && solutions.some((item) => item.slug === candidate)
+    const service = topic
+      ? topic
+      : section === 'solutions' && solutions.some((item) => item.slug === candidate)
         ? 'security-products'
         : match
           ? enquiryTopic(match.slug, match.pillar)
@@ -106,7 +107,7 @@ export default function EnquiryExperience({ children }: { children: ReactNode })
     );
     if (!anchor || dialog.current?.contains(anchor)) return;
     event.preventDefault();
-    open(anchor, anchor.dataset.enquiryMode === 'call');
+    open(anchor, anchor.dataset.enquiryMode === 'call', anchor.dataset.enquiryTopic);
   }
   return (
     <div className="app-shell" onClickCapture={intercept}>

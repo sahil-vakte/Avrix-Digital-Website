@@ -1,6 +1,6 @@
 import { content, site, nav, ui } from '../../content';
 import { track } from '../../lib/analytics';
-import { openCookiePreferences, openNewsletter } from '../../lib/overlay';
+import { openCookiePreferences } from '../../lib/overlay';
 import { Brand } from './Header';
 
 /** Expanded light footer: brand and contact, link directory, utilities. */
@@ -51,10 +51,7 @@ export default function Footer() {
             <a className="button primary" href="#enquiry">
               {site.booking_label} <span aria-hidden="true">→</span>
             </a>
-            <button type="button" className="button secondary" onClick={openNewsletter}>
-              {ui.joinNewsletter} <span aria-hidden="true">→</span>
-            </button>
-            <a className="footer-contact-link" href="/contact-us/">
+            <a className="button secondary" href="/contact-us/">
               {ui.contactUs} <span aria-hidden="true">→</span>
             </a>
           </div>

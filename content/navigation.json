@@ -256,22 +256,38 @@
       }
     ]
   },
-  "soc_widget": {
-    "label": "24/7 incident help",
-    "title": "Suspect a breach?",
-    "points": [
-      "Disconnect affected devices but leave them on",
-      "Don't pay any ransom or contact the attacker",
-      "Change passwords from a clean device",
-      "Contact our incident response team now"
+  "sticky_cta": {
+    "kicker": "Free 30-minute consultation",
+    "title": "Got a project in mind?",
+    "question": "What do you want to fix first?",
+    "intro": "Pick one and tell us a little more. A specialist replies within one working day with practical next steps.",
+    "options": [
+      {
+        "label": "Replace slow, manual processes",
+        "icon": "transform",
+        "topic": "web-application-development"
+      },
+      {
+        "label": "Put AI to work",
+        "icon": "ai-automation",
+        "topic": "ai-automation"
+      },
+      {
+        "label": "Check how secure we are",
+        "icon": "shield-network",
+        "topic": "penetration-testing"
+      },
+      {
+        "label": "Add specialist people",
+        "icon": "team",
+        "topic": "talent-acquisition"
+      }
     ],
-    "primary": {
+    "promise": "Free and no obligation · Fixed-price proposals",
+    "incident": {
+      "text": "Dealing with an attack right now?",
       "label": "Get incident help",
       "href": "/services/incident-response/"
-    },
-    "secondary": {
-      "label": "Send an urgent enquiry",
-      "href": "/contact-us/"
     }
   }
 }

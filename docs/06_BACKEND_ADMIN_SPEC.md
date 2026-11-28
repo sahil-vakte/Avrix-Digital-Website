@@ -48,7 +48,9 @@ Indexes: `status`, `created_at`, `email`.
 `enquiry` FK, `created_at`, `actor` FK User null, `kind` (`status_change`, `note`, `email_sent`, `assigned`), `detail` text. Written automatically on status/owner changes (signals or `save_model`).
 
 ### `Subscriber` (newsletter)
-`email` unique, `created_at`, `source_page`, `consent_text` (snapshot of wording shown), `confirmed_at` null, `confirm_token`, `unsubscribed_at` null. Double opt-in email with a confirm link (`GET /api/newsletter/confirm/{token}/` → redirect to `/newsletter-confirmed/`).
+`name`, `email` unique, `created_at`, `source_page`, `consent_text` (snapshot of wording shown), `confirmed_at` null, `confirm_token`, `unsubscribed_at` null. Double opt-in email with a confirm link (`GET /api/newsletter/confirm/{token}/` → redirect to `/newsletter-confirmed/`).
+
+CRM: once a subscriber confirms, they are sent to the Avrix CRM hub (`/api/intake/leads`) as a lead with source `newsletter`, stage `Subscriber`, tags `Newsletter subscriber` and `AVRIX website`, and marketing consent recorded. An unsubscribe is mirrored to `/api/intake/status` (stage `Unsubscribed`, with a do-not-email note). Unconfirmed sign-ups never leave this database. Failures are kept in `crm_error` and retried by `manage.py sync_to_crm`.
 
 ## 3. API (DRF)
 

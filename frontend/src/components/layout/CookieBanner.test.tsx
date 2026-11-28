@@ -2,9 +2,8 @@ import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import CookieBanner from './CookieBanner';
 import Accreditations from './Accreditations';
-import NewsletterDialog from '../forms/NewsletterDialog';
 import { accreditations, ui } from '../../content';
-import { openCookiePreferences, openNewsletter } from '../../lib/overlay';
+import { announceClosed, announceOpen, openCookiePreferences } from '../../lib/overlay';
 
 beforeEach(() => {
   Object.defineProperties(HTMLDialogElement.prototype, {
@@ -71,29 +70,16 @@ it('closes the modal with Escape and the labelled close button', async () => {
   await waitFor(() => expect(screen.queryByRole('dialog')).toBeNull());
 });
 
-it('shows only one overlay at a time', async () => {
-  vi.stubEnv('VITE_PUBLIC_FORMS_ENABLED', 'false');
-  render(
-    <>
-      <CookieBanner />
-      <NewsletterDialog />
-    </>,
-  );
-  act(openNewsletter);
-  expect(await screen.findByRole('dialog', { name: /email a month/i })).toBeTruthy();
-  // The first-visit banner steps aside while a modal is open.
-  expect(screen.queryByRole('region', { name: ui.cookieTitle })).toBeNull();
+it('steps aside while another overlay is open and closes when cookie preferences open elsewhere', async () => {
+  render(<CookieBanner />);
+  expect(await screen.findByRole('region', { name: ui.cookieTitle })).toBeTruthy();
+  act(() => announceOpen('enquiry'));
+  await waitFor(() => expect(screen.queryByRole('region', { name: ui.cookieTitle })).toBeNull());
+  act(() => announceClosed('enquiry'));
+  expect(await screen.findByRole('region', { name: ui.cookieTitle })).toBeTruthy();
   act(openCookiePreferences);
   await screen.findByRole('dialog', { name: ui.cookieTitle });
   await waitFor(() => expect(screen.getAllByRole('dialog')).toHaveLength(1));
-});
-
-it('shows a truthful newsletter state when sign-ups are not configured', async () => {
-  vi.stubEnv('VITE_PUBLIC_FORMS_ENABLED', 'false');
-  render(<NewsletterDialog />);
-  act(openNewsletter);
-  expect(await screen.findByText('Newsletter sign-ups will be available soon.')).toBeTruthy();
-  expect(screen.queryByRole('textbox')).toBeNull();
 });
 
 it('shows each accreditation logo above the footer', () => {

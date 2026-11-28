@@ -136,3 +136,68 @@ def test_mail_timer_also_syncs(crm_on):
     assert post.call_args.args[0].endswith("/api/intake/leads")
     e.refresh_from_db()
     assert e.crm_synced_at is not None
+
+
+def make_subscriber(**kw):
+    from django.utils import timezone
+    from enquiries.models import Subscriber
+
+    data = dict(name="Alex Reader", email="alex@example.co.uk", consent_text="By subscribing you agree to receive our monthly email.",
+                source_page="/", confirmed_at=timezone.now())
+    data.update(kw)
+    return Subscriber.objects.create(**data)
+
+
+def test_unconfirmed_subscriber_is_not_sent(crm_on):
+    s = make_subscriber(confirmed_at=None)
+    with patch("enquiries.crm.requests.post") as post:
+        assert crm.sync_subscriber(s.pk) is True
+    post.assert_not_called()
+    assert not crm.pending_subscribers().exists()
+
+
+def test_confirmed_subscriber_sent_once_with_consent(crm_on):
+    s = make_subscriber()
+    assert list(crm.pending_subscribers()) == [s]
+    with patch("enquiries.crm.requests.post", return_value=FakeResponse()) as post:
+        call_command("sync_to_crm")
+        call_command("sync_to_crm")
+    assert post.call_count == 1
+    url, = post.call_args.args
+    payload = json.loads(post.call_args.kwargs["data"].decode())
+    assert url.endswith("/api/intake/leads")
+    assert payload["source"] == "newsletter" and payload["stage"] == "Subscriber" and "Newsletter subscriber" in payload["tags"]
+    assert payload["name"] == "Alex Reader" and payload["consent"]["marketing"] is True
+    s.refresh_from_db()
+    assert s.crm_synced_at and s.crm_lead_id == "lead-1"
+
+
+def test_unsubscribe_is_mirrored(crm_on):
+    from django.utils import timezone
+
+    s = make_subscriber(crm_synced_at=timezone.now(), unsubscribed_at=timezone.now())
+    with patch("enquiries.crm.requests.post", return_value=FakeResponse(200, {"leadId": "lead-1"})) as post:
+        assert crm.sync_subscriber(s.pk) is True
+    url, = post.call_args.args
+    payload = json.loads(post.call_args.kwargs["data"].decode())
+    assert url.endswith("/api/intake/status") and payload["stage"] == "Unsubscribed" and payload["externalId"] == f"subscriber-{s.pk}"
+    s.refresh_from_db()
+    assert s.crm_unsubscribe_synced_at and not crm.pending_subscribers().exists()
+
+
+def test_subscriber_crm_failure_is_recorded(crm_on):
+    s = make_subscriber()
+    with patch("enquiries.crm.requests.post", return_value=FakeResponse(500, {"error": "down"})):
+        assert crm.sync_subscriber(s.pk) is False
+    s.refresh_from_db()
+    assert "500" in s.crm_error and crm.pending_subscribers().exists()
+
+
+def test_newsletter_name_required(api):
+    from enquiries.tests.test_api import newsletter_payload
+
+    data = newsletter_payload()
+    data["name"] = ""
+    assert api.post("/api/newsletter/", data, format="json").status_code == 400
+    data["name"] = "http://spam.example"
+    assert api.post("/api/newsletter/", data, format="json").status_code == 400

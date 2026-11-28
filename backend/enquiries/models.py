@@ -71,6 +71,7 @@ class EnquiryActivity(models.Model):
 
 
 class Subscriber(models.Model):
+    name = models.CharField(max_length=120, blank=True)
     email = models.EmailField(unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     source_page = models.CharField(max_length=300, blank=True)
@@ -80,6 +81,11 @@ class Subscriber(models.Model):
     unsubscribe_token = models.CharField(max_length=64, default=token, unique=True, editable=False)
     confirmation_sent_at = models.DateTimeField(null=True, blank=True)
     unsubscribed_at = models.DateTimeField(null=True, blank=True)
+    # Avrix CRM hub: confirmed subscribers are sent once, unsubscribes are mirrored.
+    crm_synced_at = models.DateTimeField(null=True, blank=True)
+    crm_lead_id = models.CharField(max_length=64, blank=True)
+    crm_unsubscribe_synced_at = models.DateTimeField(null=True, blank=True)
+    crm_error = models.CharField(max_length=300, blank=True)
 
     def __str__(self):
         return self.email

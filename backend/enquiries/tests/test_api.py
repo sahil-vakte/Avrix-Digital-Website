@@ -144,7 +144,7 @@ def test_health(api):
 
 
 def newsletter_payload():
-    return {"email": "reader@example.co.uk", "consent_text": "I agree to receive the newsletter.", "privacy_ack": True, "elapsed_ms": 5000}
+    return {"name": "Alex Reader", "email": "reader@example.co.uk", "consent_text": "I agree to receive the newsletter.", "privacy_ack": True, "elapsed_ms": 5000}
 
 
 def test_newsletter_flow(api, django_capture_on_commit_callbacks):

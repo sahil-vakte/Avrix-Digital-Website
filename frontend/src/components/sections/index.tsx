@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import {
   content,
   services,
@@ -11,8 +11,11 @@ import {
   postHref,
   homeSection,
   nav,
+  site,
   ui,
 } from '../../content';
+import { track } from '../../lib/analytics';
+import { closeWhenOtherOpens, trackOverlays } from '../../lib/overlay';
 import type {
   Section,
   Item,
@@ -825,42 +828,91 @@ export function Tags({ items }: { items: string[] }) {
   );
 }
 
-export function SocWidget() {
-  const w = nav.soc_widget;
+/** Sticky consultation launcher: one tap to a pre-filled enquiry for the most common needs. */
+export function StickyCta() {
+  const w = nav.sticky_cta;
   const [open, setOpen] = useState(false);
+  const [shown, setShown] = useState(false);
+  const [covered, setCovered] = useState(false);
+  useEffect(() => {
+    const reveal = () => {
+      if (scrollY > 480) setShown(true);
+    };
+    const timer = setTimeout(() => setShown(true), 9000);
+    addEventListener('scroll', reveal, { passive: true });
+    const offTrack = trackOverlays(setCovered);
+    const offOther = closeWhenOtherOpens('sticky-cta', () => setOpen(false));
+    return () => {
+      clearTimeout(timer);
+      removeEventListener('scroll', reveal);
+      offTrack();
+      offOther();
+    };
+  }, []);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        document.querySelector<HTMLButtonElement>('.sticky-cta-toggle')?.focus();
+      }
+    };
+    addEventListener('keydown', onKey);
+    return () => removeEventListener('keydown', onKey);
+  }, [open]);
   return (
-    <div className={`soc-widget ${open ? 'open' : ''}`}>
-      <button
-        type="button"
-        className="soc-toggle"
-        aria-expanded={open}
-        aria-controls="soc-widget-panel"
-        onClick={() => setOpen(!open)}
-      >
-        <Icon name="incident-response" />
-        <span>
-          <small>
-            <i aria-hidden="true" />
-            {w.label}
-          </small>
-          {w.title}
-        </span>
-      </button>
-      <div className="soc-panel" id="soc-widget-panel" hidden={!open}>
-        <ul className="check-list">
-          {w.points.map((p) => (
-            <li key={p}>{p}</li>
+    <aside
+      className={`sticky-cta${shown ? ' is-shown' : ''}${open ? ' is-open' : ''}${covered ? ' is-covered' : ''}`}
+      aria-label={w.kicker}
+    >
+      <div className="sticky-cta-panel" id="sticky-cta-panel" hidden={!open}>
+        <p className="sticky-cta-question">{w.question}</p>
+        <p className="sticky-cta-intro">{w.intro}</p>
+        <ul className="sticky-cta-options">
+          {w.options.map((o) => (
+            <li key={o.label}>
+              <a
+                href="/contact-us/#enquiry"
+                data-enquiry-trigger="true"
+                data-enquiry-topic={o.topic}
+                onClick={() => {
+                  track('sticky_cta_option', { topic: o.topic });
+                  setOpen(false);
+                }}
+              >
+                <Icon name={o.icon} />
+                <span>{o.label}</span>
+                <span className="arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            </li>
           ))}
         </ul>
-        <div className="actions">
-          <Button href={w.primary.href!} size="sm">
-            {w.primary.label}
-          </Button>
-          <Button href={w.secondary.href!} size="sm" variant="secondary">
-            {w.secondary.label}
-          </Button>
-        </div>
+        <p className="sticky-cta-promise">{w.promise}</p>
+        <p className="sticky-cta-incident">
+          <i aria-hidden="true" />
+          {w.incident.text} <a href={w.incident.href}>{w.incident.label}</a>
+        </p>
       </div>
-    </div>
+      <button
+        type="button"
+        className="sticky-cta-toggle"
+        aria-expanded={open}
+        aria-controls="sticky-cta-panel"
+        onClick={() => setOpen(!open)}
+      >
+        <span className="sticky-cta-mark" aria-hidden="true">
+          <img src={site.logo.mark} alt="" width="234" height="183" />
+        </span>
+        <span className="sticky-cta-text">
+          <small>{w.kicker}</small>
+          <strong>{w.title}</strong>
+        </span>
+        <span className="sticky-cta-chevron" aria-hidden="true">
+          {open ? '×' : '↑'}
+        </span>
+      </button>
+    </aside>
   );
 }
