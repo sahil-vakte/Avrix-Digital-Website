@@ -1,8 +1,8 @@
 {
   "brand_name": "AVRIX Digital",
-  "legal_name": null,
-  "company_number": null,
-  "registered_office": null,
+  "legal_name": "AVRIX LTD",
+  "company_number": "16853300",
+  "registered_office": "29 Fairfield Road, Oadby, Leicester, England, LE2 4NF",
   "vat_number": null,
   "show_solutions": false,
   "tagline": "Digital transformation, AI and cyber security for UK and European organisations.",
@@ -34,5 +34,5 @@
     "ga4_id": null,
     "gtm_id": null
   },
-  "_notes": "TODO(owner): fill legal_name, company_number, registered_office (shown in footer if a limited company), phone, booking_url (Calendly / Microsoft Bookings / Google appointment page) and social profile URLs. Null values are hidden on the site."
+  "_notes": "TODO(owner): fill phone, booking_url (Calendly / Microsoft Bookings / Google appointment page) and social profile URLs. Null values are hidden on the site. Company details confirmed by the owner on 28 Nov 2026."
 }

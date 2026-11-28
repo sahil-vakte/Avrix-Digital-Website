@@ -3,14 +3,18 @@ slug: privacy-policy
 h1: "Privacy policy"
 seo_title: "Privacy Policy | AVRIX Digital"
 seo_description: "How AVRIX Digital collects, uses and protects personal information when you visit our website, contact us or subscribe to our newsletter."
-last_updated: 2026-10-17
+last_updated: 2026-11-28
 review_required: true
 _notes: "TEMPLATE. Must be reviewed and completed by the business owner (and ideally a legal adviser) before launch. Replace every [BRACKETED] item."
 ---
 
 ## Who we are
 
-This website is operated by [LEGAL NAME] trading as AVRIX Digital ("we", "us"). [Registered in England and Wales, company number [NUMBER]. Registered office: [ADDRESS].] We are the controller of the personal information described in this policy. Contact us about privacy at info@avrixdigital.com.
+This website is operated by AVRIX LTD, trading as AVRIX DIGITAL ("we", "us"). AVRIX LTD is a company registered in England and Wales, Companies House number 16853300. Registered office: 29 Fairfield Road, Oadby, Leicester, England, LE2 4NF. We are the controller of the personal information described in this policy.
+
+## Data protection officer
+
+Our data protection officer is Abhi. For any question about how we use your personal information, or to exercise your rights, email info@avrixdigital.com or write to our registered office above.
 
 ## What we collect and why
 
@@ -18,7 +22,7 @@ This website is operated by [LEGAL NAME] trading as AVRIX Digital ("we", "us"). 
 |---|---|---|---|
 | Name, email, phone, company, website, your message, the services and budget you select | You submit an enquiry | To respond to your enquiry and discuss working together | Legitimate interests (responding to people who contact us); steps before entering a contract |
 | How you found us (page visited, referring site, campaign tags such as UTM parameters and ad click IDs) | You submit an enquiry | To understand which marketing brings enquiries | Legitimate interests |
-| Email address | You subscribe to our newsletter | To send the newsletter | Consent (you can withdraw at any time) |
+| Name and email address | You subscribe to our newsletter | To send the newsletter and keep a record of your consent | Consent (you can withdraw at any time) |
 | Marketing preference | You tick the marketing box on a form | To send occasional insights | Consent |
 | Usage data via analytics cookies | You accept analytics cookies | To understand how our website is used and improve it | Consent |
 | Technical data (a one-way hashed IP address, browser type) | You submit a form | Security and spam prevention | Legitimate interests |
