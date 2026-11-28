@@ -424,12 +424,18 @@ button:focus-visible {
   padding: 0;
   list-style: none;
   counter-reset: tile;
+  grid-auto-rows: 1fr;
+}
+.glass-tiles li {
+  display: flex;
 }
 .glass-tiles a {
   position: relative;
-  display: grid;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   gap: 6px;
-  min-height: 150px;
+  min-height: 184px;
   padding: 22px;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.7);
@@ -470,30 +476,98 @@ button:focus-visible {
   transform: translateY(-3px);
 }
 
-/* People band */
+/* People band (Professional Services) */
 .people-band {
   position: relative;
+  display: grid;
+  gap: 28px;
+  align-items: center;
   overflow: hidden;
-  grid-template-columns: 1fr;
-  padding: clamp(26px, 4vw, 40px);
+  grid-template-columns: minmax(0, 1fr);
+  padding: clamp(22px, 4vw, 48px);
   border: 1px solid var(--line);
-  border-radius: 22px;
-  background: linear-gradient(120deg, var(--lavender), var(--ice));
+  border-radius: 26px;
+  background:
+    radial-gradient(520px 320px at 85% 40%, rgba(173, 3, 253, 0.1), transparent 70%),
+    radial-gradient(420px 280px at 70% 80%, rgba(0, 229, 255, 0.12), transparent 70%),
+    linear-gradient(120deg, #fff 0%, var(--lavender) 100%);
+  box-shadow: var(--shadow-card);
 }
-@media (min-width: 900px) {
+@media (min-width: 960px) {
   .people-band {
-    grid-template-columns: minmax(0, 1fr) auto;
-    padding-right: 300px;
-    background:
-      url('/media/art/thumb-professional-services.svg') right -30px center / 340px auto no-repeat,
-      linear-gradient(120deg, var(--lavender), var(--ice));
-  }
-  .people-band > div {
-    max-width: 560px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 40px;
   }
 }
-.people-band p:not(.eyebrow) {
+.people-copy h2 {
+  margin: 6px 0 12px;
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+}
+.people-copy > p:not(.eyebrow) {
+  max-width: 560px;
   color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+.people-routes {
+  display: grid;
+  gap: 10px;
+  margin: 22px 0 26px;
+  padding: 0;
+  list-style: none;
+}
+.people-routes a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--navy-900);
+  text-decoration: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
+}
+.people-routes a:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-card);
+  transform: translateX(3px);
+}
+.people-routes .icon {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  border-radius: 12px;
+}
+.people-routes strong {
+  display: block;
+  font-size: 1rem;
+}
+.people-routes small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+.people-copy .actions {
+  justify-content: flex-start;
+  margin: 0;
+}
+.people-art img {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  margin-inline: auto;
+}
+@media (max-width: 959px) {
+  .people-art img {
+    max-width: 420px;
+  }
 }
 
 /* Why AVRIX */
@@ -539,37 +613,53 @@ button:focus-visible {
 /* Industries */
 .industry-links {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 16px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
+@media (min-width: 1100px) {
+  .industry-links {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.industry-links li {
+  display: flex;
+}
 .industry-links a {
   display: flex;
+  flex: 1;
   align-items: center;
-  gap: 12px;
-  min-height: 64px;
-  padding: 12px 16px;
+  gap: 16px;
+  min-height: 96px;
+  padding: 20px 22px;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 16px;
   background: #fff;
   color: var(--navy-900);
+  font-size: 1.05rem;
   font-weight: 800;
+  line-height: 1.3;
   text-decoration: none;
+  box-shadow: var(--shadow-sm);
   transition:
     border-color 0.2s,
-    box-shadow 0.2s;
+    box-shadow 0.2s,
+    transform 0.2s;
 }
 .industry-links a:hover {
   border-color: var(--primary);
   box-shadow: var(--shadow-card);
+  transform: translateY(-2px);
 }
 .industry-links .icon {
-  width: 38px;
-  height: 38px;
+  flex: none;
+  width: 52px;
+  height: 52px;
   margin: 0;
-  border-radius: 10px;
+  border-radius: 14px;
 }
 .industry-links .arrow,
 .service-links .arrow,
@@ -1028,11 +1118,11 @@ button:focus-visible {
   justify-content: flex-start;
 }
 .cta-art {
-  width: 130%;
+  width: calc(100% + clamp(30px, 5vw, 56px));
+  max-width: none;
   height: auto;
-  margin: -40px -30% -60px 0;
-  mix-blend-mode: screen;
-  opacity: 0.9;
+  margin-right: calc(-1 * clamp(30px, 5vw, 56px));
+  opacity: 0.95;
 }
 @media (max-width: 899px) {
   .cta-art {
@@ -1247,6 +1337,50 @@ button:focus-visible {
   border-color: var(--primary);
   color: var(--primary);
   border-radius: 10px;
+}
+
+/* ---------- Solid call-to-action buttons on cards ---------- */
+.card .more,
+.pillar-card .more {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  min-height: 44px;
+  margin-top: auto;
+  padding: 11px 20px;
+  border-radius: 10px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 12px 24px -16px rgba(23, 48, 224, 0.9);
+  transition:
+    background 0.2s,
+    transform 0.2s;
+}
+.card .more:hover,
+.pillar-card .more:hover,
+.card:hover .more,
+.pillar-card:hover .more {
+  background: var(--primary-hover);
+  color: #fff;
+  text-decoration: none;
+}
+.card .more:hover,
+.pillar-card .more:hover {
+  transform: translateY(-1px);
+}
+.card > :has(+ .more),
+.pillar-card > :has(+ .more) {
+  margin-bottom: 20px;
+}
+.pillar-card {
+  display: flex;
+  flex-direction: column;
 }
 
 @media (prefers-reduced-motion: reduce) {

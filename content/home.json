@@ -118,11 +118,31 @@
       "type": "people",
       "eyebrow": "People & capacity",
       "title": "Need the people *as well as the plan*?",
-      "text": "When your project needs extra skills, we provide vetted software engineers, AI specialists and cyber security professionals who work as part of your team, from a single contractor to a full delivery squad. You get the capacity without the hiring delay.",
+      "text": "When your project needs extra skills, we provide vetted software engineers, AI specialists and cyber security professionals who work as part of your team. You get the capacity without the hiring delay.",
       "link": {
         "label": "Explore Professional Services",
         "href": "/professional-services/"
-      }
+      },
+      "items": [
+        {
+          "title": "Staff Augmentation",
+          "text": "Engineers, AI and cyber specialists who join your team for a project or a gap in cover.",
+          "icon": "team",
+          "href": "/professional-services/staff-augmentation/"
+        },
+        {
+          "title": "Dedicated Delivery Teams",
+          "text": "A stable squad that knows your systems, with AVRIX accountable for delivery.",
+          "icon": "scale",
+          "href": "/professional-services/dedicated-delivery-teams/"
+        },
+        {
+          "title": "Talent Acquisition",
+          "text": "Permanent technology, AI, data and cyber hires, assessed by practitioners.",
+          "icon": "talent",
+          "href": "/professional-services/talent-acquisition/"
+        }
+      ]
     },
     {
       "type": "advantage",
